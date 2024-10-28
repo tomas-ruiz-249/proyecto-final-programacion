@@ -5,7 +5,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "RayCaster.h"
-
+//TEST TEST TEST TEST TEST TEST TEST TEST
 class Canvas {
 public:
 	void startWindow();
