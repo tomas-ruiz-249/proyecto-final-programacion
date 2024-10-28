@@ -134,6 +134,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Raycaster.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\backgrounds\sunset.png" />
+    <Image Include="assets\textures\sprites\static\health.png" />
     <Image Include="assets\textures\sprites\static\shotgun.png" />
     <Image Include="assets\textures\walls\brick.png" />
     <Image Include="assets\textures\walls\invalid.png" />

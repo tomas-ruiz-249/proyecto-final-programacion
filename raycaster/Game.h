@@ -8,6 +8,7 @@
 class Game {
 public:
 	void startGame();
+	Game();
 private:
 	void mainLoop();
 	Canvas canvas;

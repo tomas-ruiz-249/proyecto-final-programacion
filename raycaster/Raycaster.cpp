@@ -52,6 +52,34 @@ RayCastResult RayCaster::rayCast(double angle, Point2D position, Map& map)
 	return getShortest(xNearest, yNearest);
 }
 
+std::vector<RayCastResult> RayCaster::getAllRays(double rayAngle, Player player, Map map)
+{
+	RayCastResult hit;
+	for (int ray = 0; ray < numRays; ray++) {
+		hit = rayCast(rayAngle, player.position, map);
+		hit.length *= cos(player.angle - rayAngle);
+		hit.index = ray;
+		rays.push_back(hit);
+		rayAngle += deltaAngle;
+	}
+	return rays;
+}
+
+void RayCaster::clearRays()
+{
+	rays.clear();
+}
+
+RayCaster::RayCaster(int numRays, double deltaAngle)
+{
+	this->numRays = numRays;
+	this->deltaAngle = deltaAngle;
+}
+
+RayCaster::RayCaster()
+{
+}
+
 Point2D RayCaster::calculateXNearest(double angle, Point2D position, double& xNearestLength)
 {
 	double cosA = cos(angle);

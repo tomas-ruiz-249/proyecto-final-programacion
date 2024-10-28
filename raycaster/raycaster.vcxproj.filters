@@ -39,6 +39,9 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -113,6 +116,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\backgrounds\sunset.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites\static\health.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

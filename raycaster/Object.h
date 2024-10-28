@@ -1,8 +1,13 @@
 #pragma once
+#include "Player.h"
 #include "Point2D.h"
 #include "Enumerations.h"
 
 class Object {
-	Point2D position;
+public:
 	ObjectType type;
+	double getDistanceFromPlayer(Player& player);
+	Object(Point2D pos);
+	const Point2D position;
+private:
 };
