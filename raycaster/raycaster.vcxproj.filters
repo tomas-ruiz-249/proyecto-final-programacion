@@ -42,6 +42,9 @@
     <ClCompile Include="Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -77,11 +80,14 @@
     <ClInclude Include="Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="textures\brick.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="textures\wood.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -91,34 +97,31 @@
     <Image Include="textures\invalid.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="textures\mossy_stone.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\stone.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="textures\sunset.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\textures\walls\stone.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\walls\mossy_stone.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\textures\walls\invalid.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="assets\textures\walls\brick.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\textures\sprites\static\shotgun.png">
+    <Image Include="assets\textures\sprites\static\health.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\walls\stone.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\walls\invalid.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\backgrounds\sunset.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\textures\sprites\static\health.png">
+    <Image Include="assets\textures\sprites\static\imp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites\static\shotgun.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

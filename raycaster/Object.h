@@ -2,12 +2,14 @@
 #include "Player.h"
 #include "Point2D.h"
 #include "Enumerations.h"
+#include "Drawable.h"
 
-class Object {
+class Object : public Drawable{
 public:
 	ObjectType type;
-	double getDistanceFromPlayer(Player& player);
+	Point2D position;
+	double getDistanceFromPlayer(const Player& player);
 	Object(Point2D pos);
-	const Point2D position;
+	Object();
 private:
 };

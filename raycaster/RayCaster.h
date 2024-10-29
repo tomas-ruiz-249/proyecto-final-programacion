@@ -1,23 +1,25 @@
 #pragma once
+#include <vector>
 #include "Map.h"
 #include "Enumerations.h"
-#include "vector"
 #include "Player.h"
+#include "Drawable.h"
 
-typedef struct RayCastResult{
+struct RayCastResult : public Drawable{
 	Point2D hitCoordinates;
-	double length;
+	float horizontalTextureOffset;
 	int index;
-	double textureOffset;
 	WallType wall;
 	double cos;
 	double sin;
-}RayCastResult;
+};
 
 class RayCaster {
 public:
 	RayCastResult rayCast(double angle, Point2D position, Map& map);
 	std::vector<RayCastResult> getAllRays(double rayAngle, Player player, Map map);
+	double getDeltaAngle();
+	double getNumRays();
 	void clearRays();
 
 	RayCaster(int numRays, double deltaAngle);

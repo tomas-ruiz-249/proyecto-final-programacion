@@ -11,8 +11,8 @@ RayCastResult RayCaster::rayCast(double angle, Point2D position, Map& map)
 	RayCastResult xNearest;
 	xNearest.cos = cos(angle);
 	xNearest.sin = sin(angle);
-	xNearest.length = 0.0;
-	xNearest.hitCoordinates = calculateXNearest(angle, position, xNearest.length);
+	xNearest.depth = 0.0;
+	xNearest.hitCoordinates = calculateXNearest(angle, position, xNearest.depth);
 	double xStepLength = 0.0;
 	Point2D xStep = calculateXStep(angle, xStepLength);
 	gridPos.x = static_cast<unsigned int>(xNearest.hitCoordinates.x);
@@ -26,14 +26,14 @@ RayCastResult RayCaster::rayCast(double angle, Point2D position, Map& map)
 		}
 		xNearest.hitCoordinates.x += xStep.x;
 		xNearest.hitCoordinates.y += xStep.y;
-		xNearest.length += xStepLength;
+		xNearest.depth += xStepLength;
 	}
 
 	RayCastResult yNearest;
 	yNearest.cos = cos(angle);
 	yNearest.sin = sin(angle);
-	yNearest.length = 0.0;
-	yNearest.hitCoordinates = calculateYNearest(angle, position, yNearest.length);
+	yNearest.depth = 0.0;
+	yNearest.hitCoordinates = calculateYNearest(angle, position, yNearest.depth);
 	double yStepLength = 0.0;
 	Point2D yStep = calculateYStep(angle, yStepLength);
 	gridPos.y = static_cast<unsigned int>(yNearest.hitCoordinates.y);
@@ -47,7 +47,7 @@ RayCastResult RayCaster::rayCast(double angle, Point2D position, Map& map)
 		}
 		yNearest.hitCoordinates.x += yStep.x;
 		yNearest.hitCoordinates.y += yStep.y;
-		yNearest.length += yStepLength;
+		yNearest.depth += yStepLength;
 	}
 	return getShortest(xNearest, yNearest);
 }
@@ -57,12 +57,22 @@ std::vector<RayCastResult> RayCaster::getAllRays(double rayAngle, Player player,
 	RayCastResult hit;
 	for (int ray = 0; ray < numRays; ray++) {
 		hit = rayCast(rayAngle, player.position, map);
-		hit.length *= cos(player.angle - rayAngle);
+		hit.depth *= cos(player.angle - rayAngle);
 		hit.index = ray;
 		rays.push_back(hit);
 		rayAngle += deltaAngle;
 	}
 	return rays;
+}
+
+double RayCaster::getDeltaAngle()
+{
+	return deltaAngle;
+}
+
+double RayCaster::getNumRays()
+{
+	return numRays;
 }
 
 void RayCaster::clearRays()
@@ -148,24 +158,25 @@ Point2D RayCaster::calculateYStep(double angle, double& yStepLength)
 
 RayCastResult RayCaster::getShortest(RayCastResult xNearest, RayCastResult yNearest)
 {
-	if (std::abs(xNearest.length) < std::abs(yNearest.length)) {
+	if (std::abs(xNearest.depth) < std::abs(yNearest.depth)) {
 		xNearest.hitCoordinates.y = fmod(xNearest.hitCoordinates.y, 1);
 		if (xNearest.cos > 0) {
-			xNearest.textureOffset = xNearest.hitCoordinates.y;
+			xNearest.horizontalTextureOffset = xNearest.hitCoordinates.y;
 		}
 		else {
-			xNearest.textureOffset = 1 - xNearest.hitCoordinates.y;
+			xNearest.horizontalTextureOffset = 1 - xNearest.hitCoordinates.y;
 		}
 		return xNearest;
 	}
 	else {
 		yNearest.hitCoordinates.x = fmod(yNearest.hitCoordinates.x, 1);
 		if (yNearest.cos > 0) {
-			yNearest.textureOffset = 1 - yNearest.hitCoordinates.x;
+			yNearest.horizontalTextureOffset = 1 - yNearest.hitCoordinates.x;
 		}
 		else {
-			yNearest.textureOffset = yNearest.hitCoordinates.x;
+			yNearest.horizontalTextureOffset = yNearest.hitCoordinates.x;
 		}
 		return yNearest;
 	}
 }
+

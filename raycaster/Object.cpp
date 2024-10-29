@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include "Object.h"
 
-double Object::getDistanceFromPlayer(Player& player)
+double Object::getDistanceFromPlayer(const Player & player)
 {
 	Point2D playerDistance;
 	playerDistance.x = position.x - player.position.x;
@@ -14,5 +14,11 @@ double Object::getDistanceFromPlayer(Player& player)
 
 Object::Object(Point2D pos) : position(pos)
 {
+	type = health;
+}
+
+Object::Object()
+{
+	position = Point2D();
 	type = health;
 }

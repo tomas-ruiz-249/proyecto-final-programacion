@@ -135,6 +135,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Raycaster.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -144,11 +145,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Canvas.h" />
+    <ClInclude Include="Drawable.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Enumerations.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="RayCaster.h" />
@@ -157,16 +160,14 @@
   <ItemGroup>
     <Image Include="assets\textures\backgrounds\sunset.png" />
     <Image Include="assets\textures\sprites\static\health.png" />
+    <Image Include="assets\textures\sprites\static\imp.png" />
     <Image Include="assets\textures\sprites\static\shotgun.png" />
     <Image Include="assets\textures\walls\brick.png" />
     <Image Include="assets\textures\walls\invalid.png" />
     <Image Include="assets\textures\walls\mossy_stone.png" />
     <Image Include="assets\textures\walls\stone.png" />
-    <Image Include="textures\brick.png" />
     <Image Include="textures\invalid.png" />
-    <Image Include="textures\mossy_stone.png" />
     <Image Include="textures\shotgun.png" />
-    <Image Include="textures\stone.png" />
     <Image Include="textures\sunset.png" />
     <Image Include="textures\wood.png" />
   </ItemGroup>

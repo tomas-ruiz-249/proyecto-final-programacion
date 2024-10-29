@@ -1,14 +1,18 @@
-#include "Canvas.h"
 #include <cmath>
 #include <string>
 #include <iostream>
+#include <algorithm>
+#include "Canvas.h"
+#include "Drawable.h"
 
 Canvas::Canvas()
 {
 	screenWidth = 0;
 	screenHeight = 0;
-	halfScreenHeight = 0;
-	halfScreenWidth = 0;
+	windowWidth = 0;
+	windowHeight = 0;
+	halfWindowHeight = 0;
+	halfWindowWidth = 0;
 	FOV = 0;
 	halfFOV = 0;
 	screenDist = 0;
@@ -20,35 +24,37 @@ Canvas::Canvas()
 
 Canvas::Canvas(int width, int height)
 {
-	screenWidth = width * 0.8;
-	screenHeight = height * 0.8;
-	halfScreenWidth = screenWidth / 2;
-	halfScreenHeight = screenHeight / 2;
+	screenWidth = width;
+	screenHeight = height;
+	windowWidth = screenWidth * 0.8;
+	windowHeight = screenHeight * 0.8;
+	halfWindowWidth = windowWidth / 2;
+	halfWindowHeight = windowHeight / 2;
 
 	FOV = PI / 3;
 	halfFOV = FOV / 2;
-	screenDist = halfScreenWidth / tan(halfFOV);
+	screenDist = halfWindowWidth / tan(halfFOV);
 	
-	int numRays = screenWidth;
+	int numRays = windowWidth/2;
 	double deltaAngle = FOV / numRays;
 	rayCaster = RayCaster(numRays, deltaAngle);
-	scale = screenWidth / numRays;
+	scale = windowWidth / numRays;
 
 	backgroundOffset = 0;
 
-	cellSize = screenHeight / GRID_SIZE;
+	cellSize = windowHeight / GRID_SIZE;
 }
 
 void Canvas::startWindow()
 {
-	InitWindow(screenWidth, screenHeight, "");
+	InitWindow(windowWidth, windowHeight, "");
 	SetWindowState(FLAG_VSYNC_HINT);
 	SetTargetFPS(60);
 	DisableCursor();
 	textureManager.loadTexturesToVRAM();
 }
 
-void Canvas::draw(Map& map, Player& player, std::vector<Object>& objects)
+void Canvas::draw(const Map& map, const Player& player) 
 {
 	BeginDrawing();
 		ClearBackground(BLACK);
@@ -56,29 +62,95 @@ void Canvas::draw(Map& map, Player& player, std::vector<Object>& objects)
 	EndDrawing();
 }
 
-void Canvas::draw3D(Player player, Map map)
+void Canvas::draw3D(const Player& player, const Map& map)
 {	
 	drawBackground();
 
+	//add walls to queue
 	double rayAngle = player.angle - (halfFOV) + 0.0001;
 	auto rays = rayCaster.getAllRays(rayAngle, player, map);
 	for (auto& ray : rays) {
-		drawColumn(ray);
+		Drawable* castedPtr = &ray;
+		drawQueue.push_back(castedPtr);
 	}
 	rayCaster.clearRays();
+
+	//add objects to draw queue
 	
+	Object test;
+	test.position = { 3.5 ,4.5 };
+	test.depth = test.getDistanceFromPlayer(player);
+	drawQueue.push_back(&test);
+	//sort queue by depth from player
+	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
+	RayCastResult* rayPtr;
+	Object* objPtr;
+	for (auto& drawablePtr : drawQueue) {
+		rayPtr = dynamic_cast<RayCastResult*>(drawablePtr);
+		objPtr = dynamic_cast<Object*>(drawablePtr);
+		if (rayPtr) {
+			drawColumn(*rayPtr);
+		}
+		else if (objPtr) {
+			drawObject(*objPtr, player);
+		}
+	}
+	drawQueue.clear();
+
 	drawWeapon();
+}
+
+void Canvas::drawObject(Object& object, const Player& player)
+{
+	//difference between player position and object position;
+	Point2D d;
+	d.x = object.position.x - player.position.x;
+	d.y = object.position.y - player.position.y;
+	double angleToSprite = atan2(d.y, d.x);
+
+	//angle from player direction to sprite
+	double delta = angleToSprite - player.angle;
+	if ((d.x > 0 and player.angle > PI) or (d.x < 0 and d.y < 0)) {
+		delta += PI * 2;
+	}
+
+	double deltaRays = delta / rayCaster.getDeltaAngle();
+	auto halfNumRays = rayCaster.getNumRays() / 2;
+	int screenPosX = (halfNumRays + deltaRays) * scale;
+
+	double dist = object.getDistanceFromPlayer(player);
+
+	Texture tex = textureManager.getTexture("sprites\\static\\imp.png");
+	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
+		float spriteScale = 0.8f;
+		double imgRatio = (float)tex.width / (float)tex.height;
+		double proj = screenDist / dist * spriteScale;
+		double projWidth = proj * imgRatio;
+		double projHeight = proj;
+		double halfWidth = projWidth / 2;
+		double posX = screenPosX - halfWidth;
+		double heightShift = projHeight * 0.27;
+		double posY = halfWindowHeight - projHeight/2 + heightShift;
+		object.textureArea = { 0,0, (float)tex.width, (float)tex.height };
+		object.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight)};
+		Color textureColor = WHITE;
+		double darkness = 0.000009;
+		textureColor.r = 225 / (1 + pow(object.depth, 5) * darkness);
+		textureColor.g = 225 / (1 + pow(object.depth, 5) * darkness);
+		textureColor.b = 225 / (1 + pow(object.depth, 5) * darkness);
+		DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
+	}
 }
 
 void Canvas::drawColumn(RayCastResult ray)
 {
 	Color wallColor = WHITE;
 	double darkness = 0.000009;
-	wallColor.r = 225 / (1 + pow(ray.length, 5) * darkness);
-	wallColor.g = 225 / (1 + pow(ray.length, 5) * darkness);
-	wallColor.b = 225 / (1 + pow(ray.length, 5) * darkness);
+	wallColor.r = 225 / (1 + pow(ray.depth, 5) * darkness);
+	wallColor.g = 225 / (1 + pow(ray.depth, 5) * darkness);
+	wallColor.b = 225 / (1 + pow(ray.depth, 5) * darkness);
 
-	double projectionHeight = screenDist / (ray.length + 0.0001);
+	double projectionHeight = screenDist / (ray.depth + 0.0001);
 
 	Texture columnTexture;
 	switch (ray.wall) {
@@ -96,19 +168,21 @@ void Canvas::drawColumn(RayCastResult ray)
 			break;
 	}
 
-	if (ray.textureOffset > columnTexture.width) {
-		ray.textureOffset = 0;
+	if (ray.horizontalTextureOffset > columnTexture.width) {
+		ray.horizontalTextureOffset = 0;
 	}
-	Rectangle source = { ray.textureOffset * (columnTexture.width - scale), 0, scale, columnTexture.height };
-	Rectangle dest = { ray.index * scale, halfScreenHeight - (projectionHeight / 2), scale, projectionHeight };
-	DrawTexturePro(columnTexture, source, dest, { 0,0 }, 0.f, wallColor);
+	Rectangle source = { ray.horizontalTextureOffset * (columnTexture.width - scale), 0, scale, columnTexture.height };
+	Rectangle dest = { ray.index * scale, halfWindowHeight - (projectionHeight / 2), scale, projectionHeight };
+	ray.textureArea = source;
+	ray.positionOnWindow = dest;
+	DrawTexturePro(columnTexture, ray.textureArea, ray.positionOnWindow, { 0,0 }, 0.f, wallColor);
 }
 
 void Canvas::drawWeapon()
 {
 	Texture2D shotgun = textureManager.getTexture("sprites\\static\\shotgun.png");
 	double shotgunScale = 0.5;
-	Vector2 position = { halfScreenWidth - (shotgun.width * shotgunScale) / 4, screenHeight - (shotgun.height * shotgunScale)};
+	Vector2 position = { halfWindowWidth - (shotgun.width * shotgunScale) / 4, windowHeight - (shotgun.height * shotgunScale)};
 	DrawTextureEx(shotgun, position, 0, shotgunScale, WHITE);
 }
 
@@ -120,41 +194,12 @@ void Canvas::drawBackground()
 		 backgroundOffset = 0;
 	}
 	Rectangle source = { backgroundOffset, 0, background.width, background.height };
-	Rectangle dest = { 0, 0, screenWidth, halfScreenHeight };
+	Rectangle dest = { 0, 0, windowWidth, halfWindowHeight };
 	DrawTexturePro(background, source, dest, { 0,0 }, 0, WHITE);
 	Color light = { 30, 30, 20 ,255 };
-	DrawRectangleGradientV(0, halfScreenHeight, screenWidth, halfScreenHeight, BLACK, light);
+	DrawRectangleGradientV(0, halfWindowHeight, windowWidth, halfWindowHeight, BLACK, light);
 }
 
-void Canvas::drawObject(Object& object, Player& player)
-{
-	//double playerDist = object.getDistanceFromPlayer(player);
-	//Point2D d;
-	//d.x = object.position.x - player.position.x;
-	//d.y = object.position.y - player.position.y;
-	//double theta = atan2(d.y, d.x);
-	//double angCenterSprite = theta - player.angle;
-	//if ((d.x > 0 && player.angle > PI) || (d.x < 0 && d.y < 0)) {
-	//	angCenterSprite += PI * 2;
-	//}
-
-	//double deltaRays = angCenterSprite / deltaAngle;
-	//double screenPosX = ((numRays / 2) + deltaRays) * scale;
-
-	////render
-	//Texture objectTexture = textureManager.getTexture("sprites\\static\\health.png");
-	//Rectangle src = { 0, 0, objectTexture.width, objectTexture.height };
-	//double objScale = 0.4;
-	//Rectangle dest;
-	//dest.x = (halfScreenWidth - objectTexture.width * objScale / 2);
-	//dest.y = (halfScreenHeight - objectTexture.height * objScale / 2);
-	//dest.width = objectTexture.width * objScale;
-	//dest.height = objectTexture.height * objScale;
-
-	//if (-(objectTexture.width) / 2 < screenPosX && screenPosX < (screenWidth + objectTexture.width) && playerDist < 0.5) {
-	//	DrawTexturePro(objectTexture, src, dest, { 0,0 }, 0, WHITE);
-	//}
-}
 
 //TODO: usar funciones para dibujar minimapa
 
@@ -167,6 +212,7 @@ void Canvas::drawPlayer(Player player)
 	DrawCircle(x, y, cellSize / 9, YELLOW);
 	DrawLine(x, y, x + cosA * 20, y + sinA * 20, YELLOW);
 }
+
 
 void Canvas::drawMap(Map map)
 {
