@@ -1,6 +1,7 @@
 #include <math.h>
 #include <raylib.h>
 #include "Object.h"
+//cambios cambios cambios
 
 double Object::getDistanceFromPlayer(const Player & player)
 {
