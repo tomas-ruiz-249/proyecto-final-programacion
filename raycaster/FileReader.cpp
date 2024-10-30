@@ -11,6 +11,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
 
 	//leer fila y asignar los datos de la fila a una instancia de Object (usa el constructor)
 	//añadir object al vector
+	//alñskdjañlskdjfañslkadfjklalñskdasdfjk
 	return true;
 }
 
