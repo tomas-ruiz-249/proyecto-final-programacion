@@ -7,5 +7,6 @@ enum WallType {
 };
 
 enum ObjectType {
+	invalid = 0,
 	health = 1
 };

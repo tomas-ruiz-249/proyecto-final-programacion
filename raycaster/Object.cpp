@@ -12,13 +12,19 @@ double Object::getDistanceFromPlayer(const Player & player)
     return dist;
 }
 
-Object::Object(Point2D pos) : position(pos)
-{
-	type = health;
-}
-
 Object::Object()
 {
 	position = Point2D();
-	type = health;
+	type = invalid;
+	scale = 1;
+	shift = 0;
+}
+
+Object::Object(ObjectType type, Point2D position, double scale, double shift)
+{
+	//llamar este constructor para crear un Object
+	this->type = type;
+	this->position = position;
+	this->scale = scale;
+	this->shift = shift;
 }

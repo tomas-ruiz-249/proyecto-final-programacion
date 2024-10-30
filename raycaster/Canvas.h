@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "RayCaster.h"
 #include "Object.h"
+#include "ObjectManager.h"
 
 class Canvas {
 public:
@@ -16,6 +17,7 @@ public:
 	Canvas(int width, int height);
 private:
 	TextureManager textureManager;
+	ObjectManager objManager;
 	int screenWidth;
 	int screenHeight;
 	int windowWidth;

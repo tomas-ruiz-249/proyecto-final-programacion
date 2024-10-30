@@ -70,18 +70,21 @@ void Canvas::draw3D(const Player& player, const Map& map)
 	double rayAngle = player.angle - (halfFOV) + 0.0001;
 	auto rays = rayCaster.getAllRays(rayAngle, player, map);
 	for (auto& ray : rays) {
-		Drawable* castedPtr = &ray;
-		drawQueue.push_back(castedPtr);
+		Drawable* casted = &ray;
+		drawQueue.push_back(casted);
 	}
 	rayCaster.clearRays();
 
 	//add objects to draw queue
+	auto objects = objManager.getObjectList();
+	for (auto& obj : objects) {
+		Drawable* casted = &obj;
+		drawQueue.push_back(casted);
+	}
+	Object a = Object();
+	drawQueue.push_back(&a);
 	
-	Object test;
-	test.position = { 3.5 ,4.5 };
-	test.depth = test.getDistanceFromPlayer(player);
-	drawQueue.push_back(&test);
-	//sort queue by depth from player
+	//sort queue by distance from player and draw
 	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
 	RayCastResult* rayPtr;
 	Object* objPtr;
@@ -120,16 +123,23 @@ void Canvas::drawObject(Object& object, const Player& player)
 
 	double dist = object.getDistanceFromPlayer(player);
 
-	Texture tex = textureManager.getTexture("sprites\\static\\imp.png");
+	Texture tex;
+	switch (object.type) {
+		case health:
+			tex = textureManager.getTexture("sprites\\static\\health.png");
+			break;
+		default:
+			tex = textureManager.getTexture("a");
+	}
+
 	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
-		float spriteScale = 0.8f;
 		double imgRatio = (float)tex.width / (float)tex.height;
-		double proj = screenDist / dist * spriteScale;
+		double proj = screenDist / dist * object.scale;
 		double projWidth = proj * imgRatio;
 		double projHeight = proj;
 		double halfWidth = projWidth / 2;
 		double posX = screenPosX - halfWidth;
-		double heightShift = projHeight * 0.27;
+		double heightShift = projHeight * object.shift;
 		double posY = halfWindowHeight - projHeight/2 + heightShift;
 		object.textureArea = { 0,0, (float)tex.width, (float)tex.height };
 		object.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight)};
@@ -188,7 +198,7 @@ void Canvas::drawWeapon()
 
 void Canvas::drawBackground()
 {
-	Texture background = textureManager.getTexture("backgrounds\\sunset.png");
+	Texture background = textureManager.getTexture("backgrounds\\space.png");
 	backgroundOffset += GetMouseDelta().x * 1.1;
 	if (backgroundOffset > background.width) {
 		 backgroundOffset = 0;
@@ -212,7 +222,6 @@ void Canvas::drawPlayer(Player player)
 	DrawCircle(x, y, cellSize / 9, YELLOW);
 	DrawLine(x, y, x + cosA * 20, y + sinA * 20, YELLOW);
 }
-
 
 void Canvas::drawMap(Map map)
 {
