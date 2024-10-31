@@ -142,6 +142,7 @@
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\data\object_data.csv" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
