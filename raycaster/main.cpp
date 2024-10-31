@@ -3,28 +3,27 @@
 #include "FileReader.h"
 #include "Object.h"
 #include "Game.h"
-
+using namespace std;
 int main() {
-    Game game;
-    game.startGame();  
+    vector<Object> objectList;
 
-    std::vector<Object> objectList;
+    if (FileReader::readObjectsFromFile("C:\\Users\\USUARIO\\Desktop\\Nueva carpeta\\raycaster\\assets\\data\\object_data.csv", objectList))
+    {
+        cout << "Por fin se lee esta monada" << endl;
 
-    // Llamar a la función para leer objetos desde el archivo
-    if (FileReader::readObjectsFromFile("ObjetosLeer.csv", objectList)) {
-        std::cout << "Lectura exitosa. Objetos leídos:" << std::endl;
-
-        // Mostrar los objetos leídos
-        for (const auto& obj : objectList) {
-            std::cout << "Tipo: " << obj.getType()
-                << ", Posición: (" << obj.getPosition().x << ", " << obj.getPosition().y << ")"
-                << ", Escala: " << obj.getScale()
-                << ", Shift: " << obj.getShift() << std::endl;
+        for (Object obj : objectList) 
+        {
+            cout << "Type: " << static_cast<int>(obj.getType()) << ", Position: (" << obj.getPosition().x << ", " << obj.getPosition().y << "), Scale: " << obj.getScale() << ", Shift: " << obj.getShift() << endl;
         }
     }
-    else {
-        std::cerr << "Error al leer el archivo." << std::endl;
+    else
+    {
+        cout << "No se puede leer." << endl;
+        return 1;
     }
+
+    Game game;
+    game.startGame();
 
     return 0;
 }

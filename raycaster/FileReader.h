@@ -7,5 +7,5 @@ using namespace std;
 class FileReader {
 public:
     static bool readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]);
-    static bool readObjectsFromFile(const char* fileName, vector<Object>& objectList);
+    static bool readObjectsFromFile(const char * object_data, vector<Object>& objectList);
 };

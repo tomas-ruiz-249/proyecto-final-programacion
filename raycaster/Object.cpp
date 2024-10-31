@@ -4,10 +4,10 @@
 
 double Object::getDistanceFromPlayer(const Player & player)
 {
-	Point2D playerDistance;
+    Point2D playerDistance;
 	playerDistance.x = position.x - player.position.x;
 	playerDistance.y = position.y - player.position.y;
-	double dist = (playerDistance.x * playerDistance.x) + (playerDistance.y * playerDistance.y);
+    double dist = (playerDistance.x * playerDistance.x) + (playerDistance.y * playerDistance.y);
 	dist = sqrt(dist);
     return dist;
 }
