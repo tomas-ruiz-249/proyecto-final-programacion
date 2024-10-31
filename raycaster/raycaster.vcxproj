@@ -142,7 +142,11 @@
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\data\object_data.csv" />
+    <Text Include="assets\data\object_data.csv">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </Text>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +168,10 @@
     <Image Include="assets\textures\backgrounds\sunset.png" />
     <Image Include="assets\textures\sprites\static\health.png" />
     <Image Include="assets\textures\sprites\static\imp.png" />
-    <Image Include="assets\textures\sprites\static\shotgun.png" />
+    <Xml Include="assets\textures\sprites\static\shotgun.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </Xml>
     <Image Include="assets\textures\walls\brick.png" />
     <Image Include="assets\textures\walls\invalid.png" />
     <Image Include="assets\textures\walls\mossy_stone.png" />

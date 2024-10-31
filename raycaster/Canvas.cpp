@@ -34,8 +34,8 @@ Canvas::Canvas(int width, int height)
 	FOV = PI / 3;
 	halfFOV = FOV / 2;
 	screenDist = halfWindowWidth / tan(halfFOV);
-	
-	int numRays = windowWidth/2;
+
+	int numRays = windowWidth / 2;
 	double deltaAngle = FOV / numRays;
 	rayCaster = RayCaster(numRays, deltaAngle);
 	scale = windowWidth / numRays;
@@ -54,16 +54,16 @@ void Canvas::startWindow()
 	textureManager.loadTexturesToVRAM();
 }
 
-void Canvas::draw(const Map& map, const Player& player) 
+void Canvas::draw(const Map& map, const Player& player)
 {
 	BeginDrawing();
-		ClearBackground(BLACK);
-		draw3D(player, map);
+	ClearBackground(BLACK);
+	draw3D(player, map);
 	EndDrawing();
 }
 
 void Canvas::draw3D(const Player& player, const Map& map)
-{	
+{
 	drawBackground();
 
 	//add walls to queue
@@ -83,7 +83,7 @@ void Canvas::draw3D(const Player& player, const Map& map)
 	}
 	Object a = Object();
 	drawQueue.push_back(&a);
-	
+
 	//sort queue by distance from player and draw
 	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
 	RayCastResult* rayPtr;
@@ -125,11 +125,11 @@ void Canvas::drawObject(Object& object, const Player& player)
 
 	Texture tex;
 	switch (object.type) {
-		case health:
-			tex = textureManager.getTexture("sprites\\static\\health.png");
-			break;
-		default:
-			tex = textureManager.getTexture("a");
+	case health:
+		tex = textureManager.getTexture("sprites\\static\\health.png");
+		break;
+	default:
+		tex = textureManager.getTexture("a");
 	}
 
 	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
@@ -164,18 +164,18 @@ void Canvas::drawColumn(RayCastResult ray)
 
 	Texture columnTexture;
 	switch (ray.wall) {
-		case brick:
-			columnTexture = textureManager.getTexture("walls\\brick.png");
-			break;
-		case stone:
-			columnTexture = textureManager.getTexture("walls\\stone.png");
-			break;
-		case mossyStone:
-			columnTexture = textureManager.getTexture("walls\\mossy_stone.png");
-			break;
-		default:
-			columnTexture = textureManager.getTexture("");
-			break;
+	case brick:
+		columnTexture = textureManager.getTexture("walls\\brick.png");
+		break;
+	case stone:
+		columnTexture = textureManager.getTexture("walls\\stone.png");
+		break;
+	case mossyStone:
+		columnTexture = textureManager.getTexture("walls\\mossy_stone.png");
+		break;
+	default:
+		columnTexture = textureManager.getTexture("");
+		break;
 	}
 
 	if (ray.horizontalTextureOffset > columnTexture.width) {
@@ -201,7 +201,7 @@ void Canvas::drawBackground()
 	Texture background = textureManager.getTexture("backgrounds\\space.png");
 	backgroundOffset += GetMouseDelta().x * 1.1;
 	if (backgroundOffset > background.width) {
-		 backgroundOffset = 0;
+		backgroundOffset = 0;
 	}
 	Rectangle source = { backgroundOffset, 0, background.width, background.height };
 	Rectangle dest = { 0, 0, windowWidth, halfWindowHeight };

@@ -4,10 +4,10 @@
 
 double Object::getDistanceFromPlayer(const Player & player)
 {
-	Point2D playerDistance;
+    Point2D playerDistance;
 	playerDistance.x = position.x - player.position.x;
 	playerDistance.y = position.y - player.position.y;
-	double dist = (playerDistance.x * playerDistance.x) + (playerDistance.y * playerDistance.y);
+    double dist = (playerDistance.x * playerDistance.x) + (playerDistance.y * playerDistance.y);
 	dist = sqrt(dist);
     return dist;
 }
@@ -22,7 +22,6 @@ Object::Object()
 
 Object::Object(ObjectType type, Point2D position, double scale, double shift)
 {
-	//llamar este constructor para crear un Object
 	this->type = type;
 	this->position = position;
 	this->scale = scale;
