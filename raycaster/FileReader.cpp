@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int GRID_SIZE = 5; 
+const int GRID_SIZE = 100; 
 
 
 class Object {
