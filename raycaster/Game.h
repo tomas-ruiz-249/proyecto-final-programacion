@@ -14,5 +14,5 @@ private:
 	Canvas canvas;
 	Map map;
 	Player player;
-	std::vector<Object> objectList;
+	ObjectManager objManager;
 };

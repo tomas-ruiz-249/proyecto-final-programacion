@@ -5,21 +5,26 @@
 
 double Object::getDistanceFromPlayer(const Player & player)
 {
-	Point2D playerDistance;
+    Point2D playerDistance;
 	playerDistance.x = position.x - player.position.x;
 	playerDistance.y = position.y - player.position.y;
-	double dist = (playerDistance.x * playerDistance.x) + (playerDistance.y * playerDistance.y);
+    double dist = (playerDistance.x * playerDistance.x) + (playerDistance.y * playerDistance.y);
 	dist = sqrt(dist);
     return dist;
-}
-
-Object::Object(Point2D pos) : position(pos)
-{
-	type = health;
 }
 
 Object::Object()
 {
 	position = Point2D();
-	type = health;
+	type = invalid;
 }
+
+Object::Object(ObjectType type, Point2D position)
+{
+	this->type = type;
+	this->position = position;
+	this->frameTimer = 0;
+	this->currentFrame = 0;
+	this->numFrames = 1;
+}
+

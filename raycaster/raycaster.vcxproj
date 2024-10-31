@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -141,6 +142,11 @@
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="assets\data\object_data.csv">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </Text>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +154,7 @@
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Enumerations.h" />
+    <ClInclude Include="FileReader.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Object.h" />
@@ -161,7 +168,10 @@
     <Image Include="assets\textures\backgrounds\sunset.png" />
     <Image Include="assets\textures\sprites\static\health.png" />
     <Image Include="assets\textures\sprites\static\imp.png" />
-    <Image Include="assets\textures\sprites\static\shotgun.png" />
+    <Xml Include="assets\textures\sprites\static\shotgun.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </Xml>
     <Image Include="assets\textures\walls\brick.png" />
     <Image Include="assets\textures\walls\invalid.png" />
     <Image Include="assets\textures\walls\mossy_stone.png" />
@@ -170,6 +180,9 @@
     <Image Include="textures\shotgun.png" />
     <Image Include="textures\sunset.png" />
     <Image Include="textures\wood.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\map.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

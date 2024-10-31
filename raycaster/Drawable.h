@@ -1,11 +1,24 @@
 #pragma once
 #include <raylib.h>
 
-struct Drawable {
+class Drawable {
+public:
 	//part of the texture that will be drawn
 	Rectangle textureArea;
 	//area of the screen where the texture will be drawn
 	Rectangle positionOnWindow;
+
+	//distance from player
 	double depth;
+
+	bool animated;
+	int numFrames;
+	int currentFrame;
+	double frameTimer;
+	double animationSpeed;
+
+	//scale and shift sprite;
+	double scale;
+	double shift;
 	virtual ~Drawable() = default;
 };
