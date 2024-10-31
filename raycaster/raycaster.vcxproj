@@ -174,6 +174,9 @@
     <Image Include="textures\sunset.png" />
     <Image Include="textures\wood.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\map.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\raylib.5.0.0\build\native\raylib.targets" Condition="Exists('..\packages\raylib.5.0.0\build\native\raylib.targets')" />
