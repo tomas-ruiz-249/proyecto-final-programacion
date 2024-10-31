@@ -1,8 +1,9 @@
 #include "ObjectManager.h"
 
-std::vector<Object> ObjectManager::getObjectList()
+std::vector<Object>* ObjectManager::getObjectList()
 {
-    return objectList;
+    std::vector<Object>* ptr = &objectList;
+    return ptr;
 }
 
 void ObjectManager::initObjects()

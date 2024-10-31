@@ -22,5 +22,8 @@ Object::Object(ObjectType type, Point2D position)
 {
 	this->type = type;
 	this->position = position;
+	this->frameTimer = 0;
+	this->currentFrame = 0;
+	this->numFrames = 1;
 }
 

@@ -42,6 +42,7 @@ private:
 	void drawWeapon();
 	void drawBackground();
 	void drawObject(Object& object, const Player& player);
+	void drawAnimated(Drawable& sprite, Texture tex);
 
 	//2d drawing methods
 	void drawMap(Map map);

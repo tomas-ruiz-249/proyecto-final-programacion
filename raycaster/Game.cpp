@@ -8,6 +8,7 @@ void Game::startGame()
 	CloseWindow();
 	canvas = Canvas(width, height);
 	canvas.startWindow();
+	objManager.initObjects();
 	mainLoop();
 }
 

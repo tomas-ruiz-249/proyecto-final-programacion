@@ -73,19 +73,16 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	auto rays = rayCaster.getAllRays(rayAngle, player, map);
 	for (auto& ray : rays) {
 		Drawable* casted = &ray;
-		drawQueue.push_back(casted);
+		drawQueue.push_back(&ray);
 	}
 	rayCaster.clearRays();
 
 	//add objects to draw queue
-	objManager.initObjects();
 	auto objects = objManager.getObjectList();
-	for (auto& obj : objects) {
+	for (auto& obj : *objects) {
 		obj.depth = obj.getDistanceFromPlayer(player);
-		Drawable* casted = &obj;
-		drawQueue.push_back(casted);
+		drawQueue.push_back(&obj);
 	}
-	objManager.clearObjects();
 
 	//sort queue by distance from player and draw
 	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
@@ -132,22 +129,33 @@ void Canvas::drawObject(Object& object, const Player& player)
 		tex = textureManager.getTexture("sprites\\static\\health.png");
 		object.scale = 0.29;
 		object.shift = 1.4;
+		object.animated = false;
 		break;
 	case ammo:
 		tex = textureManager.getTexture("sprites\\static\\ammo.png");
 		object.scale = 0.29;
 		object.shift = 1.48;
+		object.animated = false;
+		break;
+	case lamp:
+		tex = textureManager.getTexture("sprites\\animated\\lamp.png");
+		object.scale = 1.2;
+		object.shift = -0.05;
+		object.animated = true;
+		object.numFrames = 4;
+		object.animationSpeed = 0.0009;
 		break;
 	default:
-		tex = textureManager.getTexture("a");
+		tex = textureManager.getTexture("");
 		object.scale = 1;
-		object.shift = 0;
+		object.shift = 1;
+		object.animated = false;
 	}
 
 	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
 		double imgRatio = (float)tex.width / (float)tex.height;
 		double proj = screenDist / dist * object.scale;
-		double projWidth = proj * imgRatio;
+		double projWidth = proj * imgRatio / object.numFrames;
 		double projHeight = proj;
 		double halfWidth = projWidth / 2;
 		double posX = screenPosX - halfWidth;
@@ -159,8 +167,27 @@ void Canvas::drawObject(Object& object, const Player& player)
 		textureColor.r = 225 / (1 + pow(object.depth, 5) * darkness);
 		textureColor.g = 225 / (1 + pow(object.depth, 5) * darkness);
 		textureColor.b = 225 / (1 + pow(object.depth, 5) * darkness);
-		DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
+		if (object.animated) {
+			drawAnimated(object, tex);
+		}
+		else {
+			DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
+		}
 	}
+}
+
+void Canvas::drawAnimated(Drawable& sprite, Texture tex)
+{
+	sprite.frameTimer += GetFrameTime();
+	if (sprite.frameTimer > GetFPS() * sprite.animationSpeed) {
+		sprite.frameTimer = 0;
+		sprite.currentFrame++;
+	}
+	sprite.currentFrame %= sprite.numFrames;
+	int frameWidth = tex.width / sprite.numFrames;
+	sprite.textureArea.x = sprite.currentFrame * frameWidth;
+	sprite.textureArea.width = frameWidth;
+	DrawTexturePro(tex, sprite.textureArea, sprite.positionOnWindow, {0,0}, 0, WHITE);
 }
 
 void Canvas::drawColumn(RayCastResult ray)
