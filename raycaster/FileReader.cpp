@@ -6,10 +6,33 @@
 #include <iostream>
 #include <cstring> 
 
-bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE])
-{
-    return false;
-}
+using namespace std;
+
+bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]) {
+    std::ifstream file(fileName); //"map.txt"
+    if (!file.is_open()) {
+        std::cerr << "Error al abrir el archivo de mapa.\n";
+        return false;
+    }
+
+    std::string line;
+    int row = 0;
+
+    while (getline(file, line) && row < GRID_SIZE) {
+        std::stringstream ss(line);
+        std::string value;
+        int col = 0;
+
+        while (getline(ss, value, ',') && col < GRID_SIZE) {
+            map[row][col] = stoi(value);
+            col++;
+        }
+        row++;
+    }
+
+    file.close();
+    return true; 
+};
 
 bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& objectList) {
     std::ifstream file(fileName);

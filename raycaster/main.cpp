@@ -1,11 +1,8 @@
 #include <iostream>
-#include <vector>
-#include "FileReader.h"
-#include "Object.h"
-#include "Game.h"
-using namespace std;
+#include "Game.h";
+
 int main() {
 	Game game;
-    game.startGame();
-    return 0;
+	game.startGame();
+	return 0;
 }
