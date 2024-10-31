@@ -22,7 +22,6 @@ Object::Object()
 
 Object::Object(ObjectType type, Point2D position, double scale, double shift)
 {
-	//llamar este constructor para crear un Object
 	this->type = type;
 	this->position = position;
 	this->scale = scale;
