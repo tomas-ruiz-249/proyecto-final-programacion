@@ -8,5 +8,7 @@ enum WallType {
 
 enum ObjectType {
 	invalid = 0,
-	health = 1
+	health = 1,
+	ammo = 2,
+	lamp = 3,
 };

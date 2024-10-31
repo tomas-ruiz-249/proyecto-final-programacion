@@ -22,6 +22,14 @@ void TextureManager::loadTexturesToVRAM()
 			(*textures)[staticSpriteTextures.paths[i]] = texture;
 		}
 
+		std::string animatedSpritesDir = textureDir;
+		animatedSpritesDir.append("sprites\\animated");
+		FilePathList animatedSpriteTextures = LoadDirectoryFiles(animatedSpritesDir.c_str());
+		for (int i = 0; i < animatedSpriteTextures.count; i++) {
+			Texture texture = LoadTexture(animatedSpriteTextures.paths[i]);
+			(*textures)[animatedSpriteTextures.paths[i]] = texture;
+		}
+
 		std::string backgroundsDir = textureDir;
 		backgroundsDir.append("backgrounds");
 		FilePathList backgroundTextures = LoadDirectoryFiles(backgroundsDir.c_str());

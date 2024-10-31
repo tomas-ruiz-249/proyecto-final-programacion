@@ -8,10 +8,12 @@ class Object : public Drawable{
 public:
 	ObjectType type;
 	Point2D position;
+	double scale;
+	double shift;
 	double getDistanceFromPlayer(const Player& player);
 
 	//constructors
 	Object();
-	Object(ObjectType type, Point2D position, double scale, double shift);
+	Object(ObjectType type, Point2D position);
 private:
 };

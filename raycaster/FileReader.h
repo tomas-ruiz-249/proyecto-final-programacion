@@ -5,6 +5,6 @@
 
 class FileReader {
 public:
-	static bool readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]);
-	static bool readObjectsFromFile(const char* fileName, std::vector<Object>& objectList);
+    static bool readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]);
+    static bool readObjectsFromFile(const char * object_data, std::vector<Object>& objectList);
 };

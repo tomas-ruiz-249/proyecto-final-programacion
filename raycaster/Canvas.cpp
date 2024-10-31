@@ -20,6 +20,7 @@ Canvas::Canvas()
 	rayCaster = RayCaster();
 	backgroundOffset = 0;
 	cellSize = 0;
+	darkness = 0;
 }
 
 Canvas::Canvas(int width, int height)
@@ -34,11 +35,12 @@ Canvas::Canvas(int width, int height)
 	FOV = PI / 3;
 	halfFOV = FOV / 2;
 	screenDist = halfWindowWidth / tan(halfFOV);
-	
-	int numRays = windowWidth/2;
+
+	int numRays = windowWidth / 2;
 	double deltaAngle = FOV / numRays;
 	rayCaster = RayCaster(numRays, deltaAngle);
 	scale = windowWidth / numRays;
+	darkness = 0.00000009;
 
 	backgroundOffset = 0;
 
@@ -54,16 +56,16 @@ void Canvas::startWindow()
 	textureManager.loadTexturesToVRAM();
 }
 
-void Canvas::draw(const Map& map, const Player& player) 
+void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager)
 {
 	BeginDrawing();
-		ClearBackground(BLACK);
-		draw3D(player, map);
+	ClearBackground(BLACK);
+	draw3D(player, map, objManager);
 	EndDrawing();
 }
 
-void Canvas::draw3D(const Player& player, const Map& map)
-{	
+void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objManager)
+{
 	drawBackground();
 
 	//add walls to queue
@@ -71,19 +73,17 @@ void Canvas::draw3D(const Player& player, const Map& map)
 	auto rays = rayCaster.getAllRays(rayAngle, player, map);
 	for (auto& ray : rays) {
 		Drawable* casted = &ray;
-		drawQueue.push_back(casted);
+		drawQueue.push_back(&ray);
 	}
 	rayCaster.clearRays();
 
 	//add objects to draw queue
 	auto objects = objManager.getObjectList();
-	for (auto& obj : objects) {
-		Drawable* casted = &obj;
-		drawQueue.push_back(casted);
+	for (auto& obj : *objects) {
+		obj.depth = obj.getDistanceFromPlayer(player);
+		drawQueue.push_back(&obj);
 	}
-	Object a = Object();
-	drawQueue.push_back(&a);
-	
+
 	//sort queue by distance from player and draw
 	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
 	RayCastResult* rayPtr;
@@ -125,17 +125,37 @@ void Canvas::drawObject(Object& object, const Player& player)
 
 	Texture tex;
 	switch (object.type) {
-		case health:
-			tex = textureManager.getTexture("sprites\\static\\health.png");
-			break;
-		default:
-			tex = textureManager.getTexture("a");
+	case health:
+		tex = textureManager.getTexture("sprites\\static\\health.png");
+		object.scale = 0.29;
+		object.shift = 1.4;
+		object.animated = false;
+		break;
+	case ammo:
+		tex = textureManager.getTexture("sprites\\static\\ammo.png");
+		object.scale = 0.29;
+		object.shift = 1.48;
+		object.animated = false;
+		break;
+	case lamp:
+		tex = textureManager.getTexture("sprites\\animated\\lamp.png");
+		object.scale = 1.2;
+		object.shift = -0.05;
+		object.animated = true;
+		object.numFrames = 4;
+		object.animationSpeed = 0.0009;
+		break;
+	default:
+		tex = textureManager.getTexture("");
+		object.scale = 1;
+		object.shift = 1;
+		object.animated = false;
 	}
 
 	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
 		double imgRatio = (float)tex.width / (float)tex.height;
 		double proj = screenDist / dist * object.scale;
-		double projWidth = proj * imgRatio;
+		double projWidth = proj * imgRatio / object.numFrames;
 		double projHeight = proj;
 		double halfWidth = projWidth / 2;
 		double posX = screenPosX - halfWidth;
@@ -144,18 +164,35 @@ void Canvas::drawObject(Object& object, const Player& player)
 		object.textureArea = { 0,0, (float)tex.width, (float)tex.height };
 		object.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight)};
 		Color textureColor = WHITE;
-		double darkness = 0.000009;
 		textureColor.r = 225 / (1 + pow(object.depth, 5) * darkness);
 		textureColor.g = 225 / (1 + pow(object.depth, 5) * darkness);
 		textureColor.b = 225 / (1 + pow(object.depth, 5) * darkness);
-		DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
+		if (object.animated) {
+			drawAnimated(object, tex);
+		}
+		else {
+			DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
+		}
 	}
+}
+
+void Canvas::drawAnimated(Drawable& sprite, Texture tex)
+{
+	sprite.frameTimer += GetFrameTime();
+	if (sprite.frameTimer > GetFPS() * sprite.animationSpeed) {
+		sprite.frameTimer = 0;
+		sprite.currentFrame++;
+	}
+	sprite.currentFrame %= sprite.numFrames;
+	int frameWidth = tex.width / sprite.numFrames;
+	sprite.textureArea.x = sprite.currentFrame * frameWidth;
+	sprite.textureArea.width = frameWidth;
+	DrawTexturePro(tex, sprite.textureArea, sprite.positionOnWindow, {0,0}, 0, WHITE);
 }
 
 void Canvas::drawColumn(RayCastResult ray)
 {
 	Color wallColor = WHITE;
-	double darkness = 0.000009;
 	wallColor.r = 225 / (1 + pow(ray.depth, 5) * darkness);
 	wallColor.g = 225 / (1 + pow(ray.depth, 5) * darkness);
 	wallColor.b = 225 / (1 + pow(ray.depth, 5) * darkness);
@@ -164,18 +201,18 @@ void Canvas::drawColumn(RayCastResult ray)
 
 	Texture columnTexture;
 	switch (ray.wall) {
-		case brick:
-			columnTexture = textureManager.getTexture("walls\\brick.png");
-			break;
-		case stone:
-			columnTexture = textureManager.getTexture("walls\\stone.png");
-			break;
-		case mossyStone:
-			columnTexture = textureManager.getTexture("walls\\mossy_stone.png");
-			break;
-		default:
-			columnTexture = textureManager.getTexture("");
-			break;
+	case brick:
+		columnTexture = textureManager.getTexture("walls\\brick.png");
+		break;
+	case stone:
+		columnTexture = textureManager.getTexture("walls\\stone.png");
+		break;
+	case mossyStone:
+		columnTexture = textureManager.getTexture("walls\\mossy_stone.png");
+		break;
+	default:
+		columnTexture = textureManager.getTexture("");
+		break;
 	}
 
 	if (ray.horizontalTextureOffset > columnTexture.width) {
@@ -198,10 +235,10 @@ void Canvas::drawWeapon()
 
 void Canvas::drawBackground()
 {
-	Texture background = textureManager.getTexture("backgrounds\\space.png");
+	Texture background = textureManager.getTexture("backgrounds\\sunset.png");
 	backgroundOffset += GetMouseDelta().x * 1.1;
 	if (backgroundOffset > background.width) {
-		 backgroundOffset = 0;
+		backgroundOffset = 0;
 	}
 	Rectangle source = { backgroundOffset, 0, background.width, background.height };
 	Rectangle dest = { 0, 0, windowWidth, halfWindowHeight };
