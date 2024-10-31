@@ -20,6 +20,7 @@ Canvas::Canvas()
 	rayCaster = RayCaster();
 	backgroundOffset = 0;
 	cellSize = 0;
+	darkness = 0;
 }
 
 Canvas::Canvas(int width, int height)
@@ -39,6 +40,7 @@ Canvas::Canvas(int width, int height)
 	double deltaAngle = FOV / numRays;
 	rayCaster = RayCaster(numRays, deltaAngle);
 	scale = windowWidth / numRays;
+	darkness = 0.00000009;
 
 	backgroundOffset = 0;
 
@@ -54,15 +56,15 @@ void Canvas::startWindow()
 	textureManager.loadTexturesToVRAM();
 }
 
-void Canvas::draw(const Map& map, const Player& player)
+void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager)
 {
 	BeginDrawing();
 	ClearBackground(BLACK);
-	draw3D(player, map);
+	draw3D(player, map, objManager);
 	EndDrawing();
 }
 
-void Canvas::draw3D(const Player& player, const Map& map)
+void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objManager)
 {
 	drawBackground();
 
@@ -76,13 +78,14 @@ void Canvas::draw3D(const Player& player, const Map& map)
 	rayCaster.clearRays();
 
 	//add objects to draw queue
+	objManager.initObjects();
 	auto objects = objManager.getObjectList();
 	for (auto& obj : objects) {
+		obj.depth = obj.getDistanceFromPlayer(player);
 		Drawable* casted = &obj;
 		drawQueue.push_back(casted);
 	}
-	Object a = Object();
-	drawQueue.push_back(&a);
+	objManager.clearObjects();
 
 	//sort queue by distance from player and draw
 	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
@@ -127,9 +130,18 @@ void Canvas::drawObject(Object& object, const Player& player)
 	switch (object.type) {
 	case health:
 		tex = textureManager.getTexture("sprites\\static\\health.png");
+		object.scale = 0.29;
+		object.shift = 1.4;
+		break;
+	case ammo:
+		tex = textureManager.getTexture("sprites\\static\\ammo.png");
+		object.scale = 0.29;
+		object.shift = 1.48;
 		break;
 	default:
 		tex = textureManager.getTexture("a");
+		object.scale = 1;
+		object.shift = 0;
 	}
 
 	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
@@ -144,7 +156,6 @@ void Canvas::drawObject(Object& object, const Player& player)
 		object.textureArea = { 0,0, (float)tex.width, (float)tex.height };
 		object.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight)};
 		Color textureColor = WHITE;
-		double darkness = 0.000009;
 		textureColor.r = 225 / (1 + pow(object.depth, 5) * darkness);
 		textureColor.g = 225 / (1 + pow(object.depth, 5) * darkness);
 		textureColor.b = 225 / (1 + pow(object.depth, 5) * darkness);
@@ -155,7 +166,6 @@ void Canvas::drawObject(Object& object, const Player& player)
 void Canvas::drawColumn(RayCastResult ray)
 {
 	Color wallColor = WHITE;
-	double darkness = 0.000009;
 	wallColor.r = 225 / (1 + pow(ray.depth, 5) * darkness);
 	wallColor.g = 225 / (1 + pow(ray.depth, 5) * darkness);
 	wallColor.b = 225 / (1 + pow(ray.depth, 5) * darkness);
@@ -198,7 +208,7 @@ void Canvas::drawWeapon()
 
 void Canvas::drawBackground()
 {
-	Texture background = textureManager.getTexture("backgrounds\\space.png");
+	Texture background = textureManager.getTexture("backgrounds\\sunset.png");
 	backgroundOffset += GetMouseDelta().x * 1.1;
 	if (backgroundOffset > background.width) {
 		backgroundOffset = 0;

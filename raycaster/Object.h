@@ -14,11 +14,6 @@ public:
 
 	//constructors
 	Object();
-	Object(ObjectType type, Point2D position, double scale, double shift);
-
-	ObjectType getType() { return type; }
-	Point2D getPosition() { return position; }
-	double getScale() { return scale; }
-	double getShift() { return shift; }
+	Object(ObjectType type, Point2D position);
 private:
 };

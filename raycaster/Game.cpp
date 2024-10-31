@@ -26,6 +26,6 @@ void Game::mainLoop()
 		SetWindowTitle(fps.c_str());
 
 		player.move(map);
-		canvas.draw(map, player);
+		canvas.draw(map, player, objManager);
 	}
 }

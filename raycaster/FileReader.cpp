@@ -6,25 +6,23 @@
 #include <iostream>
 #include <cstring> 
 
-using namespace std;
-
 bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE])
 {
     return false;
 }
 
-bool FileReader::readObjectsFromFile(const char* object_data, vector<Object>& objectList) {
-    ifstream file(object_data);
+bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& objectList) {
+    std::ifstream file(fileName);
     if (!file.is_open())
     {
-        cerr << "No se pudo abrir el archivo: " << object_data << endl;
+        std::cerr << "No se pudo abrir el archivo: " << fileName << std::endl;
         return false;
     }
 
-    string header;
+    std::string header;
     getline(file, header); 
 
-    string line;
+    std::string line;
     while (getline(file, line))
     {
         char * c = const_cast<char*>(line.c_str());
@@ -40,25 +38,19 @@ bool FileReader::readObjectsFromFile(const char* object_data, vector<Object>& ob
             switch (cont_col)
             {
             case 0:
-                type = static_cast<ObjectType>(stoi(token));
+                type = static_cast<ObjectType>(std::stoi(token));
                 break;
             case 1:
-                position.x = stod(token);
+                position.x = std::stod(token);
                 break;
             case 2:
-                position.y = stod(token); 
-                break;
-            case 3:
-                scale = stod(token); 
-                break;
-            case 4:
-                shift = stod(token);
+                position.y = std::stod(token); 
                 break;
             }
             token = strtok(NULL, ","); 
         }
 
-        Object obj(type, position, scale, shift);
+        Object obj(type, position);
         objectList.push_back(obj);
     }
 

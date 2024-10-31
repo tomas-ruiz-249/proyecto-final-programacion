@@ -12,12 +12,11 @@
 class Canvas {
 public:
 	void startWindow();
-	void draw(const Map& map, const Player& player);
+	void draw(const Map& map, const Player& player, ObjectManager& objManager);
 	Canvas();
 	Canvas(int width, int height);
 private:
 	TextureManager textureManager;
-	ObjectManager objManager;
 	int screenWidth;
 	int screenHeight;
 	int windowWidth;
@@ -26,6 +25,7 @@ private:
 	int halfWindowHeight;
 	double backgroundOffset;
 	int cellSize;
+	double darkness;
 	std::vector<Drawable*> drawQueue;
 
 	//raycasting
@@ -37,7 +37,7 @@ private:
 
 
 	//3d drawing methods
-	void draw3D(const Player& player, const Map& map);
+	void draw3D(const Player& player, const Map& map, ObjectManager& objManager);
 	void drawColumn(RayCastResult ray);
 	void drawWeapon();
 	void drawBackground();
