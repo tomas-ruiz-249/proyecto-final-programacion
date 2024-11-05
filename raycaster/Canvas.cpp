@@ -216,6 +216,10 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 	double dist = sprite.getDistanceFromPlayer(sprite.position, player);
 
 	int index = sprite.animationIndex;
+	if (index > sprite.animations.size() - 1) {
+		drawStaticSprite(sprite, player);
+		return;
+	}
 	Animation& current = sprite.animations[index];
 
 	if ((-current.texture.width < screenPosX) and (screenPosX < (windowWidth + current.texture.width)) and dist > 0.5) {
