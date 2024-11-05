@@ -8,7 +8,7 @@ std::vector<Object>* ObjectManager::getObjectList()
 
 void ObjectManager::initObjects()
 {
-    FileReader::readObjectsFromFile("assets\\data\\object_data.csv", objectList);
+    FileReader::readObjectsFromFile("object_data.csv", objectList);
 }
 
 void ObjectManager::clearObjects()

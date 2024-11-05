@@ -48,12 +48,12 @@
     <ClCompile Include="FileReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Drawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="assets\data\object_data.csv">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -95,6 +95,12 @@
     <ClInclude Include="FileReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Animated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\wood.png">
@@ -130,8 +136,18 @@
     <Image Include="assets\textures\sprites\static\imp.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\textures\sprites\static\shotgun.png">
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="assets\textures\sprites\static\shotgun.png">
       <Filter>Resource Files</Filter>
-    </Image>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\map.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="assets\data\object_data.csv">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -21,6 +21,7 @@ Canvas::Canvas()
 	backgroundOffset = 0;
 	cellSize = 0;
 	darkness = 0;
+	textureManager = TextureManager::getInstance();
 }
 
 Canvas::Canvas(int width, int height)
@@ -41,6 +42,7 @@ Canvas::Canvas(int width, int height)
 	rayCaster = RayCaster(numRays, deltaAngle);
 	scale = windowWidth / numRays;
 	darkness = 0.00000009;
+	textureManager = TextureManager::getInstance();
 
 	backgroundOffset = 0;
 
@@ -53,7 +55,7 @@ void Canvas::startWindow()
 	SetWindowState(FLAG_VSYNC_HINT);
 	SetTargetFPS(60);
 	DisableCursor();
-	textureManager.loadTexturesToVRAM();
+	textureManager->loadTexturesToVRAM();
 }
 
 void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager)
@@ -80,22 +82,27 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	//add objects to draw queue
 	auto objects = objManager.getObjectList();
 	for (auto& obj : *objects) {
-		obj.depth = obj.getDistanceFromPlayer(player);
-		drawQueue.push_back(&obj);
+		obj.sprite->depth = obj.sprite->getDistanceFromPlayer(obj.position, player);
+		drawQueue.push_back(obj.sprite);
 	}
 
 	//sort queue by distance from player and draw
 	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
 	RayCastResult* rayPtr;
-	Object* objPtr;
+	Drawable* spritePtr;
+	Animated* animatedPtr;
 	for (auto& drawablePtr : drawQueue) {
 		rayPtr = dynamic_cast<RayCastResult*>(drawablePtr);
-		objPtr = dynamic_cast<Object*>(drawablePtr);
+		spritePtr = dynamic_cast<Drawable*>(drawablePtr);
+		animatedPtr = dynamic_cast<Animated*>(drawablePtr);
 		if (rayPtr) {
 			drawColumn(*rayPtr);
 		}
-		else if (objPtr) {
-			drawObject(*objPtr, player);
+		else if (animatedPtr) {
+			drawAnimatedSprite(*animatedPtr, player);
+		}
+		else if (spritePtr) {
+			drawStaticSprite(*spritePtr, player);
 		}
 	}
 	drawQueue.clear();
@@ -103,12 +110,58 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	drawWeapon();
 }
 
-void Canvas::drawObject(Object& object, const Player& player)
+//void Canvas::drawObject(Object& object, const Player& player)
+//{
+//	//difference between player position and object position;
+//	Point2D d;
+//	d.x = object.position.x - player.position.x;
+//	d.y = object.position.y - player.position.y;
+//	double angleToSprite = atan2(d.y, d.x);
+//
+//	//angle from player direction to sprite
+//	double delta = angleToSprite - player.angle;
+//	if ((d.x > 0 and player.angle > PI) or (d.x < 0 and d.y < 0)) {
+//		delta += PI * 2;
+//	}
+//
+//	double deltaRays = delta / rayCaster.getDeltaAngle();
+//	auto halfNumRays = rayCaster.getNumRays() / 2;
+//	int screenPosX = (halfNumRays + deltaRays) * scale;
+//
+//	double dist = object.getDistanceFromPlayer(player);
+//
+//	Texture tex = textureManager.getTexture("");
+//
+//	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
+//		double imgRatio = (float)tex.width / (float)tex.height;
+//		double proj = screenDist / dist * object.scale;
+//		double projWidth = proj * imgRatio;/* / object.animations[0]->numFrames;*/
+//		double projHeight = proj;
+//		double halfWidth = projWidth / 2;
+//		double posX = screenPosX - halfWidth;
+//		double heightShift = projHeight * object.shift;
+//		double posY = halfWindowHeight - projHeight/2 + heightShift;
+//		object.textureArea = { 0,0, (float)tex.width, (float)tex.height };
+//		object.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight)};
+//		Color textureColor = WHITE;
+//		textureColor.r = 225 / (1 + pow(object.depth, 5) * darkness);
+//		textureColor.g = 225 / (1 + pow(object.depth, 5) * darkness);
+//		textureColor.b = 225 / (1 + pow(object.depth, 5) * darkness);
+//		if (object.animated) {
+//			//drawAnimated(object, tex, textureColor);
+//		}
+//		else {
+//			//DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
+//		}
+//	}
+//}
+
+void Canvas::drawStaticSprite(Drawable sprite, Player player)
 {
 	//difference between player position and object position;
 	Point2D d;
-	d.x = object.position.x - player.position.x;
-	d.y = object.position.y - player.position.y;
+	d.x = sprite.position.x - player.position.x;
+	d.y = sprite.position.y - player.position.y;
 	double angleToSprite = atan2(d.y, d.x);
 
 	//angle from player direction to sprite
@@ -121,73 +174,76 @@ void Canvas::drawObject(Object& object, const Player& player)
 	auto halfNumRays = rayCaster.getNumRays() / 2;
 	int screenPosX = (halfNumRays + deltaRays) * scale;
 
-	double dist = object.getDistanceFromPlayer(player);
+	double dist = sprite.getDistanceFromPlayer(sprite.position, player);
 
-	Texture tex;
-	switch (object.type) {
-	case health:
-		tex = textureManager.getTexture("sprites\\static\\health.png");
-		object.scale = 0.29;
-		object.shift = 1.4;
-		object.animated = false;
-		break;
-	case ammo:
-		tex = textureManager.getTexture("sprites\\static\\ammo.png");
-		object.scale = 0.29;
-		object.shift = 1.48;
-		object.animated = false;
-		break;
-	case lamp:
-		tex = textureManager.getTexture("sprites\\animated\\lamp.png");
-		object.scale = 1.2;
-		object.shift = -0.05;
-		object.animated = true;
-		object.numFrames = 4;
-		object.animationSpeed = 0.0009;
-		break;
-	default:
-		tex = textureManager.getTexture("");
-		object.scale = 1;
-		object.shift = 1;
-		object.animated = false;
-	}
-
-	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
-		double imgRatio = (float)tex.width / (float)tex.height;
-		double proj = screenDist / dist * object.scale;
-		double projWidth = proj * imgRatio / object.numFrames;
+	if ((-sprite.tex.width < screenPosX) and (screenPosX < (windowWidth + sprite.tex.width)) and dist > 0.5) {
+		double imgRatio = (float)sprite.tex.width / (float)sprite.tex.height;
+		double proj = screenDist / dist * sprite.scale;
+		double projWidth = proj * imgRatio;/* / object.animations[0]->numFrames;*/
 		double projHeight = proj;
 		double halfWidth = projWidth / 2;
 		double posX = screenPosX - halfWidth;
-		double heightShift = projHeight * object.shift;
-		double posY = halfWindowHeight - projHeight/2 + heightShift;
-		object.textureArea = { 0,0, (float)tex.width, (float)tex.height };
-		object.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight)};
+		double heightShift = projHeight * sprite.shift;
+		double posY = halfWindowHeight - projHeight / 2 + heightShift;
+		sprite.textureArea = { 0,0, (float)sprite.tex.width, (float)sprite.tex.height };
+		sprite.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight) };
 		Color textureColor = WHITE;
-		textureColor.r = 225 / (1 + pow(object.depth, 5) * darkness);
-		textureColor.g = 225 / (1 + pow(object.depth, 5) * darkness);
-		textureColor.b = 225 / (1 + pow(object.depth, 5) * darkness);
-		if (object.animated) {
-			drawAnimated(object, tex);
-		}
-		else {
-			DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
-		}
+		textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		textureColor.b = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		DrawTexturePro(sprite.tex, sprite.textureArea, sprite.positionOnWindow, { 0,0 }, 0, textureColor);
 	}
 }
 
-void Canvas::drawAnimated(Drawable& sprite, Texture tex)
+void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 {
-	sprite.frameTimer += GetFrameTime();
-	if (sprite.frameTimer > GetFPS() * sprite.animationSpeed) {
-		sprite.frameTimer = 0;
-		sprite.currentFrame++;
+	//difference between player position and object position;
+	Point2D d;
+	d.x = sprite.position.x - player.position.x;
+	d.y = sprite.position.y - player.position.y;
+	double angleToSprite = atan2(d.y, d.x);
+
+	//angle from player direction to sprite
+	double delta = angleToSprite - player.angle;
+	if ((d.x > 0 and player.angle > PI) or (d.x < 0 and d.y < 0)) {
+		delta += PI * 2;
 	}
-	sprite.currentFrame %= sprite.numFrames;
-	int frameWidth = tex.width / sprite.numFrames;
-	sprite.textureArea.x = sprite.currentFrame * frameWidth;
-	sprite.textureArea.width = frameWidth;
-	DrawTexturePro(tex, sprite.textureArea, sprite.positionOnWindow, {0,0}, 0, WHITE);
+
+	double deltaRays = delta / rayCaster.getDeltaAngle();
+	auto halfNumRays = rayCaster.getNumRays() / 2;
+	int screenPosX = (halfNumRays + deltaRays) * scale;
+
+	double dist = sprite.getDistanceFromPlayer(sprite.position, player);
+
+	int index = sprite.animationIndex;
+	Animation& current = sprite.animations[index];
+
+	if ((-current.texture.width < screenPosX) and (screenPosX < (windowWidth + current.texture.width)) and dist > 0.5) {
+		double imgRatio = (float)current.texture.width / (float)current.texture.height;
+		double proj = screenDist / dist * sprite.scale;
+		double projWidth = proj * imgRatio / current.numFrames;
+		double projHeight = proj;
+		double halfWidth = projWidth / 2;
+		double posX = screenPosX - halfWidth;
+		double heightShift = projHeight * sprite.shift;
+		double posY = halfWindowHeight - projHeight / 2 + heightShift;
+		sprite.textureArea = { 0,0, (float)current.texture.width, (float)current.texture.height };
+		sprite.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight) };
+		Color textureColor = WHITE;
+		textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		textureColor.b = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		current.frameTimer += GetFrameTime();
+		if (current.frameTimer > GetFPS() * current.animationSpeed) {
+			current.frameTimer = 0;
+			current.currentFrame++;
+		}
+		current.currentFrame %= current.numFrames;
+		int frameWidth = current.texture.width / current.numFrames;
+		sprite.textureArea.x = current.currentFrame * frameWidth;
+		sprite.textureArea.width = frameWidth;
+		DrawTexturePro(current.texture, sprite.textureArea, sprite.positionOnWindow, {0,0}, 0, textureColor);
+	}
 }
 
 void Canvas::drawColumn(RayCastResult ray)
@@ -202,16 +258,16 @@ void Canvas::drawColumn(RayCastResult ray)
 	Texture columnTexture;
 	switch (ray.wall) {
 	case brick:
-		columnTexture = textureManager.getTexture("walls\\brick.png");
+		columnTexture = textureManager->getTexture("walls\\brick.png");
 		break;
 	case stone:
-		columnTexture = textureManager.getTexture("walls\\stone.png");
+		columnTexture = textureManager->getTexture("walls\\stone.png");
 		break;
 	case mossyStone:
-		columnTexture = textureManager.getTexture("walls\\mossy_stone.png");
+		columnTexture = textureManager->getTexture("walls\\mossy_stone.png");
 		break;
 	default:
-		columnTexture = textureManager.getTexture("");
+		columnTexture = textureManager->getTexture("");
 		break;
 	}
 
@@ -227,7 +283,7 @@ void Canvas::drawColumn(RayCastResult ray)
 
 void Canvas::drawWeapon()
 {
-	Texture2D shotgun = textureManager.getTexture("sprites\\static\\shotgun.png");
+	Texture2D shotgun = textureManager->getTexture("sprites\\static\\shotgun.png");
 	double shotgunScale = 0.5;
 	Vector2 position = { halfWindowWidth - (shotgun.width * shotgunScale) / 4, windowHeight - (shotgun.height * shotgunScale)};
 	DrawTextureEx(shotgun, position, 0, shotgunScale, WHITE);
@@ -235,7 +291,7 @@ void Canvas::drawWeapon()
 
 void Canvas::drawBackground()
 {
-	Texture background = textureManager.getTexture("backgrounds\\sunset.png");
+	Texture background = textureManager->getTexture("backgrounds\\sunset.png");
 	backgroundOffset += GetMouseDelta().x * 1.1;
 	if (backgroundOffset > background.width) {
 		backgroundOffset = 0;
