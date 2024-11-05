@@ -101,17 +101,26 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
                 break;
             }
 			case lamp:{
+                //animated object
                 Animated* lampSprite = new Animated();
                 lampSprite->scale = 1.2;
                 lampSprite->shift = -0.05;
-                lampSprite->animationIndex = 0;
+                lampSprite->animationIndex = 1;
                 lampSprite->position = obj.position;
                 lampSprite->tex = texMgr->getTexture("");
-                Animation idle = {};
-                idle.numFrames = 4;
-                idle.animationSpeed = 0.0009;
-                idle.texture = texMgr->getTexture("sprites\\animated\\lamp.png");
-                lampSprite->animations.push_back(idle);
+
+                //create animations for animated
+                Animation red = {};
+                red.numFrames = 4;
+                red.animationSpeed = 0.0009;
+                red.texture = texMgr->getTexture("sprites\\animated\\lamp.png");
+                lampSprite->animations.push_back(red);
+
+				Animation green = {};
+                green.numFrames = 4;
+                green.animationSpeed = 0.0009;
+                green.texture = texMgr->getTexture("sprites\\animated\\lamp_green.png");
+                lampSprite->animations.push_back(green);
                 obj.sprite = lampSprite;
                 break;
             }
