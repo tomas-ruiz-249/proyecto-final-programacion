@@ -1,5 +1,8 @@
-#include "Map.h"
+#include <iostream>
 #include <cmath>
+#include "Map.h"
+#include "Enumerations.h"
+#include "FileReader.h"
 
 bool Map::isPositionEmpty(int row, int column)
 {
@@ -22,34 +25,22 @@ int Map::getElementAt(int row, int column)
 	return  0;
 }
 
+void Map::loadMap(const char* fileName)
+{
+	if (FileReader::readMapFromFile(fileName, grid)) {
+		std::cout << "map loaded succesfully from " << fileName << std::endl;
+	}
+	else {
+		std::cout << "error loading map " << fileName << std::endl;
+	}
+}
+
 Map::Map()
 {
-	int arr[GRID_SIZE][GRID_SIZE] = {
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,3,3,3,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,2,2,2,2,2,2,0,0,0,0,0,2,2,2,2,2,2,2,1},
-	};
-
 	for (int row = 0; row < GRID_SIZE; row++) {
 		for (int column = 0; column < GRID_SIZE; column++) {
-			grid[row][column] = arr[row][column];
+			grid[row][column] = none;
 		}
 	}
+	loadMap("map.txt");
 }

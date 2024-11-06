@@ -8,6 +8,7 @@
 #include "RayCaster.h"
 #include "Object.h"
 #include "ObjectManager.h"
+#include "Animated.h"
 
 class Canvas {
 public:
@@ -16,7 +17,7 @@ public:
 	Canvas();
 	Canvas(int width, int height);
 private:
-	TextureManager textureManager;
+	TextureManager* textureManager;
 	int screenWidth;
 	int screenHeight;
 	int windowWidth;
@@ -41,8 +42,9 @@ private:
 	void drawColumn(RayCastResult ray);
 	void drawWeapon();
 	void drawBackground();
-	void drawObject(Object& object, const Player& player);
-	void drawAnimated(Drawable& sprite, Texture tex);
+	void drawAnimatedSprite(Animated& sprite, Player player);
+	void drawStaticSprite(Drawable sprite, Player player);
+
 
 	//2d drawing methods
 	void drawMap(Map map);

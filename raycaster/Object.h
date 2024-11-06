@@ -4,13 +4,11 @@
 #include "Enumerations.h"
 #include "Drawable.h"
 
-class Object : public Drawable{
+class Object {
 public:
 	ObjectType type;
 	Point2D position;
-	double scale;
-	double shift;
-	double getDistanceFromPlayer(const Player& player);
+	Drawable* sprite;
 
 	//constructors
 	Object();

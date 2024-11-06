@@ -44,6 +44,17 @@ void TextureManager::loadTexturesToVRAM()
 	return;
 }
 
+TextureManager* TextureManager::getInstance()
+{
+	if (!instance) {
+		instance = new TextureManager();
+		std::cout << "no instance found, creating instance";
+	}
+	return instance;
+}
+
+TextureManager* TextureManager::instance;
+
 Texture TextureManager::getTexture(std::string texture)
 {
 	auto dir = getTextureDir();
