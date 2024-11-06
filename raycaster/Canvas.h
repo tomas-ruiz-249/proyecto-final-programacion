@@ -42,7 +42,6 @@ private:
 	void drawColumn(RayCastResult ray);
 	void drawWeapon();
 	void drawBackground();
-	void drawObject(Object& object, const Player& player);
 	void drawAnimatedSprite(Animated& sprite, Player player);
 	void drawStaticSprite(Drawable sprite, Player player);
 

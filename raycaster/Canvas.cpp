@@ -110,51 +110,6 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	drawWeapon();
 }
 
-//void Canvas::drawObject(Object& object, const Player& player)
-//{
-//	//difference between player position and object position;
-//	Point2D d;
-//	d.x = object.position.x - player.position.x;
-//	d.y = object.position.y - player.position.y;
-//	double angleToSprite = atan2(d.y, d.x);
-//
-//	//angle from player direction to sprite
-//	double delta = angleToSprite - player.angle;
-//	if ((d.x > 0 and player.angle > PI) or (d.x < 0 and d.y < 0)) {
-//		delta += PI * 2;
-//	}
-//
-//	double deltaRays = delta / rayCaster.getDeltaAngle();
-//	auto halfNumRays = rayCaster.getNumRays() / 2;
-//	int screenPosX = (halfNumRays + deltaRays) * scale;
-//
-//	double dist = object.getDistanceFromPlayer(player);
-//
-//	Texture tex = textureManager.getTexture("");
-//
-//	if ((-tex.width < screenPosX) and (screenPosX < (windowWidth + tex.width)) and dist > 0.5) {
-//		double imgRatio = (float)tex.width / (float)tex.height;
-//		double proj = screenDist / dist * object.scale;
-//		double projWidth = proj * imgRatio;/* / object.animations[0]->numFrames;*/
-//		double projHeight = proj;
-//		double halfWidth = projWidth / 2;
-//		double posX = screenPosX - halfWidth;
-//		double heightShift = projHeight * object.shift;
-//		double posY = halfWindowHeight - projHeight/2 + heightShift;
-//		object.textureArea = { 0,0, (float)tex.width, (float)tex.height };
-//		object.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight)};
-//		Color textureColor = WHITE;
-//		textureColor.r = 225 / (1 + pow(object.depth, 5) * darkness);
-//		textureColor.g = 225 / (1 + pow(object.depth, 5) * darkness);
-//		textureColor.b = 225 / (1 + pow(object.depth, 5) * darkness);
-//		if (object.animated) {
-//			//drawAnimated(object, tex, textureColor);
-//		}
-//		else {
-//			//DrawTexturePro(tex, object.textureArea, object.positionOnWindow, { 0,0 }, 0, textureColor);
-//		}
-//	}
-//}
 
 void Canvas::drawStaticSprite(Drawable sprite, Player player)
 {
@@ -287,10 +242,9 @@ void Canvas::drawColumn(RayCastResult ray)
 
 void Canvas::drawWeapon()
 {
-	Texture2D shotgun = textureManager->getTexture("sprites\\static\\shotgun.png");
-	double shotgunScale = 0.5;
-	Vector2 position = { halfWindowWidth - (shotgun.width * shotgunScale) / 4, windowHeight - (shotgun.height * shotgunScale)};
-	DrawTextureEx(shotgun, position, 0, shotgunScale, WHITE);
+	Animated shotgun;
+	shotgun.tex = textureManager->getTexture("sprites\\static\\shotgun.png");
+	DrawTexturePro(shotgun.tex, shotgun.textureArea, shotgun.positionOnWindow, { 0,0 }, 0, WHITE);
 }
 
 void Canvas::drawBackground()
