@@ -105,7 +105,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
                 Animated* lampSprite = new Animated();
                 lampSprite->scale = 1.2;
                 lampSprite->shift = -0.05;
-                lampSprite->animationIndex = 1;
+                lampSprite->animationIndex = 0;
                 lampSprite->position = obj.position;
                 lampSprite->tex = texMgr->getTexture("");
 

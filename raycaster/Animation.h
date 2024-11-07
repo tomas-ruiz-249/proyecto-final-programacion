@@ -6,5 +6,7 @@ struct Animation {
 	int currentFrame;
 	double frameTimer;
 	double animationSpeed;
+	Rectangle textureArea;
+	Rectangle positionOnWindow;
 	Texture texture;
 };

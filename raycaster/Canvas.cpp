@@ -107,7 +107,7 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	}
 	drawQueue.clear();
 
-	drawWeapon();
+	drawWeapon(*player.weapon);
 }
 
 
@@ -131,10 +131,10 @@ void Canvas::drawStaticSprite(Drawable sprite, Player player)
 
 	double dist = sprite.getDistanceFromPlayer(sprite.position, player);
 
-	if ((-sprite.tex.width < screenPosX) and (screenPosX < (windowWidth + sprite.tex.width)) and dist > 0.5) {
+	if ((-sprite.tex.width < screenPosX) and (screenPosX < (windowWidth + sprite.tex.width)) and dist > 0.0) {
 		double imgRatio = (float)sprite.tex.width / (float)sprite.tex.height;
 		double proj = screenDist / dist * sprite.scale;
-		double projWidth = proj * imgRatio;/* / object.animations[0]->numFrames;*/
+		double projWidth = proj * imgRatio;
 		double projHeight = proj;
 		double halfWidth = projWidth / 2;
 		double posX = screenPosX - halfWidth;
@@ -177,31 +177,22 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 	}
 	Animation& current = sprite.animations[index];
 
-	if ((-current.texture.width < screenPosX) and (screenPosX < (windowWidth + current.texture.width)) and dist > 0.5) {
+	if ((-current.texture.width < screenPosX) and (screenPosX < (windowWidth + current.texture.width)) and dist > 0.0) {
 		double imgRatio = (float)current.texture.width / (float)current.texture.height;
 		double proj = screenDist / dist * sprite.scale;
-		double projWidth = proj * imgRatio / current.numFrames;
+		double projWidth = proj * imgRatio;
 		double projHeight = proj;
 		double halfWidth = projWidth / 2;
 		double posX = screenPosX - halfWidth;
 		double heightShift = projHeight * sprite.shift;
 		double posY = halfWindowHeight - projHeight / 2 + heightShift;
-		sprite.textureArea = { 0,0, (float)current.texture.width, (float)current.texture.height };
-		sprite.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight) };
+		current.textureArea = { 0,0, (float)current.texture.width, (float)current.texture.height };
+		current.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight) };
 		Color textureColor = WHITE;
 		textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
 		textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
 		textureColor.b = 225 / (1 + pow(sprite.depth, 5) * darkness);
-		current.frameTimer += GetFrameTime();
-		if (current.frameTimer > GetFPS() * current.animationSpeed) {
-			current.frameTimer = 0;
-			current.currentFrame++;
-		}
-		current.currentFrame %= current.numFrames;
-		int frameWidth = current.texture.width / current.numFrames;
-		sprite.textureArea.x = current.currentFrame * frameWidth;
-		sprite.textureArea.width = frameWidth;
-		DrawTexturePro(current.texture, sprite.textureArea, sprite.positionOnWindow, {0,0}, 0, textureColor);
+		animate(sprite, index, textureColor);
 	}
 }
 
@@ -240,11 +231,13 @@ void Canvas::drawColumn(RayCastResult ray)
 	DrawTexturePro(columnTexture, ray.textureArea, ray.positionOnWindow, { 0,0 }, 0.f, wallColor);
 }
 
-void Canvas::drawWeapon()
+void Canvas::drawWeapon(Weapon weapon)
 {
-	Animated shotgun;
-	shotgun.tex = textureManager->getTexture("sprites\\static\\shotgun.png");
-	DrawTexturePro(shotgun.tex, shotgun.textureArea, shotgun.positionOnWindow, { 0,0 }, 0, WHITE);
+	int& index = weapon.sprite->animationIndex;
+	Animation& anim = weapon.sprite->animations[index];
+	anim.positionOnWindow.x = (float)(halfWindowWidth * 0.8);
+	anim.positionOnWindow.y = (float)(windowHeight - anim.texture.height);
+	animate(*weapon.sprite, index, WHITE);
 }
 
 void Canvas::drawBackground()
@@ -259,6 +252,22 @@ void Canvas::drawBackground()
 	DrawTexturePro(background, source, dest, { 0,0 }, 0, WHITE);
 	Color light = { 30, 30, 20 ,255 };
 	DrawRectangleGradientV(0, halfWindowHeight, windowWidth, halfWindowHeight, BLACK, light);
+}
+
+void Canvas::animate(Animated& animated, int index, Color color)
+{
+	Animation& current = animated.animations[index];
+	current.frameTimer += GetFrameTime();
+	if (current.frameTimer > GetFPS() * current.animationSpeed) {
+		current.frameTimer = 0;
+		current.currentFrame++;
+	}
+	current.currentFrame %= current.numFrames;
+	int frameWidth = current.texture.width / current.numFrames;
+	current.textureArea.x = current.currentFrame * frameWidth;
+	current.textureArea.width = frameWidth;
+	current.positionOnWindow.width /= current.numFrames;
+	DrawTexturePro(current.texture, current.textureArea, current.positionOnWindow, {0,0}, 0, color);
 }
 
 

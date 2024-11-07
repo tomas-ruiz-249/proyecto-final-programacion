@@ -40,8 +40,9 @@ private:
 	//3d drawing methods
 	void draw3D(const Player& player, const Map& map, ObjectManager& objManager);
 	void drawColumn(RayCastResult ray);
-	void drawWeapon();
+	void drawWeapon(Weapon weapon);
 	void drawBackground();
+	void animate(Animated& animated, int index, Color color);
 	void drawAnimatedSprite(Animated& sprite, Player player);
 	void drawStaticSprite(Drawable sprite, Player player);
 

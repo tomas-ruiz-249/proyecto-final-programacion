@@ -141,6 +141,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Raycaster.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="assets\data\object_data.csv">
@@ -163,9 +164,11 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
+    <!-- <ClInclude Include="Player.h" /> -->
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="RayCaster.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\backgrounds\sunset.png" />
