@@ -61,7 +61,7 @@ Player::Player()
 	weapon->sprite->animationIndex = 0;
 	weapon->sprite->tex = texMgr->getTexture("sprites\\static\\shotgun.png");
 	Animation shooting = {};
-	shooting.texture = texMgr->getTexture("sprites\\animated\\shotgun.png");
+	shooting.texture = texMgr->getTexture("sprites\\animated\\gun.png");
 	shooting.numFrames = 11;
 	shooting.animationSpeed = 0.09;
 	shooting.textureArea = { 0, 0, (float)shooting.texture.width, (float)shooting.texture.height };

@@ -1,5 +1,6 @@
 #include "Weapon.h"
 #include "TextureManager.h"
+#include "Player.h"
 
 Weapon::Weapon()
 {

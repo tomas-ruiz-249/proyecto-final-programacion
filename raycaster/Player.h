@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Weapon.h"
 
+
 class Player : public Entity {
 public:
 	Weapon* weapon;

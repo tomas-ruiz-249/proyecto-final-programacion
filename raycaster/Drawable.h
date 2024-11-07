@@ -2,7 +2,9 @@
 #include <raylib.h>
 #include <vector>
 #include "Animation.h"
-#include "Player.h"
+#include "Point2D.h"
+
+class Player;
 
 class Drawable {
 public:
