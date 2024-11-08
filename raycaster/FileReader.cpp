@@ -112,13 +112,13 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
                 //create animations for animated
                 Animation red = {};
                 red.numFrames = 4;
-                red.animationSpeed = 0.0009;
+                red.animationSpeed = 2.0;
                 red.texture = texMgr->getTexture("sprites\\animated\\lamp.png");
                 lampSprite->animations.push_back(red);
 
 				Animation green = {};
                 green.numFrames = 4;
-                green.animationSpeed = 0.0009;
+                green.animationSpeed = 2.0;
                 green.texture = texMgr->getTexture("sprites\\animated\\lamp_green.png");
                 lampSprite->animations.push_back(green);
                 obj.sprite = lampSprite;

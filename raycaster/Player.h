@@ -6,7 +6,7 @@
 class Player : public Entity {
 public:
 	Weapon* weapon;
-	void move(Map& map) override;
+	void act(Map& map) override;
 	Player();
 private:
 };

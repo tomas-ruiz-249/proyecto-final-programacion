@@ -173,6 +173,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\backgrounds\sunset.png" />
+    <Image Include="assets\textures\sprites\animated\demon.png" />
+    <Image Include="assets\textures\sprites\animated\gun.png" />
+    <Image Include="assets\textures\sprites\animated\lamp.png" />
+    <Image Include="assets\textures\sprites\animated\lamp_green.png" />
     <Image Include="assets\textures\sprites\static\health.png" />
     <Image Include="assets\textures\sprites\static\imp.png" />
     <Xml Include="assets\textures\sprites\static\shotgun.png">
@@ -184,7 +188,6 @@
     <Image Include="assets\textures\walls\mossy_stone.png" />
     <Image Include="assets\textures\walls\stone.png" />
     <Image Include="textures\invalid.png" />
-    <Image Include="textures\shotgun.png" />
     <Image Include="textures\sunset.png" />
     <Image Include="textures\wood.png" />
   </ItemGroup>

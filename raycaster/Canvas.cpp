@@ -52,10 +52,10 @@ Canvas::Canvas(int width, int height)
 void Canvas::startWindow()
 {
 	InitWindow(windowWidth, windowHeight, "");
+	textureManager->loadTexturesToVRAM();
 	SetWindowState(FLAG_VSYNC_HINT);
 	SetTargetFPS(60);
 	DisableCursor();
-	textureManager->loadTexturesToVRAM();
 }
 
 void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager)
@@ -187,7 +187,7 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 		double heightShift = projHeight * sprite.shift;
 		double posY = halfWindowHeight - projHeight / 2 + heightShift;
 		current.textureArea = { 0,0, (float)current.texture.width, (float)current.texture.height };
-		current.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight) };
+		current.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth / current.numFrames), (float)(projHeight) };
 		Color textureColor = WHITE;
 		textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
 		textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
@@ -231,13 +231,24 @@ void Canvas::drawColumn(RayCastResult ray)
 	DrawTexturePro(columnTexture, ray.textureArea, ray.positionOnWindow, { 0,0 }, 0.f, wallColor);
 }
 
-void Canvas::drawWeapon(Weapon weapon)
+void Canvas::drawWeapon(Weapon& weapon)
 {
-	int& index = weapon.sprite->animationIndex;
-	Animation& anim = weapon.sprite->animations[index];
-	anim.positionOnWindow.x = (float)(halfWindowWidth * 0.8);
-	anim.positionOnWindow.y = (float)(windowHeight - anim.texture.height);
-	animate(*weapon.sprite, index, WHITE);
+	if (weapon.reloading) {
+		int& index = weapon.sprite->animationIndex;
+		Animation& anim = weapon.sprite->animations[index];
+		anim.positionOnWindow.x = (float)(halfWindowWidth * 0.8);
+		anim.positionOnWindow.y = (float)(windowHeight - anim.texture.height);
+		animate(*weapon.sprite, 0, WHITE);
+		if (anim.currentFrame == anim.numFrames - 1) {
+			weapon.reloading = false;
+		}
+	}
+	else {
+		Texture& shotgun = weapon.sprite->tex;
+		weapon.sprite->positionOnWindow.x = (float)(halfWindowWidth * 0.8);
+		weapon.sprite->positionOnWindow.y = (float)(windowHeight - shotgun.height);
+		DrawTexturePro(shotgun, weapon.sprite->textureArea, weapon.sprite->positionOnWindow, { 0,0 }, 0, WHITE);
+	}
 }
 
 void Canvas::drawBackground()
@@ -258,7 +269,7 @@ void Canvas::animate(Animated& animated, int index, Color color)
 {
 	Animation& current = animated.animations[index];
 	current.frameTimer += GetFrameTime();
-	if (current.frameTimer > GetFPS() * current.animationSpeed) {
+	if (current.frameTimer > GetFrameTime() * current.animationSpeed) {
 		current.frameTimer = 0;
 		current.currentFrame++;
 	}
@@ -266,8 +277,8 @@ void Canvas::animate(Animated& animated, int index, Color color)
 	int frameWidth = current.texture.width / current.numFrames;
 	current.textureArea.x = current.currentFrame * frameWidth;
 	current.textureArea.width = frameWidth;
-	current.positionOnWindow.width /= current.numFrames;
 	DrawTexturePro(current.texture, current.textureArea, current.positionOnWindow, {0,0}, 0, color);
+	current.positionOnWindow.width = current.texture.width /current.numFrames;
 }
 
 

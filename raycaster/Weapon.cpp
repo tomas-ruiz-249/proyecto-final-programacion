@@ -7,4 +7,5 @@ Weapon::Weapon()
 	auto texMgr = TextureManager::getInstance();
 	sprite = new Animated();
 	sprite->tex = texMgr->getTexture("");
+	reloading = false;
 }

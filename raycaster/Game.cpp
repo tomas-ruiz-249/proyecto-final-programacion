@@ -8,6 +8,7 @@ void Game::startGame()
 	CloseWindow();
 	canvas = Canvas(width, height);
 	canvas.startWindow();
+	player = Player();
 	objManager.initObjects();
 	mainLoop();
 }
@@ -16,7 +17,6 @@ Game::Game()
 {
 	map = Map();
 	canvas = Canvas();
-	player = Player();
 }
 
 void Game::mainLoop()
@@ -26,7 +26,7 @@ void Game::mainLoop()
 		fps = std::to_string(GetFPS());
 		SetWindowTitle(fps.c_str());
 
-		player.move(map);
+		player.act(map);
 		canvas.draw(map, player, objManager);
 	}
 }

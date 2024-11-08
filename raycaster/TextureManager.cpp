@@ -11,6 +11,7 @@ void TextureManager::loadTexturesToVRAM()
 		FilePathList wallTextures = LoadDirectoryFiles(wallsDir.c_str());
 		for (int i = 0; i < wallTextures.count; i++) {
 			Texture texture = LoadTexture(wallTextures.paths[i]);
+			std::cout << wallTextures.paths[i] << "\n";
 			(*textures)[wallTextures.paths[i]] = texture;
 		}
 
