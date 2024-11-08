@@ -12,3 +12,8 @@ enum ObjectType {
 	ammo = 2,
 	lamp = 3,
 };
+
+enum EnemyType {
+	demon = 1,
+	imp = 2,
+};

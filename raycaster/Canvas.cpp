@@ -4,6 +4,8 @@
 #include <algorithm>
 #include "Canvas.h"
 #include "Drawable.h"
+#include "Enemy.h"
+#include "enemyManager.h"
 
 Canvas::Canvas()
 {
@@ -58,15 +60,15 @@ void Canvas::startWindow()
 	DisableCursor();
 }
 
-void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager)
+void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager, EnemyManager& enemyManager)
 {
 	BeginDrawing();
 	ClearBackground(BLACK);
-	draw3D(player, map, objManager);
+	draw3D(player, map, objManager, enemyManager);
 	EndDrawing();
 }
 
-void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objManager)
+void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objManager, EnemyManager& enemyManager)
 {
 	drawBackground();
 
@@ -84,6 +86,13 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	for (auto& obj : *objects) {
 		obj.sprite->depth = obj.sprite->getDistanceFromPlayer(obj.position, player);
 		drawQueue.push_back(obj.sprite);
+	}
+	
+	//add enemies to draw queue
+	auto enemies = enemyManager.getEnemyList();
+	for (auto& enemy: *enemies){
+		enemy.sprite->depth = enemy.sprite->getDistanceFromPlayer(enemy.position, player);
+		drawQueue.push_back(enemy.sprite);
 	}
 
 	//sort queue by distance from player and draw

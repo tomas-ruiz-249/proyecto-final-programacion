@@ -10,6 +10,7 @@ void Game::startGame()
 	canvas.startWindow();
 	player = Player();
 	objManager.initObjects();
+	enemyManager.initEnemies();
 	mainLoop();
 }
 
@@ -27,6 +28,6 @@ void Game::mainLoop()
 		SetWindowTitle(fps.c_str());
 
 		player.act(map);
-		canvas.draw(map, player, objManager);
+		canvas.draw(map, player, objManager, enemyManager);
 	}
 }

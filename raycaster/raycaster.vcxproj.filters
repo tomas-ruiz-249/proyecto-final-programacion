@@ -54,6 +54,12 @@
     <ClCompile Include="Weapon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -107,12 +113,15 @@
     <ClInclude Include="Weapon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\wood.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="textures\shotgun.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="textures\invalid.png">
@@ -140,6 +149,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\sprites\static\imp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites\animated\demon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites\animated\gun.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites\animated\lamp.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites\animated\lamp_green.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

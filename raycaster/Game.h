@@ -3,7 +3,8 @@
 #include "Canvas.h"
 #include "Map.h"
 #include "RayCaster.h"
-#include "Object.h"
+#include "Enemy.h"
+#include "EnemyManager.h"
 
 class Game {
 public:
@@ -15,4 +16,5 @@ private:
 	Map map;
 	Player player;
 	ObjectManager objManager;
+	EnemyManager enemyManager;
 };
