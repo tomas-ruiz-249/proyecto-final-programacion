@@ -12,6 +12,8 @@ public:
 	Game();
 private:
 	void mainLoop();
+	void render();
+	void logic();
 	Canvas canvas;
 	Map map;
 	Player player;

@@ -5,8 +5,10 @@
 class Entity {
 public:
 	Point2D position;
+	bool hurt;
 	double angle;
 	virtual void act(Map& map) = 0;
+	virtual void takeDamage() = 0;
 	Entity();
 private:
 protected:

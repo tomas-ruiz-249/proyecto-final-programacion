@@ -19,6 +19,7 @@ public:
 	double shift;
 
 	Point2D position;
+	bool isOnScreenCenter;
 
 	Texture tex;
 	double getDistanceFromPlayer(Point2D position, Player player);

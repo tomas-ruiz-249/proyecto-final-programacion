@@ -47,9 +47,19 @@ void Player::act(Map& map)
 		angle = PI * 2;
 	}	
 
-	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) || IsKeyDown(KEY_SPACE)) {
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+		if (!weapon->reloading) {
+			justShot = true;
+		}
+		else {
+			justShot = false;
+		}
 		weapon->reloading = true;
 	}
+}
+
+void Player::takeDamage()
+{
 }
 
 Player::Player()
@@ -59,6 +69,7 @@ Player::Player()
 	rotationSpeed = 0.09f;
 	angle = 0;
 	weapon = new Weapon();
+	justShot = false;
 
 	//initialize weapon texture
 	auto texMgr = TextureManager::getInstance();

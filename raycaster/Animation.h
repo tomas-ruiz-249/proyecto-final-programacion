@@ -9,4 +9,5 @@ struct Animation {
 	Rectangle textureArea;
 	Rectangle positionOnWindow;
 	Texture texture;
+	bool isAnimationDone();
 };

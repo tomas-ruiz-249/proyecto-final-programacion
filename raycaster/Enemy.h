@@ -8,4 +8,5 @@ public:
 	Animated* sprite;
 	EnemyType type;
 	void act(Map& map) override;
+	void takeDamage() override;
 };

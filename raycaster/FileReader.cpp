@@ -199,7 +199,13 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& e
                     idle.texture = texMgr->getTexture("sprites\\animated\\imp.png");
                     idle.numFrames = 4;
                     idle.animationSpeed = 7.0;
+
+                    Animation hurt = {};
+                    hurt.texture = texMgr->getTexture("sprites\\animated\\imp_hurt.png");
+                    hurt.numFrames = 5;
+                    hurt.animationSpeed = 4.6;
                     enemy.sprite->animations.push_back(idle);
+                    enemy.sprite->animations.push_back(hurt);
                     break;
                 }
             }

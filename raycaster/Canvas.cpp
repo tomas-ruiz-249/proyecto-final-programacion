@@ -179,24 +179,30 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 
 	double dist = sprite.getDistanceFromPlayer(sprite.position, player);
 
-	int index = sprite.animationIndex;
+	int& index = sprite.animationIndex;
+
 	if (index > sprite.animations.size() - 1) {
 		drawStaticSprite(sprite, player);
 		return;
 	}
-	Animation& current = sprite.animations[index];
+
+	Animation& current = sprite.animations[sprite.animationIndex];
 
 	if ((-current.texture.width < screenPosX) and (screenPosX < (windowWidth + current.texture.width)) and dist > 0.0) {
 		double imgRatio = (float)current.texture.width / (float)current.texture.height;
 		double proj = screenDist / dist * sprite.scale;
-		double projWidth = proj * imgRatio;
+		double projWidth = proj * imgRatio / current.numFrames;
 		double projHeight = proj;
 		double halfWidth = projWidth / 2;
 		double posX = screenPosX - halfWidth;
 		double heightShift = projHeight * sprite.shift;
 		double posY = halfWindowHeight - projHeight / 2 + heightShift;
 		current.textureArea = { 0,0, (float)current.texture.width, (float)current.texture.height };
-		current.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth / current.numFrames), (float)(projHeight) };
+		current.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight) };
+
+		sprite.isOnScreenCenter = (halfWindowWidth - current.positionOnWindow.width) < posX 
+							and posX < (halfWindowWidth + current.positionOnWindow.width);
+
 		Color textureColor = WHITE;
 		textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
 		textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
@@ -248,7 +254,7 @@ void Canvas::drawWeapon(Weapon& weapon)
 		anim.positionOnWindow.x = (float)(halfWindowWidth * 0.8);
 		anim.positionOnWindow.y = (float)(windowHeight - anim.texture.height);
 		animate(*weapon.sprite, 0, WHITE);
-		if (anim.currentFrame == anim.numFrames - 1) {
+		if (anim.isAnimationDone()) {
 			weapon.reloading = false;
 		}
 	}

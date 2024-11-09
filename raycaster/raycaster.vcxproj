@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -152,6 +153,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
     </Text>
+    <None Include="assets\data\enemy_data.csv" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

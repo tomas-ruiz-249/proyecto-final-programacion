@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <iostream>
 
 void Game::startGame()
 {
@@ -26,8 +27,35 @@ void Game::mainLoop()
 	while (!WindowShouldClose()) {
 		fps = std::to_string(GetFPS());
 		SetWindowTitle(fps.c_str());
-
-		player.act(map);
-		canvas.draw(map, player, objManager, enemyManager);
+		render();
+		logic();
 	}
+}
+
+void Game::render()
+{
+	canvas.draw(map, player, objManager, enemyManager);
+	for (auto& enemy : *enemyManager.getEnemyList()) {
+		if (enemy.hurt and enemy.sprite->animations.size() > 1) {
+			enemy.sprite->animationIndex = 1;
+			auto& anim = enemy.sprite->animations[enemy.sprite->animationIndex];
+			if (anim.isAnimationDone()) {
+				enemy.hurt = false;
+			}
+		}
+		else {
+			enemy.sprite->animationIndex = 0;
+		}
+	}
+}
+
+void Game::logic()
+{
+	player.act(map);
+	for (auto& enemy : *enemyManager.getEnemyList()) {
+		if (player.justShot and enemy.sprite->isOnScreenCenter) {
+			enemy.hurt = true;
+		}
+	}
+	player.justShot = false;
 }
