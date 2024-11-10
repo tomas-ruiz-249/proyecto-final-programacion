@@ -66,11 +66,11 @@ void Game::logic()
 	for (auto& enemy : *enemyManager.getEnemyList()) {
 		RayCastResult ray = raycaster.rayCast(player.angle, player.position, map);
 		bool wasWallShot = ray.depth < enemy.sprite->getDistanceFromPlayer(enemy.position, player);
-		bool canTakeDamage = player.justShot and !wasWallShot and enemy.isAlive();
+		bool canTakeDamage = player.justShot and !wasWallShot and enemy.isAlive() and enemy.sprite->isOnScreenCenter;
 		if (canTakeDamage){
 			int damage = player.weapon->damage;
 			enemy.takeDamage(damage);
 		}
-		player.justShot = false;
 	}
+	player.justShot = false;
 }
