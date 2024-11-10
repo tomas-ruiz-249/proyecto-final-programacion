@@ -7,5 +7,6 @@ Weapon::Weapon()
 	auto texMgr = TextureManager::getInstance();
 	sprite = new Animated();
 	sprite->tex = texMgr->getTexture("");
+	damage = 20;
 	reloading = false;
 }

@@ -2,6 +2,11 @@
 #include "raylib.h"
 #include <cmath>
 
+bool Entity::isAlive()
+{
+	return health > 0;
+}
+
 Entity::Entity()
 {
 	position = { 0 , 0 };

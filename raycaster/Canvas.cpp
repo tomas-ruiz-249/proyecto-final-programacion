@@ -6,6 +6,7 @@
 #include "Drawable.h"
 #include "Enemy.h"
 #include "enemyManager.h"
+#include "Lamp.h"
 
 Canvas::Canvas()
 {
@@ -84,8 +85,9 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	//add objects to draw queue
 	auto objects = objManager.getObjectList();
 	for (auto& obj : *objects) {
-		obj.sprite->depth = obj.sprite->getDistanceFromPlayer(obj.position, player);
-		drawQueue.push_back(obj.sprite);
+		obj->sprite->depth = obj->sprite->getDistanceFromPlayer(obj->position, player);
+		Drawable* casted = obj->sprite;
+		drawQueue.push_back(casted);
 	}
 	
 	//add enemies to draw queue
@@ -248,9 +250,9 @@ void Canvas::drawColumn(RayCastResult ray)
 
 void Canvas::drawWeapon(Weapon& weapon)
 {
-	if (weapon.reloading) {
-		int& index = weapon.sprite->animationIndex;
-		Animation& anim = weapon.sprite->animations[index];
+	int& index = weapon.sprite->animationIndex;
+	Animation& anim = weapon.sprite->animations[index];
+	if (weapon.reloading and !anim.isAnimationDone()) {
 		anim.positionOnWindow.x = (float)(halfWindowWidth * 0.8);
 		anim.positionOnWindow.y = (float)(windowHeight - anim.texture.height);
 		animate(*weapon.sprite, 0, WHITE);
@@ -259,6 +261,7 @@ void Canvas::drawWeapon(Weapon& weapon)
 		}
 	}
 	else {
+		anim.resetAnimation();
 		Texture& shotgun = weapon.sprite->tex;
 		weapon.sprite->positionOnWindow.x = (float)(halfWindowWidth * 0.8);
 		weapon.sprite->positionOnWindow.y = (float)(windowHeight - shotgun.height);
@@ -286,12 +289,15 @@ void Canvas::animate(Animated& animated, int index, Color color)
 	current.frameTimer += GetFrameTime();
 	if (current.frameTimer > GetFrameTime() * current.animationSpeed) {
 		current.frameTimer = 0;
-		current.currentFrame++;
+		if (!current.stop) {
+			current.nextFrame();
+		}
 	}
-	current.currentFrame %= current.numFrames;
+	int frame = current.getCurrentFrame();
+	frame %= current.numFrames;
 	int frameWidth = current.texture.width / current.numFrames;
-	current.textureArea.x = current.currentFrame * frameWidth;
 	current.textureArea.width = frameWidth;
+	current.textureArea.x = frame * frameWidth;
 	DrawTexturePro(current.texture, current.textureArea, current.positionOnWindow, {0,0}, 0, color);
 	current.positionOnWindow.width = current.texture.width /current.numFrames;
 }

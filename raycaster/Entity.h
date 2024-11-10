@@ -4,11 +4,15 @@
 
 class Entity {
 public:
-	Point2D position;
 	bool hurt;
+	unsigned int health;
+
+	Point2D position;
 	double angle;
+
 	virtual void act(Map& map) = 0;
-	virtual void takeDamage() = 0;
+	virtual void takeDamage(int damage) = 0;
+	virtual bool isAlive();
 	Entity();
 private:
 protected:

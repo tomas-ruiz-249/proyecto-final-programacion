@@ -8,7 +8,7 @@ public:
 	Weapon* weapon;
 	bool justShot;
 	void act(Map& map) override;
-	void takeDamage() override;
+	void takeDamage(int damage) override;
 	Player();
 private:
 };

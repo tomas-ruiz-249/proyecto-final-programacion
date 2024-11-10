@@ -5,9 +5,9 @@
 
 class ObjectManager {
 public:
-	std::vector<Object>* getObjectList();
+	std::vector<Object*>* getObjectList();
 	void initObjects();
 	void clearObjects();
 private:
-	std::vector<Object> objectList;
+	std::vector<Object*> objectList;
 };

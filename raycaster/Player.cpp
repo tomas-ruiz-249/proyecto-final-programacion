@@ -47,18 +47,13 @@ void Player::act(Map& map)
 		angle = PI * 2;
 	}	
 
-	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
-		if (!weapon->reloading) {
-			justShot = true;
-		}
-		else {
-			justShot = false;
-		}
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and !weapon->reloading) {
+		justShot = true;
 		weapon->reloading = true;
 	}
 }
 
-void Player::takeDamage()
+void Player::takeDamage(int damage)
 {
 }
 

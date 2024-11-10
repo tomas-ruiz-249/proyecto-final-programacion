@@ -6,6 +6,9 @@
 #include "FileReader.h"
 #include "Animated.h"
 #include "TextureManager.h"
+#include "Health.h"
+#include "Ammo.h"
+#include "Lamp.h"
 
 bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]) {
     std::string path("assets\\data\\");
@@ -35,7 +38,7 @@ bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_S
     return true; 
 };
 
-bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& objectList) {
+bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>& objectList) {
     std::string path("assets\\data\\");
     path.append(fileName);
 
@@ -57,10 +60,8 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
         char * c = const_cast<char*>(line.c_str());
         char * token = strtok(c, ","); 
 
-        ObjectType type;
+        ObjectType type = invalid;
         Point2D position = { 0.0, 0.0 };
-        double scale = 0.0;
-        double shift = 0.0;
 
         for (int cont_col = 0; token != NULL; cont_col++)
         {
@@ -79,56 +80,60 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
             token = strtok(NULL, ","); 
         }
 
-        Object obj(type, position);
+        Object* obj;
 
-        switch (obj.type) {
+        switch (type) {
 			case health: {
+                Health* health = new Health(position);
                 Drawable* healthSprite = new Drawable();
                 healthSprite->scale = 0.29;
                 healthSprite->shift = 1.4;
-                healthSprite->position = obj.position;
+                healthSprite->position = health->position;
                 healthSprite->tex = texMgr->getTexture("sprites\\static\\health.png");
-                obj.sprite = healthSprite;
+                health->sprite = healthSprite;
+                obj = health;
                 break;
             }
 			case ammo:{
+                Ammo* ammo = new Ammo(position);
                 Drawable* ammoSprite = new Drawable();
 				ammoSprite->scale = 0.29;
 				ammoSprite->shift = 1.48;
-                ammoSprite->position = obj.position;
+                ammoSprite->position = ammo->position;
                 ammoSprite->tex = texMgr->getTexture("sprites\\static\\ammo.png");
-                obj.sprite = ammoSprite;
+                ammo->sprite = ammoSprite;
+                obj = ammo;
                 break;
             }
 			case lamp:{
-                //animated object
+                Lamp* lamp = new Lamp(position);
                 Animated* lampSprite = new Animated();
                 lampSprite->scale = 1.2;
                 lampSprite->shift = -0.05;
                 lampSprite->animationIndex = 0;
-                lampSprite->position = obj.position;
+                lampSprite->position = lamp->position;
                 lampSprite->tex = texMgr->getTexture("");
 
-                //create animations for animated
                 Animation red = {};
                 red.numFrames = 4;
                 red.animationSpeed = 2.0;
                 red.texture = texMgr->getTexture("sprites\\animated\\lamp.png");
-                lampSprite->animations.push_back(red);
 
 				Animation green = {};
                 green.numFrames = 4;
                 green.animationSpeed = 2.0;
                 green.texture = texMgr->getTexture("sprites\\animated\\lamp_green.png");
+
                 lampSprite->animations.push_back(green);
-                obj.sprite = lampSprite;
+                lampSprite->animations.push_back(red);
+
+                lamp->sprite = lampSprite;
+                obj = lamp;
                 break;
             }
             default:{
-                Drawable* undefined = new Drawable;
-                undefined->scale = 1;
-                undefined->shift = 0;
-                undefined->position = obj.position;
+                std::cout << "could not instanciate object\n";
+                break;
             }
         }
         objectList.push_back(obj);
@@ -151,6 +156,7 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& e
         std::getline(file, line);
         while (std::getline(file, line)) {
             Enemy enemy;
+            enemy.health = 100;
             token = strtok(const_cast<char*>(line.c_str()), ",");
             while (token != NULL && counter < 3) {
 				switch (counter) {
@@ -204,8 +210,15 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& e
                     hurt.texture = texMgr->getTexture("sprites\\animated\\imp_hurt.png");
                     hurt.numFrames = 5;
                     hurt.animationSpeed = 4.6;
+
+                    Animation death = {};
+                    death.texture = texMgr->getTexture("sprites\\animated\\imp_death.png");
+                    death.numFrames = 5;
+                    death.animationSpeed = 3.5;
+
                     enemy.sprite->animations.push_back(idle);
                     enemy.sprite->animations.push_back(hurt);
+                    enemy.sprite->animations.push_back(death);
                     break;
                 }
             }

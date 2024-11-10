@@ -6,12 +6,12 @@
 
 class Object {
 public:
-	ObjectType type;
 	Point2D position;
 	Drawable* sprite;
 
 	//constructors
 	Object();
-	Object(ObjectType type, Point2D position);
+	Object(Point2D position);
+	virtual ~Object() = default;
 private:
 };
