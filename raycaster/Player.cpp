@@ -6,8 +6,10 @@
 
 void Player::act(Map& map)
 {
-	move(map);
-	attack();
+	if (isAlive()) {
+		move(map);
+		attack();
+	}
 }
 
 void Player::move(Map map)
@@ -56,17 +58,20 @@ void Player::move(Map map)
 
 void Player::takeDamage(int damage)
 {
+	hurtTimer += GetFrameTime();
+	if (hurtTimer > 1.2) {
+		std::cout << "ouch\n";
+		health -= damage;
+		hurtTimer = 0;
+	}
 }
 
 void Player::attack()
 {
-	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and weapon->canShoot()) {
+	if ((IsMouseButtonDown(MOUSE_BUTTON_LEFT) or IsKeyDown(KEY_SPACE)) and weapon->canShoot()) {
 		weapon->shoot();
 		justShot = true;
 	}
-	else {
-	}
-	std::cout << justShot << "\n";
 }
 
 Player* Player::getInstance()
@@ -79,7 +84,9 @@ Player* Player::getInstance()
 
 Player::Player()
 {
-	position = { 2.1, 8 };
+	hurtTimer = 0;
+	health = 100;
+	position = { 2.0, 2.0 };
 	speed = 5.0;
 	rotationSpeed = 0.09f;
 	angle = 0;

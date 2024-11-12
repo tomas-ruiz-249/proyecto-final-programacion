@@ -19,6 +19,11 @@ void Enemy::takeDamage(int damage)
 
 void Enemy::attack()
 {
+	Player* player = Player::getInstance();
+	std::cout << sprite->getDistanceFromPlayer(sprite->position, *player) << "\n";
+	if (sprite->getDistanceFromPlayer(sprite->position, *player) <= 0.5 and player->isAlive() and !player->hurt) {
+		player->takeDamage(damage);
+	}
 }
 
 void Enemy::move(Map map)
@@ -31,11 +36,27 @@ void Enemy::move(Map map)
 	Point2D d;
 	d.x = cos(angle) * speed * GetFrameTime();
 	d.y = sin(angle) * speed * GetFrameTime();
+
+	RayCastResult ray = rayCaster.rayCast(angle, position, map);
 	double distanceFromPlayer = sprite->getDistanceFromPlayer(position, player);
-	if (map.isPositionEmpty(int(position.y + d.y), int(position.x)) and distanceFromPlayer > 0.5){
-		position.y += d.y;
+	if (distanceFromPlayer > 0.5 and ray.depth > distanceFromPlayer) {
+		if (map.isPositionEmpty(int(position.y + d.y), int(position.x))){
+			position.y += d.y;
+		}
+		if (map.isPositionEmpty(int(position.y), int(position.x + d.x))) {
+			position.x += d.x;
+		}
 	}
-	if (map.isPositionEmpty(int(position.y), int(position.x + d.x)) and distanceFromPlayer > 0.5) {
-		position.x += d.x;
-	}
+}
+
+Enemy::Enemy()
+{
+	damage = 10;
+	health = 100;
+}
+
+Enemy::Enemy(int damage)
+{
+	health = 100;
+	this->damage = damage;
 }

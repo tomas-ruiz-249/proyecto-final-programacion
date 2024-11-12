@@ -13,6 +13,7 @@ public:
 	void attack() override;
 	static Player* getInstance();
 private:
+	double hurtTimer;
 	static Player* player;
 	Player();
 };

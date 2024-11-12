@@ -11,4 +11,8 @@ public:
 	void takeDamage(int damage) override;
 	void attack() override;
 	void move(Map map) override;
+	Enemy();
+	Enemy(int damage);
+private:
+	int damage;
 };
