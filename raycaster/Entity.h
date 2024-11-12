@@ -9,13 +9,15 @@ public:
 
 	Point2D position;
 	double angle;
+	double speed;
 
 	virtual void act(Map& map) = 0;
+	virtual void move(Map map) = 0;
 	virtual void takeDamage(int damage) = 0;
+	virtual void attack() = 0;
 	virtual bool isAlive();
 	Entity();
 private:
 protected:
 	double rotationSpeed;
-	double speed;
 };

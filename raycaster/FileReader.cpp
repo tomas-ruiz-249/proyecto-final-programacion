@@ -157,6 +157,7 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& e
         while (std::getline(file, line)) {
             Enemy enemy;
             enemy.health = 100;
+            enemy.speed = 2;
             token = strtok(const_cast<char*>(line.c_str()), ",");
             while (token != NULL && counter < 3) {
 				switch (counter) {

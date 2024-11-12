@@ -17,5 +17,10 @@ void Animation::resetAnimation()
 
 void Animation::nextFrame()
 {
-    currentFrame++;
+    if (currentFrame + 1 == numFrames) {
+        currentFrame = 0;
+    }
+    else {
+		currentFrame++;
+    }
 }

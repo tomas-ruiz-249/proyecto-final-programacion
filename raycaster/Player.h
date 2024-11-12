@@ -8,7 +8,11 @@ public:
 	Weapon* weapon;
 	bool justShot;
 	void act(Map& map) override;
+	void move(Map map) override;
 	void takeDamage(int damage) override;
-	Player();
+	void attack() override;
+	static Player* getInstance();
 private:
+	static Player* player;
+	Player();
 };

@@ -6,6 +6,12 @@
 
 void Player::act(Map& map)
 {
+	move(map);
+	attack();
+}
+
+void Player::move(Map map)
+{
 	double cosAngle = cos(angle);
 	double sinAngle = sin(angle);
 	double speedPlayer = speed * GetFrameTime();
@@ -46,15 +52,26 @@ void Player::act(Map& map)
 	if (angle < 0) {
 		angle = PI * 2;
 	}	
+}
 
+void Player::takeDamage(int damage)
+{
+}
+
+void Player::attack()
+{
 	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and !weapon->reloading) {
 		justShot = true;
 		weapon->reloading = true;
 	}
 }
 
-void Player::takeDamage(int damage)
+Player* Player::getInstance()
 {
+	if (!player) {
+		player = new Player();
+	}
+	return player;
 }
 
 Player::Player()
@@ -85,3 +102,5 @@ Player::Player()
 	shooting.positionOnWindow.height = (float)(shooting.texture.height);
 	weapon->sprite->animations.push_back(shooting);
 }
+
+Player* Player::player = nullptr;

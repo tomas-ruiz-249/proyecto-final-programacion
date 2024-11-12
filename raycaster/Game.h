@@ -16,7 +16,7 @@ private:
 	void logic();
 	Canvas canvas;
 	Map map;
-	Player player;
+	Player* player;
 	ObjectManager objManager;
 	EnemyManager enemyManager;
 };

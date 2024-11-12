@@ -94,6 +94,7 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	auto enemies = enemyManager.getEnemyList();
 	for (auto& enemy: *enemies){
 		enemy.sprite->depth = enemy.sprite->getDistanceFromPlayer(enemy.position, player);
+		enemy.sprite->position = enemy.position;
 		drawQueue.push_back(enemy.sprite);
 	}
 
@@ -294,7 +295,6 @@ void Canvas::animate(Animated& animated, int index, Color color)
 		}
 	}
 	int frame = current.getCurrentFrame();
-	frame %= current.numFrames;
 	int frameWidth = current.texture.width / current.numFrames;
 	current.textureArea.width = frameWidth;
 	current.textureArea.x = frame * frameWidth;
