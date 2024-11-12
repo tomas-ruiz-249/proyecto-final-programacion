@@ -2,7 +2,9 @@
 #include <raylib.h>
 #include <vector>
 #include "Animation.h"
-#include "Player.h"
+#include "Point2D.h"
+
+class Player;
 
 class Drawable {
 public:
@@ -17,6 +19,7 @@ public:
 	double shift;
 
 	Point2D position;
+	bool isOnScreenCenter;
 
 	Texture tex;
 	double getDistanceFromPlayer(Point2D position, Player player);

@@ -1,4 +1,5 @@
 #include "Drawable.h"
+#include "Player.h"
 
 double Drawable::getDistanceFromPlayer(Point2D position, Player player)
 {

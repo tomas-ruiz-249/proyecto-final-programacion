@@ -6,14 +6,14 @@
 #include "Map.h"
 #include "Player.h"
 #include "RayCaster.h"
-#include "Object.h"
 #include "ObjectManager.h"
 #include "Animated.h"
+#include "EnemyManager.h"
 
 class Canvas {
 public:
 	void startWindow();
-	void draw(const Map& map, const Player& player, ObjectManager& objManager);
+	void draw(const Map& map, const Player& player, ObjectManager& objManager, EnemyManager& enemyManager);
 	Canvas();
 	Canvas(int width, int height);
 private:
@@ -38,10 +38,11 @@ private:
 
 
 	//3d drawing methods
-	void draw3D(const Player& player, const Map& map, ObjectManager& objManager);
+	void draw3D(const Player& player, const Map& map, ObjectManager& objManager, EnemyManager& enemyManager);
 	void drawColumn(RayCastResult ray);
-	void drawWeapon();
+	void drawWeapon(Weapon& weapon);
 	void drawBackground();
+	void animate(Animated& animated, int index, Color color);
 	void drawAnimatedSprite(Animated& sprite, Player player);
 	void drawStaticSprite(Drawable sprite, Player player);
 

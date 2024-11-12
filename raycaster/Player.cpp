@@ -1,9 +1,16 @@
 #include <raylib.h>
+#include <iostream>
 #include <cmath>
 #include "Player.h"
-#include <iostream>
+#include "TextureManager.h";
 
-void Player::move(Map& map)
+void Player::act(Map& map)
+{
+	move(map);
+	attack();
+}
+
+void Player::move(Map map)
 {
 	double cosAngle = cos(angle);
 	double sinAngle = sin(angle);
@@ -46,3 +53,54 @@ void Player::move(Map& map)
 		angle = PI * 2;
 	}	
 }
+
+void Player::takeDamage(int damage)
+{
+}
+
+void Player::attack()
+{
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and !weapon->reloading) {
+		justShot = true;
+		weapon->reloading = true;
+	}
+}
+
+Player* Player::getInstance()
+{
+	if (!player) {
+		player = new Player();
+	}
+	return player;
+}
+
+Player::Player()
+{
+	position = { 2.1, 8 };
+	speed = 5.0;
+	rotationSpeed = 0.09f;
+	angle = 0;
+	weapon = new Weapon();
+	justShot = false;
+
+	//initialize weapon texture
+	auto texMgr = TextureManager::getInstance();
+	weapon->sprite = new Animated();
+	weapon->sprite->animationIndex = 0;
+	Texture staticTex = texMgr->getTexture("sprites\\static\\shotgun.png");
+	weapon->sprite->tex = staticTex;
+	weapon->sprite->textureArea = { 0, 0, (float)staticTex.width, (float)staticTex.height };
+	weapon->sprite->positionOnWindow.width = staticTex.width;
+	weapon->sprite->positionOnWindow.height = staticTex.height;
+	//shooting animation
+	Animation shooting = {};
+	shooting.texture = texMgr->getTexture("sprites\\animated\\gun.png");
+	shooting.numFrames = 11;
+	shooting.animationSpeed = 5.0;
+	shooting.textureArea = { 0, 0, (float)shooting.texture.width, (float)shooting.texture.height };
+	shooting.positionOnWindow.width = (float)(shooting.texture.width / shooting.numFrames);
+	shooting.positionOnWindow.height = (float)(shooting.texture.height);
+	weapon->sprite->animations.push_back(shooting);
+}
+
+Player* Player::player = nullptr;

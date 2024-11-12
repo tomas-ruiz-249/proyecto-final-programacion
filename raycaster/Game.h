@@ -3,7 +3,8 @@
 #include "Canvas.h"
 #include "Map.h"
 #include "RayCaster.h"
-#include "Object.h"
+#include "Enemy.h"
+#include "EnemyManager.h"
 
 class Game {
 public:
@@ -11,8 +12,11 @@ public:
 	Game();
 private:
 	void mainLoop();
+	void render();
+	void logic();
 	Canvas canvas;
 	Map map;
-	Player player;
+	Player* player;
 	ObjectManager objManager;
+	EnemyManager enemyManager;
 };

@@ -1,10 +1,19 @@
 #pragma once
 #include <raylib.h>
 
-struct Animation {
+class Animation {
+public:
 	int numFrames;
-	int currentFrame;
 	double frameTimer;
 	double animationSpeed;
+	Rectangle textureArea;
+	Rectangle positionOnWindow;
 	Texture texture;
+	bool stop;
+	int getCurrentFrame();
+	bool isAnimationDone();
+	void resetAnimation();
+	void nextFrame();
+private:
+	int currentFrame;
 };

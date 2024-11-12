@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <iostream>
 
 void Game::startGame()
 {
@@ -8,7 +9,9 @@ void Game::startGame()
 	CloseWindow();
 	canvas = Canvas(width, height);
 	canvas.startWindow();
+	player = Player::getInstance();
 	objManager.initObjects();
+	enemyManager.initEnemies();
 	mainLoop();
 }
 
@@ -16,7 +19,6 @@ Game::Game()
 {
 	map = Map();
 	canvas = Canvas();
-	player = Player();
 }
 
 void Game::mainLoop()
@@ -25,8 +27,18 @@ void Game::mainLoop()
 	while (!WindowShouldClose()) {
 		fps = std::to_string(GetFPS());
 		SetWindowTitle(fps.c_str());
-
-		player.move(map);
-		canvas.draw(map, player, objManager);
+		render();
+		logic();
 	}
+}
+
+void Game::render()
+{
+	canvas.draw(map, *player, objManager, enemyManager);
+}
+
+void Game::logic()
+{
+	player->act(map);
+	enemyManager.runEnemyBehaviour(*player, map);
 }

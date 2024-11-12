@@ -2,10 +2,15 @@
 #include "raylib.h"
 #include <cmath>
 
+bool Entity::isAlive()
+{
+	return health > 0;
+}
+
 Entity::Entity()
 {
-	position = { 2.1, 8 };
-	speed = 5.0;
-	rotationSpeed = 0.09f;
+	position = { 0 , 0 };
+	speed = 0.0;
+	rotationSpeed = 0.0;
 	angle = 0;
 }

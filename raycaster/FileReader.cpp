@@ -6,6 +6,9 @@
 #include "FileReader.h"
 #include "Animated.h"
 #include "TextureManager.h"
+#include "Health.h"
+#include "Ammo.h"
+#include "Lamp.h"
 
 bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]) {
     std::string path("assets\\data\\");
@@ -35,7 +38,7 @@ bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_S
     return true; 
 };
 
-bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& objectList) {
+bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>& objectList) {
     std::string path("assets\\data\\");
     path.append(fileName);
 
@@ -57,10 +60,8 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
         char * c = const_cast<char*>(line.c_str());
         char * token = strtok(c, ","); 
 
-        ObjectType type = ObjectType();
+        ObjectType type = invalid;
         Point2D position = { 0.0, 0.0 };
-        double scale = 0.0;
-        double shift = 0.0;
 
         for (int cont_col = 0; token != NULL; cont_col++)
         {
@@ -79,61 +80,156 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object>& 
             token = strtok(NULL, ","); 
         }
 
-        Object obj(type, position);
+        Object* obj;
 
-        switch (obj.type) {
+        switch (type) {
 			case health: {
+                Health* health = new Health(position);
                 Drawable* healthSprite = new Drawable();
                 healthSprite->scale = 0.29;
                 healthSprite->shift = 1.4;
-                healthSprite->position = obj.position;
+                healthSprite->position = health->position;
                 healthSprite->tex = texMgr->getTexture("sprites\\static\\health.png");
-                obj.sprite = healthSprite;
+                health->sprite = healthSprite;
+                obj = health;
                 break;
             }
 			case ammo:{
+                Ammo* ammo = new Ammo(position);
                 Drawable* ammoSprite = new Drawable();
 				ammoSprite->scale = 0.29;
 				ammoSprite->shift = 1.48;
-                ammoSprite->position = obj.position;
+                ammoSprite->position = ammo->position;
                 ammoSprite->tex = texMgr->getTexture("sprites\\static\\ammo.png");
-                obj.sprite = ammoSprite;
+                ammo->sprite = ammoSprite;
+                obj = ammo;
                 break;
             }
 			case lamp:{
-                //animated object
+                Lamp* lamp = new Lamp(position);
                 Animated* lampSprite = new Animated();
                 lampSprite->scale = 1.2;
                 lampSprite->shift = -0.05;
-                lampSprite->animationIndex = 1;
-                lampSprite->position = obj.position;
+                lampSprite->animationIndex = 0;
+                lampSprite->position = lamp->position;
                 lampSprite->tex = texMgr->getTexture("");
 
-                //create animations for animated
                 Animation red = {};
                 red.numFrames = 4;
-                red.animationSpeed = 0.0009;
+                red.animationSpeed = 2.0;
                 red.texture = texMgr->getTexture("sprites\\animated\\lamp.png");
-                lampSprite->animations.push_back(red);
 
 				Animation green = {};
                 green.numFrames = 4;
-                green.animationSpeed = 0.0009;
+                green.animationSpeed = 2.0;
                 green.texture = texMgr->getTexture("sprites\\animated\\lamp_green.png");
+
                 lampSprite->animations.push_back(green);
-                obj.sprite = lampSprite;
+                lampSprite->animations.push_back(red);
+
+                lamp->sprite = lampSprite;
+                obj = lamp;
                 break;
             }
             default:{
-                Drawable* undefined = new Drawable;
-                undefined->scale = 1;
-                undefined->shift = 0;
-                undefined->position = obj.position;
+                std::cout << "could not instanciate object\n";
+                break;
             }
         }
         objectList.push_back(obj);
     }
 
     file.close();
+    return true;
+}
+
+bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& enemyList)
+{
+    std::string filePath("assets\\data\\");
+    filePath.append(fileName);
+    std::ifstream file(filePath);
+    std::string line;
+    char* token;
+    int counter = 0;
+    TextureManager* texMgr = TextureManager::getInstance();
+    if (file.is_open()) {
+        std::getline(file, line);
+        while (std::getline(file, line)) {
+            Enemy enemy;
+            enemy.health = 100;
+            enemy.speed = 2;
+            token = strtok(const_cast<char*>(line.c_str()), ",");
+            while (token != NULL && counter < 3) {
+				switch (counter) {
+					case 0:
+						enemy.type = (EnemyType)std::stoi(token);
+						break;
+					case 1:
+						enemy.position.x = (double)std::stoi(token);
+						break;
+					case 2:
+						enemy.position.y = (double)std::stoi(token);
+						break;
+				}
+                token = strtok(nullptr, ",");
+                counter++;
+            }
+            counter = 0;
+            EnemyType& type = enemy.type;
+            switch (type) {
+				case demon:
+                {
+                    enemy.sprite = new Animated();
+                    enemy.sprite->tex = texMgr->getTexture("");
+                    enemy.sprite->animationIndex = 0;
+                    enemy.sprite->scale = 1;
+                    enemy.sprite->shift = 0;
+                    enemy.sprite->position = enemy.position;
+
+                    Animation idle = {};
+                    idle.texture = texMgr->getTexture("sprites\\animated\\demon.png");
+                    idle.numFrames = 4;
+                    idle.animationSpeed = 5.0;
+                    enemy.sprite->animations.push_back(idle);
+                    break;
+                }
+                case imp:
+                {
+                    enemy.sprite = new Animated();
+                    enemy.sprite->tex = texMgr->getTexture("");
+                    enemy.sprite->animationIndex = 0;
+                    enemy.sprite->scale = 0.9;
+                    enemy.sprite->shift = 0.1;
+                    enemy.sprite->position = enemy.position;
+
+                    Animation idle = {};
+                    idle.texture = texMgr->getTexture("sprites\\animated\\imp.png");
+                    idle.numFrames = 4;
+                    idle.animationSpeed = 7.0;
+
+                    Animation hurt = {};
+                    hurt.texture = texMgr->getTexture("sprites\\animated\\imp_hurt.png");
+                    hurt.numFrames = 5;
+                    hurt.animationSpeed = 4.6;
+
+                    Animation death = {};
+                    death.texture = texMgr->getTexture("sprites\\animated\\imp_death.png");
+                    death.numFrames = 5;
+                    death.animationSpeed = 3.5;
+
+                    enemy.sprite->animations.push_back(idle);
+                    enemy.sprite->animations.push_back(hurt);
+                    enemy.sprite->animations.push_back(death);
+                    break;
+                }
+            }
+            enemyList.push_back(enemy);
+        }
+        return true;
+    }
+    else {
+        std::cout << "could not open file " << fileName << std::endl;
+        return false;
+    }
     return true;
 }

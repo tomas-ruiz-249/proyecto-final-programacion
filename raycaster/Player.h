@@ -1,8 +1,18 @@
 #pragma once
 #include "Entity.h"
+#include "Weapon.h"
+
 
 class Player : public Entity {
 public:
-	void move(Map& map) override;
+	Weapon* weapon;
+	bool justShot;
+	void act(Map& map) override;
+	void move(Map map) override;
+	void takeDamage(int damage) override;
+	void attack() override;
+	static Player* getInstance();
 private:
+	static Player* player;
+	Player();
 };
