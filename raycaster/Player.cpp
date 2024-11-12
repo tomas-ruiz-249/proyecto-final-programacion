@@ -60,10 +60,13 @@ void Player::takeDamage(int damage)
 
 void Player::attack()
 {
-	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and !weapon->reloading) {
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and weapon->canShoot()) {
+		weapon->shoot();
 		justShot = true;
-		weapon->reloading = true;
 	}
+	else {
+	}
+	std::cout << justShot << "\n";
 }
 
 Player* Player::getInstance()

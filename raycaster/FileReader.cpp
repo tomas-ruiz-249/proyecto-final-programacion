@@ -95,7 +95,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
                 break;
             }
 			case ammo:{
-                Ammo* ammo = new Ammo(position);
+                AmmoBox* ammo = new AmmoBox(position);
                 Drawable* ammoSprite = new Drawable();
 				ammoSprite->scale = 0.29;
 				ammoSprite->shift = 1.48;

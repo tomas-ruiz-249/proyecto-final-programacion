@@ -63,9 +63,15 @@ void Canvas::startWindow()
 
 void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager, EnemyManager& enemyManager)
 {
+	std::string playerData("health: ");
+	playerData.append(std::to_string(player.health));
+	playerData.append(" ammo: ");
+	playerData.append(std::to_string(player.weapon->ammoCount));
 	BeginDrawing();
 	ClearBackground(BLACK);
 	draw3D(player, map, objManager, enemyManager);
+
+	DrawText(playerData.c_str(), 0, 0, 50, RED);
 	EndDrawing();
 }
 

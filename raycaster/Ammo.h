@@ -1,8 +1,8 @@
 #pragma once
 #include "Object.h"
 
-class Ammo : public Object {
+class AmmoBox : public Object {
 public:
 	int ammoCount;
-	Ammo(Point2D);
+	AmmoBox(Point2D);
 };
