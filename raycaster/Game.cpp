@@ -40,5 +40,6 @@ void Game::render()
 void Game::logic()
 {
 	player->act(map);
+	objManager.checkForPickup();
 	enemyManager.runEnemyBehaviour(*player, map);
 }

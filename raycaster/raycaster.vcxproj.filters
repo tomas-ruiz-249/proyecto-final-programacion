@@ -66,10 +66,13 @@
     <ClCompile Include="Lamp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ammo.cpp">
+    <ClCompile Include="HealthBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Health.cpp">
+    <ClCompile Include="AmmoBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeleeEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -134,13 +137,19 @@
     <ClInclude Include="EnemyManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Health.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Ammo.h">
+    <ClInclude Include="HealthBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lamp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AmmoBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeleeEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

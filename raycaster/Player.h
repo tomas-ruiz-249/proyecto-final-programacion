@@ -11,8 +11,13 @@ public:
 	void move(Map map) override;
 	void takeDamage(int damage) override;
 	void attack() override;
+	bool heal(int healthPoints);
 	static Player* getInstance();
+	friend class HealthBox;
 private:
+	int maxHealth;
+	double rotationSpeed;
+	double hurtTimer;
 	static Player* player;
 	Player();
 };

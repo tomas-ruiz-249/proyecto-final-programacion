@@ -7,7 +7,14 @@ class Weapon {
 public:
 	Animated* sprite;
 	int damage;
-	bool reloading;
+	unsigned int ammoCount;
+	void shoot();
+	bool canShoot();
 	Weapon();
-private:
+	//friend
+	friend class Canvas;
+	friend class AmmoBox;
+ private:
+	bool reloading;
+	int maxAmmo;
 };

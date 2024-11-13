@@ -6,9 +6,10 @@
 #include "FileReader.h"
 #include "Animated.h"
 #include "TextureManager.h"
-#include "Health.h"
-#include "Ammo.h"
+#include "HealthBox.h"
+#include "AmmoBox.h"
 #include "Lamp.h"
+#include "MeleeEnemy.h"
 
 bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]) {
     std::string path("assets\\data\\");
@@ -84,7 +85,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
 
         switch (type) {
 			case health: {
-                Health* health = new Health(position);
+                HealthBox* health = new HealthBox(position);
                 Drawable* healthSprite = new Drawable();
                 healthSprite->scale = 0.29;
                 healthSprite->shift = 1.4;
@@ -95,7 +96,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
                 break;
             }
 			case ammo:{
-                Ammo* ammo = new Ammo(position);
+                AmmoBox* ammo = new AmmoBox(position);
                 Drawable* ammoSprite = new Drawable();
 				ammoSprite->scale = 0.29;
 				ammoSprite->shift = 1.48;
@@ -143,7 +144,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
     return true;
 }
 
-bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& enemyList)
+bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& enemyList)
 {
     std::string filePath("assets\\data\\");
     filePath.append(fileName);
@@ -155,52 +156,39 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& e
     if (file.is_open()) {
         std::getline(file, line);
         while (std::getline(file, line)) {
-            Enemy enemy;
-            enemy.health = 100;
-            enemy.speed = 2;
+
+            EnemyType type;
+            Point2D pos = {};
             token = strtok(const_cast<char*>(line.c_str()), ",");
+
             while (token != NULL && counter < 3) {
 				switch (counter) {
 					case 0:
-						enemy.type = (EnemyType)std::stoi(token);
+						type = (EnemyType)std::stoi(token);
 						break;
 					case 1:
-						enemy.position.x = (double)std::stoi(token);
+						pos.x = (double)std::stoi(token);
 						break;
 					case 2:
-						enemy.position.y = (double)std::stoi(token);
+						pos.y = (double)std::stoi(token);
 						break;
 				}
                 token = strtok(nullptr, ",");
                 counter++;
             }
             counter = 0;
-            EnemyType& type = enemy.type;
-            switch (type) {
-				case demon:
-                {
-                    enemy.sprite = new Animated();
-                    enemy.sprite->tex = texMgr->getTexture("");
-                    enemy.sprite->animationIndex = 0;
-                    enemy.sprite->scale = 1;
-                    enemy.sprite->shift = 0;
-                    enemy.sprite->position = enemy.position;
 
-                    Animation idle = {};
-                    idle.texture = texMgr->getTexture("sprites\\animated\\demon.png");
-                    idle.numFrames = 4;
-                    idle.animationSpeed = 5.0;
-                    enemy.sprite->animations.push_back(idle);
-                    break;
-                }
-                case imp:
+            switch (type) {
+                case melee:
                 {
-                    enemy.sprite = new Animated();
-                    enemy.sprite->tex = texMgr->getTexture("");
-                    enemy.sprite->animationIndex = 0;
-                    enemy.sprite->scale = 0.9;
-                    enemy.sprite->shift = 0.1;
-                    enemy.sprite->position = enemy.position;
+                    MeleeEnemy* enemy = new MeleeEnemy(pos);
+                    enemy->speed = 3;
+                    enemy->sprite = new Animated();
+                    enemy->sprite->tex = texMgr->getTexture("");
+                    enemy->sprite->animationIndex = 0;
+                    enemy->sprite->scale = 0.9;
+                    enemy->sprite->shift = 0.1;
+                    enemy->sprite->position = enemy->position;
 
                     Animation idle = {};
                     idle.texture = texMgr->getTexture("sprites\\animated\\imp.png");
@@ -217,13 +205,31 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy>& e
                     death.numFrames = 5;
                     death.animationSpeed = 3.5;
 
-                    enemy.sprite->animations.push_back(idle);
-                    enemy.sprite->animations.push_back(hurt);
-                    enemy.sprite->animations.push_back(death);
+                    enemy->sprite->animations.push_back(idle);
+                    enemy->sprite->animations.push_back(hurt);
+                    enemy->sprite->animations.push_back(death);
+                    enemyList.push_back(enemy);
+                    break;
+                }
+				case range:
+                {
+                    /*MeleeEnemy* enemy = new MeleeEnemy(pos);
+                    enemy->sprite = new Animated();
+                    enemy->sprite->tex = texMgr->getTexture("");
+                    enemy->sprite->animationIndex = 0;
+                    enemy->sprite->scale = 1;
+                    enemy->sprite->shift = 0;
+                    enemy->sprite->position = enemy->position;
+
+                    Animation idle = {};
+                    idle.texture = texMgr->getTexture("sprites\\animated\\demon.png");
+                    idle.numFrames = 4;
+                    idle.animationSpeed = 5.0;
+                    enemy->sprite->animations.push_back(idle);
+                    enemyList.push_back(enemy);*/
                     break;
                 }
             }
-            enemyList.push_back(enemy);
         }
         return true;
     }
