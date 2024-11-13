@@ -61,23 +61,23 @@ void Canvas::startWindow()
 	DisableCursor();
 }
 
-void Canvas::draw(const Map& map, const Player& player, ObjectManager& objManager, EnemyManager& enemyManager)
+void Canvas::draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager)
 {
 	std::string playerData("health: ");
-	playerData.append(std::to_string(player.health));
+	playerData.append(std::to_string(player.getHealth()));
 	playerData.append(" ammo: ");
 	playerData.append(std::to_string(player.weapon->ammoCount));
+
 	BeginDrawing();
 	ClearBackground(BLACK);
 	draw3D(player, map, objManager, enemyManager);
-
-	DrawText(playerData.c_str(), 0, 0, 50, RED);
+	DrawText(playerData.c_str(), 0, 0, 50, WHITE);
 	EndDrawing();
 }
 
 void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objManager, EnemyManager& enemyManager)
 {
-	drawBackground();
+	drawBackground(player);
 
 	//add walls to queue
 	double rayAngle = player.angle - (halfFOV) + 0.0001;
@@ -99,9 +99,9 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	//add enemies to draw queue
 	auto enemies = enemyManager.getEnemyList();
 	for (auto& enemy: *enemies){
-		enemy.sprite->depth = enemy.sprite->getDistanceFromPlayer(enemy.position, player);
-		enemy.sprite->position = enemy.position;
-		drawQueue.push_back(enemy.sprite);
+		enemy->sprite->depth = enemy->sprite->getDistanceFromPlayer(enemy->position, player);
+		enemy->sprite->position = enemy->position;
+		drawQueue.push_back(enemy->sprite);
 	}
 
 	//sort queue by distance from player and draw
@@ -126,6 +126,7 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	drawQueue.clear();
 
 	drawWeapon(*player.weapon);
+	drawBlood(player);
 }
 
 
@@ -276,10 +277,12 @@ void Canvas::drawWeapon(Weapon& weapon)
 	}
 }
 
-void Canvas::drawBackground()
+void Canvas::drawBackground(Player player)
 {
 	Texture background = textureManager->getTexture("backgrounds\\sunset.png");
-	backgroundOffset += GetMouseDelta().x * 1.1;
+	if (player.isAlive()) {
+		backgroundOffset += GetMouseDelta().x * 1.1;
+	}
 	if (backgroundOffset > background.width) {
 		backgroundOffset = 0;
 	}
@@ -288,6 +291,14 @@ void Canvas::drawBackground()
 	DrawTexturePro(background, source, dest, { 0,0 }, 0, WHITE);
 	Color light = { 30, 30, 20 ,255 };
 	DrawRectangleGradientV(0, halfWindowHeight, windowWidth, halfWindowHeight, BLACK, light);
+}
+
+void Canvas::drawBlood(Player player)
+{
+	Color tint = RED;
+	tint.a = 200 * (100 - player.getHealth())/100;
+	Rectangle screenTint = { 0,0,windowWidth,windowHeight };
+	DrawRectangleRec(screenTint, tint);
 }
 
 void Canvas::animate(Animated& animated, int index, Color color)

@@ -6,7 +6,9 @@
 void Enemy::act(Map& map)
 {
 	if (isAlive()) {
-		move(map);
+		if (not hurt) {
+			move(map);
+		}
 		attack();
 	}
 }
@@ -14,17 +16,14 @@ void Enemy::act(Map& map)
 void Enemy::takeDamage(int damage)
 {
 	hurt = true;
-	health -= damage;
-}
-
-void Enemy::attack()
-{
-	Player* player = Player::getInstance();
-	std::cout << sprite->getDistanceFromPlayer(sprite->position, *player) << "\n";
-	if (sprite->getDistanceFromPlayer(sprite->position, *player) <= 0.5 and player->isAlive() and !player->hurt) {
-		player->takeDamage(damage);
+	if (health - damage < 0) {
+		health = 0;
+	}
+	else {
+		health -= damage;
 	}
 }
+
 
 void Enemy::move(Map map)
 {
@@ -39,6 +38,7 @@ void Enemy::move(Map map)
 
 	RayCastResult ray = rayCaster.rayCast(angle, position, map);
 	double distanceFromPlayer = sprite->getDistanceFromPlayer(position, player);
+	//approach only if player is on sight
 	if (distanceFromPlayer > 0.5 and ray.depth > distanceFromPlayer) {
 		if (map.isPositionEmpty(int(position.y + d.y), int(position.x))){
 			position.y += d.y;
@@ -55,8 +55,7 @@ Enemy::Enemy()
 	health = 100;
 }
 
-Enemy::Enemy(int damage)
+Enemy::Enemy(int health,int damage): Entity(health)
 {
-	health = 100;
 	this->damage = damage;
 }

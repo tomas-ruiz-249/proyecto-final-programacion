@@ -13,7 +13,7 @@
 class Canvas {
 public:
 	void startWindow();
-	void draw(const Map& map, const Player& player, ObjectManager& objManager, EnemyManager& enemyManager);
+	void draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager);
 	Canvas();
 	Canvas(int width, int height);
 private:
@@ -37,11 +37,12 @@ private:
 	double scale;
 
 
-	//3d drawing methods
+	//first person drawing methods
 	void draw3D(const Player& player, const Map& map, ObjectManager& objManager, EnemyManager& enemyManager);
 	void drawColumn(RayCastResult ray);
 	void drawWeapon(Weapon& weapon);
-	void drawBackground();
+	void drawBackground(Player player);
+	void drawBlood(Player player);
 	void animate(Animated& animated, int index, Color color);
 	void drawAnimatedSprite(Animated& sprite, Player player);
 	void drawStaticSprite(Drawable sprite, Player player);

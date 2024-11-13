@@ -9,10 +9,9 @@ public:
 	EnemyType type;
 	void act(Map& map) override;
 	void takeDamage(int damage) override;
-	void attack() override;
 	void move(Map map) override;
 	Enemy();
-	Enemy(int damage);
-private:
+	Enemy(int health,int damage);
+protected:
 	int damage;
 };

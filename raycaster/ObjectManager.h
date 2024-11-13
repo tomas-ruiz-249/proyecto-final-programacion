@@ -8,6 +8,7 @@ public:
 	std::vector<Object*>* getObjectList();
 	void initObjects();
 	void clearObjects();
+	void checkForPickup();
 private:
 	std::vector<Object*> objectList;
 };

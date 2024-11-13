@@ -130,7 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Ammo.cpp" />
+    <ClCompile Include="AmmoBox.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="Drawable.cpp" />
@@ -139,10 +139,11 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="HealthBox.cpp" />
     <ClCompile Include="Lamp.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MeleeEnemy.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -160,7 +161,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ammo.h" />
+    <ClInclude Include="AmmoBox.h" />
     <ClInclude Include="Animated.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Canvas.h" />
@@ -171,11 +172,13 @@
     <ClInclude Include="Enumerations.h" />
     <ClInclude Include="FileReader.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Health.h" />
+    <ClInclude Include="HealthBox.h" />
     <ClInclude Include="Lamp.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MeleeEnemy.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
     <!-- <ClInclude Include="Player.h" /> -->
     <ClInclude Include="Point2D.h" />

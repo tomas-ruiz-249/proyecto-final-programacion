@@ -13,6 +13,8 @@ public:
 	Weapon();
 	//friend
 	friend class Canvas;
-private:
+	friend class AmmoBox;
+ private:
 	bool reloading;
+	int maxAmmo;
 };

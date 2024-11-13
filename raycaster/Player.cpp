@@ -59,8 +59,7 @@ void Player::move(Map map)
 void Player::takeDamage(int damage)
 {
 	hurtTimer += GetFrameTime();
-	if (hurtTimer > 1.2) {
-		std::cout << "ouch\n";
+	if (hurtTimer > 0.3) {
 		health -= damage;
 		hurtTimer = 0;
 	}
@@ -74,6 +73,16 @@ void Player::attack()
 	}
 }
 
+bool Player::heal(int healthPoints)
+{
+	if (health < maxHealth) {
+		health += healthPoints;
+		return true;
+	}
+	return false;
+}
+
+
 Player* Player::getInstance()
 {
 	if (!player) {
@@ -84,9 +93,10 @@ Player* Player::getInstance()
 
 Player::Player()
 {
+	maxHealth = 100;
 	hurtTimer = 0;
-	health = 100;
-	position = { 2.0, 2.0 };
+	health = maxHealth;
+	position = { 20, 21 };
 	speed = 5.0;
 	rotationSpeed = 0.09f;
 	angle = 0;

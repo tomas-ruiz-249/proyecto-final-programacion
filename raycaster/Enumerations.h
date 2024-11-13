@@ -14,6 +14,6 @@ enum ObjectType {
 };
 
 enum EnemyType {
-	demon = 1,
-	imp = 2,
+	melee = 1,
+	range = 2,
 };
