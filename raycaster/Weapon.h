@@ -10,6 +10,7 @@ public:
 	unsigned int ammoCount;
 	void shoot();
 	bool canShoot();
+	bool refillAmmo(int refill);
 	Weapon();
 	//friend
 	friend class Canvas;

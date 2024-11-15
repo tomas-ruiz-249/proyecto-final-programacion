@@ -29,3 +29,17 @@ bool Weapon::canShoot()
 {
 	return not reloading and (ammoCount > 0);
 }
+
+bool Weapon::refillAmmo(int refill)
+{
+	if (ammoCount < maxAmmo) {
+		if (ammoCount + refill > maxAmmo) {
+			ammoCount = maxAmmo;
+		}
+		else {
+			ammoCount += refill;
+		}
+		return true;
+	}
+	return false;
+}
