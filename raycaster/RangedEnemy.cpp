@@ -19,6 +19,7 @@ void RangedEnemy::attack()
 	Projectile* proj;
 
 	if (attacking) {
+		//sonido ataque aqui
 		proj = new Projectile(position, angle, damage);
 		projectiles.push_back(proj);
 		attacking = false;

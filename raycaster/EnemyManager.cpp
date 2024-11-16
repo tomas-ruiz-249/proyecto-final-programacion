@@ -45,6 +45,7 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 		if (damage < 0) {
 			damage = 0;
 		}
+		//sonido daño aqui
 		enemy->takeDamage(damage);
 	}
 	setEnemyState(enemy);

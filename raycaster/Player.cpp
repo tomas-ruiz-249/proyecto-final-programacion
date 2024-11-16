@@ -42,6 +42,10 @@ void Player::move(Map map)
 		position.x += d.x;
 	}
 
+	if (IsKeyDown(KEY_W) or IsKeyDown(KEY_A) or IsKeyDown(KEY_S) or IsKeyDown(KEY_D)) {
+		//sonido caminar aqui
+	}
+
 	if (GetMouseDelta().x < 0) {
 		angle -= rotationSpeed * GetFrameTime() * -GetMouseDelta().x;
 	}
@@ -60,6 +64,7 @@ void Player::move(Map map)
 void Player::takeDamage(int damage)
 {
 	if (hurtTimer > 0.3) {
+		//sonido aqui
 		health -= damage;
 		hurtTimer = 0;
 	}
@@ -76,6 +81,7 @@ void Player::attack()
 bool Player::heal(int healthPoints)
 {
 	if (health < maxHealth) {
+		//sonido aqui
 		health += healthPoints;
 		return true;
 	}

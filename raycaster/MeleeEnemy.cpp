@@ -5,6 +5,7 @@ void MeleeEnemy::attack()
 {
 	Player* player = Player::getInstance();
 	if (sprite->getDistanceFromPlayer(sprite->position, *player) <= 0.5 and player->isAlive() and !player->hurt) {
+		//sonido ataque aqui
 		player->takeDamage(damage);
 	}
 }

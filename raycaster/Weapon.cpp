@@ -18,10 +18,12 @@ Weapon::Weapon()
 void Weapon::shoot()
 {
 	if (ammoCount) {
+		//sonido disparo aqui
 		ammoCount--;
 		reloading = true;
 	}
 	else {
+		//sonido recarga aqui
 		reloading = false;
 	}
 }
@@ -34,6 +36,7 @@ bool Weapon::canShoot()
 bool Weapon::refillAmmo(int refill)
 {
 	if (ammoCount < maxAmmo) {
+		//sonido aqui
 		if (ammoCount + refill > maxAmmo) {
 			ammoCount = maxAmmo;
 		}
