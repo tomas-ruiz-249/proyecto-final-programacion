@@ -19,7 +19,7 @@ void RangedEnemy::attack()
 	Projectile* proj;
 
 	if (attacking) {
-		proj = new Projectile(position, angle);
+		proj = new Projectile(position, angle, damage);
 		projectiles.push_back(proj);
 		attacking = false;
 	}

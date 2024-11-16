@@ -7,9 +7,9 @@ public:
 	Animated* sprite;
 	bool shoot();
 	Point2D getPosition();
-	Projectile(Point2D pos, double ang);
+	Projectile(Point2D pos, double ang, int damage);
 private:
-
+	int damage;
 	double timeLimit;
 	double timer;
 	double speed;

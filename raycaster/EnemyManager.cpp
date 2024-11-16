@@ -40,7 +40,8 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 	wasWallShot = ray.depth < enemy->sprite->getDistanceFromPlayer(enemy->position, player);
 	canTakeDamage = player.justShot and !wasWallShot and enemy->isAlive() and enemy->sprite->isOnScreenCenter;
 	if (canTakeDamage){
-		int damage = player.weapon->damage * (10 - enemy->sprite->getDistanceFromPlayer(enemy->position, player))/10;
+		int range = player.weapon->getRange();
+		int damage = player.weapon->getDamage() * (range - enemy->sprite->getDistanceFromPlayer(enemy->position, player))/range;
 		if (damage < 0) {
 			damage = 0;
 		}

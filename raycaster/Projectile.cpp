@@ -1,18 +1,20 @@
 #include "Projectile.h"
 #include "TextureManager.h"
 #include "RayCaster.h"
+#include <iostream>
 
-Projectile::Projectile(Point2D pos, double ang)
+Projectile::Projectile(Point2D pos, double ang, int damage)
 {
 	position = pos;
 	speed = 10;
 	angle = ang;
 	timer = 0;
 	timeLimit = 3;
+	this->damage = damage;
 
 	sprite = new Animated();
-	sprite->scale = 1;
-	sprite->shift = -0.3;
+	sprite->scale = 0.5;
+	sprite->shift = 0;
 
 	TextureManager* texMgr = TextureManager::getInstance();
 	Animation fireball = {};
@@ -33,6 +35,9 @@ bool Projectile::shoot()
 
 	bool projectileCrash = distanceToPlayer < 0.5 or rayToWall.depth < 0.5 or timer > timeLimit;
 	if (projectileCrash) {
+		if (distanceToPlayer < 0.5) {
+			player->takeDamage(damage);
+		}
 		return true;
 	}
 	else {
