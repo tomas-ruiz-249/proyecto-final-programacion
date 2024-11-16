@@ -9,6 +9,8 @@ void Game::startGame()
 	CloseWindow();
 	canvas = Canvas(width, height);
 	canvas.startWindow();
+	InitAudioDevice();
+	soundMgr->loadSounds();
 	player = Player::getInstance();
 	objManager.initObjects();
 	enemyManager.initEnemies();
@@ -19,6 +21,7 @@ Game::Game()
 {
 	map = Map::getInstance();
 	canvas = Canvas();
+	soundMgr = SoundManager::getInstance();
 }
 
 void Game::mainLoop()

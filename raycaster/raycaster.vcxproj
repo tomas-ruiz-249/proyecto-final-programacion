@@ -150,6 +150,7 @@
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="RangedEnemy.cpp" />
     <ClCompile Include="Raycaster.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -187,6 +188,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="RangedEnemy.h" />
     <ClInclude Include="RayCaster.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>

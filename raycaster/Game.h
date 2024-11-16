@@ -5,6 +5,7 @@
 #include "RayCaster.h"
 #include "Enemy.h"
 #include "EnemyManager.h"
+#include "SoundManager.h"
 
 class Game {
 public:
@@ -17,6 +18,7 @@ private:
 	Canvas canvas;
 	Map* map;
 	Player* player;
+	SoundManager* soundMgr;
 	ObjectManager objManager;
 	EnemyManager enemyManager;
 };
