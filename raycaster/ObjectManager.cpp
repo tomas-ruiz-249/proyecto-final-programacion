@@ -22,19 +22,18 @@ void ObjectManager::clearObjects()
 void ObjectManager::checkForPickup()
 {
     double dist = 0;
-    Object* ptr = 0;
     int counter = 0;
-    for (auto& obj : objectList) {
-        ptr = obj;
+    for (auto obj : objectList) {
         dist = obj->sprite->getDistanceFromPlayer(obj->position, *Player::getInstance());
         if (dist < 0.5) {
-			auto ammoPtr = dynamic_cast<AmmoBox*>(ptr);
-			auto healthPtr = dynamic_cast<HealthBox*>(ptr);
+			auto ammoPtr = dynamic_cast<AmmoBox*>(obj);
+			auto healthPtr = dynamic_cast<HealthBox*>(obj);
             if (ammoPtr) {
                 if (ammoPtr->pickup()) {
 					delete ammoPtr->sprite;
 					delete ammoPtr;
 					objectList.erase(objectList.begin() + counter);
+                    counter--;
                 }
             }
             else if (healthPtr) {
@@ -42,6 +41,7 @@ void ObjectManager::checkForPickup()
 					delete healthPtr->sprite;
 					delete healthPtr;
 					objectList.erase(objectList.begin() + counter);
+                    counter--;
                 }
             }
         }

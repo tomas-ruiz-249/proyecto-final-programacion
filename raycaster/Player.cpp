@@ -10,6 +10,7 @@ void Player::act(Map& map)
 		move(map);
 		attack();
 	}
+	hurtTimer += GetFrameTime();
 }
 
 void Player::move(Map map)
@@ -58,7 +59,6 @@ void Player::move(Map map)
 
 void Player::takeDamage(int damage)
 {
-	hurtTimer += GetFrameTime();
 	if (hurtTimer > 0.3) {
 		health -= damage;
 		hurtTimer = 0;

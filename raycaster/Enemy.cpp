@@ -8,8 +8,8 @@ void Enemy::act(Map& map)
 	if (isAlive()) {
 		if (not hurt) {
 			move(map);
+			attack();
 		}
-		attack();
 	}
 }
 

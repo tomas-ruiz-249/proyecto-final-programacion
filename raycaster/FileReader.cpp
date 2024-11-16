@@ -10,6 +10,7 @@
 #include "AmmoBox.h"
 #include "Lamp.h"
 #include "MeleeEnemy.h"
+#include "RangedEnemy.h"
 
 bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]) {
     std::string path("assets\\data\\");
@@ -213,7 +214,8 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                 }
 				case range:
                 {
-                    /*MeleeEnemy* enemy = new MeleeEnemy(pos);
+                    RangedEnemy* enemy = new RangedEnemy(pos);
+                    enemy->speed = 1;
                     enemy->sprite = new Animated();
                     enemy->sprite->tex = texMgr->getTexture("");
                     enemy->sprite->animationIndex = 0;
@@ -222,11 +224,24 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                     enemy->sprite->position = enemy->position;
 
                     Animation idle = {};
-                    idle.texture = texMgr->getTexture("sprites\\animated\\demon.png");
-                    idle.numFrames = 4;
-                    idle.animationSpeed = 5.0;
+                    idle.texture = texMgr->getTexture("sprites\\animated\\demon_idle.png");
+                    idle.numFrames = 2;
+                    idle.animationSpeed = 10.0;
                     enemy->sprite->animations.push_back(idle);
-                    enemyList.push_back(enemy);*/
+
+                    Animation hurt = {};
+                    hurt.texture = texMgr->getTexture("sprites\\animated\\demon_hurt.png");
+                    hurt.numFrames = 5;
+                    hurt.animationSpeed = 3.0;
+                    enemy->sprite->animations.push_back(hurt);
+
+                    Animation death = {};
+                    death.texture = texMgr->getTexture("sprites\\animated\\demon_death.png");
+                    death.numFrames = 5;
+                    death.animationSpeed = 9.0;
+                    enemy->sprite->animations.push_back(death);
+
+                    enemyList.push_back(enemy);
                     break;
                 }
             }
