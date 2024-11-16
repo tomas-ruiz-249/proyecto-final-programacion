@@ -17,7 +17,7 @@ void Game::startGame()
 
 Game::Game()
 {
-	map = Map();
+	map = Map::getInstance();
 	canvas = Canvas();
 }
 
@@ -34,12 +34,12 @@ void Game::mainLoop()
 
 void Game::render()
 {
-	canvas.draw(map, *player, objManager, enemyManager);
+	canvas.draw(*map, *player, objManager, enemyManager);
 }
 
 void Game::logic()
 {
-	player->act(map);
+	player->act(*map);
 	objManager.checkForPickup();
-	enemyManager.runEnemyBehaviour(*player, map);
+	enemyManager.runEnemyBehaviour(*player, *map);
 }

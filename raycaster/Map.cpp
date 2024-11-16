@@ -35,6 +35,16 @@ void Map::loadMap(const char* fileName)
 	}
 }
 
+Map* Map::instance;
+
+Map* Map::getInstance()
+{
+	if (!instance) {
+		instance = new Map();
+	}
+	return instance;
+}
+
 Map::Map()
 {
 	for (int row = 0; row < GRID_SIZE; row++) {
