@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "Player.h"
 #include <iostream>
+#include "SoundManager.h"
 
 Weapon::Weapon()
 {
@@ -18,13 +19,13 @@ Weapon::Weapon()
 void Weapon::shoot()
 {
 	if (ammoCount) {
-		//sonido disparo aqui
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound shootSound = soundManager->getSound("shoot.mp3"); //sonido de disparo
+		PlaySound(shootSound);
 		ammoCount--;
 		reloading = true;
 	}
 	else {
-		//sonido recarga aqui
-		reloading = false;
 	}
 }
 
@@ -36,7 +37,9 @@ bool Weapon::canShoot()
 bool Weapon::refillAmmo(int refill)
 {
 	if (ammoCount < maxAmmo) {
-		//sonido aqui
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound AmmoSound = soundManager->getSound("ammo.mp3"); //sonido de recogida de municion
+		PlaySound(AmmoSound);
 		if (ammoCount + refill > maxAmmo) {
 			ammoCount = maxAmmo;
 		}
