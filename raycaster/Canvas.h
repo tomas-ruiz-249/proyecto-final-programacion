@@ -18,6 +18,7 @@ public:
 	Canvas(int width, int height);
 private:
 	TextureManager* textureManager;
+	Font doomFont;
 	int screenWidth;
 	int screenHeight;
 	int windowWidth;
@@ -36,8 +37,8 @@ private:
 	double screenDist;
 	double scale;
 
-
 	//first person drawing methods
+
 	void draw3D(const Player& player, const Map& map, ObjectManager& objManager, EnemyManager& enemyManager);
 	void drawColumn(RayCastResult ray);
 	void drawWeapon(Weapon& weapon);
@@ -45,8 +46,8 @@ private:
 	void drawBlood(Player player);
 	void animate(Animated& animated, int index, Color color);
 	void drawAnimatedSprite(Animated& sprite, Player player);
+	void drawHUD(Player& player);
 	void drawStaticSprite(Drawable sprite, Player player);
-
 
 	//2d drawing methods
 	void drawMap(Map map);

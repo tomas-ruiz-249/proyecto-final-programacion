@@ -193,9 +193,6 @@
     <Image Include="assets\textures\backgrounds\sunset.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="assets\textures\sprites\static\imp.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="assets\textures\sprites\animated\demon.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -206,6 +203,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\sprites\animated\lamp_green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\sprites\static\hudgun.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
