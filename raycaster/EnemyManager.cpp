@@ -2,6 +2,7 @@
 #include "FileReader.h"
 #include "RayCaster.h"
 #include <iostream>
+#include "SoundManager.h"
 
 std::vector<Enemy*>* EnemyManager::getEnemyList()
 {
@@ -45,7 +46,9 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 		if (damage < 0) {
 			damage = 0;
 		}
-		//sonido daño aqui
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound EnemyAttackSound1 = soundManager->getSound("oof.mp3"); //sonido de ataque
+		PlaySound(EnemyAttackSound1);
 		enemy->takeDamage(damage);
 	}
 	setEnemyState(enemy);

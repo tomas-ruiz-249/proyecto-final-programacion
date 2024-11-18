@@ -3,6 +3,7 @@
 #include <cmath>
 #include "Player.h"
 #include "TextureManager.h";
+#include "SoundManager.h" 
 
 void Player::act(Map& map)
 {
@@ -42,10 +43,19 @@ void Player::move(Map map)
 		position.x += d.x;
 	}
 
-	if (IsKeyDown(KEY_W) or IsKeyDown(KEY_A) or IsKeyDown(KEY_S) or IsKeyDown(KEY_D)) {
-		//sonido caminar aqui
-	}
 
+	SoundManager* soundManager = SoundManager::getInstance();
+	Sound walkSound = soundManager->getSound("walk.mp3");
+	if (IsKeyDown(KEY_W) || IsKeyDown(KEY_A) || IsKeyDown(KEY_S) || IsKeyDown(KEY_D)) {
+		if (!IsSoundPlaying(walkSound)) {
+			PlaySound(walkSound);
+		}
+	}
+	else {
+		if (IsSoundPlaying(walkSound)) {
+			StopSound(walkSound);
+		}
+	}
 	if (GetMouseDelta().x < 0) {
 		angle -= rotationSpeed * GetFrameTime() * -GetMouseDelta().x;
 	}
@@ -64,7 +74,9 @@ void Player::move(Map map)
 void Player::takeDamage(int damage)
 {
 	if (hurtTimer > 0.3) {
-		//sonido aqui
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound hurtSound = soundManager->getSound("EnemyAttack.mp3"); //sonido de daño
+		PlaySound(hurtSound);
 		health -= damage;
 		hurtTimer = 0;
 	}
@@ -76,12 +88,19 @@ void Player::attack()
 		weapon->shoot();
 		justShot = true;
 	}
+	else if (!weapon->canShoot() and IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound noAmmoSound = soundManager->getSound("reload.mp3"); //sonido cuando no hay balas
+		PlaySound(noAmmoSound);
+	}
 }
 
 bool Player::heal(int healthPoints)
 {
 	if (health < maxHealth) {
-		//sonido aqui
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound healSound = soundManager->getSound("heal.mp3"); //sonido de recogida de vida
+		PlaySound(healSound);
 		health += healthPoints;
 		return true;
 	}

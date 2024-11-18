@@ -2,6 +2,7 @@
 #include "RangedEnemy.h"
 #include "TextureManager.h"
 #include "RayCaster.h"
+#include "SoundManager.h"
 
 void RangedEnemy::act(Map& map)
 {
@@ -19,7 +20,9 @@ void RangedEnemy::attack()
 	Projectile* proj;
 
 	if (attacking) {
-		//sonido ataque aqui
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound pewSound = soundManager->getSound("pew.mp3"); //sonido de disparo enemigos
+		PlaySound(pewSound);
 		proj = new Projectile(position, angle, damage);
 		projectiles.push_back(proj);
 		attacking = false;
