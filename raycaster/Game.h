@@ -15,7 +15,7 @@ private:
 	void render();
 	void logic();
 	Canvas canvas;
-	Map map;
+	Map* map;
 	Player* player;
 	ObjectManager objManager;
 	EnemyManager enemyManager;

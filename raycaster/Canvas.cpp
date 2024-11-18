@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "enemyManager.h"
 #include "Lamp.h"
+#include "RangedEnemy.h"
 
 
 
@@ -106,6 +107,17 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 		enemy->sprite->depth = enemy->sprite->getDistanceFromPlayer(enemy->position, player);
 		enemy->sprite->position = enemy->position;
 		drawQueue.push_back(enemy->sprite);
+		//add projectile to draw queue if enemy can shoot projectiles
+		auto ranged = dynamic_cast<RangedEnemy*>(enemy);
+		if (ranged) {
+			for (auto proj : ranged->getProjectiles()) {
+				if (proj) {
+					proj->sprite->position = proj->getPosition();
+					proj->sprite->depth = proj->sprite->getDistanceFromPlayer(proj->getPosition(), player);
+					drawQueue.push_back(proj->sprite);
+				}
+			}
+		}
 	}
 
 	//sort queue by distance from player and draw
