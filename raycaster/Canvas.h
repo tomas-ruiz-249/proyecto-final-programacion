@@ -13,7 +13,7 @@
 class Canvas {
 public:
 	void startWindow();
-	void draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager);
+	void draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager, GameState state);
 	Canvas();
 	Canvas(int width, int height);
 private:

@@ -17,3 +17,10 @@ enum EnemyType {
 	melee = 1,
 	range = 2,
 };
+
+enum GameState {
+	mainMenu = 0,
+	playing = 1,
+	gameOver = 2,
+	pause = 3
+};

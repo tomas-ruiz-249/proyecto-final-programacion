@@ -25,8 +25,6 @@ void Weapon::shoot()
 		ammoCount--;
 		reloading = true;
 	}
-	else {
-	}
 }
 
 bool Weapon::canShoot()

@@ -12,6 +12,7 @@ public:
 	void takeDamage(int damage) override;
 	void attack() override;
 	bool heal(int healthPoints);
+	void reset();
 	static Player* getInstance();
 	friend class HealthBox;
 private:

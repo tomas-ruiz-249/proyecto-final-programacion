@@ -58,17 +58,16 @@ void Player::move(Map map)
 	}
 	if (GetMouseDelta().x < 0) {
 		angle -= rotationSpeed * GetFrameTime() * -GetMouseDelta().x;
+		if (angle < 0) {
+			angle = 2 * PI;
+		}
 	}
 	if (GetMouseDelta().x > 0) {
 		angle += rotationSpeed * GetFrameTime() * GetMouseDelta().x;
+		if (angle > 2 * PI) {
+			angle = 0;
+		}
 	}
-
-	if (angle > PI * 2) {
-		angle = 0;
-	}
-	if (angle < 0) {
-		angle = PI * 2;
-	}	
 }
 
 void Player::takeDamage(int damage)
@@ -107,6 +106,14 @@ bool Player::heal(int healthPoints)
 	return false;
 }
 
+void Player::reset()
+{
+	health = maxHealth;
+	angle = 3 * PI/2;
+	position = { 20, 21 };
+	justShot = false;
+}
+
 
 Player* Player::getInstance()
 {
@@ -124,7 +131,7 @@ Player::Player()
 	position = { 20, 21 };
 	speed = 5.0;
 	rotationSpeed = 0.09f;
-	angle = 0;
+	//angle =  3 * PI / 2;
 	weapon = new Weapon();
 	justShot = false;
 

@@ -66,12 +66,25 @@ void Canvas::startWindow()
 	doomFont = LoadFont("assets/fonts/AmazDooMLeft.ttf");
 }
 
-void Canvas::draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager)
+void Canvas::draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager, GameState state)
 {
 	BeginDrawing();
 	ClearBackground(BLACK);
-	draw3D(player, map, objManager, enemyManager);
-	drawHUD(player);
+	switch (state) {
+	case mainMenu:
+		//dibujar menu principal
+		break;
+	case pause:
+		//dibujar indicador de pausa
+		//no es necesario poner break
+	case playing:
+		draw3D(player, map, objManager, enemyManager);
+		drawHUD(player);
+		break;
+	case gameOver:
+		//dibujar menu de game over
+		break;
+	}
 	EndDrawing();
 }
 
@@ -408,7 +421,8 @@ void Canvas::drawBackground(Player player)
 {
 	Texture background = textureManager->getTexture("backgrounds\\sunset.png");
 	if (player.isAlive()) {
-		backgroundOffset += GetMouseDelta().x * 1.1;
+		backgroundOffset = (player.angle) / (2 * PI);
+		backgroundOffset *= background.width;
 	}
 	if (backgroundOffset > background.width) {
 		backgroundOffset = 0;
