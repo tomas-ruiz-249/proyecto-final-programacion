@@ -309,6 +309,7 @@ void Canvas::drawHUD(Player& player)
 		DrawTextEx(doomFont, reloadingText.c_str(), { (float)reloadingTextPosX, (float)reloadingTextPosY }, reloadingFontSize, 2, WHITE);
 	}
 
+	//NUEVA
 	// 9. Dibujar la imagen del holograma en el extremo derecho de la pantalla con color dependiente de la vida
 	Texture hologramTexture = textureManager->getTexture("sprites\\static\\holograma.png");
 
