@@ -76,3 +76,4 @@ TextureManager::TextureManager()
 {
 	textures = new std::map<std::string,Texture>();
 }
+

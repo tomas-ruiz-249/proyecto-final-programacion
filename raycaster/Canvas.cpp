@@ -8,6 +8,8 @@
 #include "enemyManager.h"
 #include "Lamp.h"
 
+
+
 Canvas::Canvas()
 {
 	screenWidth = 0;
@@ -59,21 +61,23 @@ void Canvas::startWindow()
 	SetWindowState(FLAG_VSYNC_HINT);
 	SetTargetFPS(60);
 	DisableCursor();
+
+	doomFont = LoadFont("assets/fonts/AmazDooMLeft.ttf");
 }
 
 void Canvas::draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager)
 {
-	std::string playerData("health: ");
-	playerData.append(std::to_string(player.getHealth()));
-	playerData.append(" ammo: ");
-	playerData.append(std::to_string(player.weapon->ammoCount));
-
 	BeginDrawing();
 	ClearBackground(BLACK);
 	draw3D(player, map, objManager, enemyManager);
-	DrawText(playerData.c_str(), 0, 0, 50, WHITE);
+	drawHUD(player);
 	EndDrawing();
 }
+
+
+
+
+
 
 void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objManager, EnemyManager& enemyManager)
 {
@@ -220,6 +224,116 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 		animate(sprite, index, textureColor);
 	}
 }
+
+void Canvas::drawHUD(Player& player)
+{
+	// 1. Cargar y dibujar la textura del HUD
+	Texture hudTexture = textureManager->getTexture("sprites\\static\\hudgun.png");
+	int screenWidth = GetScreenWidth();
+	int screenHeight = GetScreenHeight();
+
+	int hudWidth = 350;
+	int hudHeight = 200;
+	int hudPosX = screenWidth - hudWidth - 20;
+	int hudPosY = screenHeight - hudHeight - 30;
+
+	Rectangle sourceRect = { 0.0f, 0.0f, (float)hudTexture.width, (float)hudTexture.height };
+	Rectangle destRect = { (float)hudPosX, (float)hudPosY, (float)hudWidth, (float)hudHeight };
+	Vector2 origin = { 0.0f, 0.0f };
+	DrawTexturePro(hudTexture, sourceRect, destRect, origin, 0.0f, WHITE);
+
+	// 2. Mostrar el texto de munición restante
+	int ammoCount = player.weapon->ammoCount;
+	std::string ammoText = "Ammo: " + std::to_string(ammoCount);
+	int ammoTextPosX = screenWidth - 300;
+	int ammoTextPosY = screenHeight - 100;
+	DrawTextEx(doomFont, ammoText.c_str(), { (float)ammoTextPosX, (float)ammoTextPosY }, 100, 2, WHITE);
+
+	// 3. Dibujar el ícono de la munición
+	Texture ammoIcon = textureManager->getTexture("sprites\\static\\ammodoom.png");
+	Rectangle ammoIconSource = { 0.0f, 0.0f, (float)ammoIcon.width, (float)ammoIcon.height };
+	Rectangle ammoIconDest = { (float)(screenWidth - 90), (float)(screenHeight - 100), 75.0f, 75.0f };
+	DrawTexturePro(ammoIcon, ammoIconSource, ammoIconDest, origin, 0.0f, WHITE);
+
+	// 4. Dibujar la barra de salud en la parte superior izquierda de la pantalla
+	int health = player.getHealth();
+	int totalBars = 10;
+	int numBars = health / 10;
+
+	int barWidth = 55;
+	int barHeight = 40;
+	int barStartX = 20;
+	int barStartY = 20;
+	int barSpacing = 10;
+
+	for (int i = 0; i < totalBars; i++)
+	{
+		int barPosX = barStartX + i * (barWidth + barSpacing);
+		Color barColor = (i < numBars) ? DARKPURPLE : DARKGRAY;
+		DrawRectangle(barPosX, barStartY, barWidth, barHeight, barColor);
+	}
+
+	// 5. Dibujar el texto de salud debajo de las barras de vida
+	std::string healthText = "Health: " + std::to_string(health) + "/100";
+	int healthTextPosX = barStartX;
+	int healthTextPosY = barStartY + barHeight + 20;
+	DrawTextEx(doomFont, healthText.c_str(), { (float)healthTextPosX, (float)healthTextPosY }, 50, 2, WHITE);
+
+	// 6. Mostrar mensaje de "Game Over" si la salud llega a 0
+	if (health <= 0)
+	{
+		std::string gameOverText = "GAME OVER";
+		int fontSize = 400;
+		int textWidth = MeasureTextEx(doomFont, gameOverText.c_str(), fontSize, 2).x;
+		int textPosX = (screenWidth / 2) - (textWidth / 2);
+		int textPosY = screenHeight / 2 - fontSize / 2;
+		DrawTextEx(doomFont, gameOverText.c_str(), { (float)textPosX, (float)textPosY }, fontSize, 2, GREEN);
+	}
+
+	// 7. Dibujar un crosshair circular en el centro de la pantalla
+	int centerX = screenWidth / 2;
+	int centerY = screenHeight / 2;
+	int radius = 20;
+	int thickness = 3;
+	DrawCircleLines(centerX, centerY, radius, WHITE);
+	DrawCircleLines(centerX, centerY, radius - thickness, WHITE);
+
+	// 8. Mostrar "Reloading" debajo del crosshair si el arma está recargando
+	if (player.weapon->reloading)
+	{
+		std::string reloadingText = "Reloading...";
+		int reloadingFontSize = 40;
+		int reloadingTextWidth = MeasureTextEx(doomFont, reloadingText.c_str(), reloadingFontSize, 2).x;
+		int reloadingTextPosX = (screenWidth / 2) - (reloadingTextWidth / 2);
+		int reloadingTextPosY = centerY + radius + 20;
+		DrawTextEx(doomFont, reloadingText.c_str(), { (float)reloadingTextPosX, (float)reloadingTextPosY }, reloadingFontSize, 2, WHITE);
+	}
+
+	// 9. Dibujar la imagen del holograma en el extremo derecho de la pantalla con color dependiente de la vida
+	Texture hologramTexture = textureManager->getTexture("sprites\\static\\holograma.png");
+
+	int hologramWidth = 200;
+	int hologramHeight = 300;
+	int hologramPosX = screenWidth - hologramWidth - 10;
+	int hologramPosY = (screenHeight / 2) - (hologramHeight / 2);
+
+	Rectangle hologramSource = { 0.0f, 0.0f, (float)hologramTexture.width, (float)hologramTexture.height };
+	Rectangle hologramDest = { (float)hologramPosX, (float)hologramPosY, (float)hologramWidth, (float)hologramHeight };
+
+	float healthPercentage = health / 100.0f;
+	Color hologramColor = {
+		(unsigned char)(255 * (1.0f - healthPercentage)),
+		(unsigned char)(255 * healthPercentage),
+		255,
+		255
+	};
+
+	DrawTexturePro(hologramTexture, hologramSource, hologramDest, origin, 0.0f, hologramColor);
+}
+
+
+
+
 
 void Canvas::drawColumn(RayCastResult ray)
 {

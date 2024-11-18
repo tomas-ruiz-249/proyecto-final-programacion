@@ -193,11 +193,11 @@
     <Image Include="assets\textures\sprites\animated\lamp.png" />
     <Image Include="assets\textures\sprites\animated\lamp_green.png" />
     <Image Include="assets\textures\sprites\static\health.png" />
-    <Image Include="assets\textures\sprites\static\imp.png" />
     <Xml Include="assets\textures\sprites\static\shotgun.png">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
     </Xml>
+    <Image Include="assets\textures\sprites\static\hudgun.png" />
     <Image Include="assets\textures\walls\brick.png" />
     <Image Include="assets\textures\walls\invalid.png" />
     <Image Include="assets\textures\walls\mossy_stone.png" />

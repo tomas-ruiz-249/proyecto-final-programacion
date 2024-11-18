@@ -103,6 +103,7 @@ Player::Player()
 	weapon = new Weapon();
 	justShot = false;
 
+
 	//initialize weapon texture
 	auto texMgr = TextureManager::getInstance();
 	weapon->sprite = new Animated();
