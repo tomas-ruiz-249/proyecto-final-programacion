@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\Usuario\Source\Repos\DonJuan213\proyecto-final-programacion\x64\Debug\raycaster.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\Usuario\source\repos\DonJuan213\proyecto-final-programacion\raycaster\assets\textures\sprites\static\shotgun.png</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\Usuario\source\repos\DonJuan213\proyecto-final-programacion\raycaster\assets\data\object_data.csv</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

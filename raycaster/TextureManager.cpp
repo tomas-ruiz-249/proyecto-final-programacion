@@ -49,17 +49,16 @@ TextureManager* TextureManager::getInstance()
 {
 	if (!instance) {
 		instance = new TextureManager();
-		std::cout << "no instance found, creating instance";
 	}
 	return instance;
 }
 
 TextureManager* TextureManager::instance;
 
-Texture TextureManager::getTexture(std::string texture)
+Texture TextureManager::getTexture(std::string fileName)
 {
 	auto dir = getTextureDir();
-	dir.append(texture);
+	dir.append(fileName);
 	if ((*textures).find(dir) == (*textures).end() ) {
 		return (*textures)[getTextureDir().append("walls\\invalid.png")];
 	}

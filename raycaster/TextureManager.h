@@ -5,7 +5,7 @@
 
 class TextureManager {
 public:
-	Texture getTexture(std::string texture);
+	Texture getTexture(std::string fileName);
 	void loadTexturesToVRAM();
 	static TextureManager* getInstance();
 private:
