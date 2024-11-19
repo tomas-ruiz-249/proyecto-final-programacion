@@ -22,5 +22,6 @@ private:
 	SoundManager* soundMgr;
 	ObjectManager objManager;
 	EnemyManager enemyManager;
-	GameState state;
+	GameState currentState;
+	GameState newState;
 };

@@ -8,8 +8,7 @@
 #include "enemyManager.h"
 #include "Lamp.h"
 #include "RangedEnemy.h"
-
-
+#include "Game.h"
 
 Canvas::Canvas()
 {
@@ -65,29 +64,38 @@ void Canvas::startWindow()
 
 	doomFont = LoadFont("assets/fonts/AmazDooMLeft.ttf");
 }
-
-void Canvas::draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager, GameState state)
+GameState Canvas::draw(const Map& map, Player& player, ObjectManager& objManager, EnemyManager& enemyManager, GameState state)
 {
+	GameState newState = na;
 	BeginDrawing();
 	ClearBackground(BLACK);
+
 	switch (state) {
 	case mainMenu:
-		//dibujar menu principal
+		newState = drawMenu();
 		break;
+
 	case pause:
-		//dibujar indicador de pausa
-		//no es necesario poner break
+		newState = drawPause();
+		break;
+
 	case playing:
 		draw3D(player, map, objManager, enemyManager);
 		drawHUD(player);
 		break;
+
 	case gameOver:
-		//dibujar menu de game over
+		DrawText("Nice Try", 250, 300, 100, RED);
+		DrawText("Press Enter to reset", 250, 400, 50, RED);
+		break;
+
+	case options:
+		newState = drawOptions();
 		break;
 	}
 	EndDrawing();
+	return newState;
 }
-
 
 
 
@@ -304,16 +312,6 @@ void Canvas::drawHUD(Player& player)
 	int healthTextPosY = barStartY + barHeight + 20;
 	DrawTextEx(doomFont, healthText.c_str(), { (float)healthTextPosX, (float)healthTextPosY }, 50, 2, WHITE);
 
-	// 6. Mostrar mensaje de "Game Over" si la salud llega a 0
-	if (health <= 0)
-	{
-		std::string gameOverText = "GAME OVER";
-		int fontSize = 400;
-		int textWidth = MeasureTextEx(doomFont, gameOverText.c_str(), fontSize, 2).x;
-		int textPosX = (screenWidth / 2) - (textWidth / 2);
-		int textPosY = screenHeight / 2 - fontSize / 2;
-		DrawTextEx(doomFont, gameOverText.c_str(), { (float)textPosX, (float)textPosY }, fontSize, 2, GREEN);
-	}
 
 	// 7. Dibujar un crosshair circular en el centro de la pantalla
 	int centerX = screenWidth / 2;
@@ -503,4 +501,140 @@ void Canvas::drawRay2D(Point2D start, Point2D end)
 	hit.x = end.x * cellSize;
 	hit.y = end.y * cellSize;
 	DrawLineEx(pos, hit,  1.f, GREEN);
+}
+
+GameState Canvas::drawMenu()
+{
+	GameState state = mainMenu;
+	ShowCursor();
+	int screenWidth = GetScreenWidth();
+	int screenHeight = GetScreenHeight();
+	std::string titleText = "The purifer of souls";
+	int titleFontSize = 250;
+	int titleTextWidth = MeasureTextEx(doomFont, titleText.c_str(), titleFontSize, 2).x;
+	int titleTextPosX = (screenWidth / 2) - (titleTextWidth / 2);
+	int titleTextPosY = screenHeight / 8;
+
+	DrawTextEx(doomFont, titleText.c_str(), { (float)titleTextPosX, (float)titleTextPosY }, titleFontSize, 2, RED);
+
+	int buttonWidth = 300;
+	int buttonHeight = 80;
+	int buttonSpacing = 20;
+
+	int buttonX = (screenWidth / 2) - (buttonWidth / 2);
+	int buttonYPlay = (screenHeight / 2) - (buttonHeight + buttonSpacing);
+	int buttonYExit = (screenHeight / 2) + buttonSpacing;
+
+	Color playColor = WHITE;
+	if (CheckCollisionPointRec(GetMousePosition(), { (float)buttonX, (float)buttonYPlay, (float)buttonWidth, (float)buttonHeight })) {
+		playColor = GRAY;
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+			state = playing;
+			HideCursor();
+			DisableCursor();
+		}
+	}
+	DrawRectangle(buttonX, buttonYPlay, buttonWidth, buttonHeight, playColor);
+	DrawText("Play", buttonX + (buttonWidth / 2) - MeasureText("Play", 40) / 2, buttonYPlay + (buttonHeight / 2) - 20, 40, BLACK);
+
+	Color exitColor = WHITE;
+	if (CheckCollisionPointRec(GetMousePosition(), { (float)buttonX, (float)buttonYExit, (float)buttonWidth, (float)buttonHeight })) {
+		exitColor = GRAY;
+		if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+			CloseWindow();
+		}
+	}
+	DrawRectangle(buttonX, buttonYExit, buttonWidth, buttonHeight, exitColor);
+	DrawText("Exit", buttonX + (buttonWidth / 2) - MeasureText("Exit", 40) / 2, buttonYExit + (buttonHeight / 2) - 20, 40, BLACK);
+	return state; 
+}
+
+GameState Canvas::drawPause()
+{
+	GameState state = pause;
+	int fontSize = 30;
+	int textPosY = screenHeight / 4;
+	int buttonWidth = 200;
+	int buttonHeight = 40;
+	Rectangle optionsButtonRect;
+	Rectangle menuButtonRect;
+	Rectangle exitButtonRect;
+
+	optionsButtonRect = { 250, 300, (float)buttonWidth, (float)buttonHeight };
+	menuButtonRect = { 250, 350, (float)buttonWidth, (float)buttonHeight };
+	exitButtonRect = { 250, 400, (float)buttonWidth, (float)buttonHeight };
+
+	ShowCursor();
+
+	ClearBackground(BLACK);
+	DrawText("PAUSED - Press P to resume", 250, 250, 30, GREEN);
+
+	DrawRectangleRec(optionsButtonRect, DARKGRAY);
+	DrawText("Options", 230 + (buttonWidth / 4), 300 + 10, fontSize, WHITE);
+
+	DrawRectangleRec(menuButtonRect, DARKGRAY);
+	DrawText("Menu", 230 + (buttonWidth / 4), 350 + 10, fontSize, WHITE);
+
+	DrawRectangleRec(exitButtonRect, DARKGRAY);
+	DrawText("Exit", 230 + (buttonWidth / 4), 400 + 10, fontSize, WHITE);
+
+	Vector2 mousePosition = GetMousePosition();
+
+	if (CheckCollisionPointRec(mousePosition, optionsButtonRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+	{
+		state = options;
+	}
+	if (CheckCollisionPointRec(mousePosition, menuButtonRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+	{
+		state = mainMenu;
+	}
+	if (CheckCollisionPointRec(mousePosition, exitButtonRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+	{
+		CloseWindow();
+	}
+	return state;
+}
+
+GameState Canvas::drawOptions()
+{
+	GameState state = options;
+
+	ClearBackground(BLACK);
+	Rectangle sizeButtonRect;
+	Rectangle sensibilityButtonRect;
+	Rectangle soundButtonRect;
+	Rectangle brightnessButtonRect;
+	int fontSize = 30;
+	int buttonWidth = 200;
+	int buttonHeight = 40;
+	std::string titleText = "Options";
+	int titleFontSize = 200;
+	int titleTextPosX = 250;
+	int titleTextPosY = 150;
+
+	DrawTextEx(doomFont, titleText.c_str(), { (float)titleTextPosX, (float)titleTextPosY }, titleFontSize, 2, GREEN);
+
+	sensibilityButtonRect = { 250, 360, (float)buttonWidth, (float)buttonHeight };
+	DrawRectangleRec(sensibilityButtonRect, DARKGRAY);
+	DrawText("Sensibility",
+		sensibilityButtonRect.x + (buttonWidth / 2) - MeasureText("Sensibility", fontSize) / 2,
+		sensibilityButtonRect.y + (buttonHeight / 2) - fontSize / 2,
+		fontSize, WHITE);
+
+
+	brightnessButtonRect = { 250, 420, (float)buttonWidth, (float)buttonHeight };
+	DrawRectangleRec(brightnessButtonRect, DARKGRAY);
+	DrawText("Brightness",
+		brightnessButtonRect.x + (buttonWidth / 2) - MeasureText("Brightness", fontSize) / 2,
+		brightnessButtonRect.y + (buttonHeight / 2) - fontSize / 2,
+		fontSize, WHITE);
+
+
+	soundButtonRect = { 250, 480, (float)buttonWidth, (float)buttonHeight };
+	DrawRectangleRec(soundButtonRect, DARKGRAY);
+	DrawText("Sounds",
+		soundButtonRect.x + (buttonWidth / 2) - MeasureText("Sounds", fontSize) / 2,
+		soundButtonRect.y + (buttonHeight / 2) - fontSize / 2,
+		fontSize, WHITE);
+	return state;
 }

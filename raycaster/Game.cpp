@@ -5,12 +5,14 @@ void Game::startGame()
 {
 	objManager.initObjects();
 	enemyManager.initEnemies();
+	currentState = mainMenu;
+	player->reset();
 	mainLoop();
 }
 
 GameState Game::getState()
 {
-	return state;
+	return currentState;
 }
 
 Game::Game()
@@ -27,7 +29,7 @@ Game::Game()
 
 	map = Map::getInstance();
 	player = Player::getInstance();
-	state = mainMenu;
+	currentState = mainMenu;
 }
 
 void Game::mainLoop()
@@ -43,17 +45,19 @@ void Game::mainLoop()
 
 void Game::render()
 {
-	canvas.draw(*map, *player, objManager, enemyManager, state);
+	newState = canvas.draw(*map, *player, objManager, enemyManager, currentState);
 }
 
 void Game::logic()
 {
-	switch (state) {
+	if (newState != na) 
+	{
+		currentState = newState;
+	}
+	
+
+	switch (currentState) {
 		case mainMenu:
-			//empezar juego si se toca cualquier tecla
-			if (GetKeyPressed()) {
-				state = playing;
-			}
 			break;
 		case playing:
 			//correr juego normalmente
@@ -62,26 +66,35 @@ void Game::logic()
 			enemyManager.runEnemyBehaviour(*player, *map);
 
 			//pausar juego si se presiona p y causar game over si jugador muere
-			if (IsKeyPressed(KEY_P) and player->isAlive()) {
-				state = pause;
+			if (IsKeyPressed(KEY_P) and player->isAlive()) 
+			{
+				currentState = pause;
 			}
-			if (not player->isAlive()) {
-				state = gameOver;
+			if (!player->isAlive()) 
+			{
+				currentState = gameOver;
 			}
 			break;
 		case pause:
 			//renaudar juego al presionar p
-			if (IsKeyPressed(KEY_P)) {
-				state = playing;
+			if (IsKeyPressed(KEY_P)) 
+			{
+				currentState = playing;
 			}
 			break;
 		case gameOver:
-			//reiniciar juego si se presiona una tecla despues de morir
-			if (GetKeyPressed()) {
-				state = mainMenu;
-				player->reset();
-				startGame();
+			if (IsKeyPressed(KEY_ENTER)) 
+			{
+				startGame(); 
 			}
 			break;
+		case options:
+			//Presione M para volver 
+			if (IsKeyPressed(KEY_M)) 
+			{
+				currentState = pause;
+			}
+			break;
+			
 	}
 }
