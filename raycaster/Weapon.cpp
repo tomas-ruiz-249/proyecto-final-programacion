@@ -1,15 +1,15 @@
 #include "Weapon.h"
 #include "TextureManager.h"
 #include "Player.h"
-#include <iostream>
 #include "SoundManager.h"
+#include <iostream>
 
 Weapon::Weapon()
 {
 	auto texMgr = TextureManager::getInstance();
 	sprite = new Animated();
 	sprite->tex = texMgr->getTexture("");
-	damage = 10;
+	damage = 30;
 	maxAmmo = 10;
 	range = 20;
 	ammoCount = maxAmmo;

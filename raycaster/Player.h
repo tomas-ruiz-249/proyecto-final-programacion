@@ -13,11 +13,13 @@ public:
 	void attack() override;
 	bool heal(int healthPoints);
 	void reset();
+	void setSensibility(double sensibility);
+	double getSensibility();
 	static Player* getInstance();
 	friend class HealthBox;
 private:
 	int maxHealth;
-	double rotationSpeed;
+	double sensibility;
 	double hurtTimer;
 	static Player* player;
 	Player();

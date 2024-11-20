@@ -13,6 +13,7 @@ public:
 	GameState getState();
 	Game();
 private:
+	void initGame();
 	void mainLoop();
 	void render();
 	void logic();

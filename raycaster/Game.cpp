@@ -3,10 +3,6 @@
 
 void Game::startGame()
 {
-	objManager.initObjects();
-	enemyManager.initEnemies();
-	currentState = mainMenu;
-	player->reset();
 	mainLoop();
 }
 
@@ -30,6 +26,13 @@ Game::Game()
 	map = Map::getInstance();
 	player = Player::getInstance();
 	currentState = mainMenu;
+}
+
+void Game::initGame()
+{
+	objManager.initObjects();
+	enemyManager.initEnemies();
+	player->reset();
 }
 
 void Game::mainLoop()
@@ -58,6 +61,7 @@ void Game::logic()
 
 	switch (currentState) {
 		case mainMenu:
+			initGame();
 			break;
 		case playing:
 			//correr juego normalmente
@@ -85,16 +89,17 @@ void Game::logic()
 		case gameOver:
 			if (IsKeyPressed(KEY_ENTER)) 
 			{
-				startGame(); 
+				currentState = mainMenu;
 			}
 			break;
 		case options:
-			//Presione M para volver 
-			if (IsKeyPressed(KEY_M)) 
+			if (IsKeyPressed(KEY_P)) 
 			{
 				currentState = pause;
 			}
 			break;
-			
+		case end:
+			CloseWindow();
+			break;
 	}
 }
