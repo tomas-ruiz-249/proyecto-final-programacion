@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Usuario\Source\Repos\DonJuan213\proyecto-final-programacion\x64\Debug\raycaster.exe</FullPath>
+      <FullPath>C:\Users\Tomas\Source\Repos\proyecto-final-programacion\x64\Debug\raycaster.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\Usuario\source\repos\DonJuan213\proyecto-final-programacion\raycaster\assets\textures\sprites\static\shotgun.png</FullPath>
+      <FullPath>C:\Users\Tomas\source\repos\proyecto-final-programacion\raycaster\assets\textures\sprites\static\shotgun.png</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Usuario\source\repos\DonJuan213\proyecto-final-programacion\raycaster\assets\data\object_data.csv</FullPath>
+      <FullPath>C:\Users\Tomas\source\repos\proyecto-final-programacion\raycaster\assets\data\object_data.csv</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

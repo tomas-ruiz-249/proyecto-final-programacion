@@ -57,18 +57,17 @@ void Player::move(Map map)
 		}
 	}
 	if (GetMouseDelta().x < 0) {
-		angle -= rotationSpeed * GetFrameTime() * -GetMouseDelta().x;
+		angle -= sensibility * GetFrameTime() * -GetMouseDelta().x;
+		if (angle < 0) {
+			angle = 2 * PI;
+		}
 	}
 	if (GetMouseDelta().x > 0) {
-		angle += rotationSpeed * GetFrameTime() * GetMouseDelta().x;
+		angle += sensibility * GetFrameTime() * GetMouseDelta().x;
+		if (angle > 2 * PI) {
+			angle = 0;
+		}
 	}
-
-	if (angle > PI * 2) {
-		angle = 0;
-	}
-	if (angle < 0) {
-		angle = PI * 2;
-	}	
 }
 
 void Player::takeDamage(int damage)
@@ -107,6 +106,25 @@ bool Player::heal(int healthPoints)
 	return false;
 }
 
+void Player::reset()
+{
+	health = maxHealth;
+	angle = PI/2;
+	position = { 2, 2 };
+	justShot = false;
+	weapon->refillAmmo(10);
+}
+
+void Player::setSensibility(double sensibility)
+{
+	this->sensibility = sensibility;
+}
+
+
+double Player::getSensibility()
+{
+	return sensibility;
+}
 
 Player* Player::getInstance()
 {
@@ -121,10 +139,9 @@ Player::Player()
 	maxHealth = 100;
 	hurtTimer = 0;
 	health = maxHealth;
-	position = { 20, 21 };
 	speed = 5.0;
-	rotationSpeed = 0.09f;
-	angle = 0;
+	sensibility = 0.1f;
+	//angle =  3 * PI / 2;
 	weapon = new Weapon();
 	justShot = false;
 

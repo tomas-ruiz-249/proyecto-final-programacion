@@ -10,8 +10,10 @@
 class Game {
 public:
 	void startGame();
+	GameState getState();
 	Game();
 private:
+	void initGame();
 	void mainLoop();
 	void render();
 	void logic();
@@ -21,4 +23,6 @@ private:
 	SoundManager* soundMgr;
 	ObjectManager objManager;
 	EnemyManager enemyManager;
+	GameState currentState;
+	GameState newState;
 };
