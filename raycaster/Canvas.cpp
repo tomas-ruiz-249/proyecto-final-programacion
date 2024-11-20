@@ -512,7 +512,7 @@ GameState Canvas::drawMenu()
 {
 	GameState state = mainMenu;
 	ShowCursor();
-	std::string titleText = "The purifer of souls";
+	std::string titleText = "The purifier of souls";
 	int titleFontSize = GetScreenWidth() * 0.15;
 	int titleTextWidth = MeasureTextEx(doomFont, titleText.c_str(), titleFontSize, 2).x;
 	int titleTextPosX = (windowWidth/ 2) - (titleTextWidth / 2);

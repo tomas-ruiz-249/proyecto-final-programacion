@@ -57,6 +57,14 @@ void Game::logic()
 	{
 		currentState = newState;
 	}
+
+	Sound theme = soundMgr->getSound("main_menu.mp3");
+	if (currentState == mainMenu and not IsSoundPlaying(theme)) {
+		PlaySound(theme);
+	}
+	else if (currentState != mainMenu) {
+		StopSound(theme);
+	}
 	
 
 	switch (currentState) {

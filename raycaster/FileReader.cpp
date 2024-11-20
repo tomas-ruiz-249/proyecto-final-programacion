@@ -191,10 +191,10 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                     enemy->sprite->shift = 0.1;
                     enemy->sprite->position = enemy->position;
 
-                    Animation idle = {};
-                    idle.texture = texMgr->getTexture("sprites\\animated\\imp.png");
-                    idle.numFrames = 4;
-                    idle.animationSpeed = 7.0;
+                    Animation walk = {};
+                    walk.texture = texMgr->getTexture("sprites\\animated\\zombie_walk.png");
+                    walk.numFrames = 4;
+                    walk.animationSpeed = 7.0;
 
                     Animation hurt = {};
                     hurt.texture = texMgr->getTexture("sprites\\animated\\imp_hurt.png");
@@ -206,7 +206,7 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                     death.numFrames = 5;
                     death.animationSpeed = 3.5;
 
-                    enemy->sprite->animations.push_back(idle);
+                    enemy->sprite->animations.push_back(walk);
                     enemy->sprite->animations.push_back(hurt);
                     enemy->sprite->animations.push_back(death);
                     enemyList.push_back(enemy);
