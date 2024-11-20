@@ -13,7 +13,7 @@
 class Canvas {
 public:
 	void startWindow();
-	void draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager, GameState state);
+	GameState draw(const Map& map, Player & player, ObjectManager& objManager, EnemyManager& enemyManager, GameState state);
 	Canvas();
 	Canvas(int width, int height);
 private:
@@ -54,4 +54,7 @@ private:
 	void drawPlayer(Player player);
 	void drawRay2D(Point2D position);
 	void drawRay2D(Point2D start, Point2D end);
+	GameState drawMenu();
+	GameState drawPause();
+	GameState drawOptions();
 };
