@@ -140,7 +140,7 @@ Player::Player()
 	hurtTimer = 0;
 	health = maxHealth;
 	speed = 5.0;
-	sensibility = 0.09f;
+	sensibility = 0.1f;
 	//angle =  3 * PI / 2;
 	weapon = new Weapon();
 	justShot = false;

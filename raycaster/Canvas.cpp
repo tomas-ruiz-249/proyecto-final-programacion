@@ -46,7 +46,7 @@ Canvas::Canvas(int width, int height)
 	double deltaAngle = FOV / numRays;
 	rayCaster = RayCaster(numRays, deltaAngle);
 	scale = windowWidth / numRays;
-	darkness = 0.00000009;
+	darkness = 0.00001;
 	textureManager = TextureManager::getInstance();
 
 	backgroundOffset = 0;
@@ -565,7 +565,6 @@ GameState Canvas::drawPause()
 	Rectangle menuButtonRect;
 	Rectangle exitButtonRect;
 
-	std::cout << windowWidth << " x " << windowHeight << "\n";
 	optionsButtonRect = { float(buttonX), (float)buttonY, (float)buttonWidth, (float)buttonHeight};
 	menuButtonRect = { float(buttonX), float(buttonY + buttonHeight + buttonOffset), (float)buttonWidth, (float)buttonHeight};
 	exitButtonRect = { float(buttonX), float(buttonY + (buttonHeight + buttonOffset) * 2), (float)buttonWidth, (float)buttonHeight};
@@ -616,7 +615,7 @@ GameState Canvas::drawOptions()
 	Rectangle sensibilityButtonRect;
 	Rectangle soundButtonRect;
 	Rectangle brightnessButtonRect;
-	std::string titleText = "Options";
+	std::string titleText = "Options - press p to go back";
 	int titleFontSize = fontSize * 0.8;
 	int titleTextPosX = windowWidth * 0.03;
 	int titleTextPosY = windowHeight * 0.1;
@@ -633,15 +632,28 @@ GameState Canvas::drawOptions()
 
 	sensibilityButtonRect = { (float)buttonX, float(buttonY), (float)buttonWidth, (float)buttonHeight};
 	DrawRectangleRec(sensibilityButtonRect, WHITE);
-	DrawText("Sensibility", sensibilityButtonRect.x + buttonWidth * 0.1, sensibilityButtonRect.y + buttonHeight * 0.1, fontSize / 5, BLACK);
+	double sensibility = Player::getInstance()->getSensibility();
+	std::string str("Sensibility: ");
+	str.append(std::to_string(sensibility));
+	str.erase ( str.find_last_not_of('0') + 1, std::string::npos );
+	str.erase ( str.find_last_not_of('.') + 1, std::string::npos );
+	DrawText(str.c_str(), sensibilityButtonRect.x + buttonWidth * 0.1, sensibilityButtonRect.y + buttonHeight * 0.1, fontSize / 5, BLACK);
 
 	brightnessButtonRect = { float(buttonX), float(buttonY + buttonHeight + buttonOffset), (float)buttonWidth, (float)buttonHeight};
 	DrawRectangleRec(brightnessButtonRect, WHITE);
-	DrawText("Shadow Level", brightnessButtonRect.x + buttonWidth * 0.1, brightnessButtonRect.y + buttonHeight * 0.1, fontSize / 5, BLACK);
+	str = std::string("Darkness: ");
+	str.append(std::to_string(darkness * 10000));
+	str.erase ( str.find_last_not_of('0') + 1, std::string::npos );
+	str.erase ( str.find_last_not_of('.') + 1, std::string::npos );
+	DrawText(str.c_str(), brightnessButtonRect.x + buttonWidth * 0.1, brightnessButtonRect.y + buttonHeight * 0.1, fontSize / 5, BLACK);
 
+	str = std::string("Volume: ");
+	str.append(std::to_string(GetMasterVolume()));
+	str.erase ( str.find_last_not_of('0') + 1, std::string::npos );
+	str.erase ( str.find_last_not_of('.') + 1, std::string::npos );
 	soundButtonRect = { float(buttonX), float(buttonY + (buttonHeight + buttonOffset) * 2), (float)buttonWidth, (float)buttonHeight};
 	DrawRectangleRec(soundButtonRect, WHITE);
-	DrawText("Volume", soundButtonRect.x + buttonWidth * 0.1, soundButtonRect.y + buttonHeight * 0.1, fontSize / 5, BLACK);
+	DrawText(str.c_str(), soundButtonRect.x + buttonWidth * 0.1, soundButtonRect.y + buttonHeight * 0.1, fontSize / 5, BLACK);
 
 	plusSensibility.x = sensibilityButtonRect.x + sensibilityButtonRect.width + buttonOffset;
 	plusSensibility.y = sensibilityButtonRect.y;
@@ -689,30 +701,44 @@ GameState Canvas::drawOptions()
 
 	if (CheckCollisionPointRec(mousePos, plusSensibility) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		Player* player = Player::getInstance();
-		player->setSensibility(player->getSensibility() + 0.1);
+		double sensibility = player->getSensibility();
+		if (sensibility < 1) {
+			player->setSensibility(sensibility + 0.1);
+		}
 	}
 
 	if (CheckCollisionPointRec(mousePos, minusSensibility) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		Player* player = Player::getInstance();
-		player->setSensibility(player->getSensibility() - 0.1);
+		double sensibility = player->getSensibility();
+		if (sensibility > 0) {
+			player->setSensibility(sensibility - 0.1);
+		}
 	}
 
 	if (CheckCollisionPointRec(mousePos, plusDarkness) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-		darkness += 0.0001;
+		if (darkness < 0.00020) {
+			darkness += 0.00001;
+		}
 	}
 
 	if (CheckCollisionPointRec(mousePos, minusDarkness) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-		darkness += 0.0001;
+		if (darkness > 0) {
+			darkness -= 0.00001;
+		}
 	}
 
 	if (CheckCollisionPointRec(mousePos, plusSound) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		float currentVol = GetMasterVolume();
-		SetMasterVolume(currentVol += 0.1);
+		if (currentVol < 1) {
+			SetMasterVolume(currentVol += 0.1);
+		}
 	}
 
 	if (CheckCollisionPointRec(mousePos, minusSound) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		float currentVol = GetMasterVolume();
-		SetMasterVolume(currentVol -= 0.1);
+		if (currentVol > 0) {
+			SetMasterVolume(currentVol -= 0.1);
+		}
 	}
 
 	return state;
