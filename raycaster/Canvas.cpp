@@ -118,7 +118,7 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	//add objects to draw queue
 	auto objects = objManager.getObjectList();
 	for (auto& obj : *objects) {
-		obj->sprite->depth = obj->sprite->getDistanceFromPlayer(obj->position, player);
+	obj->sprite->depth = obj->sprite->getDistanceFromPlayer(obj->position, player);
 		Drawable* casted = obj->sprite;
 		drawQueue.push_back(casted);
 	}
@@ -292,23 +292,23 @@ void Canvas::drawHUD(Player& player)
 	// 4. Dibujar la barra de salud en la parte superior izquierda de la pantalla
 	int health = player.getHealth();
 	int totalBars = 10;
-	int numBars = health / 10;
+	int numFilledBars = health / 10;
 
-	int barWidth = 55;
-	int barHeight = 40;
-	int barStartX = 20;
-	int barStartY = 20;
-	int barSpacing = 10;
+	int barWidth = windowWidth * 0.05;
+	int barHeight = windowHeight * 0.04;
+	int barStartX = windowWidth * 0.01;
+	int barStartY = windowHeight * 0.03;
+	int barSpacing = windowWidth * 0.009;
 
 	for (int i = 0; i < totalBars; i++)
 	{
 		int barPosX = barStartX + i * (barWidth + barSpacing);
-		Color barColor = (i < numBars) ? DARKPURPLE : DARKGRAY;
+		Color barColor = (i < numFilledBars) ? DARKPURPLE : DARKGRAY;
 		DrawRectangle(barPosX, barStartY, barWidth, barHeight, barColor);
 	}
 
 	// 5. Dibujar el texto de salud debajo de las barras de vida
-	std::string healthText = "Health: " + std::to_string(health) + "/100";
+	std::string healthText = "Health: " + std::to_string(health) + " / " + std::to_string(player.getMaxHealth());
 	int healthTextPosX = barStartX;
 	int healthTextPosY = barStartY + barHeight + 20;
 	DrawTextEx(doomFont, healthText.c_str(), { (float)healthTextPosX, (float)healthTextPosY }, 50, 2, WHITE);
@@ -332,28 +332,6 @@ void Canvas::drawHUD(Player& player)
 		int reloadingTextPosY = centerY + radius + 20;
 		DrawTextEx(doomFont, reloadingText.c_str(), { (float)reloadingTextPosX, (float)reloadingTextPosY }, reloadingFontSize, 2, WHITE);
 	}
-
-	//NUEVA
-	// 9. Dibujar la imagen del holograma en el extremo derecho de la pantalla con color dependiente de la vida
-	Texture hologramTexture = textureManager->getTexture("sprites\\static\\holograma.png");
-
-	int hologramWidth = 200;
-	int hologramHeight = 300;
-	int hologramPosX = screenWidth - hologramWidth - 10;
-	int hologramPosY = (screenHeight / 2) - (hologramHeight / 2);
-
-	Rectangle hologramSource = { 0.0f, 0.0f, (float)hologramTexture.width, (float)hologramTexture.height };
-	Rectangle hologramDest = { (float)hologramPosX, (float)hologramPosY, (float)hologramWidth, (float)hologramHeight };
-
-	float healthPercentage = health / 100.0f;
-	Color hologramColor = {
-		(unsigned char)(255 * (1.0f - healthPercentage)),
-		(unsigned char)(255 * healthPercentage),
-		255,
-		255
-	};
-
-	DrawTexturePro(hologramTexture, hologramSource, hologramDest, origin, 0.0f, hologramColor);
 }
 
 

@@ -183,7 +183,7 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                 case melee:
                 {
                     MeleeEnemy* enemy = new MeleeEnemy(pos);
-                    enemy->speed = 3;
+                    enemy->speed = 4;
                     enemy->sprite = new Animated();
                     enemy->sprite->tex = texMgr->getTexture("");
                     enemy->sprite->animationIndex = 0;
@@ -192,18 +192,18 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                     enemy->sprite->position = enemy->position;
 
                     Animation walk = {};
-                    walk.texture = texMgr->getTexture("sprites\\animated\\zombie_walk.png");
+                    walk.texture = texMgr->getTexture("sprites\\animated\\demon_walk.png");
                     walk.numFrames = 4;
                     walk.animationSpeed = 7.0;
 
                     Animation hurt = {};
-                    hurt.texture = texMgr->getTexture("sprites\\animated\\imp_hurt.png");
+                    hurt.texture = texMgr->getTexture("sprites\\animated\\demon_hurt.png");
                     hurt.numFrames = 5;
-                    hurt.animationSpeed = 4.6;
+                    hurt.animationSpeed = 5.0;
 
                     Animation death = {};
-                    death.texture = texMgr->getTexture("sprites\\animated\\imp_death.png");
-                    death.numFrames = 5;
+                    death.texture = texMgr->getTexture("sprites\\animated\\demon_death.png");
+                    death.numFrames = 7;
                     death.animationSpeed = 3.5;
 
                     enemy->sprite->animations.push_back(walk);
@@ -215,7 +215,7 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
 				case range:
                 {
                     RangedEnemy* enemy = new RangedEnemy(pos);
-                    enemy->speed = 1;
+                    enemy->speed = 2;
                     enemy->sprite = new Animated();
                     enemy->sprite->tex = texMgr->getTexture("");
                     enemy->sprite->animationIndex = 0;
@@ -223,21 +223,21 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                     enemy->sprite->shift = 0;
                     enemy->sprite->position = enemy->position;
 
-                    Animation idle = {};
-                    idle.texture = texMgr->getTexture("sprites\\animated\\demon_idle.png");
-                    idle.numFrames = 2;
-                    idle.animationSpeed = 10.0;
-                    enemy->sprite->animations.push_back(idle);
+                    Animation walk = {};
+                    walk.texture = texMgr->getTexture("sprites\\animated\\zombie_walk.png");
+                    walk.numFrames = 4;
+                    walk.animationSpeed = 9.0;
+                    enemy->sprite->animations.push_back(walk);
 
                     Animation hurt = {};
-                    hurt.texture = texMgr->getTexture("sprites\\animated\\demon_hurt.png");
-                    hurt.numFrames = 5;
-                    hurt.animationSpeed = 3.0;
+                    hurt.texture = texMgr->getTexture("sprites\\animated\\zombie_hurt.png");
+                    hurt.numFrames = 4;
+                    hurt.animationSpeed = 8.0;
                     enemy->sprite->animations.push_back(hurt);
 
                     Animation death = {};
-                    death.texture = texMgr->getTexture("sprites\\animated\\demon_death.png");
-                    death.numFrames = 5;
+                    death.texture = texMgr->getTexture("sprites\\animated\\zombie_death.png");
+                    death.numFrames = 7;
                     death.animationSpeed = 9.0;
                     enemy->sprite->animations.push_back(death);
 
