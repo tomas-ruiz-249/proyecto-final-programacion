@@ -252,9 +252,11 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 							and posX < (halfWindowWidth + current.positionOnWindow.width);
 
 		Color textureColor = WHITE;
-		textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
-		textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
-		textureColor.b = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		if (current.texture.id != textureManager->getTexture("sprites\\animated\\lamp.png").id) {
+			textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
+			textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
+			textureColor.b = 225 / (1 + pow(sprite.depth, 5) * darkness);
+		}
 		animate(sprite, index, textureColor);
 	}
 }
@@ -396,7 +398,7 @@ void Canvas::drawWeapon(Weapon& weapon)
 
 void Canvas::drawBackground(Player player)
 {
-	Texture background = textureManager->getTexture("backgrounds\\sunset.png");
+	Texture background = textureManager->getTexture("backgrounds\\fog.png");
 	if (player.isAlive()) {
 		backgroundOffset = (player.angle) / (2 * PI);
 		backgroundOffset *= background.width;

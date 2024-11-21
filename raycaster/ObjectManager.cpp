@@ -11,6 +11,7 @@ std::vector<Object*>* ObjectManager::getObjectList()
 
 void ObjectManager::initObjects()
 {
+	objectList.clear();
     FileReader::readObjectsFromFile("object_data.csv", objectList);
 }
 

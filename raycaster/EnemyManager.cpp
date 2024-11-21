@@ -11,6 +11,7 @@ std::vector<Enemy*>* EnemyManager::getEnemyList()
 
 void EnemyManager::initEnemies()
 {
+	enemyList.clear();
     FileReader::readEnemiesFromFile("enemy_data.csv", enemyList);
 }
 
@@ -46,9 +47,6 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 		if (damage < 0) {
 			damage = 0;
 		}
-		SoundManager* soundManager = SoundManager::getInstance();
-		Sound EnemyAttackSound1 = soundManager->getSound("oof.mp3"); //sonido de ataque
-		PlaySound(EnemyAttackSound1);
 		enemy->takeDamage(damage);
 	}
 	setEnemyState(enemy);

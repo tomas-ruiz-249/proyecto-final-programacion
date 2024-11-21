@@ -56,6 +56,12 @@ void RangedEnemy::move(Map map)
 		Enemy::move(map);
 	}
 }
+void RangedEnemy::takeDamage(int damage)
+{
+	Enemy::takeDamage(damage);
+	Sound hurt = SoundManager::getInstance()->getSound("demon_hurt.mp3");
+	PlaySound(hurt);
+}
 std::vector<Projectile*> RangedEnemy::getProjectiles()
 {
 	return projectiles;

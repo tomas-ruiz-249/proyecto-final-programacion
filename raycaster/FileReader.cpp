@@ -126,8 +126,8 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
                 green.animationSpeed = 2.0;
                 green.texture = texMgr->getTexture("sprites\\animated\\lamp_green.png");
 
-                lampSprite->animations.push_back(green);
                 lampSprite->animations.push_back(red);
+                lampSprite->animations.push_back(green);
 
                 lamp->sprite = lampSprite;
                 obj = lamp;
