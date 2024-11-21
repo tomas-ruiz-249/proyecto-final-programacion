@@ -126,6 +126,11 @@ double Player::getSensibility()
 	return sensibility;
 }
 
+int Player::getMaxHealth()
+{
+	return maxHealth;
+}
+
 Player* Player::getInstance()
 {
 	if (!player) {

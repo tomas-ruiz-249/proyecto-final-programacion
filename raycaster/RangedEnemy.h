@@ -8,6 +8,7 @@ public:
 	void act(Map& map) override;
 	void attack() override;
 	void move(Map map) override;
+	void takeDamage(int damage) override;
 	std::vector<Projectile*> getProjectiles();
 	RangedEnemy(Point2D position);
 private:

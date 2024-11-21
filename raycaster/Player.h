@@ -15,6 +15,7 @@ public:
 	void reset();
 	void setSensibility(double sensibility);
 	double getSensibility();
+	int getMaxHealth();
 	static Player* getInstance();
 	friend class HealthBox;
 private:

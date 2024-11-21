@@ -3,7 +3,8 @@ enum WallType {
 	none = 0,
 	brick = 1,
 	stone = 2,
-	mossyStone = 3
+	mossyStone = 3,
+	door = 4,
 };
 
 enum ObjectType {
