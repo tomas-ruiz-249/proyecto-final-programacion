@@ -39,10 +39,10 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
+    <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectManager.cpp">
+    <ClCompile Include="ItemManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileReader.cpp">
@@ -81,6 +81,9 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -113,13 +116,13 @@
     <ClInclude Include="Enumerations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
+    <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Drawable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectManager.h">
+    <ClInclude Include="ItemManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileReader.h">
@@ -162,6 +165,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

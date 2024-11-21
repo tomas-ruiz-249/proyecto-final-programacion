@@ -14,7 +14,7 @@ void Player::act(Map& map)
 	hurtTimer += GetFrameTime();
 }
 
-void Player::move(Map map)
+void Player::move(Map& map)
 {
 	double cosAngle = cos(angle);
 	double sinAngle = sin(angle);
@@ -44,6 +44,19 @@ void Player::move(Map map)
 	}
 
 
+	bool isNearDoorY = map.isDoor(int(position.y + d.y), int(position.x));
+	bool isNearDoorX = map.isDoor(int(position.y), int(position.x + d.x));
+	bool isNearDoor = isNearDoorX or isNearDoorY;
+
+	if (isNearDoor and IsKeyPressed(KEY_SPACE) and not map.isDoor(int(position.y), int(position.x)) ) {
+		if (isNearDoorX) {
+			map.toggleDoor(int(position.y), int(position.x + d.x));
+		}
+		else {
+			map.toggleDoor(int(position.y + d.y), int(position.x));
+		}
+	}
+
 	SoundManager* soundManager = SoundManager::getInstance();
 	Sound walkSound = soundManager->getSound("walk.mp3");
 	if (IsKeyDown(KEY_W) || IsKeyDown(KEY_A) || IsKeyDown(KEY_S) || IsKeyDown(KEY_D)) {
@@ -56,6 +69,7 @@ void Player::move(Map map)
 			StopSound(walkSound);
 		}
 	}
+
 	if (GetMouseDelta().x < 0) {
 		angle -= sensibility * GetFrameTime() * -GetMouseDelta().x;
 		if (angle < 0) {
@@ -83,7 +97,7 @@ void Player::takeDamage(int damage)
 
 void Player::attack()
 {
-	if ((IsMouseButtonDown(MOUSE_BUTTON_LEFT) or IsKeyDown(KEY_SPACE)) and weapon->canShoot()) {
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and weapon->canShoot()) {
 		weapon->shoot();
 		justShot = true;
 	}
@@ -100,7 +114,12 @@ bool Player::heal(int healthPoints)
 		SoundManager* soundManager = SoundManager::getInstance();
 		Sound healSound = soundManager->getSound("heal.mp3"); //sonido de recogida de vida
 		PlaySound(healSound);
-		health += healthPoints;
+		if (healthPoints + health > maxHealth) {
+			health = maxHealth;
+		}
+		else {
+			health += healthPoints;
+		}
 		return true;
 	}
 	return false;

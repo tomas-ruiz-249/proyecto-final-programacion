@@ -7,9 +7,26 @@ void MeleeEnemy::attack()
 	Player* player = Player::getInstance();
 	if (sprite->getDistanceFromPlayer(sprite->position, *player) <= 0.5 and player->isAlive() and !player->hurt) {
 		SoundManager* soundManager = SoundManager::getInstance();
-		Sound EnemyAttackSound = soundManager->getSound("EnemyAttack.mp3"); //sonido de ataque
-		PlaySound(EnemyAttackSound);
+		Sound EnemyAttackSound = soundManager->getSound("demon_attack.mp3"); //sonido de ataque
+		if (!IsSoundPlaying(EnemyAttackSound)) {
+			PlaySound(EnemyAttackSound);
+		}
 		player->takeDamage(damage);
+	}
+}
+
+void MeleeEnemy::takeDamage(int damage)
+{
+	Enemy::takeDamage(damage);
+	if (isAlive()) {
+		Sound hurt = SoundManager::getInstance()->getSound("demon_hurt.mp3");
+		SetSoundVolume(hurt, 1);
+		PlaySound(hurt);
+	}
+	if (!isAlive()) {
+		Sound dead = SoundManager::getInstance()->getSound("demon_death.mp3");
+		SetSoundVolume(dead, 1);
+		PlaySound(dead);
 	}
 }
 

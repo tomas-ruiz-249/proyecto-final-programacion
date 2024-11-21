@@ -1,8 +1,8 @@
 #pragma once
-#include "Object.h"
+#include "Item.h"
 #include "Pickup.h"
 
-class HealthBox : public Object , public Pickup{
+class HealthBox : public Item , public Pickup{
 public:
 	int healingPoints;
 	HealthBox(Point2D pos);

@@ -1,8 +1,8 @@
 #pragma once
-#include "Object.h"
+#include "Item.h"
 #include "Pickup.h"
 
-class AmmoBox : public Object, public Pickup{
+class AmmoBox : public Item, public Pickup{
 public:
 	int ammoCount;
 	bool pickup() override;

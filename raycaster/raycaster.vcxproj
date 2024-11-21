@@ -144,8 +144,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MeleeEnemy.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="RangedEnemy.cpp" />
@@ -179,8 +179,8 @@
     <ClInclude Include="Lamp.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MeleeEnemy.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemManager.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
     <!-- <ClInclude Include="Player.h" /> -->

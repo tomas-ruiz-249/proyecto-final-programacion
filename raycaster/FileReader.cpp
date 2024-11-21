@@ -12,9 +12,8 @@
 #include "MeleeEnemy.h"
 #include "RangedEnemy.h"
 
-bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_SIZE]) {
-    std::string path("assets\\data\\");
-    path.append(fileName);
+bool FileReader::readMapFromFile(const char* fileName, WallType** map) {
+    std::string path(fileName);
     std::ifstream file(path); 
     if (!file.is_open()) {
         std::cerr << "Error al abrir el archivo de mapa.\n";
@@ -30,7 +29,7 @@ bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_S
         int col = 0;
 
         while (getline(ss, value, ',') && col < GRID_SIZE) {
-            map[row][col] = stoi(value);
+            map[row][col] = (WallType)stoi(value);
             col++;
         }
         row++;
@@ -40,10 +39,8 @@ bool FileReader::readMapFromFile(const char* fileName, int map[GRID_SIZE][GRID_S
     return true; 
 };
 
-bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>& objectList) {
-    std::string path("assets\\data\\");
-    path.append(fileName);
-
+bool FileReader::readItemsFromFile(const char* fileName, std::vector<Item*>& itemList) {
+    std::string path(fileName);
     std::ifstream file(path);
     if (!file.is_open())
     {
@@ -62,7 +59,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
         char * c = const_cast<char*>(line.c_str());
         char * token = strtok(c, ","); 
 
-        ObjectType type = invalid;
+        ItemType type = invalid;
         Point2D position = { 0.0, 0.0 };
 
         for (int cont_col = 0; token != NULL; cont_col++)
@@ -70,7 +67,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
             switch (cont_col)
             {
             case 0:
-                type = static_cast<ObjectType>(std::stoi(token));
+                type = static_cast<ItemType>(std::stoi(token));
                 break;
             case 1:
                 position.x = std::stod(token);
@@ -82,7 +79,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
             token = strtok(NULL, ","); 
         }
 
-        Object* obj;
+        Item* item;
 
         switch (type) {
 			case health: {
@@ -93,7 +90,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
                 healthSprite->position = health->position;
                 healthSprite->tex = texMgr->getTexture("sprites\\static\\health.png");
                 health->sprite = healthSprite;
-                obj = health;
+                item = health;
                 break;
             }
 			case ammo:{
@@ -104,7 +101,7 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
                 ammoSprite->position = ammo->position;
                 ammoSprite->tex = texMgr->getTexture("sprites\\static\\ammo.png");
                 ammo->sprite = ammoSprite;
-                obj = ammo;
+                item = ammo;
                 break;
             }
 			case lamp:{
@@ -130,15 +127,15 @@ bool FileReader::readObjectsFromFile(const char* fileName, std::vector<Object*>&
                 lampSprite->animations.push_back(green);
 
                 lamp->sprite = lampSprite;
-                obj = lamp;
+                item = lamp;
                 break;
             }
             default:{
-                std::cout << "could not instanciate object\n";
+                std::cout << "could not instanciate item\n";
                 break;
             }
         }
-        objectList.push_back(obj);
+        itemList.push_back(item);
     }
 
     file.close();

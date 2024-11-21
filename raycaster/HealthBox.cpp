@@ -1,8 +1,8 @@
 #include "HealthBox.h"
 
-HealthBox::HealthBox(Point2D pos) : Object(pos)
+HealthBox::HealthBox(Point2D pos) : Item(pos)
 {
-	healingPoints = 10;
+	healingPoints = 30;
 }
 
 bool HealthBox::pickup()

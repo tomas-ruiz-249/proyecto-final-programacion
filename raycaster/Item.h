@@ -4,14 +4,14 @@
 #include "Enumerations.h"
 #include "Drawable.h"
 
-class Object {
+class Item {
 public:
 	Point2D position;
 	Drawable* sprite;
 
 	//constructors
-	Object();
-	Object(Point2D position);
-	virtual ~Object() = default;
+	Item();
+	Item(Point2D position);
+	virtual ~Item() = default;
 private:
 };

@@ -1,14 +1,14 @@
 #include <math.h>
 #include <raylib.h>
-#include "Object.h"
+#include "Item.h"
 
-Object::Object()
+Item::Item()
 {
 	position = Point2D();
 	sprite = nullptr;
 }
 
-Object::Object(Point2D position)
+Item::Item(Point2D position)
 {
 	this->position = position;
 	sprite = nullptr;

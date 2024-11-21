@@ -50,7 +50,7 @@ void RangedEnemy::checkForProjectileColision()
 }
 
 
-void RangedEnemy::move(Map map)
+void RangedEnemy::move(Map& map)
 {
 	if (!attacking) {
 		Enemy::move(map);
@@ -59,8 +59,15 @@ void RangedEnemy::move(Map map)
 void RangedEnemy::takeDamage(int damage)
 {
 	Enemy::takeDamage(damage);
-	Sound hurt = SoundManager::getInstance()->getSound("demon_hurt.mp3");
-	PlaySound(hurt);
+	std::cout << health << "\n";
+	if (isAlive()) {
+		//Sound hurt = SoundManager::getInstance()->getSound("demon_hurt.mp3");
+		//PlaySound(hurt);
+	}
+	if (!isAlive()) {
+		//Sound dead = SoundManager::getInstance()->getSound("demon_death.mp3");
+		//PlaySound(dead);
+	}
 }
 std::vector<Projectile*> RangedEnemy::getProjectiles()
 {
