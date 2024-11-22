@@ -46,7 +46,7 @@ Canvas::Canvas(int width, int height)
 	double deltaAngle = FOV / numRays;
 	rayCaster = RayCaster(numRays, deltaAngle);
 	scale = windowWidth / numRays;
-	darkness = 0.00001;
+	darkness = 0.00013;
 	textureManager = TextureManager::getInstance();
 
 	backgroundOffset = 0;
@@ -64,7 +64,7 @@ void Canvas::startWindow()
 
 	doomFont = LoadFontEx("assets/fonts/AmazDooMLeft.ttf", 500, nullptr, 0);
 }
-GameState Canvas::draw(const Map& map, Player& player, ObjectManager& objManager, EnemyManager& enemyManager, GameState state)
+GameState Canvas::draw(const Map& map, Player& player, ItemManager& objManager, EnemyManager& enemyManager, GameState state)
 {
 	GameState newState = na;
 	BeginDrawing();
@@ -102,7 +102,7 @@ GameState Canvas::draw(const Map& map, Player& player, ObjectManager& objManager
 
 
 
-void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objManager, EnemyManager& enemyManager)
+void Canvas::draw3D(const Player& player, const Map& map, ItemManager& objManager, EnemyManager& enemyManager)
 {
 	drawBackground(player);
 
@@ -115,10 +115,10 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 	}
 	rayCaster.clearRays();
 
-	//add objects to draw queue
-	auto objects = objManager.getObjectList();
-	for (auto& obj : *objects) {
-	obj->sprite->depth = obj->sprite->getDistanceFromPlayer(obj->position, player);
+	//add Items to draw queue
+	auto items = objManager.getCurrentItemList();
+	for (auto& obj : *items) {
+		obj->sprite->depth = obj->sprite->getDistanceFromPlayer(obj->position, player);
 		Drawable* casted = obj->sprite;
 		drawQueue.push_back(casted);
 	}
@@ -170,7 +170,7 @@ void Canvas::draw3D(const Player& player, const Map& map, ObjectManager& objMana
 
 void Canvas::drawStaticSprite(Drawable sprite, Player player)
 {
-	//difference between player position and object position;
+	//difference between player position and Item position;
 	Point2D d;
 	d.x = sprite.position.x - player.position.x;
 	d.y = sprite.position.y - player.position.y;
@@ -209,7 +209,7 @@ void Canvas::drawStaticSprite(Drawable sprite, Player player)
 
 void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 {
-	//difference between player position and object position;
+	//difference between player position and Item position;
 	Point2D d;
 	d.x = sprite.position.x - player.position.x;
 	d.y = sprite.position.y - player.position.y;
@@ -359,6 +359,9 @@ void Canvas::drawColumn(RayCastResult ray)
 		break;
 	case mossyStone:
 		columnTexture = textureManager->getTexture("walls\\mossy_stone.png");
+		break;
+	case closedDoor:
+		columnTexture = textureManager->getTexture("walls\\door.png");
 		break;
 	default:
 		columnTexture = textureManager->getTexture("");

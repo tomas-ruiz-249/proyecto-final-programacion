@@ -1,13 +1,13 @@
 #pragma once
 #include "Enemy.h"
-#include "Object.h"
+#include "Item.h"
 #include "Projectile.h"
 
 class RangedEnemy : public Enemy {
 public:
 	void act(Map& map) override;
 	void attack() override;
-	void move(Map map) override;
+	void move(Map& map) override;
 	void takeDamage(int damage) override;
 	std::vector<Projectile*> getProjectiles();
 	RangedEnemy(Point2D position);

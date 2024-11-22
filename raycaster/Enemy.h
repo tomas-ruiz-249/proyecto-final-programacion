@@ -9,7 +9,7 @@ public:
 	EnemyType type;
 	void act(Map& map) override;
 	void takeDamage(int damage) override;
-	void move(Map map) override;
+	void move(Map& map) override;
 	Enemy();
 	Enemy(int health,int damage);
 protected:

@@ -4,10 +4,11 @@ enum WallType {
 	brick = 1,
 	stone = 2,
 	mossyStone = 3,
-	door = 4,
+	closedDoor = 4,
+	openDoor = 6,
 };
 
-enum ObjectType {
+enum ItemType {
 	invalid = 0,
 	health = 1,
 	ammo = 2,

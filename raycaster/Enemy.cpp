@@ -25,7 +25,7 @@ void Enemy::takeDamage(int damage)
 }
 
 
-void Enemy::move(Map map)
+void Enemy::move(Map& map)
 {
 	Player player = *Player::getInstance();
 	RayCaster rayCaster;

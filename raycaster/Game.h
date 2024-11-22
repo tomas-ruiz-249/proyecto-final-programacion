@@ -17,11 +17,14 @@ private:
 	void mainLoop();
 	void render();
 	void logic();
+	void playCurrentSong();
+	void nextLevel();
+	int currentLevel;
 	Canvas canvas;
 	Map* map;
 	Player* player;
 	SoundManager* soundMgr;
-	ObjectManager objManager;
+	ItemManager* itemManager;
 	EnemyManager enemyManager;
 	GameState currentState;
 	GameState newState;

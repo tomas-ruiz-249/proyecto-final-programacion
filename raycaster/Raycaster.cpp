@@ -21,7 +21,7 @@ RayCastResult RayCaster::rayCast(double angle, Point2D position, Map& map)
 		gridPos.x = static_cast<unsigned int>(xNearest.hitCoordinates.x);
 		gridPos.y = static_cast<unsigned int>(xNearest.hitCoordinates.y);
 		if (!map.isPositionEmpty(gridPos.y, gridPos.x) || gridPos.x >= maxDepth) {
-			xNearest.wall = (WallType)map.getElementAt(gridPos.y, gridPos.x);
+			xNearest.wall = map.getElementAt(gridPos.y, gridPos.x);
 			break;
 		}
 		xNearest.hitCoordinates.x += xStep.x;
@@ -42,7 +42,7 @@ RayCastResult RayCaster::rayCast(double angle, Point2D position, Map& map)
 		gridPos.x = static_cast<unsigned int>(yNearest.hitCoordinates.x);
 		gridPos.y = static_cast<unsigned int>(yNearest.hitCoordinates.y);
 		if (!map.isPositionEmpty(gridPos.y, gridPos.x) || gridPos.y >= maxDepth) {
-			yNearest.wall = (WallType)map.getElementAt(gridPos.y, gridPos.x);
+			yNearest.wall = map.getElementAt(gridPos.y, gridPos.x);
 			break;
 		}
 		yNearest.hitCoordinates.x += yStep.x;

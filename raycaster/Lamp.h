@@ -1,7 +1,7 @@
 #pragma once
-#include "Object.h"
+#include "Item.h"
 
-class Lamp : public Object {
+class Lamp : public Item {
 public:
 	int LampColor;
 	Lamp(Point2D pos);

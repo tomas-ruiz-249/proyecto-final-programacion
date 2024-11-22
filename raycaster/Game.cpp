@@ -22,7 +22,8 @@ Game::Game()
 	InitAudioDevice();
 	soundMgr = SoundManager::getInstance();
 	soundMgr->loadSounds();
-
+	itemManager = ItemManager::getInstance();
+	currentLevel = 0;
 	map = Map::getInstance();
 	player = Player::getInstance();
 	currentState = mainMenu;
@@ -30,7 +31,7 @@ Game::Game()
 
 void Game::initGame()
 {
-	objManager.initObjects();
+	itemManager->initItems();
 	enemyManager.initEnemies();
 	player->reset();
 }
@@ -48,7 +49,7 @@ void Game::mainLoop()
 
 void Game::render()
 {
-	newState = canvas.draw(*map, *player, objManager, enemyManager, currentState);
+	newState = canvas.draw(*map, *player, *itemManager, enemyManager, currentState);
 }
 
 void Game::logic()
@@ -72,10 +73,13 @@ void Game::logic()
 			initGame();
 			break;
 		case playing:
-			//correr juego normalmente
+			playCurrentSong();
 			player->act(*map);
-			objManager.checkForPickup();
+			itemManager->checkForPickup();
 			enemyManager.runEnemyBehaviour(*player, *map);
+			if (enemyManager.areEnemiesDead()) {
+				nextLevel();
+			}
 
 			//pausar juego si se presiona p y causar game over si jugador muere
 			if (IsKeyPressed(KEY_P) and player->isAlive()) 
@@ -110,4 +114,25 @@ void Game::logic()
 			CloseWindow();
 			break;
 	}
+}
+
+void Game::playCurrentSong()
+{
+	Sound currentSong = soundMgr->getSound("");
+	switch (map->getCurrentIndex()) {
+		case 0:
+			currentSong = soundMgr->getSound("level1.mp3");
+			break;
+	}
+	if (!IsSoundPlaying(currentSong)) {
+		SetSoundVolume(currentSong, 0.7);
+		PlaySound(currentSong);
+	}
+}
+
+void Game::nextLevel()
+{
+	currentLevel++;
+	map->setLevel(currentLevel);
+	itemManager->setLevel(currentLevel);
 }

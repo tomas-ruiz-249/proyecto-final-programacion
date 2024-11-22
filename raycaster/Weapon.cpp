@@ -10,7 +10,7 @@ Weapon::Weapon()
 	sprite = new Animated();
 	sprite->tex = texMgr->getTexture("");
 	damage = 30;
-	maxAmmo = 10;
+	maxAmmo = 25;
 	range = 20;
 	ammoCount = maxAmmo;
 	reloading = false;
@@ -21,6 +21,7 @@ void Weapon::shoot()
 	if (ammoCount) {
 		SoundManager* soundManager = SoundManager::getInstance();
 		Sound shootSound = soundManager->getSound("shoot.mp3"); //sonido de disparo
+		SetSoundVolume(shootSound, 0.5);
 		PlaySound(shootSound);
 		ammoCount--;
 		reloading = true;

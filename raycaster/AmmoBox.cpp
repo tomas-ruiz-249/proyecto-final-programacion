@@ -7,8 +7,8 @@ bool AmmoBox::pickup()
 	return player->weapon->refillAmmo(ammoCount);
 }
 
-AmmoBox::AmmoBox(Point2D pos) : Object(pos)
+AmmoBox::AmmoBox(Point2D pos) : Item(pos)
 {
-	ammoCount = 10;
+	ammoCount = 15;
 }
 

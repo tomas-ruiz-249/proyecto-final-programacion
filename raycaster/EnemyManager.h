@@ -8,6 +8,7 @@ public:
 	void initEnemies();
 	void clearEnemies();
 	void runEnemyBehaviour(Player& player, Map map);
+	bool areEnemiesDead();
 private:
 	void damageEnemy(Enemy* enemy, Player player, Map map);
 	void setEnemyState(Enemy* enemy);
