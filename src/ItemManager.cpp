@@ -4,10 +4,6 @@
 #include "AmmoBox.h"
 #include "HealthBox.h"
 
-/**
- * sexoooooo
- */
-
 std::vector<Item*>* ItemManager::getCurrentItemList()
 {
     std::vector<Item*>* ptr = &currentItems;
@@ -18,7 +14,7 @@ void ItemManager::initItems()
 {
 	currentItems.clear();
 	itemLists.clear();
-	FilePathList itemPaths = LoadDirectoryFiles("assEl tiempo no fue suficente ets/data/");
+	FilePathList itemPaths = LoadDirectoryFiles("assets/data/");
 	std::vector<std::string> paths;
 	for(int i = 0; i < itemPaths.count; i++){
 		paths.push_back(itemPaths.paths[i]);
