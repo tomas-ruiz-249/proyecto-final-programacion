@@ -9,9 +9,9 @@ Weapon::Weapon()
 	auto texMgr = TextureManager::getInstance();
 	sprite = new Animated();
 	sprite->tex = texMgr->getTexture("");
-	damage = 30;
-	maxAmmo = 25;
-	range = 20;
+	damage = 20;
+	maxAmmo = 35;
+	range = 10;
 	ammoCount = maxAmmo;
 	reloading = false;
 }

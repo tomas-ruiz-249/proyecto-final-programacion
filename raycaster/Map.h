@@ -11,14 +11,15 @@ public:
 	void toggleDoor(int row, int column);
 	WallType getElementAt(int row, int column);
 	void loadMaps();
+	void restoreMaps();
 	int getCurrentIndex();
 	void setLevel(int level);
+	int getMapCount();
 	static Map* getInstance();
 private:
 	std::vector<WallType**> maps;
 	WallType** currentMap;
 	int currentMapIndex;
-	//WallType grid[GRID_SIZE][GRID_SIZE];
 	Map();
 	static Map* instance;
 };

@@ -20,6 +20,7 @@ private:
 	void playCurrentSong();
 	void nextLevel();
 	int currentLevel;
+	Sound currentSong;
 	Canvas canvas;
 	Map* map;
 	Player* player;

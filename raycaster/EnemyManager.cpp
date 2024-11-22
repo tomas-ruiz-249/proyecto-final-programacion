@@ -23,13 +23,18 @@ void EnemyManager::initEnemies()
 	for (auto item : *itemList) {
 		Lamp* lampPtr = dynamic_cast<Lamp*>(item);
 		if (lampPtr) {
-			EnemyType type = EnemyType(itMgr->getCurrentLevel() % 2 + 1);
+			EnemyType type;
+			if (Map::getInstance()->getCurrentIndex() < 2) {
+				type = EnemyType(itMgr->getCurrentLevel() % 2 + 1);
+			}
+			else {
+				type = EnemyType(rand() % 2 + 1);
+			}
 			Point2D pos = lampPtr->position;
 			switch (type) {
                 case melee:
                 {
                     MeleeEnemy* enemy = new MeleeEnemy(pos);
-                    enemy->speed = 4;
                     enemy->sprite = new Animated();
                     enemy->sprite->tex = texMgr->getTexture("");
                     enemy->sprite->animationIndex = 0;
@@ -61,7 +66,6 @@ void EnemyManager::initEnemies()
 				case range:
 				{
 					RangedEnemy* enemy = new RangedEnemy(pos);
-					enemy->speed = 2;
 					enemy->sprite = new Animated();
 					enemy->sprite->tex = texMgr->getTexture("");
 					enemy->sprite->animationIndex = 0;
@@ -135,6 +139,7 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 	if (canTakeDamage){
 		int range = player.weapon->getRange();
 		int damage = player.weapon->getDamage() * (range - enemy->sprite->getDistanceFromPlayer(enemy->position, player))/range;
+		std::cout << damage << "\n";
 		if (damage < 0) {
 			damage = 0;
 		}

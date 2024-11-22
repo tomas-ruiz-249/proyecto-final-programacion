@@ -31,6 +31,10 @@ Game::Game()
 
 void Game::initGame()
 {
+	currentLevel = 0;
+	map->setLevel(currentLevel);
+	map->restoreMaps();
+	itemManager->setLevel(currentLevel);
 	itemManager->initItems();
 	enemyManager.initEnemies();
 	player->reset();
@@ -38,10 +42,7 @@ void Game::initGame()
 
 void Game::mainLoop()
 {
-	std::string fps;
 	while (!WindowShouldClose()) {
-		fps = std::to_string(GetFPS());
-		SetWindowTitle(fps.c_str());
 		render();
 		logic();
 	}
@@ -59,26 +60,35 @@ void Game::logic()
 		currentState = newState;
 	}
 
-	Sound theme = soundMgr->getSound("main_menu.mp3");
-	if (currentState == mainMenu and not IsSoundPlaying(theme)) {
-		PlaySound(theme);
+	Sound menu = soundMgr->getSound("main_menu.mp3");
+	Sound transitionMusic = soundMgr->getSound("transition.mp3");
+	if (currentState == mainMenu and not IsSoundPlaying(menu)) {
+		PlaySound(menu);
 	}
 	else if (currentState != mainMenu) {
-		StopSound(theme);
+		StopSound(menu);
+	}
+
+	if (currentState == transition and not IsSoundPlaying(transitionMusic)) {
+		PlaySound(transitionMusic);
+	}
+	else if (currentState != transition) {
+		StopSound(transitionMusic);
 	}
 	
 
 	switch (currentState) {
 		case mainMenu:
 			initGame();
+			StopSound(currentSong);
 			break;
 		case playing:
 			playCurrentSong();
 			player->act(*map);
 			itemManager->checkForPickup();
 			enemyManager.runEnemyBehaviour(*player, *map);
-			if (enemyManager.areEnemiesDead()) {
-				nextLevel();
+			if (enemyManager.areEnemiesDead() or IsKeyPressed(KEY_M)) {
+				currentState = transition;
 			}
 
 			//pausar juego si se presiona p y causar game over si jugador muere
@@ -92,7 +102,6 @@ void Game::logic()
 			}
 			break;
 		case pause:
-			//renaudar juego al presionar p
 			if (IsKeyPressed(KEY_P)) 
 			{
 				currentState = playing;
@@ -113,15 +122,25 @@ void Game::logic()
 		case end:
 			CloseWindow();
 			break;
+		case transition:
+			if (IsKeyPressed(KEY_ENTER) and map->getCurrentIndex() < map->getMapCount() - 1) {
+				nextLevel();
+				currentState = playing;
+			}
+			StopSound(currentSong);
+			break;
 	}
 }
 
 void Game::playCurrentSong()
 {
-	Sound currentSong = soundMgr->getSound("");
+	currentSong = soundMgr->getSound("");
 	switch (map->getCurrentIndex()) {
 		case 0:
 			currentSong = soundMgr->getSound("level1.mp3");
+			break;
+		case 1:
+			currentSong = soundMgr->getSound("level2.mp3");
 			break;
 	}
 	if (!IsSoundPlaying(currentSong)) {
@@ -132,7 +151,11 @@ void Game::playCurrentSong()
 
 void Game::nextLevel()
 {
-	currentLevel++;
-	map->setLevel(currentLevel);
-	itemManager->setLevel(currentLevel);
+	if (map->getMapCount() - 1 > currentLevel) {
+		currentLevel++;
+		player->reset();
+		map->setLevel(currentLevel);
+		itemManager->setLevel(currentLevel);
+		enemyManager.initEnemies();
+	}
 }

@@ -18,7 +18,7 @@ public:
 	Canvas(int width, int height);
 private:
 	TextureManager* textureManager;
-	Font doomFont;
+	Font titleFont;
 	int screenWidth;
 	int screenHeight;
 	int windowWidth;
@@ -26,7 +26,6 @@ private:
 	int halfWindowWidth;
 	int halfWindowHeight;
 	double backgroundOffset;
-	int cellSize;
 	double darkness;
 	std::vector<Drawable*> drawQueue;
 
@@ -37,8 +36,6 @@ private:
 	double screenDist;
 	double scale;
 
-	//first person drawing methods
-
 	void draw3D(const Player& player, const Map& map, ItemManager& objManager, EnemyManager& enemyManager);
 	void drawColumn(RayCastResult ray);
 	void drawWeapon(Weapon& weapon);
@@ -48,13 +45,8 @@ private:
 	void drawAnimatedSprite(Animated& sprite, Player player);
 	void drawHUD(Player& player);
 	void drawStaticSprite(Drawable sprite, Player player);
-
-	//2d drawing methods
-	void drawMap(Map map);
-	void drawPlayer(Player player);
-	void drawRay2D(Point2D position);
-	void drawRay2D(Point2D start, Point2D end);
 	GameState drawMenu();
 	GameState drawPause();
 	GameState drawOptions();
+	void drawTransitionScreen();
 };

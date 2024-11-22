@@ -49,8 +49,6 @@ bool FileReader::readItemsFromFile(const char* fileName, std::vector<Item*>& ite
     }
 
     std::string header;
-    getline(file, header); 
-
     TextureManager* texMgr = TextureManager::getInstance();
 
     std::string line;
