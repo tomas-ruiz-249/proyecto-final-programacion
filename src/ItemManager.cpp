@@ -1,7 +1,8 @@
+#include <iostream>
+#include <algorithm>
 #include "ItemManager.h"
 #include "AmmoBox.h"
 #include "HealthBox.h"
-#include <iostream>
 
 std::vector<Item*>* ItemManager::getCurrentItemList()
 {
@@ -13,16 +14,22 @@ void ItemManager::initItems()
 {
 	currentItems.clear();
 	itemLists.clear();
-	FilePathList itemPaths = LoadDirectoryFiles("assets\\data\\");
-	for (int i = 0; i < itemPaths.count; i++) {
-		auto extension = GetFileExtension(itemPaths.paths[i]);
+	FilePathList itemPaths = LoadDirectoryFiles("assets/data/");
+	std::vector<std::string> paths;
+	for(int i = 0; i < itemPaths.count; i++){
+		paths.push_back(itemPaths.paths[i]);
+	}
+	std::sort(paths.begin(), paths.end(), [](std::string a, std::string b){return a < b;});
+	for(auto& path : paths){
+		auto extension = GetFileExtension(path.c_str());
 		if (std::string(extension) == ".csv") {
 			std::vector<Item*> newItemList;
-			if (FileReader::readItemsFromFile(itemPaths.paths[i], newItemList)) {
+			if (FileReader::readItemsFromFile(path.c_str(), newItemList)) {
 				itemLists.push_back(newItemList);
 			}
 		}
 	}
+
 	currentLevel = 0;
 	currentItems = itemLists[currentLevel];
 }

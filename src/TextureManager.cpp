@@ -16,7 +16,7 @@ void TextureManager::loadTexturesToVRAM()
 		}
 
 		std::string staticSpritesDir = textureDir;
-		staticSpritesDir.append("sprites\\static");
+		staticSpritesDir.append("sprites/static");
 		FilePathList staticSpriteTextures = LoadDirectoryFiles(staticSpritesDir.c_str());
 		for (int i = 0; i < staticSpriteTextures.count; i++) {
 			Texture texture = LoadTexture(staticSpriteTextures.paths[i]);
@@ -24,7 +24,7 @@ void TextureManager::loadTexturesToVRAM()
 		}
 
 		std::string animatedSpritesDir = textureDir;
-		animatedSpritesDir.append("sprites\\animated");
+		animatedSpritesDir.append("sprites/animated");
 		FilePathList animatedSpriteTextures = LoadDirectoryFiles(animatedSpritesDir.c_str());
 		for (int i = 0; i < animatedSpriteTextures.count; i++) {
 			Texture texture = LoadTexture(animatedSpriteTextures.paths[i]);
@@ -62,14 +62,14 @@ Texture TextureManager::getTexture(std::string fileName)
 	auto dir = getTextureDir();
 	dir.append(fileName);
 	if ((*textures).find(dir) == (*textures).end() ) {
-		return (*textures)[getTextureDir().append("walls\\invalid.png")];
+		return (*textures)[getTextureDir().append("walls/invalid.png")];
 	}
 	return (*textures)[dir];
 }
 
 std::string TextureManager::getTextureDir()
 {
-	auto textureDir = std::string("assets\\textures\\");
+	auto textureDir = std::string("assets/textures/");
 	return textureDir;
 }
 

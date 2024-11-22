@@ -1,3 +1,0 @@
-/home/tomas/Documents/uni/code/proyecto-final-programacion/build/CMakeFiles/MyProject.dir
-/home/tomas/Documents/uni/code/proyecto-final-programacion/build/CMakeFiles/edit_cache.dir
-/home/tomas/Documents/uni/code/proyecto-final-programacion/build/CMakeFiles/rebuild_cache.dir

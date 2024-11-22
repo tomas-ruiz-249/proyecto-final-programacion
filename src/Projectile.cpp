@@ -20,7 +20,7 @@ Projectile::Projectile(Point2D pos, double ang, int damage)
 
 	TextureManager* texMgr = TextureManager::getInstance();
 	Animation fireball = {};
-	fireball.texture = texMgr->getTexture("sprites\\animated\\fireball.png");
+	fireball.texture = texMgr->getTexture("sprites/animated/fireball.png");
 	fireball.numFrames = 2;
 	fireball.animationSpeed = 2;
 	sprite->animations.push_back(fireball);

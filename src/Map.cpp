@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 #include "Map.h"
 #include "Enumerations.h"
 #include "FileReader.h"
@@ -50,9 +51,14 @@ WallType Map::getElementAt(int row, int column)
 
 void Map::loadMaps()
 {
-	FilePathList mapPaths = LoadDirectoryFiles("assets\\data\\");
-	for (int i = 0; i < mapPaths.count; i++) {
-		auto extension = std::string(GetFileExtension(mapPaths.paths[i]));
+	FilePathList mapPaths = LoadDirectoryFiles("assets/data/");
+	std::vector<std::string> paths;
+	for(int i = 0; i < mapPaths.count; i++){
+		paths.push_back(mapPaths.paths[i]);
+	}
+	std::sort(paths.begin(), paths.end(), [](std::string a, std::string b){return a < b;});
+	for(auto& path : paths){
+		auto extension = std::string(GetFileExtension(path.c_str()));
 		if (extension == ".txt") {
 			//create new map
 			WallType** newMap = new WallType* [GRID_SIZE];
@@ -60,11 +66,11 @@ void Map::loadMaps()
 				newMap[i] = new WallType[GRID_SIZE];
 			}
 
-			if (FileReader::readMapFromFile(mapPaths.paths[i], newMap)) {
-				std::cout << "map loaded succesfully from " << mapPaths.paths[i] << std::endl;
+			if (FileReader::readMapFromFile(path.c_str(), newMap)) {
+				std::cout << "map loaded succesfully from " << path << std::endl;
 			}
 			else {
-				std::cout << "error loading map " << mapPaths.paths[i] << std::endl;
+				std::cout << "error loading map " << path << std::endl;
 			}
 			maps.push_back(newMap);
 		}

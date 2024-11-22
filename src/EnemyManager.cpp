@@ -43,17 +43,17 @@ void EnemyManager::initEnemies()
                     enemy->sprite->position = enemy->position;
 
                     Animation walk = {};
-                    walk.texture = texMgr->getTexture("sprites\\animated\\demon_walk.png");
+                    walk.texture = texMgr->getTexture("sprites/animated/demon_walk.png");
                     walk.numFrames = 4;
                     walk.animationSpeed = 7.0;
 
                     Animation hurt = {};
-                    hurt.texture = texMgr->getTexture("sprites\\animated\\demon_hurt.png");
+                    hurt.texture = texMgr->getTexture("sprites/animated/demon_hurt.png");
                     hurt.numFrames = 5;
                     hurt.animationSpeed = 5.0;
 
                     Animation death = {};
-                    death.texture = texMgr->getTexture("sprites\\animated\\demon_death.png");
+                    death.texture = texMgr->getTexture("sprites/animated/demon_death.png");
                     death.numFrames = 7;
                     death.animationSpeed = 3.5;
 
@@ -74,19 +74,19 @@ void EnemyManager::initEnemies()
 					enemy->sprite->position = enemy->position;
 
 					Animation walk = {};
-					walk.texture = texMgr->getTexture("sprites\\animated\\zombie_walk.png");
+					walk.texture = texMgr->getTexture("sprites/animated/zombie_walk.png");
 					walk.numFrames = 4;
 					walk.animationSpeed = 9.0;
 					enemy->sprite->animations.push_back(walk);
 
 					Animation hurt = {};
-					hurt.texture = texMgr->getTexture("sprites\\animated\\zombie_hurt.png");
+					hurt.texture = texMgr->getTexture("sprites/animated/zombie_hurt.png");
 					hurt.numFrames = 4;
 					hurt.animationSpeed = 8.0;
 					enemy->sprite->animations.push_back(hurt);
 
 					Animation death = {};
-					death.texture = texMgr->getTexture("sprites\\animated\\zombie_death.png");
+					death.texture = texMgr->getTexture("sprites/animated/zombie_death.png");
 					death.numFrames = 7;
 					death.animationSpeed = 9.0;
 					enemy->sprite->animations.push_back(death);

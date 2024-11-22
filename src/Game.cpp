@@ -27,6 +27,7 @@ Game::Game()
 	map = Map::getInstance();
 	player = Player::getInstance();
 	currentState = mainMenu;
+	currentSong = soundMgr->getSound("level1.mp3");
 }
 
 void Game::initGame()
@@ -80,7 +81,9 @@ void Game::logic()
 	switch (currentState) {
 		case mainMenu:
 			initGame();
-			StopSound(currentSong);
+			if(IsSoundPlaying(currentSong)){
+				StopSound(currentSong);
+			}
 			break;
 		case playing:
 			playCurrentSong();

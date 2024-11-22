@@ -174,14 +174,14 @@ Player::Player()
 	auto texMgr = TextureManager::getInstance();
 	weapon->sprite = new Animated();
 	weapon->sprite->animationIndex = 0;
-	Texture staticTex = texMgr->getTexture("sprites\\static\\shotgun.png");
+	Texture staticTex = texMgr->getTexture("sprites/static/shotgun.png");
 	weapon->sprite->tex = staticTex;
 	weapon->sprite->textureArea = { 0, 0, (float)staticTex.width, (float)staticTex.height };
 	weapon->sprite->positionOnWindow.width = staticTex.width;
 	weapon->sprite->positionOnWindow.height = staticTex.height;
 	//shooting animation
 	Animation shooting = {};
-	shooting.texture = texMgr->getTexture("sprites\\animated\\gun.png");
+	shooting.texture = texMgr->getTexture("sprites/animated/gun.png");
 	shooting.numFrames = 11;
 	shooting.animationSpeed = 5.0;
 	shooting.textureArea = { 0, 0, (float)shooting.texture.width, (float)shooting.texture.height };

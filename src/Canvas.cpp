@@ -252,7 +252,7 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 							and posX < (halfWindowWidth + current.positionOnWindow.width);
 
 		Color textureColor = WHITE;
-		if (current.texture.id != textureManager->getTexture("sprites\\animated\\lamp.png").id) {
+		if (current.texture.id != textureManager->getTexture("sprites/animated/lamp.png").id) {
 			textureColor.r = 225 / (1 + pow(sprite.depth, 5) * darkness);
 			textureColor.g = 225 / (1 + pow(sprite.depth, 5) * darkness);
 			textureColor.b = 225 / (1 + pow(sprite.depth, 5) * darkness);
@@ -264,7 +264,7 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 void Canvas::drawHUD(Player& player)
 {
 	// 1. Cargar y dibujar la textura del HUD
-	Texture hudTexture = textureManager->getTexture("sprites\\static\\hudgun.png");
+	Texture hudTexture = textureManager->getTexture("sprites/static/hudgun.png");
 	int screenWidth = GetScreenWidth();
 	int screenHeight = GetScreenHeight();
 
@@ -286,7 +286,7 @@ void Canvas::drawHUD(Player& player)
 	DrawTextEx(titleFont, ammoText.c_str(), { (float)ammoTextPosX, (float)ammoTextPosY }, 100, 2, WHITE);
 
 	// 3. Dibujar el ícono de la munición
-	Texture ammoIcon = textureManager->getTexture("sprites\\static\\ammodoom.png");
+	Texture ammoIcon = textureManager->getTexture("sprites/static/ammodoom.png");
 	Rectangle ammoIconSource = { 0.0f, 0.0f, (float)ammoIcon.width, (float)ammoIcon.height };
 	Rectangle ammoIconDest = { (float)(screenWidth - 90), (float)(screenHeight - 100), 75.0f, 75.0f };
 	DrawTexturePro(ammoIcon, ammoIconSource, ammoIconDest, origin, 0.0f, WHITE);
@@ -352,16 +352,16 @@ void Canvas::drawColumn(RayCastResult ray)
 	Texture columnTexture;
 	switch (ray.wall) {
 	case brick:
-		columnTexture = textureManager->getTexture("walls\\brick.png");
+		columnTexture = textureManager->getTexture("walls/brick.png");
 		break;
 	case stone:
-		columnTexture = textureManager->getTexture("walls\\stone.png");
+		columnTexture = textureManager->getTexture("walls/stone.png");
 		break;
 	case mossyStone:
-		columnTexture = textureManager->getTexture("walls\\mossy_stone.png");
+		columnTexture = textureManager->getTexture("walls/mossy_stone.png");
 		break;
 	case closedDoor:
-		columnTexture = textureManager->getTexture("walls\\door.png");
+		columnTexture = textureManager->getTexture("walls/door.png");
 		break;
 	default:
 		columnTexture = textureManager->getTexture("");
@@ -401,7 +401,7 @@ void Canvas::drawWeapon(Weapon& weapon)
 
 void Canvas::drawBackground(Player player)
 {
-	Texture background = textureManager->getTexture("backgrounds\\fog.png");
+	Texture background = textureManager->getTexture("backgrounds/fog.png");
 	if (player.isAlive()) {
 		backgroundOffset = (player.angle) / (2 * PI);
 		backgroundOffset *= background.width;

@@ -6,7 +6,7 @@ Sound SoundManager::getSound(std::string fileName)
     for (auto& s : *soundList) {
         //std::cout << s.second.stream.sampleRate;
     }
-    auto dir = getSoundsDir().append("\\");
+    auto dir = getSoundsDir().append("/");
     dir.append(fileName);
     return (*soundList)[dir];
 }
@@ -33,7 +33,7 @@ SoundManager* SoundManager::getInstance()
 
 std::string SoundManager::getSoundsDir()
 {
-    return std::string("assets\\sounds");
+    return std::string("assets/sounds");
 }
 
 SoundManager::SoundManager() {

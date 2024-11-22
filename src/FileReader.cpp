@@ -87,7 +87,7 @@ bool FileReader::readItemsFromFile(const char* fileName, std::vector<Item*>& ite
                 healthSprite->scale = 0.29;
                 healthSprite->shift = 1.4;
                 healthSprite->position = health->position;
-                healthSprite->tex = texMgr->getTexture("sprites\\static\\health.png");
+                healthSprite->tex = texMgr->getTexture("sprites/static/health.png");
                 health->sprite = healthSprite;
                 item = health;
                 break;
@@ -98,7 +98,7 @@ bool FileReader::readItemsFromFile(const char* fileName, std::vector<Item*>& ite
 				ammoSprite->scale = 0.29;
 				ammoSprite->shift = 1.48;
                 ammoSprite->position = ammo->position;
-                ammoSprite->tex = texMgr->getTexture("sprites\\static\\ammo.png");
+                ammoSprite->tex = texMgr->getTexture("sprites/static/ammo.png");
                 ammo->sprite = ammoSprite;
                 item = ammo;
                 break;
@@ -115,12 +115,12 @@ bool FileReader::readItemsFromFile(const char* fileName, std::vector<Item*>& ite
                 Animation red = {};
                 red.numFrames = 4;
                 red.animationSpeed = 2.0;
-                red.texture = texMgr->getTexture("sprites\\animated\\lamp.png");
+                red.texture = texMgr->getTexture("sprites/animated/lamp.png");
 
 				Animation green = {};
                 green.numFrames = 4;
                 green.animationSpeed = 2.0;
-                green.texture = texMgr->getTexture("sprites\\animated\\lamp_green.png");
+                green.texture = texMgr->getTexture("sprites/animated/lamp_green.png");
 
                 lampSprite->animations.push_back(red);
                 lampSprite->animations.push_back(green);
@@ -143,7 +143,7 @@ bool FileReader::readItemsFromFile(const char* fileName, std::vector<Item*>& ite
 
 bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& enemyList)
 {
-    std::string filePath("assets\\data\\");
+    std::string filePath("assets/data/");
     filePath.append(fileName);
     std::ifstream file(filePath);
     std::string line;
@@ -188,17 +188,17 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                     enemy->sprite->position = enemy->position;
 
                     Animation walk = {};
-                    walk.texture = texMgr->getTexture("sprites\\animated\\demon_walk.png");
+                    walk.texture = texMgr->getTexture("sprites/animated/demon_walk.png");
                     walk.numFrames = 4;
                     walk.animationSpeed = 7.0;
 
                     Animation hurt = {};
-                    hurt.texture = texMgr->getTexture("sprites\\animated\\demon_hurt.png");
+                    hurt.texture = texMgr->getTexture("sprites/animated/demon_hurt.png");
                     hurt.numFrames = 5;
                     hurt.animationSpeed = 5.0;
 
                     Animation death = {};
-                    death.texture = texMgr->getTexture("sprites\\animated\\demon_death.png");
+                    death.texture = texMgr->getTexture("sprites/animated/demon_death.png");
                     death.numFrames = 7;
                     death.animationSpeed = 3.5;
 
@@ -220,19 +220,19 @@ bool FileReader::readEnemiesFromFile(const char* fileName, std::vector<Enemy*>& 
                     enemy->sprite->position = enemy->position;
 
                     Animation walk = {};
-                    walk.texture = texMgr->getTexture("sprites\\animated\\zombie_walk.png");
+                    walk.texture = texMgr->getTexture("sprites/animated/zombie_walk.png");
                     walk.numFrames = 4;
                     walk.animationSpeed = 9.0;
                     enemy->sprite->animations.push_back(walk);
 
                     Animation hurt = {};
-                    hurt.texture = texMgr->getTexture("sprites\\animated\\zombie_hurt.png");
+                    hurt.texture = texMgr->getTexture("sprites/animated/zombie_hurt.png");
                     hurt.numFrames = 4;
                     hurt.animationSpeed = 8.0;
                     enemy->sprite->animations.push_back(hurt);
 
                     Animation death = {};
-                    death.texture = texMgr->getTexture("sprites\\animated\\zombie_death.png");
+                    death.texture = texMgr->getTexture("sprites/animated/zombie_death.png");
                     death.numFrames = 7;
                     death.animationSpeed = 9.0;
                     enemy->sprite->animations.push_back(death);
