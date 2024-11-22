@@ -24,7 +24,6 @@ Canvas::Canvas()
 	scale = 0;
 	rayCaster = RayCaster();
 	backgroundOffset = 0;
-	cellSize = 0;
 	darkness = 0;
 	textureManager = TextureManager::getInstance();
 }
@@ -50,19 +49,17 @@ Canvas::Canvas(int width, int height)
 	textureManager = TextureManager::getInstance();
 
 	backgroundOffset = 0;
-
-	cellSize = windowHeight / GRID_SIZE;
 }
 
 void Canvas::startWindow()
 {
-	InitWindow(windowWidth, windowHeight, "");
+	InitWindow(windowWidth, windowHeight, "THE PURIFIER OF SOULS");
 	textureManager->loadTexturesToVRAM();
 	SetWindowState(FLAG_VSYNC_HINT);
 	SetTargetFPS(60);
 	DisableCursor();
 
-	doomFont = LoadFontEx("assets/fonts/AmazDooMLeft.ttf", 500, nullptr, 0);
+	titleFont = LoadFontEx("assets/fonts/AmazDooMLeft.ttf", 500, nullptr, 0);
 }
 GameState Canvas::draw(const Map& map, Player& player, ItemManager& objManager, EnemyManager& enemyManager, GameState state)
 {
@@ -92,6 +89,9 @@ GameState Canvas::draw(const Map& map, Player& player, ItemManager& objManager, 
 
 	case options:
 		newState = drawOptions();
+		break;
+	case transition:
+		drawTransitionScreen();
 		break;
 	}
 	EndDrawing();
@@ -283,7 +283,7 @@ void Canvas::drawHUD(Player& player)
 	std::string ammoText = "Ammo: " + std::to_string(ammoCount);
 	int ammoTextPosX = screenWidth - 300;
 	int ammoTextPosY = screenHeight - 100;
-	DrawTextEx(doomFont, ammoText.c_str(), { (float)ammoTextPosX, (float)ammoTextPosY }, 100, 2, WHITE);
+	DrawTextEx(titleFont, ammoText.c_str(), { (float)ammoTextPosX, (float)ammoTextPosY }, 100, 2, WHITE);
 
 	// 3. Dibujar el ícono de la munición
 	Texture ammoIcon = textureManager->getTexture("sprites\\static\\ammodoom.png");
@@ -313,7 +313,7 @@ void Canvas::drawHUD(Player& player)
 	std::string healthText = "Health: " + std::to_string(health) + " / " + std::to_string(player.getMaxHealth());
 	int healthTextPosX = barStartX;
 	int healthTextPosY = barStartY + barHeight + 20;
-	DrawTextEx(doomFont, healthText.c_str(), { (float)healthTextPosX, (float)healthTextPosY }, 50, 2, WHITE);
+	DrawTextEx(titleFont, healthText.c_str(), { (float)healthTextPosX, (float)healthTextPosY }, 50, 2, WHITE);
 
 
 	// 7. Dibujar un crosshair circular en el centro de la pantalla
@@ -329,10 +329,10 @@ void Canvas::drawHUD(Player& player)
 	{
 		std::string reloadingText = "Reloading...";
 		int reloadingFontSize = 40;
-		int reloadingTextWidth = MeasureTextEx(doomFont, reloadingText.c_str(), reloadingFontSize, 2).x;
+		int reloadingTextWidth = MeasureTextEx(titleFont, reloadingText.c_str(), reloadingFontSize, 2).x;
 		int reloadingTextPosX = (screenWidth / 2) - (reloadingTextWidth / 2);
 		int reloadingTextPosY = centerY + radius + 20;
-		DrawTextEx(doomFont, reloadingText.c_str(), { (float)reloadingTextPosX, (float)reloadingTextPosY }, reloadingFontSize, 2, WHITE);
+		DrawTextEx(titleFont, reloadingText.c_str(), { (float)reloadingTextPosX, (float)reloadingTextPosY }, reloadingFontSize, 2, WHITE);
 	}
 }
 
@@ -446,62 +446,17 @@ void Canvas::animate(Animated& animated, int index, Color color)
 	current.positionOnWindow.width = current.texture.width /current.numFrames;
 }
 
-
-//TODO: usar funciones para dibujar minimapa
-
-void Canvas::drawPlayer(Player player)
-{
-	int x = player.position.x * cellSize;
-	int y = player.position.y * cellSize;
-	double cosA = cos(player.angle);
-	double sinA = sin(player.angle);
-	DrawCircle(x, y, cellSize / 9, YELLOW);
-	DrawLine(x, y, x + cosA * 20, y + sinA * 20, YELLOW);
-}
-
-void Canvas::drawMap(Map map)
-{
-	for (int row = 0; row < GRID_SIZE; row++) {
-		for (int column = 0; column < GRID_SIZE; column++) {
-			if (map.getElementAt(row, column) == 0) {
-				DrawRectangle(column * cellSize, row * cellSize, cellSize, cellSize, BLACK);
-			}
-			else {
-				DrawRectangle(column * cellSize, row * cellSize, cellSize, cellSize, WHITE);
-			}
-		}
-	}
-}
-
-void Canvas::drawRay2D(Point2D end)
-{
-	int x = end.x * cellSize;
-	int y = end.y * cellSize;
-	DrawCircle(x, y, cellSize / 9, GREEN);
-}
-
-void Canvas::drawRay2D(Point2D start, Point2D end)
-{
-	Vector2 pos;
-	Vector2 hit;
-	pos.x = start.x * cellSize;
-	pos.y = start.y * cellSize;
-	hit.x = end.x * cellSize;
-	hit.y = end.y * cellSize;
-	DrawLineEx(pos, hit,  1.f, GREEN);
-}
-
 GameState Canvas::drawMenu()
 {
 	GameState state = mainMenu;
 	ShowCursor();
 	std::string titleText = "The purifier of souls";
 	int titleFontSize = GetScreenWidth() * 0.15;
-	int titleTextWidth = MeasureTextEx(doomFont, titleText.c_str(), titleFontSize, 2).x;
+	int titleTextWidth = MeasureTextEx(titleFont, titleText.c_str(), titleFontSize, 2).x;
 	int titleTextPosX = (windowWidth/ 2) - (titleTextWidth / 2);
 	int titleTextPosY = windowHeight / 8;
 
-	DrawTextEx(doomFont, titleText.c_str(), { (float)titleTextPosX, (float)titleTextPosY }, titleFontSize, 2, RED);
+	DrawTextEx(titleFont, titleText.c_str(), { (float)titleTextPosX, (float)titleTextPosY }, titleFontSize, 2, RED);
 
 	int buttonWidth = 300;
 	int buttonHeight = 80;
@@ -555,7 +510,7 @@ GameState Canvas::drawPause()
 	ShowCursor();
 
 	Vector2 textPos = { windowWidth * 0.03, windowHeight * 0.1 };
-	DrawTextEx(doomFont, "PAUSED - Press p to resume", textPos, fontSize * 0.8, fontSize * 0.001, RED);
+	DrawTextEx(titleFont, "PAUSED - Press p to resume", textPos, fontSize * 0.8, fontSize * 0.001, RED);
 
 	DrawRectangleRec(optionsButtonRect, DARKGRAY);
 	DrawText("Options", optionsButtonRect.x + buttonWidth * 0.1, optionsButtonRect.y + buttonHeight * 0.1, fontSize / 5, WHITE);
@@ -611,7 +566,7 @@ GameState Canvas::drawOptions()
 	Rectangle minusSound;
 	Rectangle minusDarkness;
 
-	DrawTextEx(doomFont, titleText.c_str(), { (float)titleTextPosX, (float)titleTextPosY }, titleFontSize, 2, GREEN);
+	DrawTextEx(titleFont, titleText.c_str(), { (float)titleTextPosX, (float)titleTextPosY }, titleFontSize, 2, GREEN);
 
 	sensibilityButtonRect = { (float)buttonX, float(buttonY), (float)buttonWidth, (float)buttonHeight};
 	DrawRectangleRec(sensibilityButtonRect, WHITE);
@@ -726,3 +681,25 @@ GameState Canvas::drawOptions()
 
 	return state;
 }
+
+void Canvas::drawTransitionScreen()
+{
+	int textPosX = windowWidth * 0.08;
+	int textPosY = windowHeight * 0.08;
+	int fontSize = windowHeight * 0.3;
+	int currentLevel = Map::getInstance()->getCurrentIndex();
+	int levelCount = Map::getInstance()->getMapCount();
+	if (currentLevel + 1 < levelCount) {
+		std::string finishedText("finished level " + std::to_string(currentLevel + 1));
+		std::string pressEnterText("Press enter");
+		DrawTextEx(titleFont, finishedText.c_str(), { (float)textPosX, (float)textPosY }, fontSize, 0.1, RED);
+		DrawTextEx(titleFont, pressEnterText.c_str(), { (float)textPosX, (float)textPosY * 5 }, fontSize, 0.1, GRAY);
+	}
+	else {
+		std::string finishedText("You finished the game");
+		std::string pressEnterText("Press esc to exit");
+		DrawTextEx(titleFont, finishedText.c_str(), { (float)textPosX, (float)textPosY }, fontSize, 0.1, RED);
+		DrawTextEx(titleFont, pressEnterText.c_str(), { (float)textPosX, (float)textPosY * 5 }, fontSize, 0.1, GRAY);
+	}
+}
+

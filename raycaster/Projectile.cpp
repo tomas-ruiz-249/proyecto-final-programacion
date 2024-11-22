@@ -2,14 +2,15 @@
 #include "TextureManager.h"
 #include "RayCaster.h"
 #include <iostream>
+#include "SoundManager.h"
 
 Projectile::Projectile(Point2D pos, double ang, int damage)
 {
 	position = pos;
-	speed = 10;
+	speed = 5;
 	angle = ang;
 	timer = 0;
-	timeLimit = 3;
+	timeLimit = 10;
 	this->damage = damage;
 
 	sprite = new Animated();
@@ -35,6 +36,13 @@ bool Projectile::shoot()
 
 	bool projectileCrash = distanceToPlayer < 0.5 or rayToWall.depth < 0.5 or timer > timeLimit;
 	if (projectileCrash) {
+		SoundManager* soundManager = SoundManager::getInstance();
+		Sound explosion = soundManager->getSound("projectile_explode.mp3");
+		Sound projectileFlying = soundManager->getSound("zombie_shoot");
+		if (IsSoundPlaying(projectileFlying)) {
+			StopSound(projectileFlying);
+		}
+		PlaySound(explosion);
 		if (distanceToPlayer < 0.5) {
 			player->takeDamage(damage);
 		}

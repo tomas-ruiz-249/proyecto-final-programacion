@@ -33,4 +33,5 @@ void MeleeEnemy::takeDamage(int damage)
 MeleeEnemy::MeleeEnemy(Point2D position)
 {
 	this->position = position;
+	speed = 4;
 }

@@ -3,6 +3,7 @@
 #include "Map.h"
 #include "Enumerations.h"
 #include "FileReader.h"
+#include "SoundManager.h"
 
 bool Map::isPositionEmpty(int row, int column)
 {
@@ -26,6 +27,9 @@ bool Map::isDoor(int row, int column)
 
 void Map::toggleDoor(int row, int column)
 {
+	auto sndMgr = SoundManager::getInstance();
+	Sound door = sndMgr->getSound("door_open.mp3");
+	PlaySound(door);
 	if (currentMap[row][column] == closedDoor) {
 		currentMap[row][column] = openDoor;
 	}
@@ -67,6 +71,21 @@ void Map::loadMaps()
 	}
 }
 
+void Map::restoreMaps()
+{
+	for (auto& map : maps) {
+		for (int i = 0; i < GRID_SIZE; i++) {
+			for (int j = 0; j < GRID_SIZE; j++) {
+				if (isDoor(i, j)) {
+					if (map[i][j] == openDoor) {
+						map[i][j] = closedDoor;
+					}
+				}
+			}
+		}
+	}
+}
+
 int Map::getCurrentIndex()
 {
 	return currentMapIndex;
@@ -78,6 +97,11 @@ void Map::setLevel(int level)
 		currentMapIndex = level;
 		currentMap = maps[currentMapIndex];
 	}
+}
+
+int Map::getMapCount()
+{
+	return maps.size();
 }
 
 Map* Map::instance;

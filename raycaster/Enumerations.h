@@ -27,5 +27,6 @@ enum GameState {
 	pause = 3,
 	options = 4,
 	na = 5,
-	end = 6
+	end = 6,
+	transition = 7,
 };

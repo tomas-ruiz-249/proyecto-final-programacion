@@ -21,7 +21,7 @@ void RangedEnemy::attack()
 
 	if (attacking) {
 		SoundManager* soundManager = SoundManager::getInstance();
-		Sound pewSound = soundManager->getSound("pew.mp3"); //sonido de disparo enemigos
+		Sound pewSound = soundManager->getSound("zombie_shoot.mp3"); //sonido de disparo enemigos
 		PlaySound(pewSound);
 		proj = new Projectile(position, angle, damage);
 		projectiles.push_back(proj);
@@ -59,14 +59,13 @@ void RangedEnemy::move(Map& map)
 void RangedEnemy::takeDamage(int damage)
 {
 	Enemy::takeDamage(damage);
-	std::cout << health << "\n";
 	if (isAlive()) {
-		//Sound hurt = SoundManager::getInstance()->getSound("demon_hurt.mp3");
-		//PlaySound(hurt);
+		Sound hurt = SoundManager::getInstance()->getSound("zombie_hurt.mp3");
+		PlaySound(hurt);
 	}
 	if (!isAlive()) {
-		//Sound dead = SoundManager::getInstance()->getSound("demon_death.mp3");
-		//PlaySound(dead);
+		Sound dead = SoundManager::getInstance()->getSound("zombie_death.mp3");
+		PlaySound(dead);
 	}
 }
 std::vector<Projectile*> RangedEnemy::getProjectiles()
@@ -79,6 +78,7 @@ RangedEnemy::RangedEnemy(Point2D position)
 	this->position = position;
 	attacking = false;
 	attackTimer = 0;
-	attackCoolDown = 1.3;
+	attackCoolDown = 5;
+	speed = 1;
 }
 
