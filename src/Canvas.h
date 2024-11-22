@@ -10,11 +10,15 @@
 #include "Animated.h"
 #include "EnemyManager.h"
 
+/** 
+ * clase que maneja graficos
+*/
+
 class Canvas {
 public:
 	void startWindow();
-	GameState draw(const Map& map, Player & player, ItemManager& objManager, EnemyManager& enemyManager, GameState state);
-	Canvas();
+	GameState draw(const Map& map, Player & player, ItemManager& objManager, EnemyManager& enemyManager, GameState state); /**< method that draws to window */
+	Canvas();/**< main constructor */
 	Canvas(int width, int height);
 private:
 	TextureManager* textureManager;
