@@ -88,7 +88,7 @@ void Player::takeDamage(int damage)
 {
 	if (hurtTimer > 0.3) {
 		SoundManager* soundManager = SoundManager::getInstance();
-		Sound hurtSound = soundManager->getSound("EnemyAttack.mp3"); //sonido de daño
+		Sound hurtSound = soundManager->getSound("EnemyAttack.mp3"); //sonido de daï¿½o
 		PlaySound(hurtSound);
 		health -= damage;
 		hurtTimer = 0;
@@ -152,10 +152,10 @@ int Player::getMaxHealth()
 
 Player* Player::getInstance()
 {
-	if (!player) {
-		player = new Player();
+	if (!instance) {
+		instance = new Player();
 	}
-	return player;
+	return instance;
 }
 
 Player::Player()
@@ -190,4 +190,4 @@ Player::Player()
 	weapon->sprite->animations.push_back(shooting);
 }
 
-Player* Player::player = nullptr;
+Player* Player::instance = nullptr;

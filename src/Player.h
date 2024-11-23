@@ -17,11 +17,10 @@ public:
 	double getSensibility();
 	int getMaxHealth();
 	static Player* getInstance();
-	friend class HealthBox;
 private:
 	int maxHealth;
 	double sensibility;
 	double hurtTimer;
-	static Player* player;
+	static Player* instance;
 	Player();
 };

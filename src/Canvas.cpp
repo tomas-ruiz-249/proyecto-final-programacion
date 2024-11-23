@@ -32,8 +32,8 @@ Canvas::Canvas(int width, int height)
 {
 	screenWidth = width;
 	screenHeight = height;
-	windowWidth = screenWidth * 0.8;
-	windowHeight = screenHeight * 0.8;
+	windowWidth = screenWidth * 1.0;
+	windowHeight = screenHeight * 1.0;
 	halfWindowWidth = windowWidth / 2;
 	halfWindowHeight = windowHeight / 2;
 
@@ -278,14 +278,14 @@ void Canvas::drawHUD(Player& player)
 	Vector2 origin = { 0.0f, 0.0f };
 	DrawTexturePro(hudTexture, sourceRect, destRect, origin, 0.0f, WHITE);
 
-	// 2. Mostrar el texto de munición restante
+	// 2. Mostrar el texto de municiï¿½n restante
 	int ammoCount = player.weapon->ammoCount;
 	std::string ammoText = "Ammo: " + std::to_string(ammoCount);
 	int ammoTextPosX = screenWidth - 300;
 	int ammoTextPosY = screenHeight - 100;
 	DrawTextEx(titleFont, ammoText.c_str(), { (float)ammoTextPosX, (float)ammoTextPosY }, 100, 2, WHITE);
 
-	// 3. Dibujar el ícono de la munición
+	// 3. Dibujar el ï¿½cono de la municiï¿½n
 	Texture ammoIcon = textureManager->getTexture("sprites/static/ammodoom.png");
 	Rectangle ammoIconSource = { 0.0f, 0.0f, (float)ammoIcon.width, (float)ammoIcon.height };
 	Rectangle ammoIconDest = { (float)(screenWidth - 90), (float)(screenHeight - 100), 75.0f, 75.0f };
@@ -324,7 +324,7 @@ void Canvas::drawHUD(Player& player)
 	DrawCircleLines(centerX, centerY, radius, WHITE);
 	DrawCircleLines(centerX, centerY, radius - thickness, WHITE);
 
-	// 8. Mostrar "Reloading" debajo del crosshair si el arma está recargando
+	// 8. Mostrar "Reloading" debajo del crosshair si el arma estï¿½ recargando
 	if (player.weapon->reloading)
 	{
 		std::string reloadingText = "Reloading...";
