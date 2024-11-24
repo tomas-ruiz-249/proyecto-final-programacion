@@ -1,12 +1,12 @@
 <map id="Player::attack" name="Player::attack">
 <area shape="rect" id="Node000001" title="Permite al jugador atacar con su arma." alt="" coords="5,81,117,107"/>
-<area shape="rect" id="Node000002" href="$classWeapon.html#a6931d17fb64311e70e88134c973ef5ea" title="Verifica si el arma estï¿½ lista para disparar." alt="" coords="165,5,308,31"/>
+<area shape="rect" id="Node000002" href="$classWeapon.html#a6931d17fb64311e70e88134c973ef5ea" title="Verifica si el arma estï¿œ lista para disparar." alt="" coords="165,5,308,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,79,193,34,195,39,93,84"/>
 <area shape="rect" id="Node000003" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="356,83,559,108"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,91,308,91,342,92,342,97,308,97,118,97"/>
 <area shape="rect" id="Node000004" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido especÃ­fico del listado cargado." alt="" coords="363,132,551,157"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="83,104,120,125,166,142,212,150,259,154,350,154,350,159,259,160,211,155,165,147,118,130,80,109"/>
-<area shape="rect" id="Node000005" href="$classWeapon.html#a063d0eb2cf432d72dc22f6ec565a1a16" title="Dispara el arma si hay municiï¿½n disponible." alt="" coords="177,107,296,132"/>
+<area shape="rect" id="Node000005" href="$classWeapon.html#a063d0eb2cf432d72dc22f6ec565a1a16" title="Dispara el arma si hay municiï¿œn disponible." alt="" coords="177,107,296,132"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="118,99,164,106,163,111,117,105"/>
 <area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="296,110,342,105,343,110,297,116"/>
 <area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="297,123,350,130,350,135,296,129"/>

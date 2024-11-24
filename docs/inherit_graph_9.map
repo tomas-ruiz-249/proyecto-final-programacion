@@ -1,6 +1,6 @@
 <map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
 <area shape="rect" id="Node000000" href="$classItem.html" title="Clase base para los elementos del juego interactuables." alt="" coords="11,55,63,80"/>
-<area shape="rect" id="Node000001" href="$classAmmoBox.html" title="Representa una caja de municiï¿½n que puede ser recogida por un jugador." alt="" coords="117,55,208,80"/>
+<area shape="rect" id="Node000001" href="$classAmmoBox.html" title="Representa una caja de municiï¿œn que puede ser recogida por un jugador." alt="" coords="117,55,208,80"/>
 <area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="77,65,117,65,117,70,77,70"/>
 <area shape="rect" id="Node000003" href="$classHealthBox.html" title="Representa un objeto que otorga puntos de curación al jugador." alt="" coords="117,5,208,31"/>
 <area shape="poly" id="edge8_Node000000_Node000003" title=" " alt="" coords="75,50,129,28,131,33,77,55"/>

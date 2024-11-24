@@ -1,5 +1,5 @@
 <map id="Map::restoreMaps" name="Map::restoreMaps">
 <area shape="rect" id="Node000001" title="Restaura los mapas a su estado inicial." alt="" coords="5,5,144,31"/>
-<area shape="rect" id="Node000002" href="$classMap.html#ab8f7b8df6f5cfd061e37ceffefdad8c0" title="Comprueba si una posiciï¿½n contiene una puerta." alt="" coords="192,5,292,31"/>
+<area shape="rect" id="Node000002" href="$classMap.html#ab8f7b8df6f5cfd061e37ceffefdad8c0" title="Comprueba si una posiciï¿œn contiene una puerta." alt="" coords="192,5,292,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,15,178,15,178,21,144,21"/>
 </map>

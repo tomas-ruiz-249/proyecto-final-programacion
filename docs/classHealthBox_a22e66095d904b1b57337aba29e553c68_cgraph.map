@@ -1,6 +1,6 @@
 <map id="HealthBox::pickup" name="HealthBox::pickup">
 <area shape="rect" id="Node000001" title="Método que recoge el HealthBox y cura al jugador." alt="" coords="5,31,145,56"/>
-<area shape="rect" id="Node000002" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿½nica del jugador." alt="" coords="193,5,340,31"/>
+<area shape="rect" id="Node000002" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿œnica del jugador." alt="" coords="193,5,340,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,31,179,27,180,32,146,37"/>
 <area shape="rect" id="Node000003" href="$classPlayer.html#ad0179ce03483c3862d1ec3782d55fd2e" title="Cura al jugador utilizando puntos de vida." alt="" coords="217,55,316,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,49,204,57,203,62,146,55"/>

@@ -1,6 +1,6 @@
 <map id="Player::reset" name="Player::reset">
 <area shape="rect" id="Node000001" title="Restaura al jugador a su estado inicial." alt="" coords="5,31,109,56"/>
-<area shape="rect" id="Node000002" href="$classWeapon.html#aa5c599473e9ec30d04e6a02903f1f37f" title="Recarga municiï¿½n al arma." alt="" coords="157,31,312,56"/>
+<area shape="rect" id="Node000002" href="$classWeapon.html#aa5c599473e9ec30d04e6a02903f1f37f" title="Recarga municiï¿œn al arma." alt="" coords="157,31,312,56"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,41,144,41,144,46,110,46"/>
 <area shape="rect" id="Node000003" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="360,5,563,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,32,346,28,347,34,313,37"/>

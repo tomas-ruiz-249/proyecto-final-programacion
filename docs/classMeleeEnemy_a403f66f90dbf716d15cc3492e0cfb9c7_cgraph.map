@@ -2,15 +2,15 @@
 <area shape="rect" id="Node000001" title="Realiza un ataque cuerpo a cuerpo al jugador." alt="" coords="5,146,160,171"/>
 <area shape="rect" id="Node000002" href="$classDrawable.html#a5b220ca540638f4078e05a3be2a78516" title="Calcula la distancia entre el objeto y el jugador." alt="" coords="208,5,411,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,144,141,101,173,76,207,55,220,48,223,53,209,60,176,81,145,105,98,148"/>
-<area shape="rect" id="Node000003" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿½nica del jugador." alt="" coords="236,70,383,95"/>
+<area shape="rect" id="Node000003" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿œnica del jugador." alt="" coords="236,70,383,95"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,143,207,112,253,97,255,102,209,117,120,148"/>
 <area shape="rect" id="Node000004" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="459,146,661,171"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="160,156,445,156,445,161,160,161"/>
 <area shape="rect" id="Node000005" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido especÃ­fico del listado cargado." alt="" coords="466,221,654,246"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="96,170,142,215,174,239,209,256,247,267,287,272,368,272,444,262,506,247,507,253,445,267,369,278,287,278,246,272,207,261,171,243,138,219,93,174"/>
-<area shape="rect" id="Node000006" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad estï¿½ viva." alt="" coords="254,221,365,246"/>
+<area shape="rect" id="Node000006" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad estï¿œ viva." alt="" coords="254,221,365,246"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="114,169,209,205,241,215,240,220,207,211,112,174"/>
-<area shape="rect" id="Node000007" href="$classPlayer.html#a83d2e2518dd3b46d36b95a382b5038b4" title="Maneja el daï¿½o recibido por el jugador." alt="" coords="232,171,387,197"/>
+<area shape="rect" id="Node000007" href="$classPlayer.html#a83d2e2518dd3b46d36b95a382b5038b4" title="Maneja el daï¿œo recibido por el jugador." alt="" coords="232,171,387,197"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="161,165,218,171,218,176,160,170"/>
 <area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="386,174,445,168,445,173,387,179"/>
 <area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="375,194,482,215,481,221,374,199"/>

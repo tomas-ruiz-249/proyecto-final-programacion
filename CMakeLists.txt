@@ -19,7 +19,7 @@ link_directories(${CMAKE_SOURCE_DIR}/libraries/lib/)
 
 # Link the library to your target
 target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/libraylib.so)
-#target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/raylib.dll)
+target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/raylib.dll)
 
 
 # Set the output directory for the executable

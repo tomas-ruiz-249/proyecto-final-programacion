@@ -2,9 +2,9 @@
 <area shape="rect" id="Node000001" title="Realiza un ataque a distancia disparando un proyectil." alt="" coords="5,145,169,170"/>
 <area shape="rect" id="Node000002" href="$classDrawable.html#a5b220ca540638f4078e05a3be2a78516" title="Calcula la distancia entre el objeto y el jugador." alt="" coords="217,5,420,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,142,149,100,181,76,216,55,230,48,233,53,219,60,184,81,152,104,104,147"/>
-<area shape="rect" id="Node000003" href="$classMap.html#a109632a4be99b947896e8560cc49158c" title="Obtiene la instancia ï¿½nica de Map." alt="" coords="251,70,386,95"/>
+<area shape="rect" id="Node000003" href="$classMap.html#a109632a4be99b947896e8560cc49158c" title="Obtiene la instancia ï¿œnica de Map." alt="" coords="251,70,386,95"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,142,216,104,244,96,245,101,218,109,119,147"/>
-<area shape="rect" id="Node000004" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿½nica del jugador." alt="" coords="245,119,392,145"/>
+<area shape="rect" id="Node000004" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿œnica del jugador." alt="" coords="245,119,392,145"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,146,231,139,232,144,170,151"/>
 <area shape="rect" id="Node000005" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="217,169,420,194"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="170,163,204,167,203,172,170,169"/>
@@ -12,8 +12,8 @@
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="121,168,218,203,250,212,249,217,217,208,119,173"/>
 <area shape="rect" id="Node000007" href="$classRayCaster.html#a732026239f17e82f07df4fb327d4f95f" title="Realiza un raycasting desde una posición específica." alt="" coords="245,267,392,293"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="103,168,152,210,184,233,218,252,239,261,237,266,216,257,181,237,149,214,100,172"/>
-<area shape="rect" id="Node000008" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posiciï¿½n especï¿½fica del mapa." alt="" coords="476,242,623,267"/>
+<area shape="rect" id="Node000008" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posiciï¿œn especï¿œfica del mapa." alt="" coords="476,242,623,267"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="392,269,462,262,463,267,392,275"/>
-<area shape="rect" id="Node000009" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posiciï¿½n especï¿½fica del mapa estï¿½ vacï¿½a." alt="" coords="468,291,631,317"/>
+<area shape="rect" id="Node000009" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posiciï¿œn especï¿œfica del mapa estï¿œ vacï¿œa." alt="" coords="468,291,631,317"/>
 <area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="392,285,454,291,454,297,392,290"/>
 </map>
