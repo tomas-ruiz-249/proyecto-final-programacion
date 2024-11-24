@@ -135,7 +135,7 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 	bool canTakeDamage;
 	ray = raycaster.rayCast(player.angle, player.position, map);
 	wasWallShot = ray.depth < enemy->sprite->getDistanceFromPlayer(enemy->position, player);
-	canTakeDamage = player.justShot and !wasWallShot and enemy->isAlive() and enemy->sprite->isOnScreenCenter;
+	canTakeDamage = player.justShot && !wasWallShot && enemy->isAlive() && enemy->sprite->isOnScreenCenter;
 	if (canTakeDamage){
 		int range = player.weapon->getRange();
 		int damage = player.weapon->getDamage() * (range - enemy->sprite->getDistanceFromPlayer(enemy->position, player))/range;
@@ -150,7 +150,7 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 
 void EnemyManager::setEnemyState(Enemy* enemy)
 {
-	if (enemy->isAlive() and enemy->hurt) {
+	if (enemy->isAlive() && enemy->hurt) {
 		enemy->sprite->animationIndex = 1;
 		auto& anim = enemy->sprite->animations[enemy->sprite->animationIndex];
 		if (anim.isAnimationDone()) {

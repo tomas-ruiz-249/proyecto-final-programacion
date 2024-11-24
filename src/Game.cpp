@@ -63,14 +63,14 @@ void Game::logic()
 
 	Sound menu = soundMgr->getSound("main_menu.mp3");
 	Sound transitionMusic = soundMgr->getSound("transition.mp3");
-	if (currentState == mainMenu and not IsSoundPlaying(menu)) {
+	if (currentState == mainMenu && !IsSoundPlaying(menu)) {
 		PlaySound(menu);
 	}
 	else if (currentState != mainMenu) {
 		StopSound(menu);
 	}
 
-	if (currentState == transition and not IsSoundPlaying(transitionMusic)) {
+	if (currentState == transition && !IsSoundPlaying(transitionMusic)) {
 		PlaySound(transitionMusic);
 	}
 	else if (currentState != transition) {
@@ -90,12 +90,12 @@ void Game::logic()
 			player->act(*map);
 			itemManager->checkForPickup();
 			enemyManager.runEnemyBehaviour(*player, *map);
-			if (enemyManager.areEnemiesDead() or IsKeyPressed(KEY_M)) {
+			if (enemyManager.areEnemiesDead() || IsKeyPressed(KEY_M)) {
 				currentState = transition;
 			}
 
 			//pausar juego si se presiona p y causar game over si jugador muere
-			if (IsKeyPressed(KEY_P) and player->isAlive()) 
+			if (IsKeyPressed(KEY_P) && player->isAlive()) 
 			{
 				currentState = pause;
 			}
@@ -126,7 +126,7 @@ void Game::logic()
 			CloseWindow();
 			break;
 		case transition:
-			if (IsKeyPressed(KEY_ENTER) and map->getCurrentIndex() < map->getMapCount() - 1) {
+			if (IsKeyPressed(KEY_ENTER) && map->getCurrentIndex() < map->getMapCount() - 1) {
 				nextLevel();
 				currentState = playing;
 			}

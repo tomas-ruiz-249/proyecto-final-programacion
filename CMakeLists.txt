@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.10) # Minimum CMake version
-project(ProyectoFinalProgramacion)                  # Name of the project
+cmake_minimum_required(VERSION 3.10)
+project(ProyectoFinalProgramacion)
 
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -12,18 +12,31 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Include directory for headers
-include_directories(${CMAKE_SOURCE_DIR}/libraries/include/)
-
-# Link directory for prebuilt libraries
-link_directories(${CMAKE_SOURCE_DIR}/libraries/lib/)
-
-# Link the library to your target
-target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/libraylib.so)
-target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/raylib.dll)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/libraries/include)
 
 
-# Set the output directory for the executable
+# Find and link the raylib library
+if (WIN32)
+	target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/raylib.lib winmm)
+
+    find_library(RAYLIB_LIBRARY raylib PATHS ${CMAKE_SOURCE_DIR}/libraries/lib)
+    if (RAYLIB_LIBRARY)
+        target_link_libraries(${PROJECT_NAME} ${RAYLIB_LIBRARY})
+    else()
+        message(FATAL_ERROR "raylib library not found in ${CMAKE_SOURCE_DIR}/libraries/lib")
+    endif()
+elseif (UNIX)
+    find_library(RAYLIB_LIBRARY raylib PATHS ${CMAKE_SOURCE_DIR}/libraries/lib)
+    if (RAYLIB_LIBRARY)
+        target_link_libraries(${PROJECT_NAME} ${RAYLIB_LIBRARY})
+    else()
+        message("raylib shared library not found in ${CMAKE_SOURCE_DIR}/libraries/lib")
+    endif()
+endif()
+
+
+# Set the output directories
 set_target_properties(${PROJECT_NAME} PROPERTIES
-	    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/.."
-		)
-
+    RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_SOURCE_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}"
+)

@@ -51,6 +51,7 @@ private:
      * @return Una cadena de texto con la ruta del directorio de sonidos.
      */
     std::string getSoundsDir();
+    void normalizePathSeparator(char* path);
 
     /**
      * @brief Constructor privado del `SoundManager`.

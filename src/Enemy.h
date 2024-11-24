@@ -8,8 +8,8 @@
  * @class Enemy
  * @brief Representa un enemigo dentro del juego.
  *
- * La clase `Enemy` extiende de `Entity` y define el comportamiento específico
- * de los enemigos, incluyendo su movimiento, ataque y respuesta a daño.
+ * La clase `Enemy` extiende de `Entity` y define el comportamiento especï¿½fico
+ * de los enemigos, incluyendo su movimiento, ataque y respuesta a daï¿½o.
  */
 class Enemy : public Entity {
 public:
@@ -21,14 +21,14 @@ public:
     /**
      * @brief Tipo del enemigo.
      *
-     * Utiliza la enumeración `EnemyType` para categorizar el tipo de enemigo.
+     * Utiliza la enumeraciï¿½n `EnemyType` para categorizar el tipo de enemigo.
      */
     EnemyType type;
 
     /**
      * @brief Realiza las acciones del enemigo.
      *
-     * Este método determina el comportamiento del enemigo durante su turno,
+     * Este mï¿½todo determina el comportamiento del enemigo durante su turno,
      * como moverse hacia el jugador o atacar.
      *
      * @param map Referencia al mapa actual del juego.
@@ -36,19 +36,19 @@ public:
     void act(Map& map) override;
 
     /**
-     * @brief Aplica daño al enemigo.
+     * @brief Aplica daï¿½o al enemigo.
      *
-     * Este método reduce la salud del enemigo y marca si está herido.
+     * Este mï¿½todo reduce la salud del enemigo y marca si estï¿½ herido.
      *
-     * @param damage Cantidad de daño recibido.
+     * @param damage Cantidad de daï¿½o recibido.
      */
     void takeDamage(int damage) override;
 
     /**
-     * @brief Mueve al enemigo en dirección al jugador.
+     * @brief Mueve al enemigo en direcciï¿½n al jugador.
      *
-     * Utiliza cálculos basados en el raycasting para determinar si el jugador
-     * está a la vista y, en ese caso, mueve al enemigo hacia él.
+     * Utiliza cï¿½lculos basados en el raycasting para determinar si el jugador
+     * estï¿½ a la vista y, en ese caso, mueve al enemigo hacia ï¿½l.
      *
      * @param map Referencia al mapa actual del juego.
      */
@@ -57,7 +57,7 @@ public:
     /**
      * @brief Constructor por defecto.
      *
-     * Inicializa al enemigo con valores predeterminados de salud y daño.
+     * Inicializa al enemigo con valores predeterminados de salud y daï¿½o.
      */
     Enemy();
 
@@ -65,13 +65,14 @@ public:
      * @brief Constructor que inicializa los atributos principales.
      *
      * @param health Salud inicial del enemigo.
-     * @param damage Daño que inflige el enemigo.
+     * @param damage Daï¿½o que inflige el enemigo.
      */
     Enemy(int health, int damage);
 
 protected:
     /**
-     * @brief Daño que puede infligir el enemigo al jugador.
+     * @brief Daï¿½o que puede infligir el enemigo al jugador.
      */
+
     int damage;
 };

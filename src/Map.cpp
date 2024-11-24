@@ -11,7 +11,7 @@ bool Map::isPositionEmpty(int row, int column)
 	bool isRowValid = row >= 0  && row < GRID_SIZE;
 	bool isColumnValid = column >= 0 && column < GRID_SIZE;
 	if (isRowValid && isColumnValid) {
-		return currentMap[row][column] == none or currentMap[row][column] == openDoor;
+		return currentMap[row][column] == none || currentMap[row][column] == openDoor;
 	}
 	return false;
 }
@@ -21,7 +21,7 @@ bool Map::isDoor(int row, int column)
 	bool isRowValid = row >= 0  && row < GRID_SIZE;
 	bool isColumnValid = column >= 0 && column < GRID_SIZE;
 	if (isRowValid && isColumnValid) {
-		return currentMap[row][column] == closedDoor or currentMap[row][column] == openDoor;
+		return currentMap[row][column] == closedDoor || currentMap[row][column] == openDoor;
 	}
 	return false;
 }

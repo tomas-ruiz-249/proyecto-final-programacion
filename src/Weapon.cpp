@@ -30,7 +30,7 @@ void Weapon::shoot()
 
 bool Weapon::canShoot()
 {
-	return not reloading and (ammoCount > 0);
+	return !reloading && (ammoCount > 0);
 }
 
 bool Weapon::refillAmmo(int refill)

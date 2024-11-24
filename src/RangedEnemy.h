@@ -7,9 +7,9 @@
  * @class RangedEnemy
  * @brief Representa un enemigo que ataca a distancia utilizando proyectiles.
  *
- * Esta clase hereda de `Enemy` y añade comportamiento específico para enemigos
+ * Esta clase hereda de `Enemy` y aï¿½ade comportamiento especï¿½fico para enemigos
  * que utilizan proyectiles en sus ataques. Gestiona acciones como movimiento,
- * ataques a distancia, y la interacción con los proyectiles disparados.
+ * ataques a distancia, y la interacciï¿½n con los proyectiles disparados.
  */
 class RangedEnemy : public Enemy {
 public:
@@ -25,27 +25,27 @@ public:
     /**
      * @brief Realiza un ataque a distancia disparando un proyectil.
      *
-     * Si el enemigo está en posición de atacar, dispara un proyectil y reproduce
+     * Si el enemigo estï¿½ en posiciï¿½n de atacar, dispara un proyectil y reproduce
      * un efecto de sonido. Gestiona los tiempos de recarga del ataque.
      */
     void attack() override;
 
     /**
-     * @brief Mueve al enemigo si no está atacando.
+     * @brief Mueve al enemigo si no estï¿½ atacando.
      *
-     * Llama al método de movimiento de la clase base mientras el enemigo no esté en modo ataque.
+     * Llama al mï¿½todo de movimiento de la clase base mientras el enemigo no estï¿½ en modo ataque.
      *
      * @param map Referencia al mapa actual, usado para verificar colisiones y caminos.
      */
     void move(Map& map) override;
 
     /**
-     * @brief Aplica daño al enemigo.
+     * @brief Aplica daï¿½o al enemigo.
      *
-     * Reduce la vida del enemigo, reproduce un sonido de daño y, si el enemigo muere,
+     * Reduce la vida del enemigo, reproduce un sonido de daï¿½o y, si el enemigo muere,
      * reproduce un sonido de muerte.
      *
-     * @param damage Cantidad de daño recibido.
+     * @param damage Cantidad de daï¿½o recibido.
      */
     void takeDamage(int damage) override;
 
@@ -59,16 +59,16 @@ public:
     /**
      * @brief Constructor de la clase RangedEnemy.
      *
-     * Inicializa al enemigo con una posición específica y valores predeterminados
+     * Inicializa al enemigo con una posiciï¿½n especï¿½fica y valores predeterminados
      * para velocidad, temporizadores de ataque y estados iniciales.
      *
-     * @param position La posición inicial del enemigo en el mapa.
+     * @param position La posiciï¿½n inicial del enemigo en el mapa.
      */
     RangedEnemy(Point2D position);
 
 private:
     std::vector<Projectile*> projectiles; /**< Lista de proyectiles disparados por el enemigo. */
-    bool attacking;                       /**< Indica si el enemigo está en modo ataque. */
+    bool attacking;                       /**< Indica si el enemigo estï¿½ en modo ataque. */
     double attackTimer;                   /**< Temporizador para el manejo del tiempo entre ataques. */
     double attackCoolDown;                /**< Tiempo de enfriamiento entre ataques en segundos. */
 
@@ -76,7 +76,8 @@ private:
      * @brief Verifica colisiones de los proyectiles disparados por el enemigo.
      *
      * Gestiona las colisiones de los proyectiles con el jugador o el entorno,
-     * eliminando los proyectiles que ya no son válidos.
+     * eliminando los proyectiles que ya no son vï¿½lidos.
      */
+
     void checkForProjectileColision();
 };

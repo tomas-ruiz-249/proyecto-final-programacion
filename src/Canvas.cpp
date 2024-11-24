@@ -142,7 +142,7 @@ void Canvas::draw3D(const Player& player, const Map& map, ItemManager& objManage
 		}
 	}
 
-	//sort queue by distance from player and draw
+	//sort queue by distance from player && draw
 	std::sort(drawQueue.begin(), drawQueue.end(), [](const Drawable* a, const Drawable* b) { return a->depth > b->depth; });
 	RayCastResult* rayPtr;
 	Drawable* spritePtr;
@@ -170,7 +170,7 @@ void Canvas::draw3D(const Player& player, const Map& map, ItemManager& objManage
 
 void Canvas::drawStaticSprite(Drawable sprite, Player player)
 {
-	//difference between player position and Item position;
+	//difference between player position && Item position;
 	Point2D d;
 	d.x = sprite.position.x - player.position.x;
 	d.y = sprite.position.y - player.position.y;
@@ -178,7 +178,7 @@ void Canvas::drawStaticSprite(Drawable sprite, Player player)
 
 	//angle from player direction to sprite
 	double delta = angleToSprite - player.angle;
-	if ((d.x > 0 and player.angle > PI) or (d.x < 0 and d.y < 0)) {
+	if ((d.x > 0 && player.angle > PI) || (d.x < 0 && d.y < 0)) {
 		delta += PI * 2;
 	}
 
@@ -188,7 +188,7 @@ void Canvas::drawStaticSprite(Drawable sprite, Player player)
 
 	double dist = sprite.getDistanceFromPlayer(sprite.position, player);
 
-	if ((-sprite.tex.width < screenPosX) and (screenPosX < (windowWidth + sprite.tex.width)) and dist > 0.0) {
+	if ((-sprite.tex.width < screenPosX) && (screenPosX < (windowWidth + sprite.tex.width)) && dist > 0.0) {
 		double imgRatio = (float)sprite.tex.width / (float)sprite.tex.height;
 		double proj = screenDist / dist * sprite.scale;
 		double projWidth = proj * imgRatio;
@@ -209,7 +209,7 @@ void Canvas::drawStaticSprite(Drawable sprite, Player player)
 
 void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 {
-	//difference between player position and Item position;
+	//difference between player position && Item position;
 	Point2D d;
 	d.x = sprite.position.x - player.position.x;
 	d.y = sprite.position.y - player.position.y;
@@ -217,7 +217,7 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 
 	//angle from player direction to sprite
 	double delta = angleToSprite - player.angle;
-	if ((d.x > 0 and player.angle > PI) or (d.x < 0 and d.y < 0)) {
+	if ((d.x > 0 && player.angle > PI) || (d.x < 0 && d.y < 0)) {
 		delta += PI * 2;
 	}
 
@@ -236,7 +236,7 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 
 	Animation& current = sprite.animations[sprite.animationIndex];
 
-	if ((-current.texture.width < screenPosX) and (screenPosX < (windowWidth + current.texture.width)) and dist > 0.0) {
+	if ((-current.texture.width < screenPosX) && (screenPosX < (windowWidth + current.texture.width)) && dist > 0.0) {
 		double imgRatio = (float)current.texture.width / (float)current.texture.height;
 		double proj = screenDist / dist * sprite.scale;
 		double projWidth = proj * imgRatio / current.numFrames;
@@ -249,7 +249,7 @@ void Canvas::drawAnimatedSprite(Animated& sprite, Player player)
 		current.positionOnWindow = { (float)(posX), (float)(posY), (float)(projWidth), (float)(projHeight) };
 
 		sprite.isOnScreenCenter = (halfWindowWidth - current.positionOnWindow.width) < posX 
-							and posX < (halfWindowWidth + current.positionOnWindow.width);
+							&& posX < (halfWindowWidth + current.positionOnWindow.width);
 
 		Color textureColor = WHITE;
 		if (current.texture.id != textureManager->getTexture("sprites/animated/lamp.png").id) {
@@ -382,7 +382,7 @@ void Canvas::drawWeapon(Weapon& weapon)
 {
 	int& index = weapon.sprite->animationIndex;
 	Animation& anim = weapon.sprite->animations[index];
-	if (weapon.reloading and !anim.isAnimationDone()) {
+	if (weapon.reloading && !anim.isAnimationDone()) {
 		anim.positionOnWindow.x = (float)(halfWindowWidth * 0.8);
 		anim.positionOnWindow.y = (float)(windowHeight - anim.texture.height);
 		animate(*weapon.sprite, 0, WHITE);
@@ -637,7 +637,7 @@ GameState Canvas::drawOptions()
 
 	Vector2 mousePos = GetMousePosition();
 
-	if (CheckCollisionPointRec(mousePos, plusSensibility) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (CheckCollisionPointRec(mousePos, plusSensibility) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		Player* player = Player::getInstance();
 		double sensibility = player->getSensibility();
 		if (sensibility < 1) {
@@ -645,7 +645,7 @@ GameState Canvas::drawOptions()
 		}
 	}
 
-	if (CheckCollisionPointRec(mousePos, minusSensibility) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (CheckCollisionPointRec(mousePos, minusSensibility) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		Player* player = Player::getInstance();
 		double sensibility = player->getSensibility();
 		if (sensibility > 0) {
@@ -653,26 +653,26 @@ GameState Canvas::drawOptions()
 		}
 	}
 
-	if (CheckCollisionPointRec(mousePos, plusDarkness) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (CheckCollisionPointRec(mousePos, plusDarkness) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		if (darkness < 0.00020) {
 			darkness += 0.00001;
 		}
 	}
 
-	if (CheckCollisionPointRec(mousePos, minusDarkness) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (CheckCollisionPointRec(mousePos, minusDarkness) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		if (darkness > 0) {
 			darkness -= 0.00001;
 		}
 	}
 
-	if (CheckCollisionPointRec(mousePos, plusSound) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (CheckCollisionPointRec(mousePos, plusSound) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		float currentVol = GetMasterVolume();
 		if (currentVol < 1) {
 			SetMasterVolume(currentVol += 0.1);
 		}
 	}
 
-	if (CheckCollisionPointRec(mousePos, minusSound) and IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+	if (CheckCollisionPointRec(mousePos, minusSound) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
 		float currentVol = GetMasterVolume();
 		if (currentVol > 0) {
 			SetMasterVolume(currentVol -= 0.1);

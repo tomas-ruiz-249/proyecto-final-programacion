@@ -46,9 +46,9 @@ void Player::move(Map& map)
 
 	bool isNearDoorY = map.isDoor(int(position.y + d.y), int(position.x));
 	bool isNearDoorX = map.isDoor(int(position.y), int(position.x + d.x));
-	bool isNearDoor = isNearDoorX or isNearDoorY;
+	bool isNearDoor = isNearDoorX || isNearDoorY;
 
-	if (isNearDoor and IsKeyPressed(KEY_SPACE) and not map.isDoor(int(position.y), int(position.x)) ) {
+	if (isNearDoor && IsKeyPressed(KEY_SPACE) && !map.isDoor(int(position.y), int(position.x)) ) {
 		if (isNearDoorX) {
 			map.toggleDoor(int(position.y), int(position.x + d.x));
 		}
@@ -97,11 +97,11 @@ void Player::takeDamage(int damage)
 
 void Player::attack()
 {
-	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) and weapon->canShoot()) {
+	if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && weapon->canShoot()) {
 		weapon->shoot();
 		justShot = true;
 	}
-	else if (!weapon->canShoot() and IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
+	else if (!weapon->canShoot() && IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
 		SoundManager* soundManager = SoundManager::getInstance();
 		Sound noAmmoSound = soundManager->getSound("reload.mp3"); //sonido cuando no hay balas
 		PlaySound(noAmmoSound);

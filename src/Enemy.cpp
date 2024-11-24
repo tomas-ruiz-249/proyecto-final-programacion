@@ -7,7 +7,7 @@
 void Enemy::act(Map& map)
 {
 	if (isAlive()) {
-		if (not hurt) {
+		if (!hurt) {
 			move(map);
 			attack();
 		}
@@ -40,7 +40,7 @@ void Enemy::move(Map& map)
 	RayCastResult ray = rayCaster.rayCast(angle, position, map);
 	double distanceFromPlayer = sprite->getDistanceFromPlayer(position, player);
 	//approach only if player is on sight
-	if (distanceFromPlayer > 0.5 and ray.depth > distanceFromPlayer) {
+	if (distanceFromPlayer > 0.5 && ray.depth > distanceFromPlayer) {
 		if (map.isPositionEmpty(int(position.y + d.y), int(position.x))){
 			position.y += d.y;
 		}

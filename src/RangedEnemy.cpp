@@ -28,7 +28,7 @@ void RangedEnemy::attack()
 		attacking = false;
 	}
 	else {
-		if (enemyPlayerDist < rayToWall.depth and attackTimer > attackCoolDown) {
+		if (enemyPlayerDist < rayToWall.depth && attackTimer > attackCoolDown) {
 			attacking = true;
 			attackTimer = 0;
 		}

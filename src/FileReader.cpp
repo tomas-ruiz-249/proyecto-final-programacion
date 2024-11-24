@@ -130,7 +130,7 @@ bool FileReader::readItemsFromFile(const char* fileName, std::vector<Item*>& ite
                 break;
             }
             default:{
-                std::cout << "could not instanciate item\n";
+                std::cout << "could !instanciate item\n";
                 break;
             }
         }

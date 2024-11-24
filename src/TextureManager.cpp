@@ -8,7 +8,10 @@ void TextureManager::loadTexturesToVRAM()
 	if (DirectoryExists(textureDir.c_str())) {
 		std::string wallsDir = textureDir;
 		wallsDir.append("walls");
-		FilePathList wallTextures = LoadDirectoryFiles(wallsDir.c_str());
+		FilePathList wallTextures = LoadDirectoryFiles((wallsDir.c_str()));
+		for(int i = 0; i < wallTextures.count; i++){
+			normalizePathSeparator(wallTextures.paths[i]);
+		}
 		for (int i = 0; i < wallTextures.count; i++) {
 			Texture texture = LoadTexture(wallTextures.paths[i]);
 			std::cout << wallTextures.paths[i] << "\n";
@@ -18,6 +21,9 @@ void TextureManager::loadTexturesToVRAM()
 		std::string staticSpritesDir = textureDir;
 		staticSpritesDir.append("sprites/static");
 		FilePathList staticSpriteTextures = LoadDirectoryFiles(staticSpritesDir.c_str());
+		for(int i = 0; i < staticSpriteTextures.count; i++){
+			normalizePathSeparator(staticSpriteTextures.paths[i]);
+		}
 		for (int i = 0; i < staticSpriteTextures.count; i++) {
 			Texture texture = LoadTexture(staticSpriteTextures.paths[i]);
 			(*textures)[staticSpriteTextures.paths[i]] = texture;
@@ -26,6 +32,9 @@ void TextureManager::loadTexturesToVRAM()
 		std::string animatedSpritesDir = textureDir;
 		animatedSpritesDir.append("sprites/animated");
 		FilePathList animatedSpriteTextures = LoadDirectoryFiles(animatedSpritesDir.c_str());
+		for(int i = 0; i < animatedSpriteTextures.count; i++){
+			normalizePathSeparator(animatedSpriteTextures.paths[i]);
+		}
 		for (int i = 0; i < animatedSpriteTextures.count; i++) {
 			Texture texture = LoadTexture(animatedSpriteTextures.paths[i]);
 			(*textures)[animatedSpriteTextures.paths[i]] = texture;
@@ -34,13 +43,16 @@ void TextureManager::loadTexturesToVRAM()
 		std::string backgroundsDir = textureDir;
 		backgroundsDir.append("backgrounds");
 		FilePathList backgroundTextures = LoadDirectoryFiles(backgroundsDir.c_str());
+		for(int i = 0; i < backgroundTextures.count; i++){
+			normalizePathSeparator(backgroundTextures.paths[i]);
+		}
 		for (int i = 0; i < backgroundTextures.count; i++) {
 			Texture texture = LoadTexture(backgroundTextures.paths[i]);
 			(*textures)[backgroundTextures.paths[i]] = texture;
 		}
 	}
 	else {
-		std::cout << "directory not found, can't load textures" << std::endl;
+		std::cout << "directory !found, can't load textures" << std::endl;
 		std::cout << textureDir << "\n";
 		std::cout << GetWorkingDirectory() << "\n";
 	}
@@ -78,3 +90,9 @@ TextureManager::TextureManager()
 	textures = new std::map<std::string,Texture>();
 }
 
+void TextureManager::normalizePathSeparator(char* path)
+{
+    for (int i = 0; path[i] != '\0'; i++) {
+        if (path[i] == '\\') path[i] = '/';
+    }
+}

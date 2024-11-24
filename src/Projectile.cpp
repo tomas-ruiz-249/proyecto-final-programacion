@@ -35,7 +35,7 @@ bool Projectile::shoot()
 	RayCastResult rayToWall = raycaster.rayCast(angle, position, map);
 	double distanceToPlayer = sprite->getDistanceFromPlayer(position, *player);
 
-	bool projectileCrash = distanceToPlayer < 0.5 or rayToWall.depth < 0.5 or timer > timeLimit;
+	bool projectileCrash = distanceToPlayer < 0.5 || rayToWall.depth < 0.5 || timer > timeLimit;
 	if (projectileCrash) {
 		SoundManager* soundManager = SoundManager::getInstance();
 		Sound explosion = soundManager->getSound("projectile_explode.mp3");

@@ -48,6 +48,7 @@ private:
      * para cumplir con los requisitos del patrón Singleton.
      */
     TextureManager();
+    void normalizePathSeparator(char* path);
 
     /**
      * @brief Obtiene el directorio base de texturas.
