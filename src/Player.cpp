@@ -86,6 +86,7 @@ void Player::move(Map& map)
 
 void Player::takeDamage(int damage)
 {
+	std::cout << hurtTimer << "\n";
 	if (hurtTimer > 0.3) {
 		SoundManager* soundManager = SoundManager::getInstance();
 		Sound hurtSound = soundManager->getSound("EnemyAttack.mp3"); //sonido de da�o
@@ -167,7 +168,7 @@ Player::Player()
 	health = maxHealth;
 	speed = 5.0;
 	sensibility = 0.1f;
-	//angle =  3 * PI / 2;
+	hurt = false;
 	weapon = new Weapon();
 	justShot = false;
 

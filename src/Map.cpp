@@ -51,7 +51,10 @@ WallType Map::getElementAt(int row, int column)
 
 void Map::loadMaps()
 {
-	FilePathList mapPaths = LoadDirectoryFiles("assets/data/");
+	FilePathList mapPaths = LoadDirectoryFiles("assets/data");
+	for(int i = 0; i < mapPaths.count; i++){
+		normalizePathSeparator(mapPaths.paths[i]);
+	}
 	std::vector<std::string> paths;
 	for(int i = 0; i < mapPaths.count; i++){
 		paths.push_back(mapPaths.paths[i]);
@@ -118,6 +121,13 @@ Map* Map::getInstance()
 		instance = new Map();
 	}
 	return instance;
+}
+
+void Map::normalizePathSeparator(char *path)
+{
+    for (int i = 0; path[i] != '\0'; i++) {
+        if (path[i] == '\\') path[i] = '/';
+    }
 }
 
 Map::Map()

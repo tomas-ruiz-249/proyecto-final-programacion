@@ -109,6 +109,7 @@ private:
     WallType** currentMap; ///< Puntero al mapa actualmente activo.
     int currentMapIndex; ///< �ndice del mapa actualmente activo.
     static Map* instance; ///< Instancia �nica de la clase (Singleton).
+    void normalizePathSeparator(char* path);
 
     /**
      * @brief Constructor privado de la clase `Map`.
