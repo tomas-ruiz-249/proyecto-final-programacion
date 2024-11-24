@@ -7,22 +7,22 @@
  * @brief Representa al jugador controlado por el usuario en el juego.
  *
  * La clase `Player` hereda de `Entity` y encapsula todas las funcionalidades relacionadas con el
- * movimiento, ataque, recibir daño y otras interacciones del jugador dentro del juego.
- * También administra su propia arma y estados como salud y sensibilidad.
+ * movimiento, ataque, recibir daï¿½o y otras interacciones del jugador dentro del juego.
+ * Tambiï¿½n administra su propia arma y estados como salud y sensibilidad.
  */
 class Player : public Entity {
 public:
     /// Arma actualmente equipada por el jugador.
     Weapon* weapon;
 
-    /// Indica si el jugador disparó recientemente.
+    /// Indica si el jugador disparï¿½ recientemente.
     bool justShot;
 
     /**
      * @brief Realiza las acciones principales del jugador.
      *
-     * Comprueba si el jugador está vivo para realizar movimientos y ataques.
-     * También actualiza el temporizador de daño recibido.
+     * Comprueba si el jugador estï¿½ vivo para realizar movimientos y ataques.
+     * Tambiï¿½n actualiza el temporizador de daï¿½o recibido.
      *
      * @param map Referencia al mapa actual del juego.
      */
@@ -31,51 +31,51 @@ public:
     /**
      * @brief Gestiona el movimiento del jugador en el mapa.
      *
-     * Permite el movimiento en función de las entradas del teclado y ajusta la posición
-     * del jugador en el mapa. También permite interactuar con puertas cercanas.
+     * Permite el movimiento en funciï¿½n de las entradas del teclado y ajusta la posiciï¿½n
+     * del jugador en el mapa. Tambiï¿½n permite interactuar con puertas cercanas.
      *
      * @param map Referencia al mapa actual del juego.
      */
     void move(Map& map) override;
 
     /**
-     * @brief Maneja el daño recibido por el jugador.
+     * @brief Maneja el daï¿½o recibido por el jugador.
      *
-     * Reduce la salud del jugador si el temporizador de daño permite recibir otro golpe.
-     * Reproduce un sonido al recibir daño.
+     * Reduce la salud del jugador si el temporizador de daï¿½o permite recibir otro golpe.
+     * Reproduce un sonido al recibir daï¿½o.
      *
-     * @param damage Cantidad de daño recibido.
+     * @param damage Cantidad de daï¿½o recibido.
      */
     void takeDamage(int damage) override;
 
     /**
      * @brief Permite al jugador atacar con su arma.
      *
-     * Si el arma tiene munición y el jugador intenta disparar, realiza un disparo.
-     * Si no hay munición, reproduce un sonido de recarga.
+     * Si el arma tiene municiï¿½n y el jugador intenta disparar, realiza un disparo.
+     * Si no hay municiï¿½n, reproduce un sonido de recarga.
      */
     void attack() override;
 
     /**
      * @brief Cura al jugador utilizando puntos de vida.
      *
-     * Si la salud del jugador es menor que el máximo, incrementa la salud
-     * hasta un máximo permitido y reproduce un sonido de curación.
+     * Si la salud del jugador es menor que el mï¿½ximo, incrementa la salud
+     * hasta un mï¿½ximo permitido y reproduce un sonido de curaciï¿½n.
      *
      * @param healthPoints Puntos de salud para curar.
-     * @return `true` si la curación fue exitosa, `false` en caso contrario.
+     * @return `true` si la curaciï¿½n fue exitosa, `false` en caso contrario.
      */
     bool heal(int healthPoints);
 
     /**
      * @brief Restaura al jugador a su estado inicial.
      *
-     * Restablece la salud máxima, posición inicial y munición del arma.
+     * Restablece la salud mï¿½xima, posiciï¿½n inicial y municiï¿½n del arma.
      */
     void reset();
 
     /**
-     * @brief Establece la sensibilidad del jugador al mover la cámara.
+     * @brief Establece la sensibilidad del jugador al mover la cï¿½mara.
      *
      * @param sensibility Nueva sensibilidad.
      */
@@ -89,41 +89,36 @@ public:
     double getSensibility();
 
     /**
-     * @brief Devuelve el valor máximo de salud del jugador.
+     * @brief Devuelve el valor mï¿½ximo de salud del jugador.
      *
-     * @return Salud máxima.
+     * @return Salud mï¿½xima.
      */
     int getMaxHealth();
 
     /**
-     * @brief Obtiene la instancia única del jugador.
+     * @brief Obtiene la instancia ï¿½nica del jugador.
      *
-     * Implementa el patrón Singleton para garantizar que solo exista una instancia de `Player`.
+     * Implementa el patrï¿½n Singleton para garantizar que solo exista una instancia de `Player`.
      *
-     * @return Puntero a la instancia única de `Player`.
+     * @return Puntero a la instancia ï¿½nica de `Player`.
      */
     static Player* getInstance();
 
-    /**
-     * @brief Clase amiga para permitir que `HealthBox` acceda a los miembros privados de `Player`.
-     */
-    friend class HealthBox;
-
 private:
-    /// Salud máxima del jugador.
+    /// Salud mï¿½xima del jugador.
     int maxHealth;
 
-    /// Sensibilidad de la cámara al mover el mouse.
+    /// Sensibilidad de la cï¿½mara al mover el mouse.
     double sensibility;
 
-    /// Temporizador para gestionar el intervalo entre daños consecutivos.
+    /// Temporizador para gestionar el intervalo entre daï¿½os consecutivos.
     double hurtTimer;
 
-    /// Instancia única de `Player` para el patrón Singleton.
-    static Player* player;
-
+    /// Instancia ï¿½nica de `Player` para el patrï¿½n Singleton.
+    static Player* instance;
+    
     /**
-     * @brief Constructor privado para implementar el patrón Singleton.
+     * @brief Constructor privado para implementar el patrï¿½n Singleton.
      */
     Player();
 };

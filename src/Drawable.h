@@ -17,22 +17,23 @@ class Player;
  * @brief Clase base para objetos renderizables en el juego.
  *
  * La clase `Drawable` encapsula propiedades y comportamientos comunes para
- * todos los objetos que pueden ser dibujados en la pantalla. Incluye la posición,
- * área de textura, escala y profundidad.
+ * todos los objetos que pueden ser dibujados en la pantalla. Incluye la posiciï¿½n,
+ * ï¿½rea de textura, escala y profundidad.
  */
+
 class Drawable {
 public:
     /**
-     * @brief Área de la textura que será renderizada.
+     * @brief ï¿½rea de la textura que serï¿½ renderizada.
      *
-     * Define una porción de la textura que se utilizará para dibujar el sprite.
+     * Define una porciï¿½n de la textura que se utilizarï¿½ para dibujar el sprite.
      */
     Rectangle textureArea;
 
     /**
-     * @brief Área de la ventana donde se dibujará el objeto.
+     * @brief ï¿½rea de la ventana donde se dibujarï¿½ el objeto.
      *
-     * Representa la posición y dimensiones en píxeles del objeto en la pantalla.
+     * Representa la posiciï¿½n y dimensiones en pï¿½xeles del objeto en la pantalla.
      */
     Rectangle positionOnWindow;
 
@@ -47,27 +48,27 @@ public:
     /**
      * @brief Escala del objeto en la pantalla.
      *
-     * Permite modificar el tamaño del objeto en función de su distancia o contexto.
+     * Permite modificar el tamaï¿½o del objeto en funciï¿½n de su distancia o contexto.
      */
     double scale;
 
     /**
      * @brief Desplazamiento vertical del objeto en la pantalla.
      *
-     * Útil para ajustar la posición de renderizado en relación con otros elementos.
+     * ï¿½til para ajustar la posiciï¿½n de renderizado en relaciï¿½n con otros elementos.
      */
     double shift;
 
     /**
-     * @brief Posición 2D del objeto en el mundo.
+     * @brief Posiciï¿½n 2D del objeto en el mundo.
      */
     Point2D position;
 
     /**
-     * @brief Indica si el objeto está en el centro de la pantalla.
+     * @brief Indica si el objeto estï¿½ en el centro de la pantalla.
      *
      * Este atributo se utiliza para verificar si el objeto se encuentra
-     * en el campo de visión principal del jugador.
+     * en el campo de visiï¿½n principal del jugador.
      */
     bool isOnScreenCenter;
 
@@ -79,17 +80,17 @@ public:
     /**
      * @brief Calcula la distancia entre el objeto y el jugador.
      *
-     * Este método determina la distancia euclidiana entre la posición
-     * del objeto y la posición actual del jugador.
+     * Este mï¿½todo determina la distancia euclidiana entre la posiciï¿½n
+     * del objeto y la posiciï¿½n actual del jugador.
      *
-     * @param position Posición del objeto en el mundo.
+     * @param position Posiciï¿½n del objeto en el mundo.
      * @param player Referencia al jugador.
      * @return Distancia en unidades del mundo.
      */
     double getDistanceFromPlayer(Point2D position, Player player);
 
     /**
-     * @brief Destructor virtual para asegurar una limpieza adecuada.
+     * @brief Destructor virtual para poder usar dynamic_cast<>().
      */
     virtual ~Drawable() = default;
 };

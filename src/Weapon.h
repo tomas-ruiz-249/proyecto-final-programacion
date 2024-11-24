@@ -3,52 +3,53 @@
 
 /**
  * @class Weapon
- * @brief Representa un arma en el juego, con funcionalidades de disparo, recarga y manejo de munición.
+ * @brief Representa un arma en el juego, con funcionalidades de disparo, recarga y manejo de municiï¿½n.
  *
- * La clase Weapon encapsula la lógica relacionada con el comportamiento de un arma,
- * como disparar, verificar si puede disparar, y recargar munición. También define
- * atributos básicos como daño, alcance y estado de recarga.
+ * La clase Weapon encapsula la lï¿½gica relacionada con el comportamiento de un arma,
+ * como disparar, verificar si puede disparar, y recargar municiï¿½n. Tambiï¿½n define
+ * atributos bï¿½sicos como daï¿½o, alcance y estado de recarga.
  */
+
 class Weapon {
 public:
     /**
      * @brief Constructor de la clase Weapon.
      *
      * Inicializa los atributos del arma con valores predeterminados,
-     * incluyendo el sprite, daño, alcance, munición máxima y el estado inicial.
+     * incluyendo el sprite, daï¿½o, alcance, municiï¿½n mï¿½xima y el estado inicial.
      */
     Weapon();
 
     /**
-     * @brief Dispara el arma si hay munición disponible.
+     * @brief Dispara el arma si hay municiï¿½n disponible.
      *
-     * Reproduce un sonido de disparo y reduce la munición disponible.
+     * Reproduce un sonido de disparo y reduce la municiï¿½n disponible.
      * Cambia el estado del arma a "recargando".
      */
     void shoot();
 
     /**
-     * @brief Verifica si el arma está lista para disparar.
+     * @brief Verifica si el arma estï¿½ lista para disparar.
      *
-     * Determina si el arma puede disparar basándose en el estado de recarga
-     * y la cantidad de munición disponible.
+     * Determina si el arma puede disparar basï¿½ndose en el estado de recarga
+     * y la cantidad de municiï¿½n disponible.
      * @return `true` si el arma puede disparar, `false` en caso contrario.
      */
     bool canShoot();
 
     /**
-     * @brief Recarga munición al arma.
+     * @brief Recarga municiï¿½n al arma.
      *
-     * Añade una cantidad específica de munición al arma, sin exceder el límite máximo.
+     * Aï¿½ade una cantidad especï¿½fica de municiï¿½n al arma, sin exceder el lï¿½mite mï¿½ximo.
      * Reproduce un sonido de recarga al completarse.
-     * @param refill Cantidad de munición a recargar.
-     * @return `true` si la recarga fue exitosa, `false` si el arma ya tiene munición completa.
+     * @param refill Cantidad de municiï¿½n a recargar.
+     * @return `true` si la recarga fue exitosa, `false` si el arma ya tiene municiï¿½n completa.
      */
     bool refillAmmo(int refill);
 
     /**
-     * @brief Obtiene el daño del arma.
-     * @return El valor del daño que inflige el arma por disparo.
+     * @brief Obtiene el daï¿½o del arma.
+     * @return El valor del daï¿½o que inflige el arma por disparo.
      */
     int getDamage();
 
@@ -61,28 +62,28 @@ public:
     /**
      * @brief Sprite animado del arma.
      *
-     * Representa la animación visual asociada al arma.
+     * Representa la animaciï¿½n visual asociada al arma.
      */
     Animated* sprite;
 
     /**
      * @brief Declara amistad con Canvas.
      *
-     * Canvas tiene acceso a los atributos y métodos privados del arma.
+     * Canvas tiene acceso a los atributos y mï¿½todos privados del arma.
      */
     friend class Canvas;
 
     /**
      * @brief Declara amistad con AmmoBox.
      *
-     * AmmoBox tiene acceso a los atributos y métodos privados del arma.
+     * AmmoBox tiene acceso a los atributos y mï¿½todos privados del arma.
      */
     friend class AmmoBox;
 
 private:
-    int damage; ///< Daño que inflige el arma por disparo.
+    int damage; ///< Daï¿½o que inflige el arma por disparo.
     int range; ///< Alcance efectivo del arma.
-    unsigned int ammoCount; ///< Munición actual disponible en el arma.
-    bool reloading; ///< Indica si el arma está en proceso de recarga.
-    int maxAmmo; ///< Cantidad máxima de munición que puede tener el arma.
+    unsigned int ammoCount; ///< Municiï¿½n actual disponible en el arma.
+    bool reloading; ///< Indica si el arma estï¿½ en proceso de recarga.
+    int maxAmmo; ///< Cantidad mï¿½xima de municiï¿½n que puede tener el arma.
 };

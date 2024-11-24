@@ -3,16 +3,17 @@
 
 /**
  * @class Animation
- * @brief Clase que representa una animación basada en cuadros (frames).
+ * @brief Clase que representa una animaciï¿½n basada en cuadros (frames).
  *
- * Esta clase encapsula información y métodos relacionados con la
- * reproducción de animaciones, como el número de cuadros, velocidad,
- * y el área de textura para cada cuadro.
+ * Esta clase encapsula informaciï¿½n y mï¿½todos relacionados con la
+ * reproducciï¿½n de animaciones, como el nï¿½mero de cuadros, velocidad,
+ * y el ï¿½rea de textura para cada cuadro.
  */
+
 class Animation {
 public:
     /**
-     * @brief Número total de cuadros en la animación.
+     * @brief Nï¿½mero total de cuadros en la animaciï¿½n.
      */
     int numFrames;
 
@@ -22,57 +23,60 @@ public:
     double frameTimer;
 
     /**
-     * @brief Velocidad de la animación en segundos por cuadro.
+     * @brief Velocidad de la animaciï¿½n en segundos por cuadro.
      */
     double animationSpeed;
 
     /**
-     * @brief Área de la textura que contiene los cuadros de la animación.
+     * @brief ï¿½rea de la textura que contiene los cuadros de la animaciï¿½n.
      */
     Rectangle textureArea;
 
     /**
-     * @brief Posición donde se renderiza la animación en la ventana.
+     * @brief Posiciï¿½n donde se renderiza la animaciï¿½n en la ventana.
      */
     Rectangle positionOnWindow;
 
     /**
-     * @brief Textura que contiene los cuadros de la animación.
+     * @brief Textura que contiene los cuadros de la animaciï¿½n.
      */
     Texture texture;
 
     /**
-     * @brief Indica si la animación debe detenerse.
+     * @brief Indica si la animaciï¿½n debe detenerse.
      */
     bool stop;
 
     /**
-     * @brief Devuelve el cuadro actual de la animación.
-     * @return Un entero que representa el índice del cuadro actual.
+     * @brief Devuelve el cuadro actual de la animaciï¿½n.
+     * @return Un entero que representa el ï¿½ndice del cuadro actual.
      */
     int getCurrentFrame();
 
     /**
-     * @brief Verifica si la animación ha llegado al último cuadro.
-     * @return true si la animación ha terminado, false en caso contrario.
+     * @brief Verifica si la animaciï¿½n ha llegado al ï¿½ltimo cuadro.
+     * @return true si la animaciï¿½n ha terminado, false en caso contrario.
      */
+
     bool isAnimationDone();
 
     /**
-     * @brief Reinicia la animación al primer cuadro.
+     * @brief Reinicia la animaciï¿½n al primer cuadro.
      */
+
     void resetAnimation();
 
     /**
-     * @brief Avanza al siguiente cuadro en la animación.
+     * @brief Avanza al siguiente cuadro en la animaciï¿½n.
      *
-     * Si la animación llega al último cuadro, vuelve al primero.
+     * Si la animaciï¿½n llega al ï¿½ltimo cuadro, vuelve al primero.
      */
+
     void nextFrame();
 
 private:
     /**
-     * @brief Cuadro actual que se está reproduciendo.
+     * @brief Cuadro actual que se estï¿½ reproduciendo.
      */
     int currentFrame;
 };

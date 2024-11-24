@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include "Player.h"
-#include "TextureManager.h";
+#include "TextureManager.h"
 #include "SoundManager.h" 
 
 void Player::act(Map& map)
@@ -150,6 +150,8 @@ int Player::getMaxHealth()
 	return maxHealth;
 }
 
+Player* Player::instance = nullptr;
+
 Player* Player::getInstance()
 {
 	if (!instance) {
@@ -189,5 +191,3 @@ Player::Player()
 	shooting.positionOnWindow.height = (float)(shooting.texture.height);
 	weapon->sprite->animations.push_back(shooting);
 }
-
-Player* Player::instance = nullptr;

@@ -5,38 +5,40 @@
 
 /**
  * @class AmmoBox
- * @brief Representa una caja de munición que puede ser recogida por un jugador.
+ * @brief Representa una caja de municiï¿½n que puede ser recogida por un jugador.
  *
- * La clase AmmoBox hereda de las clases Item y Pickup. Su propósito es
- * proporcionar munición al jugador cuando es recogida.
+ * La clase AmmoBox hereda de las clases Item y Pickup. Su propï¿½sito es
+ * proporcionar municiï¿½n al jugador cuando es recogida.
  */
+
 class AmmoBox : public Item, public Pickup {
 public:
     /**
-     * @brief Cantidad de munición contenida en la caja.
+     * @brief Cantidad de municiï¿½n contenida en la caja.
      *
-     * Inicialmente, cada caja contiene 15 unidades de munición.
+     * Inicialmente, cada caja contiene 15 unidades de municiï¿½n.
      */
     int ammoCount;
 
     /**
-     * @brief Acción para recoger la caja de munición.
+     * @brief Acciï¿½n para recoger la caja de municiï¿½n.
      *
-     * Este método sobrescribe el comportamiento de Pickup. Si la caja
-     * de munición es recogida por el jugador, la cantidad de munición
+     * Este mï¿½todo sobrescribe el comportamiento de Pickup. Si la caja
+     * de municiï¿½n es recogida por el jugador, la cantidad de municiï¿½n
      * se transfiere al arma actual del jugador.
      *
-     * @return true si la munición fue recogida exitosamente, false en caso contrario.
+     * true si la municiï¿½n fue recogida exitosamente, false en caso contrario.
      */
     bool pickup() override;
 
     /**
      * @brief Constructor de la clase AmmoBox.
      *
-     * Inicializa una caja de munición en la posición especificada y asigna
-     * la cantidad de munición por defecto (15 unidades).
+     * Inicializa una caja de municiï¿½n en la posiciï¿½n especificada y asigna
+     * la cantidad de municiï¿½n por defecto (15 unidades).
      *
-     * @param pos Posición inicial de la caja en el espacio 2D.
+     * @param pos Posiciï¿½n inicial de la caja en el espacio 2D.
      */
+
     AmmoBox(Point2D pos);
 };
