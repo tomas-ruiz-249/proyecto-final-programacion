@@ -12,13 +12,15 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Include directory for headers
-include_directories(${CMAKE_SOURCE_DIR}/libraries/include)
+include_directories(${CMAKE_SOURCE_DIR}/libraries/include/)
 
 # Link directory for prebuilt libraries
 link_directories(${CMAKE_SOURCE_DIR}/libraries/lib/)
 
 # Link the library to your target
 target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/libraylib.so)
+#target_link_libraries(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/libraries/lib/raylib.dll)
+
 
 # Set the output directory for the executable
 set_target_properties(${PROJECT_NAME} PROPERTIES

@@ -13,10 +13,10 @@
 
 /**
  * @class Canvas
- * @brief Clase encargada de la gestión y renderizado de gráficos en el juego.
+ * @brief Clase encargada de la gestiÃ³n y renderizado de grÃ¡ficos en el juego.
  *
  * La clase `Canvas` maneja la ventana del juego, el renderizado en 2D y 3D,
- * la animación de sprites y la interfaz de usuario (HUD, menús y transiciones).
+ * la animaciÃ³n de sprites y la interfaz de usuario (HUD, menÃºs y transiciones).
  */
 class Canvas {
 public:
@@ -30,12 +30,12 @@ public:
     /**
      * @brief Renderiza los elementos principales del juego.
      *
-     * Este método dibuja el mapa, el jugador, los objetos interactivos, los enemigos
+     * Este mÃ©todo dibuja el mapa, el jugador, los objetos interactivos, los enemigos
      * y los elementos de la interfaz, dependiendo del estado actual del juego.
      *
      * @param map Referencia al mapa actual del juego.
      * @param player Referencia al jugador.
-     * @param objManager Referencia al gestor de objetos (ítems).
+     * @param objManager Referencia al gestor de objetos (Ã­tems).
      * @param enemyManager Referencia al gestor de enemigos.
      * @param state Estado actual del juego.
      * @return El estado siguiente del juego tras completar el ciclo de renderizado.
@@ -59,7 +59,7 @@ public:
 
 private:
     TextureManager* textureManager; ///< Administrador de texturas.
-    Font titleFont;                 ///< Fuente utilizada para títulos y textos.
+    Font titleFont;                 ///< Fuente utilizada para tÃ­tulos y textos.
     int screenWidth;                ///< Ancho de la pantalla.
     int screenHeight;               ///< Alto de la pantalla.
     int windowWidth;                ///< Ancho de la ventana.
@@ -72,8 +72,8 @@ private:
 
     // Raycasting
     RayCaster rayCaster; ///< Sistema de raycasting para el renderizado 3D.
-    double FOV;          ///< Campo de visión en radianes.
-    double halfFOV;      ///< Mitad del campo de visión.
+    double FOV;          ///< Campo de visiÃ³n en radianes.
+    double halfFOV;      ///< Mitad del campo de visiÃ³n.
     double screenDist;   ///< Distancia virtual desde el jugador a la pantalla.
     double scale;        ///< Escalado de los elementos renderizados.
 
@@ -88,7 +88,7 @@ private:
     void draw3D(const Player& player, const Map& map, ItemManager& objManager, EnemyManager& enemyManager);
 
     /**
-     * @brief Renderiza una columna específica como parte del renderizado 3D.
+     * @brief Renderiza una columna especÃ­fica como parte del renderizado 3D.
      *
      * @param ray Resultado del raycasting para la columna.
      */
@@ -104,28 +104,28 @@ private:
     /**
      * @brief Renderiza el fondo animado del juego.
      *
-     * @param player Referencia al jugador para ajustar el fondo según su posición.
+     * @param player Referencia al jugador para ajustar el fondo segÃºn su posiciÃ³n.
      */
     void drawBackground(Player player);
 
     /**
-     * @brief Renderiza el efecto de sangre en la pantalla (daño recibido).
+     * @brief Renderiza el efecto de sangre en la pantalla (daÃ±o recibido).
      *
      * @param player Referencia al jugador.
      */
     void drawBlood(Player player);
 
     /**
-     * @brief Gestiona y renderiza la animación de un sprite.
+     * @brief Gestiona y renderiza la animaciÃ³n de un sprite.
      *
      * @param animated Referencia al objeto animado.
-     * @param index Índice de la animación a reproducir.
-     * @param color Color aplicado a la animación.
+     * @param index ï¿½ndice de la animaciÃ³n a reproducir.
+     * @param color Color aplicado a la animaciÃ³n.
      */
     void animate(Animated& animated, int index, Color color);
 
     /**
-     * @brief Renderiza un sprite animado en relación con la posición del jugador.
+     * @brief Renderiza un sprite animado en relaciÃ³n con la posiciÃ³n del jugador.
      *
      * @param sprite Referencia al sprite animado.
      * @param player Referencia al jugador.
@@ -135,14 +135,14 @@ private:
     /**
      * @brief Renderiza la interfaz HUD.
      *
-     * Muestra información como la salud, munición y otros elementos relevantes.
+     * Muestra informaciÃ³n como la salud, municiÃ³n y otros elementos relevantes.
      *
      * @param player Referencia al jugador.
      */
     void drawHUD(Player& player);
 
     /**
-     * @brief Renderiza un sprite estático en la pantalla.
+     * @brief Renderiza un sprite estÃ¡tico en la pantalla.
      *
      * @param sprite Sprite a dibujar.
      * @param player Referencia al jugador.
@@ -150,25 +150,25 @@ private:
     void drawStaticSprite(Drawable sprite, Player player);
 
     /**
-     * @brief Renderiza el menú principal.
-     * @return El estado siguiente del juego tras mostrar el menú.
+     * @brief Renderiza el menÃº principal.
+     * @return El estado siguiente del juego tras mostrar el menÃº.
      */
     GameState drawMenu();
 
     /**
-     * @brief Renderiza el menú de pausa.
-     * @return El estado siguiente del juego tras mostrar el menú de pausa.
+     * @brief Renderiza el menÃº de pausa.
+     * @return El estado siguiente del juego tras mostrar el menÃº de pausa.
      */
     GameState drawPause();
 
     /**
-     * @brief Renderiza el menú de opciones.
-     * @return El estado siguiente del juego tras mostrar el menú de opciones.
+     * @brief Renderiza el menï¿½ de opciones.
+     * @return El estado siguiente del juego tras mostrar el menÃº de opciones.
      */
     GameState drawOptions();
 
     /**
-     * @brief Renderiza una pantalla de transición entre niveles o estados del juego.
+     * @brief Renderiza una pantalla de transiciÃ³n entre niveles o estados del juego.
      */
     void drawTransitionScreen();
 };

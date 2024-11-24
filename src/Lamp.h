@@ -3,22 +3,22 @@
 
 /**
  * @class Lamp
- * @brief Representa una l醡para en el juego.
+ * @brief Representa una l谩mpara en el juego.
  *
- * La clase `Lamp` es un objeto derivado de `Item` que representa una l醡para
- * con una posici髇 espec韋ica y un color asociado. Es 鷗il para agregar elementos
+ * La clase `Lamp` es un objeto derivado de `Item` que representa una l谩mpara
+ * con una posici贸n espec铆fica y un color asociado. Es 煤til para agregar elementos
  * visuales o interactivos al juego.
  */
 class Lamp : public Item {
 public:
-    int LampColor; ///< Color de la l醡para representado como un entero.
+    int LampColor; ///< Color de la l谩mpara representado como un entero.
 
     /**
      * @brief Constructor de la clase Lamp.
      *
-     * @param pos Posici髇 inicial de la l醡para en el espacio (tipo Point2D).
+     * @param pos Posici贸n inicial de la l锟絤para en el espacio (tipo Point2D).
      *
-     * Inicializa una l醡para con una posici髇 especificada. El color de la l醡para
+     * Inicializa una l贸mpara con una posici贸n especificada. El color de la l谩mpara
      * debe ser configurado posteriormente.
      */
     Lamp(Point2D pos);

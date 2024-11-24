@@ -1,5 +1,5 @@
 #include "Entity.h"
-#include "raylib.h"
+#include <raylib.h>
 #include <cmath>
 
 bool Entity::isAlive()
