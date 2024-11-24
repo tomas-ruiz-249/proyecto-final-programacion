@@ -1,7 +1,0 @@
-<map id="FileReader::readEnemiesFromFile" name="FileReader::readEnemiesFromFile">
-<area shape="rect" id="Node000001" title="Lee los datos de los enemigos desde un archivo y los carga en una lista." alt="" coords="5,31,245,56"/>
-<area shape="rect" id="Node000002" href="$classTextureManager.html#ad54c51d3aa7c0d1f978cdc58cc014f09" title="Obtiene la instancia única de la clase TextureManager." alt="" coords="293,5,504,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="245,30,280,26,280,32,246,35"/>
-<area shape="rect" id="Node000003" href="$classTextureManager.html#a3826a526a61270fd9d3074a699dd72b7" title="Obtiene una textura almacenada en el gestor." alt="" coords="297,55,501,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="246,51,283,55,283,60,245,57"/>
-</map>
