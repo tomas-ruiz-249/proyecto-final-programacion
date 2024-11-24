@@ -2,25 +2,25 @@
 <area shape="rect" id="Node000001" title="Realiza las acciones principales del jugador." alt="" coords="5,284,96,309"/>
 <area shape="rect" id="Node000002" href="$classPlayer.html#ab558e8317df9cdfd5c3c1f8009ecd65e" title="Permite al jugador atacar con su arma." alt="" coords="144,107,256,132"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,282,177,141,181,145,65,286"/>
-<area shape="rect" id="Node000007" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad est� viva." alt="" coords="145,333,255,359"/>
+<area shape="rect" id="Node000007" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad estï¿½ viva." alt="" coords="145,333,255,359"/>
 <area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="91,307,149,326,147,331,89,312"/>
 <area shape="rect" id="Node000008" href="$classPlayer.html#a8141b53dcd1c7040dabb55b7404f729e" title="Gestiona el movimiento del jugador en el mapa." alt="" coords="146,284,254,309"/>
 <area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="96,294,132,294,132,299,96,299"/>
-<area shape="rect" id="Node000003" href="$classWeapon.html#a6931d17fb64311e70e88134c973ef5ea" title="Verifica si el arma est� lista para disparar." alt="" coords="314,5,457,31"/>
+<area shape="rect" id="Node000003" href="$classWeapon.html#a6931d17fb64311e70e88134c973ef5ea" title="Verifica si el arma estï¿½ lista para disparar." alt="" coords="314,5,457,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="216,104,255,77,303,48,334,33,336,38,305,52,258,81,219,109"/>
-<area shape="rect" id="Node000004" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="515,283,717,308"/>
+<area shape="rect" id="Node000004" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="515,283,717,308"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="232,130,573,275,571,280,230,135"/>
-<area shape="rect" id="Node000005" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido específico del listado cargado." alt="" coords="522,107,710,132"/>
+<area shape="rect" id="Node000005" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido especÃ­fico del listado cargado." alt="" coords="522,107,710,132"/>
 <area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="242,104,304,91,385,86,467,91,541,102,541,107,466,97,385,91,304,97,243,109"/>
-<area shape="rect" id="Node000006" href="$classWeapon.html#a063d0eb2cf432d72dc22f6ec565a1a16" title="Dispara el arma si hay munici�n disponible." alt="" coords="326,107,445,132"/>
+<area shape="rect" id="Node000006" href="$classWeapon.html#a063d0eb2cf432d72dc22f6ec565a1a16" title="Dispara el arma si hay municiï¿½n disponible." alt="" coords="326,107,445,132"/>
 <area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="256,117,312,117,312,122,256,122"/>
 <area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="405,130,588,272,585,276,402,134"/>
 <area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="445,117,508,117,508,122,445,122"/>
 <area shape="poly" id="edge10_Node000008_Node000004" title=" " alt="" coords="232,307,257,318,281,332,305,342,349,351,385,353,466,342,522,328,572,311,574,316,524,334,467,347,385,358,349,356,303,347,278,337,255,323,230,312"/>
 <area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="225,281,303,244,447,182,568,134,570,139,449,187,305,248,227,286"/>
-<area shape="rect" id="Node000009" href="$classMap.html#ab8f7b8df6f5cfd061e37ceffefdad8c0" title="Comprueba si una posici�n contiene una puerta." alt="" coords="335,308,435,333"/>
+<area shape="rect" id="Node000009" href="$classMap.html#ab8f7b8df6f5cfd061e37ceffefdad8c0" title="Comprueba si una posiciï¿½n contiene una puerta." alt="" coords="335,308,435,333"/>
 <area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="255,301,322,310,321,315,254,306"/>
-<area shape="rect" id="Node000010" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="304,259,467,284"/>
+<area shape="rect" id="Node000010" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posiciï¿½n especï¿½fica del mapa estï¿½ vacï¿½a." alt="" coords="304,259,467,284"/>
 <area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="254,287,290,282,291,287,255,292"/>
 <area shape="rect" id="Node000011" href="$classMap.html#a122ceb48eb362df501aec9796c0af02c" title="Alterna el estado de una puerta entre abierta y cerrada." alt="" coords="320,409,451,435"/>
 <area shape="poly" id="edge14_Node000008_Node000011" title=" " alt="" coords="240,307,258,319,274,337,282,354,290,371,306,388,328,401,325,406,302,392,286,374,277,357,269,340,254,323,237,312"/>

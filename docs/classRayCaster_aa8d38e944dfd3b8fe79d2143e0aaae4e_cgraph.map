@@ -2,8 +2,8 @@
 <area shape="rect" id="Node000001" title="Obtiene todos los rayos en un rango de ángulo." alt="" coords="5,31,172,56"/>
 <area shape="rect" id="Node000002" href="$classRayCaster.html#a732026239f17e82f07df4fb327d4f95f" title="Realiza un raycasting desde una posición específica." alt="" coords="220,31,367,56"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,41,206,41,206,46,172,46"/>
-<area shape="rect" id="Node000003" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posici�n espec�fica del mapa." alt="" coords="423,5,569,31"/>
+<area shape="rect" id="Node000003" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posiciï¿½n especï¿½fica del mapa." alt="" coords="423,5,569,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="367,32,409,26,410,31,367,37"/>
-<area shape="rect" id="Node000004" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="415,55,577,80"/>
+<area shape="rect" id="Node000004" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posiciï¿½n especï¿½fica del mapa estï¿½ vacï¿½a." alt="" coords="415,55,577,80"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="367,49,401,53,401,59,367,55"/>
 </map>

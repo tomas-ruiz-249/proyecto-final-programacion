@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Inicializa las listas de ítems desde los archivos de datos." alt="" coords="5,31,180,56"/>
 <area shape="rect" id="Node000002" href="$classFileReader.html#a8ec00c5742fd1809c9dbbf5623633c8c" title="Lee los datos de los ítems desde un archivo y los carga en una lista." alt="" coords="228,31,449,56"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,41,214,41,214,46,180,46"/>
-<area shape="rect" id="Node000003" href="$classTextureManager.html#ad54c51d3aa7c0d1f978cdc58cc014f09" title="Obtiene la instancia única de la clase TextureManager." alt="" coords="497,5,708,31"/>
+<area shape="rect" id="Node000003" href="$classTextureManager.html#ad54c51d3aa7c0d1f978cdc58cc014f09" title="Obtiene la instancia Ãºnica de la clase TextureManager." alt="" coords="497,5,708,31"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="449,30,483,27,484,32,450,35"/>
 <area shape="rect" id="Node000004" href="$classTextureManager.html#a3826a526a61270fd9d3074a699dd72b7" title="Obtiene una textura almacenada en el gestor." alt="" coords="501,55,705,80"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="450,51,487,54,487,59,449,56"/>

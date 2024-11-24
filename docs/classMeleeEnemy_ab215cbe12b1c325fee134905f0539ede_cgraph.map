@@ -1,10 +1,10 @@
 <map id="MeleeEnemy::takeDamage" name="MeleeEnemy::takeDamage">
 <area shape="rect" id="Node000001" title="Maneja el daño recibido por el enemigo." alt="" coords="5,80,203,105"/>
-<area shape="rect" id="Node000002" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="251,5,453,31"/>
+<area shape="rect" id="Node000002" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="251,5,453,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,77,250,39,280,31,281,37,251,45,140,82"/>
-<area shape="rect" id="Node000003" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido específico del listado cargado." alt="" coords="258,55,446,80"/>
+<area shape="rect" id="Node000003" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido especÃ­fico del listado cargado." alt="" coords="258,55,446,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,80,244,76,244,81,203,85"/>
-<area shape="rect" id="Node000004" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad est� viva." alt="" coords="297,104,407,129"/>
+<area shape="rect" id="Node000004" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad estï¿½ viva." alt="" coords="297,104,407,129"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="203,100,283,107,283,113,203,105"/>
 <area shape="rect" id="Node000005" href="$classEnemy.html#a2ff229717a23f793347085ebb1cbd903" title="Aplica daño al enemigo." alt="" coords="273,153,431,179"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="142,103,251,138,285,147,284,153,250,143,141,108"/>

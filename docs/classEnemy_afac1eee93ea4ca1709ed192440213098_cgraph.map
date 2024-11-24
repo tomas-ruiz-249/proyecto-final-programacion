@@ -2,13 +2,13 @@
 <area shape="rect" id="Node000001" title="Mueve al enemigo en dirección al jugador." alt="" coords="5,95,116,121"/>
 <area shape="rect" id="Node000002" href="$classDrawable.html#a5b220ca540638f4078e05a3be2a78516" title="Calcula la distancia entre el objeto y el jugador." alt="" coords="164,5,367,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,93,163,55,183,47,184,52,165,60,86,98"/>
-<area shape="rect" id="Node000003" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="192,70,339,95"/>
+<area shape="rect" id="Node000003" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿½nica del jugador." alt="" coords="192,70,339,95"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="116,99,178,91,179,96,116,104"/>
-<area shape="rect" id="Node000004" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="415,122,577,147"/>
+<area shape="rect" id="Node000004" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posiciï¿½n especï¿½fica del mapa estï¿½ vacï¿½a." alt="" coords="415,122,577,147"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="117,109,401,126,401,132,116,114"/>
 <area shape="rect" id="Node000005" href="$classRayCaster.html#a732026239f17e82f07df4fb327d4f95f" title="Realiza un raycasting desde una posición específica." alt="" coords="192,171,339,197"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="90,118,165,150,209,165,207,170,163,154,88,123"/>
 <area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="325,169,422,148,423,153,326,174"/>
-<area shape="rect" id="Node000006" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posici�n espec�fica del mapa." alt="" coords="423,171,569,197"/>
+<area shape="rect" id="Node000006" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posiciï¿½n especï¿½fica del mapa." alt="" coords="423,171,569,197"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="339,181,409,181,409,187,339,187"/>
 </map>

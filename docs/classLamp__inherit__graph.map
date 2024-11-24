@@ -1,5 +1,5 @@
 <map id="Lamp" name="Lamp">
-<area shape="rect" id="Node000001" title="Representa una lámpara en el juego." alt="" coords="5,79,64,104"/>
+<area shape="rect" id="Node000001" title="Representa una lÃ¡mpara en el juego." alt="" coords="5,79,64,104"/>
 <area shape="rect" id="Node000002" href="$classItem.html" title="Clase base para los elementos del juego interactuables." alt="" coords="9,5,61,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="37,44,37,79,32,79,32,44"/>
 </map>

@@ -2,21 +2,21 @@
 <area shape="rect" id="Node000001" title="Maneja el movimiento del proyectil y verifica colisiones." alt="" coords="5,170,132,195"/>
 <area shape="rect" id="Node000002" href="$classDrawable.html#a5b220ca540638f4078e05a3be2a78516" title="Calcula la distancia entre el objeto y el jugador." alt="" coords="180,5,383,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,168,115,114,145,82,178,55,189,49,191,54,182,60,148,86,119,118,80,172"/>
-<area shape="rect" id="Node000003" href="$classMap.html#a109632a4be99b947896e8560cc49158c" title="Obtiene la instancia �nica de Map." alt="" coords="214,70,349,95"/>
+<area shape="rect" id="Node000003" href="$classMap.html#a109632a4be99b947896e8560cc49158c" title="Obtiene la instancia ï¿½nica de Map." alt="" coords="214,70,349,95"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="83,168,124,136,179,104,200,96,202,101,181,109,127,140,86,172"/>
-<area shape="rect" id="Node000004" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="208,119,355,145"/>
+<area shape="rect" id="Node000004" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿½nica del jugador." alt="" coords="208,119,355,145"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="122,167,214,145,215,150,124,172"/>
-<area shape="rect" id="Node000005" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="431,178,633,203"/>
+<area shape="rect" id="Node000005" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="431,178,633,203"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="132,181,417,186,417,191,132,186"/>
-<area shape="rect" id="Node000006" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido específico del listado cargado." alt="" coords="438,234,626,259"/>
+<area shape="rect" id="Node000006" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido especÃ­fico del listado cargado." alt="" coords="438,234,626,259"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="85,194,126,227,152,243,181,255,254,269,328,272,399,268,460,259,461,264,400,273,328,278,253,275,179,260,150,248,123,231,82,198"/>
 <area shape="rect" id="Node000007" href="$classRayCaster.html#a732026239f17e82f07df4fb327d4f95f" title="Realiza un raycasting desde una posición específica." alt="" coords="208,322,355,347"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="80,194,120,246,149,275,181,300,211,315,209,320,179,305,145,279,116,249,76,197"/>
-<area shape="rect" id="Node000010" href="$classPlayer.html#a83d2e2518dd3b46d36b95a382b5038b4" title="Maneja el da�o recibido por el jugador." alt="" coords="204,221,359,246"/>
+<area shape="rect" id="Node000010" href="$classPlayer.html#a83d2e2518dd3b46d36b95a382b5038b4" title="Maneja el daï¿½o recibido por el jugador." alt="" coords="204,221,359,246"/>
 <area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="124,193,215,215,214,220,122,198"/>
-<area shape="rect" id="Node000008" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posici�n espec�fica del mapa." alt="" coords="459,295,605,321"/>
+<area shape="rect" id="Node000008" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posiciï¿½n especï¿½fica del mapa." alt="" coords="459,295,605,321"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="354,324,445,315,445,320,355,330"/>
-<area shape="rect" id="Node000009" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="451,345,613,370"/>
+<area shape="rect" id="Node000009" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posiciï¿½n especï¿½fica del mapa estï¿½ vacï¿½a." alt="" coords="451,345,613,370"/>
 <area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="355,339,437,346,437,351,354,344"/>
 <area shape="poly" id="edge10_Node000010_Node000005" title=" " alt="" coords="356,218,443,203,444,208,357,223"/>
 <area shape="poly" id="edge11_Node000010_Node000006" title=" " alt="" coords="359,235,424,238,424,244,359,240"/>

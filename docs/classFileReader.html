@@ -88,7 +88,7 @@ M√©todos p√∫blicos est√°ticos</h2></td></tr>
 <tr class="memdesc:ab1fd629cafb13266c17a406b29595e50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee los datos del mapa desde un archivo y los carga en una matriz 2D.  <br /></td></tr>
 <tr class="separator:ab1fd629cafb13266c17a406b29595e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ec00c5742fd1809c9dbbf5623633c8c" id="r_a8ec00c5742fd1809c9dbbf5623633c8c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileReader.html#a8ec00c5742fd1809c9dbbf5623633c8c">readItemsFromFile</a> (const char *fileName, std::vector&lt; <a class="el" href="classItem.html">Item</a> * &gt; &amp;itemList)</td></tr>
-<tr class="memdesc:a8ec00c5742fd1809c9dbbf5623633c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee los datos de los Ìtems desde un archivo y los carga en una lista.  <br /></td></tr>
+<tr class="memdesc:a8ec00c5742fd1809c9dbbf5623633c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee los datos de los √≠tems desde un archivo y los carga en una lista.  <br /></td></tr>
 <tr class="separator:a8ec00c5742fd1809c9dbbf5623633c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3e2cf2db364fd0ce4f0d91b69237c10" id="r_ab3e2cf2db364fd0ce4f0d91b69237c10"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFileReader.html#ab3e2cf2db364fd0ce4f0d91b69237c10">readEnemiesFromFile</a> (const char *fileName, std::vector&lt; <a class="el" href="classEnemy.html">Enemy</a> * &gt; &amp;enemyList)</td></tr>
 <tr class="memdesc:ab3e2cf2db364fd0ce4f0d91b69237c10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lee los datos de los enemigos desde un archivo y los carga en una lista.  <br /></td></tr>
@@ -96,7 +96,7 @@ M√©todos p√∫blicos est√°ticos</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripci√≥n detallada</h2>
 <div class="textblock"><p>Clase para leer y cargar datos desde archivos. </p>
-<p>Esta clase contiene mÈtodos est·ticos que permiten leer el mapa, Ìtems y enemigos desde archivos externos y cargarlos en estructuras adecuadas para su uso en el juego. </p>
+<p>Esta clase contiene m√©todos est√°ticos que permiten leer el mapa, √≠tems y enemigos desde archivos externos y cargarlos en estructuras adecuadas para su uso en el juego. </p>
 </div><h2 class="groupheader">Documentaci√≥n de funciones miembro</h2>
 <a id="ab3e2cf2db364fd0ce4f0d91b69237c10" name="ab3e2cf2db364fd0ce4f0d91b69237c10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3e2cf2db364fd0ce4f0d91b69237c10">&#9670;&#160;</a></span>readEnemiesFromFile()</h2>
@@ -136,12 +136,12 @@ M√©todos p√∫blicos est√°ticos</h2></td></tr>
 <dl class="params"><dt>Par√°metros</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td>Nombre del archivo que contiene los datos de los enemigos. </td></tr>
-    <tr><td class="paramname">enemyList</td><td>Vector donde se almacenar·n los enemigos instanciados. </td></tr>
+    <tr><td class="paramname">enemyList</td><td>Vector donde se almacenar√°n los enemigos instanciados. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si el archivo se leyÛ correctamente, <code>false</code> si ocurriÛ un error.</dd></dl>
-<p>El archivo debe contener lÌneas con los datos de cada enemigo en el formato: <code>EnemyType,posiciÛnX,posiciÛnY</code>. Se instanciar· un enemigo basado en su tipo y se aÒadir· a la lista proporcionada. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si el archivo se ley√≥ correctamente, <code>false</code> si ocurri√≥ un error.</dd></dl>
+<p>El archivo debe contener l√≠neas con los datos de cada enemigo en el formato: <code>EnemyType,posici√≥nX,posici√≥nY</code>. Se instanciar√° un enemigo basado en su tipo y se a√±adir√° a la lista proporcionada. </p>
 
 </div>
 </div>
@@ -179,23 +179,23 @@ M√©todos p√∫blicos est√°ticos</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Lee los datos de los Ìtems desde un archivo y los carga en una lista. </p>
+<p>Lee los datos de los √≠tems desde un archivo y los carga en una lista. </p>
 <dl class="params"><dt>Par√°metros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fileName</td><td>Nombre del archivo que contiene los datos de los Ìtems. </td></tr>
-    <tr><td class="paramname">itemList</td><td>Vector donde se almacenar·n los Ìtems instanciados. </td></tr>
+    <tr><td class="paramname">fileName</td><td>Nombre del archivo que contiene los datos de los √≠tems. </td></tr>
+    <tr><td class="paramname">itemList</td><td>Vector donde se almacenar√°n los √≠tems instanciados. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si el archivo se leyÛ correctamente, <code>false</code> si ocurriÛ un error.</dd></dl>
-<p>El archivo debe contener lÌneas con los datos de cada Ìtem en el formato: <code>ItemType,posiciÛnX,posiciÛnY</code>. Se instanciar· un Ìtem basado en su tipo y se aÒadir· a la lista proporcionada. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si el archivo se ley√≥ correctamente, <code>false</code> si ocurri√≥ un error.</dd></dl>
+<p>El archivo debe contener l√≠neas con los datos de cada √≠tem en el formato: <code>ItemType,posici√≥nX,posici√≥nY</code>. Se instanciar√° un √≠tem basado en su tipo y se a√±adir√° a la lista proporcionada. </p>
 <div class="dynheader">
 Gr√°fico de llamadas de esta funci√≥n:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFileReader_a8ec00c5742fd1809c9dbbf5623633c8c_cgraph.png" border="0" usemap="#aclassFileReader_a8ec00c5742fd1809c9dbbf5623633c8c_cgraph" alt=""/></div>
 <map name="aclassFileReader_a8ec00c5742fd1809c9dbbf5623633c8c_cgraph" id="aclassFileReader_a8ec00c5742fd1809c9dbbf5623633c8c_cgraph">
 <area shape="rect" title="Lee los datos de los √≠tems desde un archivo y los carga en una lista." alt="" coords="5,31,227,56"/>
-<area shape="rect" href="classTextureManager.html#ad54c51d3aa7c0d1f978cdc58cc014f09" title="Obtiene la instancia √∫nica de la clase TextureManager." alt="" coords="275,5,485,31"/>
+<area shape="rect" href="classTextureManager.html#ad54c51d3aa7c0d1f978cdc58cc014f09" title="Obtiene la instancia √É¬∫nica de la clase TextureManager." alt="" coords="275,5,485,31"/>
 <area shape="poly" title=" " alt="" coords="227,30,260,27,261,32,227,35"/>
 <area shape="rect" href="classTextureManager.html#a3826a526a61270fd9d3074a699dd72b7" title="Obtiene una textura almacenada en el gestor." alt="" coords="278,55,482,80"/>
 <area shape="poly" title=" " alt="" coords="227,51,265,54,264,59,227,56"/>
@@ -242,12 +242,12 @@ Gr√°fico de llamadas de esta funci√≥n:</div>
 <dl class="params"><dt>Par√°metros</dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td>Nombre del archivo que contiene los datos del mapa. </td></tr>
-    <tr><td class="paramname">map</td><td>Matriz bidimensional donde se almacenar· el mapa. </td></tr>
+    <tr><td class="paramname">map</td><td>Matriz bidimensional donde se almacenar√° el mapa. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si el archivo se leyÛ correctamente, <code>false</code> si ocurriÛ un error.</dd></dl>
-<p>El archivo debe contener valores separados por comas, donde cada valor representa un tipo de pared definido por la enumeraciÛn <code>WallType</code>. </p>
+<dl class="section return"><dt>Devuelve</dt><dd><code>true</code> si el archivo se ley√≥ correctamente, <code>false</code> si ocurri√≥ un error.</dd></dl>
+<p>El archivo debe contener valores separados por comas, donde cada valor representa un tipo de pared definido por la enumeraci√≥n <code>WallType</code>. </p>
 
 </div>
 </div>

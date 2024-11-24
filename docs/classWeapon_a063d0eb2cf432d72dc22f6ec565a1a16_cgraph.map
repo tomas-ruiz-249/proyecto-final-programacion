@@ -1,7 +1,7 @@
 <map id="Weapon::shoot" name="Weapon::shoot">
-<area shape="rect" id="Node000001" title="Dispara el arma si hay munici�n disponible." alt="" coords="5,31,124,56"/>
-<area shape="rect" id="Node000002" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="172,5,375,31"/>
+<area shape="rect" id="Node000001" title="Dispara el arma si hay municiï¿½n disponible." alt="" coords="5,31,124,56"/>
+<area shape="rect" id="Node000002" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="172,5,375,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,33,158,29,159,35,125,39"/>
-<area shape="rect" id="Node000003" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido específico del listado cargado." alt="" coords="179,55,367,80"/>
+<area shape="rect" id="Node000003" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido especÃ­fico del listado cargado." alt="" coords="179,55,367,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,47,166,52,165,58,124,53"/>
 </map>

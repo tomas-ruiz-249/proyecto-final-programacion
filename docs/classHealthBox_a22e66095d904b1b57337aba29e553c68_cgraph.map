@@ -1,11 +1,11 @@
 <map id="HealthBox::pickup" name="HealthBox::pickup">
 <area shape="rect" id="Node000001" title="Método que recoge el HealthBox y cura al jugador." alt="" coords="5,31,145,56"/>
-<area shape="rect" id="Node000002" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="193,5,340,31"/>
+<area shape="rect" id="Node000002" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia ï¿½nica del jugador." alt="" coords="193,5,340,31"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,31,179,27,180,32,146,37"/>
 <area shape="rect" id="Node000003" href="$classPlayer.html#ad0179ce03483c3862d1ec3782d55fd2e" title="Cura al jugador utilizando puntos de vida." alt="" coords="217,55,316,80"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,49,204,57,203,62,146,55"/>
-<area shape="rect" id="Node000004" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="388,29,591,55"/>
+<area shape="rect" id="Node000004" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia Ãºnica de la clase SoundManager." alt="" coords="388,29,591,55"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="316,59,374,52,375,58,317,64"/>
-<area shape="rect" id="Node000005" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido específico del listado cargado." alt="" coords="395,79,583,104"/>
+<area shape="rect" id="Node000005" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido especÃ­fico del listado cargado." alt="" coords="395,79,583,104"/>
 <area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="317,70,382,77,381,82,316,75"/>
 </map>
