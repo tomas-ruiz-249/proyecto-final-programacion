@@ -139,7 +139,6 @@ void EnemyManager::damageEnemy(Enemy* enemy, Player player, Map map)
 	if (canTakeDamage){
 		int range = player.weapon->getRange();
 		int damage = player.weapon->getDamage() * (range - enemy->sprite->getDistanceFromPlayer(enemy->position, player))/range;
-		std::cout << damage << "\n";
 		if (damage < 0) {
 			damage = 0;
 		}

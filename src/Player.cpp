@@ -86,7 +86,6 @@ void Player::move(Map& map)
 
 void Player::takeDamage(int damage)
 {
-	std::cout << hurtTimer << "\n";
 	if (hurtTimer > 0.3) {
 		SoundManager* soundManager = SoundManager::getInstance();
 		Sound hurtSound = soundManager->getSound("EnemyAttack.mp3"); //sonido de da�o
