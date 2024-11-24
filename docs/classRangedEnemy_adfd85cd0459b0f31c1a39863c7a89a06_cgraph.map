@@ -1,0 +1,22 @@
+<map id="RangedEnemy::act" name="RangedEnemy::act">
+<area shape="rect" id="Node000001" title="Realiza las acciones principales del enemigo en cada frame." alt="" coords="5,55,148,80"/>
+<area shape="rect" id="Node000002" href="$classEnemy.html#a72b21b1fc759621f0d26360012bd5404" title="Realiza las acciones del enemigo." alt="" coords="196,55,291,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,65,182,65,182,70,148,70"/>
+<area shape="rect" id="Node000003" href="$classEntity.html#a9ae4c60959892c58c023ff2b5e3d5779" title="Realiza un ataque." alt="" coords="340,5,448,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,52,340,33,342,38,284,57"/>
+<area shape="rect" id="Node000004" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad est� viva." alt="" coords="339,55,449,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="291,65,325,65,325,70,291,70"/>
+<area shape="rect" id="Node000005" href="$classEnemy.html#afac1eee93ea4ca1709ed192440213098" title="Mueve al enemigo en dirección al jugador." alt="" coords="339,104,449,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="284,78,342,97,340,102,282,83"/>
+<area shape="rect" id="Node000006" href="$classDrawable.html#a5b220ca540638f4078e05a3be2a78516" title="Calcula la distancia entre el objeto y el jugador." alt="" coords="497,14,700,54"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="422,101,448,89,496,64,515,56,517,61,498,68,451,94,425,106"/>
+<area shape="rect" id="Node000007" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="525,79,672,104"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="449,107,511,99,512,105,450,113"/>
+<area shape="rect" id="Node000008" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="748,131,911,156"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="450,117,734,135,734,140,450,123"/>
+<area shape="rect" id="Node000009" href="$classRayCaster.html#a732026239f17e82f07df4fb327d4f95f" title="Realiza un raycasting desde una posición específica." alt="" coords="525,180,672,205"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="424,127,498,158,542,173,540,178,496,163,422,132"/>
+<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="658,177,755,156,757,162,659,183"/>
+<area shape="rect" id="Node000010" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posici�n espec�fica del mapa." alt="" coords="756,180,903,205"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="672,190,743,190,743,195,672,195"/>
+</map>

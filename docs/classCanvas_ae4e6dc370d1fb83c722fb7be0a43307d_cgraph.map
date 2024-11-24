@@ -1,0 +1,5 @@
+<map id="Canvas::startWindow" name="Canvas::startWindow">
+<area shape="rect" id="Node000001" title="Inicia la ventana del juego." alt="" coords="5,13,165,38"/>
+<area shape="rect" id="Node000002" href="$classTextureManager.html#a0f9ea50e7417f50b295141d4093ebeb5" title="Carga todas las texturas en VRAM desde los directorios predefinidos." alt="" coords="213,5,432,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,23,200,23,200,28,165,28"/>
+</map>

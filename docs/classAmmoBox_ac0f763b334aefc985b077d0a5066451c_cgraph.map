@@ -1,0 +1,11 @@
+<map id="AmmoBox::pickup" name="AmmoBox::pickup">
+<area shape="rect" id="Node000001" title="Acci�n para recoger la caja de munici�n." alt="" coords="5,31,145,56"/>
+<area shape="rect" id="Node000002" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="197,5,344,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,32,183,27,184,32,146,37"/>
+<area shape="rect" id="Node000003" href="$classWeapon.html#aa5c599473e9ec30d04e6a02903f1f37f" title="Recarga munici�n al arma." alt="" coords="193,55,348,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,49,180,54,179,59,145,55"/>
+<area shape="rect" id="Node000004" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="396,29,599,55"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="348,56,382,52,383,58,349,61"/>
+<area shape="rect" id="Node000005" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido específico del listado cargado." alt="" coords="403,79,591,104"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="349,73,390,77,390,83,348,78"/>
+</map>

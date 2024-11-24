@@ -1,0 +1,20 @@
+<map id="Enemy::act" name="Enemy::act">
+<area shape="rect" id="Node000001" title="Realiza las acciones del enemigo." alt="" coords="5,55,100,80"/>
+<area shape="rect" id="Node000002" href="$classEntity.html#a9ae4c60959892c58c023ff2b5e3d5779" title="Realiza un ataque." alt="" coords="149,5,257,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,52,150,33,151,38,93,57"/>
+<area shape="rect" id="Node000003" href="$classEntity.html#ab0986ba7a1b24f022b5623781050c0f1" title="Verifica si la entidad est� viva." alt="" coords="148,55,259,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="100,65,134,65,134,70,100,70"/>
+<area shape="rect" id="Node000004" href="$classEnemy.html#afac1eee93ea4ca1709ed192440213098" title="Mueve al enemigo en dirección al jugador." alt="" coords="148,104,259,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="93,78,151,97,150,102,91,83"/>
+<area shape="rect" id="Node000005" href="$classDrawable.html#a5b220ca540638f4078e05a3be2a78516" title="Calcula la distancia entre el objeto y el jugador." alt="" coords="307,14,509,54"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="232,101,257,89,306,64,324,56,326,61,308,68,260,94,234,106"/>
+<area shape="rect" id="Node000006" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="335,79,481,104"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="258,107,321,99,321,105,259,113"/>
+<area shape="rect" id="Node000007" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="557,131,720,156"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="259,117,544,135,543,140,259,123"/>
+<area shape="rect" id="Node000008" href="$classRayCaster.html#a732026239f17e82f07df4fb327d4f95f" title="Realiza un raycasting desde una posición específica." alt="" coords="335,180,481,205"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="233,127,308,158,352,173,350,178,306,163,231,132"/>
+<area shape="poly" id="edge9_Node000008_Node000007" title=" " alt="" coords="467,177,565,156,566,162,469,183"/>
+<area shape="rect" id="Node000009" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posici�n espec�fica del mapa." alt="" coords="565,180,712,205"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="481,190,552,190,552,195,481,195"/>
+</map>

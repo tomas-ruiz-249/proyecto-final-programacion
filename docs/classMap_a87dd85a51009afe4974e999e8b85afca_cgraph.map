@@ -1,0 +1,5 @@
+<map id="Map::loadMaps" name="Map::loadMaps">
+<area shape="rect" id="Node000001" title="Carga los mapas desde archivos de datos." alt="" coords="5,5,127,31"/>
+<area shape="rect" id="Node000002" href="$classFileReader.html#ab1fd629cafb13266c17a406b29595e50" title="Lee los datos del mapa desde un archivo y los carga en una matriz 2D." alt="" coords="175,5,387,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,15,161,15,161,21,127,21"/>
+</map>

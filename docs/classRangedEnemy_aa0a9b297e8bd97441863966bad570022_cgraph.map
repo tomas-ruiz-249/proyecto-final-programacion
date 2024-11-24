@@ -1,0 +1,16 @@
+<map id="RangedEnemy::move" name="RangedEnemy::move">
+<area shape="rect" id="Node000001" title="Mueve al enemigo si no está atacando." alt="" coords="5,95,165,121"/>
+<area shape="rect" id="Node000002" href="$classEnemy.html#afac1eee93ea4ca1709ed192440213098" title="Mueve al enemigo en dirección al jugador." alt="" coords="213,95,324,121"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,105,200,105,200,111,165,111"/>
+<area shape="rect" id="Node000003" href="$classDrawable.html#a5b220ca540638f4078e05a3be2a78516" title="Calcula la distancia entre el objeto y el jugador." alt="" coords="372,5,575,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,93,371,55,391,47,392,52,373,60,294,98"/>
+<area shape="rect" id="Node000004" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="400,70,547,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="324,99,386,91,387,96,324,104"/>
+<area shape="rect" id="Node000005" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="623,122,785,147"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="325,109,609,126,609,132,324,114"/>
+<area shape="rect" id="Node000006" href="$classRayCaster.html#a732026239f17e82f07df4fb327d4f95f" title="Realiza un raycasting desde una posición específica." alt="" coords="400,171,547,197"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="298,118,373,150,417,165,415,170,371,154,296,123"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="533,169,630,148,631,153,534,174"/>
+<area shape="rect" id="Node000007" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posici�n espec�fica del mapa." alt="" coords="631,171,777,197"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="547,181,617,181,617,187,547,187"/>
+</map>

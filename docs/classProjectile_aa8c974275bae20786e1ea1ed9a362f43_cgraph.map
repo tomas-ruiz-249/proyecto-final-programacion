@@ -1,0 +1,7 @@
+<map id="Projectile::Projectile" name="Projectile::Projectile">
+<area shape="rect" id="Node000001" title="Constructor de la clase Projectile." alt="" coords="5,31,157,56"/>
+<area shape="rect" id="Node000002" href="$classTextureManager.html#ad54c51d3aa7c0d1f978cdc58cc014f09" title="Obtiene la instancia única de la clase TextureManager." alt="" coords="205,5,416,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,32,191,29,192,34,158,38"/>
+<area shape="rect" id="Node000003" href="$classTextureManager.html#a3826a526a61270fd9d3074a699dd72b7" title="Obtiene una textura almacenada en el gestor." alt="" coords="209,55,413,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,49,195,53,194,58,157,54"/>
+</map>

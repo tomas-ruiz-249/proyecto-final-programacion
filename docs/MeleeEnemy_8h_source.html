@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projecto final programacion: Archivo de cÃ³digo fuente MeleeEnemy.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projecto final programacion
+   </div>
+   <div id="projectbrief">Proyecto final para ProgramaciÃ³n de Computadores 2024-2</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">MeleeEnemy.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;Enemy.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classMeleeEnemy.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="classMeleeEnemy.html">MeleeEnemy</a> : <span class="keyword">public</span> <a class="code hl_class" href="classEnemy.html">Enemy</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeleeEnemy.html#a403f66f90dbf716d15cc3492e0cfb9c7">attack</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeleeEnemy.html#ab215cbe12b1c325fee134905f0539ede">takeDamage</a>(<span class="keywordtype">int</span> <a class="code hl_variable" href="classEnemy.html#a4969f2e5372ae6840aba5cd0b8059a0a">damage</a>) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_class" href="classMeleeEnemy.html">MeleeEnemy</a>(<a class="code hl_struct" href="structPoint2D.html">Point2D</a> <a class="code hl_variable" href="classEntity.html#a3ca4c3e7efe1e2f752ce3a4c536268f3">position</a>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>};</div>
+</div>
+<div class="ttc" id="aclassEnemy_html"><div class="ttname"><a href="classEnemy.html">Enemy</a></div><div class="ttdoc">Representa un enemigo dentro del juego.</div><div class="ttdef"><b>Definition</b> Enemy.h:14</div></div>
+<div class="ttc" id="aclassEnemy_html_a4969f2e5372ae6840aba5cd0b8059a0a"><div class="ttname"><a href="classEnemy.html#a4969f2e5372ae6840aba5cd0b8059a0a">Enemy::damage</a></div><div class="ttdeci">int damage</div><div class="ttdoc">Daño que puede infligir el enemigo al jugador.</div><div class="ttdef"><b>Definition</b> Enemy.h:76</div></div>
+<div class="ttc" id="aclassEntity_html_a3ca4c3e7efe1e2f752ce3a4c536268f3"><div class="ttname"><a href="classEntity.html#a3ca4c3e7efe1e2f752ce3a4c536268f3">Entity::position</a></div><div class="ttdeci">Point2D position</div><div class="ttdoc">Posiciï¿½n de la entidad en el mapa.</div><div class="ttdef"><b>Definition</b> Entity.h:23</div></div>
+<div class="ttc" id="aclassMeleeEnemy_html"><div class="ttname"><a href="classMeleeEnemy.html">MeleeEnemy</a></div><div class="ttdoc">Representa a un enemigo que ataca cuerpo a cuerpo en el juego.</div><div class="ttdef"><b>Definition</b> MeleeEnemy.h:11</div></div>
+<div class="ttc" id="aclassMeleeEnemy_html_a403f66f90dbf716d15cc3492e0cfb9c7"><div class="ttname"><a href="classMeleeEnemy.html#a403f66f90dbf716d15cc3492e0cfb9c7">MeleeEnemy::attack</a></div><div class="ttdeci">void attack() override</div><div class="ttdoc">Realiza un ataque cuerpo a cuerpo al jugador.</div><div class="ttdef"><b>Definition</b> MeleeEnemy.cpp:5</div></div>
+<div class="ttc" id="aclassMeleeEnemy_html_ab215cbe12b1c325fee134905f0539ede"><div class="ttname"><a href="classMeleeEnemy.html#ab215cbe12b1c325fee134905f0539ede">MeleeEnemy::takeDamage</a></div><div class="ttdeci">void takeDamage(int damage) override</div><div class="ttdoc">Maneja el daño recibido por el enemigo.</div><div class="ttdef"><b>Definition</b> MeleeEnemy.cpp:18</div></div>
+<div class="ttc" id="astructPoint2D_html"><div class="ttname"><a href="structPoint2D.html">Point2D</a></div><div class="ttdoc">Representa un punto en un espacio bidimensional con coordenadas de tipo double.</div><div class="ttdef"><b>Definition</b> Point2D.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<map id="RayCastResult" name="RayCastResult">
+<area shape="rect" id="Node000001" title="Representa el resultado de un cálculo de raycasting." alt="" coords="11,168,129,193"/>
+<area shape="rect" id="Node000002" href="$classDrawable.html" title="Clase base para objetos renderizables en el juego." alt="" coords="145,93,229,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,128,90,170,87,166,155,124"/>
+<area shape="rect" id="Node000003" href="$structPoint2D.html" title="Representa un punto en un espacio bidimensional con coordenadas de tipo double." alt="" coords="5,5,79,31"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="38,45,33,80,37,118,48,145,63,166,58,169,44,147,31,119,28,80,33,44"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="75,35,169,91,166,95,72,40"/>
+</map>

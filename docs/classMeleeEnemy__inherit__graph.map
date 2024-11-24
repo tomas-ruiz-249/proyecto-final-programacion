@@ -1,0 +1,7 @@
+<map id="MeleeEnemy" name="MeleeEnemy">
+<area shape="rect" id="Node000001" title="Representa a un enemigo que ataca cuerpo a cuerpo en el juego." alt="" coords="5,152,112,177"/>
+<area shape="rect" id="Node000002" href="$classEnemy.html" title="Representa un enemigo dentro del juego." alt="" coords="25,79,92,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,118,61,152,56,152,56,118"/>
+<area shape="rect" id="Node000003" href="$classEntity.html" title="Clase base para representar entidades dentro de un mapa en el juego." alt="" coords="29,5,89,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="61,44,61,79,56,79,56,44"/>
+</map>
