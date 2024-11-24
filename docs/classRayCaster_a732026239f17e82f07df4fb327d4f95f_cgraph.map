@@ -1,0 +1,7 @@
+<map id="RayCaster::rayCast" name="RayCaster::rayCast">
+<area shape="rect" id="Node000001" title="Realiza un raycasting desde una posición específica." alt="" coords="5,31,152,56"/>
+<area shape="rect" id="Node000002" href="$classMap.html#aabfd6ca7870d68474333b640de0c0057" title="Obtiene el elemento presente en una posici�n espec�fica del mapa." alt="" coords="208,5,355,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,32,194,26,195,31,153,37"/>
+<area shape="rect" id="Node000003" href="$classMap.html#a9fb412ae8de3d67ca740f18a2c851d3a" title="Verifica si una posici�n espec�fica del mapa est� vac�a." alt="" coords="200,55,363,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,49,187,53,186,59,152,55"/>
+</map>

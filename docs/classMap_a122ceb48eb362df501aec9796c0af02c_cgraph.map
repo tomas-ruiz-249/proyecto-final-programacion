@@ -1,0 +1,5 @@
+<map id="Map::toggleDoor" name="Map::toggleDoor">
+<area shape="rect" id="Node000001" title="Alterna el estado de una puerta entre abierta y cerrada." alt="" coords="5,5,136,31"/>
+<area shape="rect" id="Node000002" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="184,5,387,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,15,170,15,170,21,136,21"/>
+</map>

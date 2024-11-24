@@ -1,0 +1,9 @@
+<map id="Item" name="Item">
+<area shape="rect" id="Node000001" title="Clase base para los elementos del juego interactuables." alt="" coords="139,5,191,31"/>
+<area shape="rect" id="Node000002" href="$classAmmoBox.html" title="Representa una caja de munici�n que puede ser recogida por un jugador." alt="" coords="5,79,96,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,40,71,81,68,76,134,35"/>
+<area shape="rect" id="Node000003" href="$classHealthBox.html" title="Representa un objeto que otorga puntos de curación al jugador." alt="" coords="120,79,211,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,44,168,79,163,79,163,44"/>
+<area shape="rect" id="Node000004" href="$classLamp.html" title="Representa una lámpara en el juego." alt="" coords="235,79,293,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="194,36,249,76,246,81,190,41"/>
+</map>

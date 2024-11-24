@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projecto final programacion: Archivo de código fuente Animation.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projecto final programacion
+   </div>
+   <div id="projectbrief">Proyecto final para Programación de Computadores 2024-2</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Animation.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;raylib.h&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classAnimation.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classAnimation.html">Animation</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classAnimation.html#a2b42beb2f7e3a8caf3d1f763168c2b40">   18</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="classAnimation.html#a2b42beb2f7e3a8caf3d1f763168c2b40">numFrames</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classAnimation.html#a7d2d7b0dc8106411b7046568e19684d5">   23</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="classAnimation.html#a7d2d7b0dc8106411b7046568e19684d5">frameTimer</a>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classAnimation.html#a2e3b8f1de2e9fff376949b29636818ac">   28</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="classAnimation.html#a2e3b8f1de2e9fff376949b29636818ac">animationSpeed</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classAnimation.html#abdb10cfa88dddb7478bd32071297eda0">   33</a></span>    Rectangle <a class="code hl_variable" href="classAnimation.html#abdb10cfa88dddb7478bd32071297eda0">textureArea</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classAnimation.html#a8b201fa77a8bdfe5f9aa7120dd236c36">   38</a></span>    Rectangle <a class="code hl_variable" href="classAnimation.html#a8b201fa77a8bdfe5f9aa7120dd236c36">positionOnWindow</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classAnimation.html#a0529925daf7e764130cf915cfe910a2b">   43</a></span>    Texture <a class="code hl_variable" href="classAnimation.html#a0529925daf7e764130cf915cfe910a2b">texture</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classAnimation.html#a70b7c683dd1dede15d8884dc04e0249e">   48</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classAnimation.html#a70b7c683dd1dede15d8884dc04e0249e">stop</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classAnimation.html#aa8d56fa75366fc4f4d8b37ea29c1b64a">getCurrentFrame</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classAnimation.html#af7d36ff71da427fec083cdce2bf974a3">isAnimationDone</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAnimation.html#add758ac74373774328310521d52ca16f">resetAnimation</a>();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classAnimation.html#ab697f5eb515a312ef035f501fa069dc0">nextFrame</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">int</span> currentFrame;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>};</div>
+</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="ttc" id="aclassAnimation_html"><div class="ttname"><a href="classAnimation.html">Animation</a></div><div class="ttdoc">Clase que representa una animaci�n basada en cuadros (frames).</div><div class="ttdef"><b>Definition</b> Animation.h:13</div></div>
+<div class="ttc" id="aclassAnimation_html_a0529925daf7e764130cf915cfe910a2b"><div class="ttname"><a href="classAnimation.html#a0529925daf7e764130cf915cfe910a2b">Animation::texture</a></div><div class="ttdeci">Texture texture</div><div class="ttdoc">Textura que contiene los cuadros de la animaci�n.</div><div class="ttdef"><b>Definition</b> Animation.h:43</div></div>
+<div class="ttc" id="aclassAnimation_html_a2b42beb2f7e3a8caf3d1f763168c2b40"><div class="ttname"><a href="classAnimation.html#a2b42beb2f7e3a8caf3d1f763168c2b40">Animation::numFrames</a></div><div class="ttdeci">int numFrames</div><div class="ttdoc">N�mero total de cuadros en la animaci�n.</div><div class="ttdef"><b>Definition</b> Animation.h:18</div></div>
+<div class="ttc" id="aclassAnimation_html_a2e3b8f1de2e9fff376949b29636818ac"><div class="ttname"><a href="classAnimation.html#a2e3b8f1de2e9fff376949b29636818ac">Animation::animationSpeed</a></div><div class="ttdeci">double animationSpeed</div><div class="ttdoc">Velocidad de la animaci�n en segundos por cuadro.</div><div class="ttdef"><b>Definition</b> Animation.h:28</div></div>
+<div class="ttc" id="aclassAnimation_html_a70b7c683dd1dede15d8884dc04e0249e"><div class="ttname"><a href="classAnimation.html#a70b7c683dd1dede15d8884dc04e0249e">Animation::stop</a></div><div class="ttdeci">bool stop</div><div class="ttdoc">Indica si la animaci�n debe detenerse.</div><div class="ttdef"><b>Definition</b> Animation.h:48</div></div>
+<div class="ttc" id="aclassAnimation_html_a7d2d7b0dc8106411b7046568e19684d5"><div class="ttname"><a href="classAnimation.html#a7d2d7b0dc8106411b7046568e19684d5">Animation::frameTimer</a></div><div class="ttdeci">double frameTimer</div><div class="ttdoc">Temporizador interno para controlar el cambio de cuadros.</div><div class="ttdef"><b>Definition</b> Animation.h:23</div></div>
+<div class="ttc" id="aclassAnimation_html_a8b201fa77a8bdfe5f9aa7120dd236c36"><div class="ttname"><a href="classAnimation.html#a8b201fa77a8bdfe5f9aa7120dd236c36">Animation::positionOnWindow</a></div><div class="ttdeci">Rectangle positionOnWindow</div><div class="ttdoc">Posici�n donde se renderiza la animaci�n en la ventana.</div><div class="ttdef"><b>Definition</b> Animation.h:38</div></div>
+<div class="ttc" id="aclassAnimation_html_aa8d56fa75366fc4f4d8b37ea29c1b64a"><div class="ttname"><a href="classAnimation.html#aa8d56fa75366fc4f4d8b37ea29c1b64a">Animation::getCurrentFrame</a></div><div class="ttdeci">int getCurrentFrame()</div><div class="ttdoc">Devuelve el cuadro actual de la animaci�n.</div><div class="ttdef"><b>Definition</b> Animation.cpp:3</div></div>
+<div class="ttc" id="aclassAnimation_html_ab697f5eb515a312ef035f501fa069dc0"><div class="ttname"><a href="classAnimation.html#ab697f5eb515a312ef035f501fa069dc0">Animation::nextFrame</a></div><div class="ttdeci">void nextFrame()</div><div class="ttdoc">Avanza al siguiente cuadro en la animaci�n.</div><div class="ttdef"><b>Definition</b> Animation.cpp:18</div></div>
+<div class="ttc" id="aclassAnimation_html_abdb10cfa88dddb7478bd32071297eda0"><div class="ttname"><a href="classAnimation.html#abdb10cfa88dddb7478bd32071297eda0">Animation::textureArea</a></div><div class="ttdeci">Rectangle textureArea</div><div class="ttdoc">�rea de la textura que contiene los cuadros de la animaci�n.</div><div class="ttdef"><b>Definition</b> Animation.h:33</div></div>
+<div class="ttc" id="aclassAnimation_html_add758ac74373774328310521d52ca16f"><div class="ttname"><a href="classAnimation.html#add758ac74373774328310521d52ca16f">Animation::resetAnimation</a></div><div class="ttdeci">void resetAnimation()</div><div class="ttdoc">Reinicia la animaci�n al primer cuadro.</div><div class="ttdef"><b>Definition</b> Animation.cpp:13</div></div>
+<div class="ttc" id="aclassAnimation_html_af7d36ff71da427fec083cdce2bf974a3"><div class="ttname"><a href="classAnimation.html#af7d36ff71da427fec083cdce2bf974a3">Animation::isAnimationDone</a></div><div class="ttdeci">bool isAnimationDone()</div><div class="ttdoc">Verifica si la animaci�n ha llegado al �ltimo cuadro.</div><div class="ttdef"><b>Definition</b> Animation.cpp:8</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

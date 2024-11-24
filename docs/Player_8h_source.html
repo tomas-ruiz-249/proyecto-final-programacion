@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projecto final programacion: Archivo de código fuente Player.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projecto final programacion
+   </div>
+   <div id="projectbrief">Proyecto final para Programación de Computadores 2024-2</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Player.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;Entity.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;Weapon.h&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classPlayer.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classPlayer.html">Player</a> : <span class="keyword">public</span> <a class="code hl_class" href="classEntity.html">Entity</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classPlayer.html#a5553b4d55107280a9d3620720d8dafc7">   16</a></span>    <a class="code hl_class" href="classWeapon.html">Weapon</a>* <a class="code hl_variable" href="classPlayer.html#a5553b4d55107280a9d3620720d8dafc7">weapon</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classPlayer.html#a634cddb74f17a72b8421c914c4eaf0ed">   19</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="classPlayer.html#a634cddb74f17a72b8421c914c4eaf0ed">justShot</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#ae7ab5a8c7a84cfc136e75165b68831b6">act</a>(<a class="code hl_class" href="classMap.html">Map</a>&amp; map) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a8141b53dcd1c7040dabb55b7404f729e">move</a>(<a class="code hl_class" href="classMap.html">Map</a>&amp; map) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a83d2e2518dd3b46d36b95a382b5038b4">takeDamage</a>(<span class="keywordtype">int</span> damage) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#ab558e8317df9cdfd5c3c1f8009ecd65e">attack</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classPlayer.html#ad0179ce03483c3862d1ec3782d55fd2e">heal</a>(<span class="keywordtype">int</span> healthPoints);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#a1af5d39f7bac2aeaa1e30c7dda2332fa">reset</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classPlayer.html#af3a8d9af96b0b3296c7611ab581d4335">setSensibility</a>(<span class="keywordtype">double</span> sensibility);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="classPlayer.html#a37ef284c3e02971e322f4b70b5e59d55">getSensibility</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classPlayer.html#abecc36b8ec9a012901caf74493a31d70">getMaxHealth</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keyword">static</span> <a class="code hl_class" href="classPlayer.html">Player</a>* <a class="code hl_function" href="classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c">getInstance</a>();</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">int</span> maxHealth;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">double</span> sensibility;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">double</span> hurtTimer;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keyword">static</span> <a class="code hl_class" href="classPlayer.html">Player</a>* instance;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_class" href="classPlayer.html">Player</a>();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>};</div>
+</div>
+<div class="ttc" id="aclassEntity_html"><div class="ttname"><a href="classEntity.html">Entity</a></div><div class="ttdoc">Clase base para representar entidades dentro de un mapa en el juego.</div><div class="ttdef"><b>Definition</b> Entity.h:13</div></div>
+<div class="ttc" id="aclassMap_html"><div class="ttname"><a href="classMap.html">Map</a></div><div class="ttdoc">Clase responsable de gestionar los mapas en el juego.</div><div class="ttdef"><b>Definition</b> Map.h:16</div></div>
+<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdoc">Representa al jugador controlado por el usuario en el juego.</div><div class="ttdef"><b>Definition</b> Player.h:13</div></div>
+<div class="ttc" id="aclassPlayer_html_a1af5d39f7bac2aeaa1e30c7dda2332fa"><div class="ttname"><a href="classPlayer.html#a1af5d39f7bac2aeaa1e30c7dda2332fa">Player::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">Restaura al jugador a su estado inicial.</div><div class="ttdef"><b>Definition</b> Player.cpp:128</div></div>
+<div class="ttc" id="aclassPlayer_html_a37ef284c3e02971e322f4b70b5e59d55"><div class="ttname"><a href="classPlayer.html#a37ef284c3e02971e322f4b70b5e59d55">Player::getSensibility</a></div><div class="ttdeci">double getSensibility()</div><div class="ttdoc">Obtiene la sensibilidad actual del jugador.</div><div class="ttdef"><b>Definition</b> Player.cpp:143</div></div>
+<div class="ttc" id="aclassPlayer_html_a5553b4d55107280a9d3620720d8dafc7"><div class="ttname"><a href="classPlayer.html#a5553b4d55107280a9d3620720d8dafc7">Player::weapon</a></div><div class="ttdeci">Weapon * weapon</div><div class="ttdoc">Arma actualmente equipada por el jugador.</div><div class="ttdef"><b>Definition</b> Player.h:16</div></div>
+<div class="ttc" id="aclassPlayer_html_a634cddb74f17a72b8421c914c4eaf0ed"><div class="ttname"><a href="classPlayer.html#a634cddb74f17a72b8421c914c4eaf0ed">Player::justShot</a></div><div class="ttdeci">bool justShot</div><div class="ttdoc">Indica si el jugador dispar� recientemente.</div><div class="ttdef"><b>Definition</b> Player.h:19</div></div>
+<div class="ttc" id="aclassPlayer_html_a8141b53dcd1c7040dabb55b7404f729e"><div class="ttname"><a href="classPlayer.html#a8141b53dcd1c7040dabb55b7404f729e">Player::move</a></div><div class="ttdeci">void move(Map &amp;map) override</div><div class="ttdoc">Gestiona el movimiento del jugador en el mapa.</div><div class="ttdef"><b>Definition</b> Player.cpp:17</div></div>
+<div class="ttc" id="aclassPlayer_html_a83d2e2518dd3b46d36b95a382b5038b4"><div class="ttname"><a href="classPlayer.html#a83d2e2518dd3b46d36b95a382b5038b4">Player::takeDamage</a></div><div class="ttdeci">void takeDamage(int damage) override</div><div class="ttdoc">Maneja el da�o recibido por el jugador.</div><div class="ttdef"><b>Definition</b> Player.cpp:87</div></div>
+<div class="ttc" id="aclassPlayer_html_a8a5e9b9c50dfc47114dbff9efbe5c67c"><div class="ttname"><a href="classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c">Player::getInstance</a></div><div class="ttdeci">static Player * getInstance()</div><div class="ttdoc">Obtiene la instancia �nica del jugador.</div><div class="ttdef"><b>Definition</b> Player.cpp:155</div></div>
+<div class="ttc" id="aclassPlayer_html_ab558e8317df9cdfd5c3c1f8009ecd65e"><div class="ttname"><a href="classPlayer.html#ab558e8317df9cdfd5c3c1f8009ecd65e">Player::attack</a></div><div class="ttdeci">void attack() override</div><div class="ttdoc">Permite al jugador atacar con su arma.</div><div class="ttdef"><b>Definition</b> Player.cpp:98</div></div>
+<div class="ttc" id="aclassPlayer_html_abecc36b8ec9a012901caf74493a31d70"><div class="ttname"><a href="classPlayer.html#abecc36b8ec9a012901caf74493a31d70">Player::getMaxHealth</a></div><div class="ttdeci">int getMaxHealth()</div><div class="ttdoc">Devuelve el valor m�ximo de salud del jugador.</div><div class="ttdef"><b>Definition</b> Player.cpp:148</div></div>
+<div class="ttc" id="aclassPlayer_html_ad0179ce03483c3862d1ec3782d55fd2e"><div class="ttname"><a href="classPlayer.html#ad0179ce03483c3862d1ec3782d55fd2e">Player::heal</a></div><div class="ttdeci">bool heal(int healthPoints)</div><div class="ttdoc">Cura al jugador utilizando puntos de vida.</div><div class="ttdef"><b>Definition</b> Player.cpp:111</div></div>
+<div class="ttc" id="aclassPlayer_html_ae7ab5a8c7a84cfc136e75165b68831b6"><div class="ttname"><a href="classPlayer.html#ae7ab5a8c7a84cfc136e75165b68831b6">Player::act</a></div><div class="ttdeci">void act(Map &amp;map) override</div><div class="ttdoc">Realiza las acciones principales del jugador.</div><div class="ttdef"><b>Definition</b> Player.cpp:8</div></div>
+<div class="ttc" id="aclassPlayer_html_af3a8d9af96b0b3296c7611ab581d4335"><div class="ttname"><a href="classPlayer.html#af3a8d9af96b0b3296c7611ab581d4335">Player::setSensibility</a></div><div class="ttdeci">void setSensibility(double sensibility)</div><div class="ttdoc">Establece la sensibilidad del jugador al mover la c�mara.</div><div class="ttdef"><b>Definition</b> Player.cpp:137</div></div>
+<div class="ttc" id="aclassWeapon_html"><div class="ttname"><a href="classWeapon.html">Weapon</a></div><div class="ttdoc">Representa un arma en el juego, con funcionalidades de disparo, recarga y manejo de munici�n.</div><div class="ttdef"><b>Definition</b> Weapon.h:13</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

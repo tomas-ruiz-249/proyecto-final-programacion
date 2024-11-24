@@ -1,0 +1,5 @@
+<map id="RayCastResult" name="RayCastResult">
+<area shape="rect" id="Node000001" title="Representa el resultado de un cálculo de raycasting." alt="" coords="5,79,123,104"/>
+<area shape="rect" id="Node000002" href="$classDrawable.html" title="Clase base para objetos renderizables en el juego." alt="" coords="22,5,106,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,44,67,79,61,79,61,44"/>
+</map>

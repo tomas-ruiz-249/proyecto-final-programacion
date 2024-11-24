@@ -1,0 +1,5 @@
+<map id="Canvas::Canvas" name="Canvas::Canvas">
+<area shape="rect" id="Node000001" title="Constructor que configura las dimensiones de la ventana." alt="" coords="5,5,132,31"/>
+<area shape="rect" id="Node000002" href="$classTextureManager.html#ad54c51d3aa7c0d1f978cdc58cc014f09" title="Obtiene la instancia única de la clase TextureManager." alt="" coords="180,5,391,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,15,166,15,166,21,132,21"/>
+</map>

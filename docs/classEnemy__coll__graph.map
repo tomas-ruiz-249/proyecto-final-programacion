@@ -1,0 +1,12 @@
+<map id="Enemy" name="Enemy">
+<area shape="rect" id="Node000001" title="Representa un enemigo dentro del juego." alt="" coords="27,280,94,305"/>
+<area shape="rect" id="Node000002" href="$classEntity.html" title="Clase base para representar entidades dentro de un mapa en el juego." alt="" coords="5,143,65,168"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="43,181,61,279,56,280,37,182"/>
+<area shape="rect" id="Node000003" href="$structPoint2D.html" title="Representa un punto en un espacio bidimensional con coordenadas de tipo double." alt="" coords="41,5,115,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="49,41,38,56,31,78,30,102,35,142,30,143,24,102,26,77,33,53,45,38"/>
+<area shape="rect" id="Node000005" href="$classDrawable.html" title="Clase base para objetos renderizables en el juego." alt="" coords="79,93,163,119"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="92,42,117,92,112,94,87,44"/>
+<area shape="rect" id="Node000004" href="$classAnimated.html" title="Clase que representa un objeto dibujable con animaciones." alt="" coords="77,192,162,217"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="106,230,71,281,67,278,101,227"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="123,132,122,192,117,192,118,132"/>
+</map>

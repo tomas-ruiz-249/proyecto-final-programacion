@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projecto final programacion: Archivo de cÃ³digo fuente Weapon.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projecto final programacion
+   </div>
+   <div id="projectbrief">Proyecto final para ProgramaciÃ³n de Computadores 2024-2</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Weapon.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;Animated.h&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classWeapon.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="classWeapon.html">Weapon</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_function" href="classWeapon.html#a42dbc46dd70319a24763992c4ebbd396">Weapon</a>();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classWeapon.html#a063d0eb2cf432d72dc22f6ec565a1a16">shoot</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classWeapon.html#a6931d17fb64311e70e88134c973ef5ea">canShoot</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classWeapon.html#aa5c599473e9ec30d04e6a02903f1f37f">refillAmmo</a>(<span class="keywordtype">int</span> refill);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classWeapon.html#a19dbeaf6f535354dba50ee1ac3318804">getDamage</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classWeapon.html#af0d86939f16add54fc7ae87fea85ac21">getRange</a>();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classWeapon.html#ac57061950f3782ffe317914aede760b6">   67</a></span>    <a class="code hl_class" href="classAnimated.html">Animated</a>* <a class="code hl_variable" href="classWeapon.html#ac57061950f3782ffe317914aede760b6">sprite</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classWeapon.html#a9816083e25bae0b2f472e19382136687">   74</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classCanvas.html">Canvas</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classWeapon.html#a064c8c0fd7dc0102116c2c08e8730386">   81</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classAmmoBox.html">AmmoBox</a>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">int</span> damage; </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">int</span> <a class="code hl_enumvalue" href="Enumerations_8h.html#ac3e413a86119db4b031458c7259e268ea1c21724609ac70f1573fd4b755c64ddb">range</a>; </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ammoCount; </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">bool</span> reloading; </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">int</span> maxAmmo; </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
+</div>
+<div class="ttc" id="aEnumerations_8h_html_ac3e413a86119db4b031458c7259e268ea1c21724609ac70f1573fd4b755c64ddb"><div class="ttname"><a href="Enumerations_8h.html#ac3e413a86119db4b031458c7259e268ea1c21724609ac70f1573fd4b755c64ddb">range</a></div><div class="ttdeci">@ range</div><div class="ttdef"><b>Definition</b> Enumerations.h:47</div></div>
+<div class="ttc" id="aclassAmmoBox_html"><div class="ttname"><a href="classAmmoBox.html">AmmoBox</a></div><div class="ttdoc">Representa una caja de municiï¿½n que puede ser recogida por un jugador.</div><div class="ttdef"><b>Definition</b> AmmoBox.h:14</div></div>
+<div class="ttc" id="aclassAnimated_html"><div class="ttname"><a href="classAnimated.html">Animated</a></div><div class="ttdoc">Clase que representa un objeto dibujable con animaciones.</div><div class="ttdef"><b>Definition</b> Animated.h:11</div></div>
+<div class="ttc" id="aclassCanvas_html"><div class="ttname"><a href="classCanvas.html">Canvas</a></div><div class="ttdoc">Clase encargada de la gestión y renderizado de gráficos en el juego.</div><div class="ttdef"><b>Definition</b> Canvas.h:21</div></div>
+<div class="ttc" id="aclassWeapon_html"><div class="ttname"><a href="classWeapon.html">Weapon</a></div><div class="ttdoc">Representa un arma en el juego, con funcionalidades de disparo, recarga y manejo de municiï¿½n.</div><div class="ttdef"><b>Definition</b> Weapon.h:13</div></div>
+<div class="ttc" id="aclassWeapon_html_a063d0eb2cf432d72dc22f6ec565a1a16"><div class="ttname"><a href="classWeapon.html#a063d0eb2cf432d72dc22f6ec565a1a16">Weapon::shoot</a></div><div class="ttdeci">void shoot()</div><div class="ttdoc">Dispara el arma si hay municiï¿½n disponible.</div><div class="ttdef"><b>Definition</b> Weapon.cpp:19</div></div>
+<div class="ttc" id="aclassWeapon_html_a19dbeaf6f535354dba50ee1ac3318804"><div class="ttname"><a href="classWeapon.html#a19dbeaf6f535354dba50ee1ac3318804">Weapon::getDamage</a></div><div class="ttdeci">int getDamage()</div><div class="ttdoc">Obtiene el daï¿½o del arma.</div><div class="ttdef"><b>Definition</b> Weapon.cpp:53</div></div>
+<div class="ttc" id="aclassWeapon_html_a42dbc46dd70319a24763992c4ebbd396"><div class="ttname"><a href="classWeapon.html#a42dbc46dd70319a24763992c4ebbd396">Weapon::Weapon</a></div><div class="ttdeci">Weapon()</div><div class="ttdoc">Constructor de la clase Weapon.</div><div class="ttdef"><b>Definition</b> Weapon.cpp:7</div></div>
+<div class="ttc" id="aclassWeapon_html_a6931d17fb64311e70e88134c973ef5ea"><div class="ttname"><a href="classWeapon.html#a6931d17fb64311e70e88134c973ef5ea">Weapon::canShoot</a></div><div class="ttdeci">bool canShoot()</div><div class="ttdoc">Verifica si el arma estï¿½ lista para disparar.</div><div class="ttdef"><b>Definition</b> Weapon.cpp:31</div></div>
+<div class="ttc" id="aclassWeapon_html_aa5c599473e9ec30d04e6a02903f1f37f"><div class="ttname"><a href="classWeapon.html#aa5c599473e9ec30d04e6a02903f1f37f">Weapon::refillAmmo</a></div><div class="ttdeci">bool refillAmmo(int refill)</div><div class="ttdoc">Recarga municiï¿½n al arma.</div><div class="ttdef"><b>Definition</b> Weapon.cpp:36</div></div>
+<div class="ttc" id="aclassWeapon_html_ac57061950f3782ffe317914aede760b6"><div class="ttname"><a href="classWeapon.html#ac57061950f3782ffe317914aede760b6">Weapon::sprite</a></div><div class="ttdeci">Animated * sprite</div><div class="ttdoc">Sprite animado del arma.</div><div class="ttdef"><b>Definition</b> Weapon.h:67</div></div>
+<div class="ttc" id="aclassWeapon_html_af0d86939f16add54fc7ae87fea85ac21"><div class="ttname"><a href="classWeapon.html#af0d86939f16add54fc7ae87fea85ac21">Weapon::getRange</a></div><div class="ttdeci">int getRange()</div><div class="ttdoc">Obtiene el alcance del arma.</div><div class="ttdef"><b>Definition</b> Weapon.cpp:58</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

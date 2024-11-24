@@ -1,0 +1,7 @@
+<map id="HealthBox" name="HealthBox">
+<area shape="rect" id="Node000001" title="Representa un objeto que otorga puntos de curación al jugador." alt="" coords="27,79,118,104"/>
+<area shape="rect" id="Node000002" href="$classItem.html" title="Clase base para los elementos del juego interactuables." alt="" coords="5,5,57,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="47,41,68,77,64,80,43,44"/>
+<area shape="rect" id="Node000003" href="$classPickup.html" title="Clase base abstracta para objetos recogibles en el juego." alt="" coords="82,5,146,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="103,44,82,80,77,77,98,41"/>
+</map>

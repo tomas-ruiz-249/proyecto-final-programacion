@@ -1,0 +1,8 @@
+<map id="Item" name="Item">
+<area shape="rect" id="Node000001" title="Clase base para los elementos del juego interactuables." alt="" coords="16,181,68,207"/>
+<area shape="rect" id="Node000002" href="$structPoint2D.html" title="Representa un punto en un espacio bidimensional con coordenadas de tipo double." alt="" coords="5,5,79,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="41,45,37,80,37,119,43,181,38,181,31,119,32,79,35,44"/>
+<area shape="rect" id="Node000003" href="$classDrawable.html" title="Clase base para objetos renderizables en el juego." alt="" coords="103,93,187,119"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="68,38,132,91,129,95,65,42"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,130,58,183,55,179,118,126"/>
+</map>

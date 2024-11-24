@@ -1,0 +1,19 @@
+<map id="Game::Game" name="Game::Game">
+<area shape="rect" id="Node000001" title="Construye el objeto Game e inicializa los sistemas principales." alt="" coords="5,153,113,179"/>
+<area shape="rect" id="Node000002" href="$classItemManager.html#afdd397826d5c1e78b4233413b59e998e" title="Obtiene la instancia única de ItemManager." alt="" coords="166,5,359,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,152,100,97,127,66,160,40,171,34,174,38,163,44,131,70,104,100,70,155"/>
+<area shape="rect" id="Node000003" href="$classMap.html#a109632a4be99b947896e8560cc49158c" title="Obtiene la instancia �nica de Map." alt="" coords="195,55,330,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="73,151,110,120,160,89,181,81,183,86,163,94,113,124,76,155"/>
+<area shape="rect" id="Node000004" href="$classPlayer.html#a8a5e9b9c50dfc47114dbff9efbe5c67c" title="Obtiene la instancia �nica del jugador." alt="" coords="189,104,336,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="110,151,161,138,194,130,195,135,162,143,111,156"/>
+<area shape="rect" id="Node000005" href="$classSoundManager.html#aa827de064ebe0a390707cd97e073d17c" title="Obtiene la instancia única de la clase SoundManager." alt="" coords="161,153,364,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="113,163,148,163,148,169,113,169"/>
+<area shape="rect" id="Node000006" href="$classSoundManager.html#a085153ce6979e73b7a782cbc69094204" title="Obtiene un sonido específico del listado cargado." alt="" coords="169,203,357,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="113,176,197,197,196,202,112,181"/>
+<area shape="rect" id="Node000007" href="$classSoundManager.html#ae85a5f483183a4366bdfeaba68b82408" title="Carga todos los sonidos desde el directorio de sonidos." alt="" coords="161,252,364,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="76,177,114,207,163,237,184,246,182,250,160,242,111,211,73,181"/>
+<area shape="rect" id="Node000008" href="$classCanvas.html#ae4e6dc370d1fb83c722fb7be0a43307d" title="Inicia la ventana del juego." alt="" coords="183,301,343,327"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="70,177,105,231,131,261,163,286,177,294,174,299,160,291,128,265,100,234,65,180"/>
+<area shape="rect" id="Node000009" href="$classTextureManager.html#a0f9ea50e7417f50b295141d4093ebeb5" title="Carga todas las texturas en VRAM desde los directorios predefinidos." alt="" coords="412,294,631,334"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="343,311,398,311,398,317,343,317"/>
+</map>
