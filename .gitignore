@@ -1,4 +1,5 @@
 build/*
+!build/.gitkeep
 src/html/
 src/latex/
 src/Doxyfile
