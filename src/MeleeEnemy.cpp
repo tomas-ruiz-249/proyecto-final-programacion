@@ -14,7 +14,6 @@ void MeleeEnemy::attack()
 		}
 		player->takeDamage(damage);
 	}
-	std::cout << player->hurt << "\n";
 }
 
 void MeleeEnemy::takeDamage(int damage)
