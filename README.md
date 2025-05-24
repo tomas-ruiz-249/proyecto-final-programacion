@@ -54,7 +54,7 @@ El juego es shooter implementando usando programación orientada objetos y usand
 
 * Desde build
 ```
-cd ..
+cd ../
 ```
   Windows
   ```
